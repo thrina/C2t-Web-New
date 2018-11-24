@@ -1,0 +1,234 @@
+<!--profile cover start-->
+<div class="row">
+  <div class="col-lg-12">
+    <div class="cover-profile">
+      <div class="profile-bg-img">
+        <img class="profile-bg-img img-fluid" src="assets/images/user-profile/bg-img1.jpg" alt="bg-img">
+        <div class="card-body user-info" style="margin-top: -130px;">
+          <div class="col-md-12">
+            <div class="media-left">
+              <a href="javascript:;" class="profile-image">
+                <img class="user-img img-radius" src="assets/images/avatar-1.jpg" alt="user-img">
+              </a>
+            </div>
+            <div class="media-body row">
+              <div class="col-lg-12">
+                <div class="user-title">
+                  <h2>A S H D Pavan Kumar</h2>
+                  <span class="text-white">Photographer</span>
+                </div>
+              </div>
+              <div>
+                <div class="pull-right cover-btn">
+                  <button type="button" class="btn btn-primary m-b-10 m-r-10"><i class="icofont icofont-plus"></i> Follow</button>
+                  <button type="button" class="btn btn-primary m-b-10"><i class="icofont icofont-ui-messaging"></i> Message</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--profile cover end-->
+<div class="row">
+  <div class="col-lg-12">
+    <div class="md-tabs">
+      <ngb-tabset>
+        <ngb-tab title="My Profile">
+          <ng-template ngbTabContent>
+            <div [@fadeInOutTranslate] class="m-t-15">
+              <!-- personal card start -->
+              <div class="card">
+                <div class="card-header  border-bottom-line">
+                  <h5 class="card-header-text">My Profile</h5>
+                  <button id="edit-btn" type="button" class="btn btn-sm btn-primary waves-effect waves-light f-right" (click)="toggleEditProfile()">
+                    <i class="icofont {{ editProfileIcon }}"></i>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <div class="view-info" *ngIf="editProfile">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="general-info">
+                          <div class="row  border-bottom-line" style="padding-bottom: 10px">
+                            <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
+                              <label>Info</label>
+                            </div>
+                            <div class="col-lg-12 col-xl-12">
+                            <div class="row" style="padding-left: 30px">
+                            <div class="col-lg-12 col-xl-6">
+                              <div class="row">
+                                  <div class="col-lg-12 col-xl-5">
+                                    <label class="label-font">Name</label>
+                                  </div>
+                                  <div class="col-lg-12 col-xl-7">
+                                    <label class="value-font">Pavan Kumar</label>
+                                  </div>
+                                  <div class="col-lg-12 col-xl-5">
+                                    <label class="label-font">Bussiness Mobile</label>
+                                  </div>
+                                  <div class="col-lg-12 col-xl-7">
+                                    <label class="value-font">84586566677</label>
+                                  </div>
+                              </div>
+                            
+                            </div>
+                            <div class="col-lg-12 col-xl-6">
+                              <div class="row">
+                                  <div class="col-lg-12 col-xl-5">
+                                    <label class="label-font">Date Started</label>
+                                  </div>
+                                  <div class="col-lg-12 col-xl-7">
+                                    <label class="value-font">24-Nov-2018</label>
+                                  </div>
+                                  <div class="col-lg-12 col-xl-5">
+                                    <label class="label-font">Email</label>
+                                  </div>
+                                  <div class="col-lg-12 col-xl-7">
+                                    <label class="value-font">pavan@wowdea.com</label>
+                                  </div>
+                              </div>
+                            
+                            </div>
+                          </div>
+                        </div>
+                            <!-- end of table col-lg-6 -->
+                          </div>
+                          <div class="row  border-bottom-line" style="padding-top: 10px; padding-bottom: 10px">
+                            <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
+                              <label>Address</label>
+                            </div>
+                            <div class="col-lg-12 col-xl-12">
+                            <div class="row" style="padding-left: 30px">
+
+                            <div class="col-lg-12 col-xl-6">
+                              <div class="row">
+                                  <div class="col-lg-12 col-xl-5">
+                                    <label class="label-font">City</label>
+                                  </div>
+                                  <div class="col-lg-12 col-xl-7">
+                                    <label class="value-font">Hyderabad</label>
+                                  </div>
+                                  <div class="col-lg-12 col-xl-5">
+                                    <label class="label-font">Location</label>
+                                  </div>
+                                  <div class="col-lg-12 col-xl-7">
+                                    <label class="value-font">Jntu</label>
+                                  </div>
+                              </div>
+                            
+                            </div>
+                            <div class="col-lg-12 col-xl-6">
+                              <div class="row">
+                                  <div class="col-lg-12 col-xl-5">
+                                    <label class="label-font">Pin</label>
+                                  </div>
+                                  <div class="col-lg-12 col-xl-7">
+                                    <label class="value-font">500093</label>
+                                  </div>
+                                  <div class="col-lg-12 col-xl-5">
+                                    <label class="label-font">Area</label>
+                                  </div>
+                                  <div class="col-lg-12 col-xl-7">
+                                    <label class="value-font">Manjera mall</label>
+                                  </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <!-- end of view-info -->
+                  <div class="edit-info" *ngIf="!editProfile">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <form>
+                        <div class="general-info">
+                          <div class="row">
+                            <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
+                              <label>Info</label>
+                            </div>
+                              <!-- <form> -->
+
+                            <div class="col-lg-6">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
+                                      <input type="text" class="form-control" placeholder="Full Name" value="Josephine Villa">
+                                </div>
+                                <div class="input-group">
+                                  
+                                  <span class="input-group-addon"><i class="icofont icofont-calendar"></i></span>
+
+                                    <input id="dropper-default" class="form-control" type="text" value="October 25th, 1990" placeholder="Select Your Birth Date" />
+                                 </div>
+                            </div>
+                            <!-- end of table col-lg-6 -->
+                            <div class="col-lg-6">
+                                <div class="input-group">
+                                        <span class="input-group-addon"><i class="icofont icofont-mobile-phone"></i></span>
+                                        <input type="text" class="form-control" value="(0123) - 4567891" placeholder="Mobile Number">
+                                      </div>
+                                       <div class="input-group">
+                                        <span class="input-group-addon"><i class="icofont icofont-email"></i></span>
+                                        <input type="email" class="form-control" value="codedthemes.demo" placeholder="Email Id">
+                                      </div>
+                            
+                            </div>
+                              <!-- </form> -->
+
+                            <!-- end of table col-lg-6 -->
+                          </div>
+                          <div class="row">
+                            <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
+                                <label>Address</label>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
+                                      <input type="text" class="form-control" placeholder="City">
+                                </div>
+                                 <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
+                                      <input type="text" class="form-control" placeholder="Location">
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                               <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
+                                      <input type="text" class="form-control" placeholder="Pin" >
+                                </div>
+                                 <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
+                                      <input type="text" class="form-control" placeholder="Area" >
+                                </div>
+                            </div>
+                          </div>
+                          <!-- end of row -->
+                          <div class="text-right">
+                            <a href="javascript:;" id="edit-cancel" class="btn btn-default waves-effect" (click)="toggleEditProfile()">Cancel</a>
+                            <a href="javascript:;" class="btn btn-success waves-effect waves-light m-r-20">Save</a>
+                          </div>
+                        </div>
+                      </form>
+                        <!-- end of edit info -->
+                      </div>
+                      <!-- end of col-lg-12 -->
+                    </div>
+                    <!-- end of row -->
+                  </div>
+                  <!-- end of edit-info -->
+                </div>
+                <!-- end of card-body -->
+              </div>
+            </div>
+          </ng-template>
+        </ngb-tab>
+      </ngb-tabset>
+    </div>
+  </div>
+</div>
