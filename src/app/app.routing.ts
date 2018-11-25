@@ -2,15 +2,32 @@ import {Routes} from '@angular/router';
 import {AdminComponent} from './layout/admin/admin.component';
 import {AuthComponent} from './layout/auth/auth.component';
 import {SignupComponent} from './components/signup/signup.component';
+import {AppComponent} from './app.component';
+import {HomeComponent} from './components/home/home.component';
+
 
 export const AppRoutes: Routes = [
-  {
+  { 
     path: '',
+    component:AppComponent, 
+    children: [
+      {
+        path: '',
+        redirectTo: 'home',
+        pathMatch: 'full'
+    },{
+      path: 'home',
+      component: HomeComponent
+
+    }]
+  },
+  {
+    path: 'c2t',
     component: AdminComponent,
     children: [
       {
         path: '',
-        redirectTo: 'dashboard/default',
+        redirectTo: 'c2t/signup',
         pathMatch: 'full'
       },
       {

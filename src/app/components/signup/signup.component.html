@@ -28,3 +28,110 @@
   </app-card>
 
 </div>
+
+
+<!-- <app-modal-basic #modalDefault>
+  <div class="app-modal-header">
+    <h4 class="modal-title">Sign Up</h4>
+    <button type="button" class="close basic-close" (click)="modalDefault.hide()">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="app-modal-body">
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+      <div class="form-group row">
+        <div class="col-sm-12">
+          <input type="text" class="form-control" id="firstName" placeholder="First Name" formControlName="firstName">
+          <div class="messages text-danger" *ngIf="myForm.controls.firstName.errors?.required">Name can't be blank</div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-12">
+          <input type="text" class="form-control" id="lastName" placeholder="Last Name" formControlName="lastName">
+          <div class="messages text-danger" *ngIf="myForm.controls.lastName.errors?.required">Name can't be blank</div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-12">
+          <input type="text" class="form-control" id="mobile" placeholder="Mobile Number" formControlName="mobile">
+          <div class="messages text-danger" *ngIf="myForm.controls.mobile.errors?.required">Name can't be blank</div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-12">
+          <input type="text" class="form-control" id="email" placeholder="Email Address" formControlName="email">
+          <div class="messages text-danger" *ngIf="myForm.controls.email.errors?.required">Email can't be blank</div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-12">
+          <input type="password" class="form-control" id="password"  placeholder="Password" formControlName="password">
+          <div class="messages text-danger error" *ngIf="myForm.controls.password.errors?.required">Password can't be blank</div>
+        </div>
+      </div>
+      <div class="form-group row">
+        <div class="col-sm-12">
+          <input type="password" class="form-control" id="rpassword" placeholder="Confirm Password" formControlName="rpassword">
+          <div class="messages text-danger" *ngIf="myForm.controls.rpassword.errors?.required">Repeat password can't be blank</div>
+          <div class="messages text-danger" *ngIf="myForm.controls.rpassword.errors?.equalTo">The passwords does not match</div>
+        </div>
+      </div>
+     
+      <div class="row">
+        <div class="col-sm-12">
+          <div class="form-check form-check-inline">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" value="option1" formControlName="gender"> I Hire people
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-12">
+
+          <div class="form-check form-check-inline">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" value="option2" formControlName="gender"> I am Artist/Technician
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-12">
+
+          <div class="form-check form-check-inline">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" value="option2" formControlName="gender"> I am manager for one or more Artist(s)/Technician(s)
+            </label>
+          </div>
+        </div>
+        <div class="col-sm-12">
+
+          <div class="form-check form-check-inline">
+            <label class="form-check-label">
+              <input class="form-check-input" type="radio" value="option2" formControlName="gender"> I am Owner/Manager of a bussiness related to Film Industry
+            </label>
+          </div>
+          <div class="messages text-danger" *ngIf="myForm.controls.gender.errors?.required">Gender can't be blank</div>
+        </div>
+      </div>
+
+
+      <div class="form-group row">
+        <label class="col-sm-2"></label>
+        <div class="col-sm-10">
+          <button type="submit" class="btn btn-primary m-b-0" [disabled]="!myForm.valid">Submit</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  <div class="app-modal-footer">
+    <button type="button" class="btn btn-default waves-effect" (click)="modalDefault.hide()">Close</button>
+    <button type="button" class="btn btn-primary waves-effect waves-light ">Save changes</button>
+    <div class="row">
+      <span class="col-6">
+        <label class="value-font col-12">Thank you and enjoy our website</label>
+        <label class="label-font col-12">Your Authentication Team</label>
+      </span>
+      <span class="col-6">
+        <img src="" alt=" c2t logo" class="align-right">
+      </span>
+    </div>
+  </div>
+</app-modal-basic> -->
