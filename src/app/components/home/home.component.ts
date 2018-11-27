@@ -46,4 +46,8 @@ export class HomeComponent implements OnInit {
   register(){
     
   }
+
+  onSubmit(){
+    
+  }
 }

@@ -23,7 +23,7 @@ export class TitleComponent {
             }
           });
         } while (currentRoute);
-        this.titleService.setTitle( 'Guru Able | ' + title );
+        this.titleService.setTitle( 'Connect 2 Tollywood | ' + title );
       });
   }
 }

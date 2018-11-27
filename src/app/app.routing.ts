@@ -22,7 +22,7 @@ export const AppRoutes: Routes = [
     }]
   },
   {
-    path: 'c2t',
+    path: '',
     component: AdminComponent,
     children: [
       {

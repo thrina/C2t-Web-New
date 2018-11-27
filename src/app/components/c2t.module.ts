@@ -5,6 +5,7 @@ import {RouterModule, Routes} from '@angular/router';
 import { C2TComponent } from './c2t.component';
 import {SignupComponent} from './signup/signup.component';
 import {SharedModule} from '../shared/shared.module';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 export const c2tRoutes: Routes = [
   {
@@ -23,7 +24,9 @@ export const c2tRoutes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(c2tRoutes),
-    SharedModule
+    SharedModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [C2TComponent,SignupComponent]
 })
