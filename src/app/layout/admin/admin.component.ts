@@ -1,6 +1,7 @@
 import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {animate, AUTO_STYLE, state, style, transition, trigger} from '@angular/animations';
-import {MenuItems} from '../../shared/menu-items/menu-items';
+import { MenuItems } from '../../shared/menu-items/menu-items';
+import {Router }from '@angular/router'; 
 
 @Component({
   selector: 'app-admin',
@@ -63,7 +64,7 @@ export class AdminComponent implements OnInit {
   verticalPlacement: string; /* left(default), right */
   verticalLayout: string; /* wide(default), box */
   deviceType: string; /* desktop(default), tablet, mobile */
-  verticalNavType: string; /* expanded(default), offcanvas */
+  verticalNavType: string = "offcanvas"; /* expanded(default), offcanvas */
   verticalEffect: string; /* shrink(default), push, overlay */
   vNavigationView: string; /* view1(default) */
   pcodedHeaderPosition: string; /* fixed(default), relative*/
@@ -97,19 +98,20 @@ export class AdminComponent implements OnInit {
   configOpenRightBar: string;
   isSidebarChecked: boolean;
   isHeaderChecked: boolean;
+  currentUser: any = {}
 
   @ViewChild('searchFriends') search_friends: ElementRef;
 /*  @ViewChild('toggleButton') toggle_button: ElementRef;
   @ViewChild('sideMenu') side_menu: ElementRef;*/
 
-  constructor(public menuItems: MenuItems) {
+  constructor(public menuItems: MenuItems, private router: Router) {
     this.navType = 'st2';
     this.themeLayout = 'vertical';
     this.vNavigationView = 'view1';
     this.verticalPlacement = 'left';
     this.verticalLayout = 'wide';
     this.deviceType = 'desktop';
-    this.verticalNavType = 'expanded';
+    this.verticalNavType = 'offcanvas';
     this.verticalEffect = 'shrink';
     this.pcodedHeaderPosition = 'fixed';
     this.pcodedSidebarPosition = 'fixed';
@@ -146,6 +148,8 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit() {
+    let currtUser = JSON.parse(JSON.stringify(localStorage.getItem('currentUser')));
+    this.currentUser = JSON.parse(currtUser.toString())
     this.setBackgroundPattern('pattern2');
   }
 
@@ -176,8 +180,8 @@ export class AdminComponent implements OnInit {
       this.verticalEffect = 'overlay';
     } else {
       this.deviceType = 'desktop';
-      this.verticalNavType = 'expanded';
-      this.verticalEffect = 'shrink';
+      this.verticalNavType = 'offcanvas';
+      this.verticalEffect = 'push';
     }
   }
 
@@ -274,5 +278,10 @@ export class AdminComponent implements OnInit {
     } else {
       this.navBarTheme = 'theme1';
     }
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigate(['/home']);
   }
 }
