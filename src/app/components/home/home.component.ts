@@ -2,12 +2,12 @@ import {Component, OnInit }from '@angular/core';
 import {FormControl, FormGroup, Validators }from '@angular/forms'; 
 import {HomeService }from './home.service'; 
 import {Router }from '@angular/router'; 
-
+import { CarouselConfig } from 'ngx-bootstrap/carousel';
 
 @Component( {
 selector:'app-home', 
 templateUrl:'./home.component.html', 
-styleUrls:['./home.component.css']
+    styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
 myForm:FormGroup; 
@@ -18,7 +18,7 @@ currentUser:any =  {}
 
 
 constructor(private homeService:HomeService, private router:Router) {
-const firstName = new FormControl('', Validators.required); 
+    const firstName = new FormControl('', Validators.required); 
 const lastName = new FormControl('', Validators.required); 
 const mobile = new FormControl('', Validators.required); 
 const password = new FormControl('', Validators.required); 

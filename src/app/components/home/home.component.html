@@ -1,39 +1,46 @@
-<div class="logo_wrapper" style="position:absolute">
+<div class="logo_wrapper">
   <div class="container">
-    <img src="../../../assets/images/logo.png" style="margin-top: 10px; position: relative; z-index: 10;">
+    <img src="../../../assets/images/logo.png" class="mainlogo">
   </div>
 </div>
-<div class="row top_nav" style="margin-left: 0px; margin-right: 0px;">
-  <div style="width: 100%;">
-    <div class="top_info_pa1" style="border-left: 1px solid;">
-      <a style="color: #000000; font-size: 16; font-family: Lato; margin-right: 30px; font-weight: 800; cursor: pointer;"
-        (click)="modalDefault.show()">Sign Up</a>
-      <a style="color: #000000; font-size: 16; font-family: Lato; font-weight: 800; cursor: pointer;" (click)="loginModal.show()">Sign
-        In</a>
+<div class="row top_nav">
+  <div class="col-12 wid100">
+    <div class="top_info_pa1">
+      <a class="text-black-50 link_button f16 rockwell" (click)="modalDefault.show()">Sign Up</a>
+      <a class="link_button text-black-50 f16 rockwell" (click)="loginModal.show()">Sign In</a>
     </div>
-    <div class="top_info_pa2" style="margin-right: 30px;">
-      <i class="far fa-envelope"></i>
-      <a style="color: #75726E; font-size: 12; font-family: Lato; margin-right: 30px;">connect2tollywood.com</a>
-      <i class="fas fa-phone"></i>
-      <a style="color: #75726E; font-size: 12; font-family: Lato;">+91 9876543210</a>
+    <div class="top_info_pa2 mr_30">
+      <i class="far fa-envelope f14"></i>
+      <a class="contact_links rockwell f14 text-muted">connect2tollywood.com</a>
+      <i class="fas fa-phone f14"></i>
+      <a class="contact_links f14 rockwell text-muted">+91 9876543210</a>
     </div>
   </div>
 </div>
-<div class="row nav_bar" style="padding-left: 0px; padding-right: 0px; margin-right: 0px; margin-left: 0px;">
-  <div class="container" style="padding-left: 80px;">
-    <ul class="menu_list">
-      <li class="menu_list_item">Home</li>
-      <li class="menu_list_item">Search</li>
-      <li class="menu_list_item">Opportunities</li>
-      <li class="menu_list_item">Projects</li>
-      <li class="menu_list_item">About Us</li>
-      <li class="menu_list_item">Join Us</li>
-      <li class="menu_list_item">Contact Us</li>
-    </ul>
+<div class="row navbar_section">
+  <div class="container padl_80">
+    <nav class="navbar navbar-expand-lg navbar-light hero_nav backcolor_f4">
+      <a class="navbar-brand"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav">
+          <a class="nav-item nav-link menu_list_item f16 fl">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-item nav-link menu_list_item f16 fl">Search</a>
+          <a class="nav-item nav-link menu_list_item f16 fl">Opportunities</a>
+          <a class="nav-item nav-link menu_list_item f16 fl">Projects</a>
+          <a class="nav-item nav-link menu_list_item f16 fl">About Us</a>
+          <a class="nav-item nav-link menu_list_item f16 fl">Join Us</a>
+          <a class="nav-item nav-link menu_list_item f16 fl">Contact Us</a>
+        </div>
+      </div>
+    </nav>
   </div>
 </div>
-<div class="row audition_section full_width" style="margin-left: 0px; margin-right: 0px;">
-  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel" style="width: 100%;">
+<div class="row audition_section wid100 mlr navbar-expand-lg">
+  <div id="carouselExampleControls" class="carousel slide wid100" data-ride="carousel">
     <div class="carousel-inner">
       <div class="carousel-item active">
         <img class="d-block w-100" alt="First slide" src="../../../assets/images/audision_banner.png" />
@@ -45,26 +52,49 @@
         <img class="d-block w-100" alt="Third slide" src="../../../assets/images/audision_banner.png" />
       </div>
     </div>
-    <a class="carousel-control-prev" role="button" data-slide="prev" style="width: 80px;"> <span class="carousel-control-prev-icon"
-        aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
-    <a class="carousel-control-next" role="button" data-slide="next" style="width: 80px;"> <span class="carousel-control-next-icon"
-        aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
+    <a class="carousel-control-prev" role="button" data-slide="prev" style="width: 80px;">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
+    <a class="carousel-control-next" role="button" data-slide="next" style="width: 80px;">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
   </div>
+  <!-- <carousel>
+  <slide>
+    <img src="../../../assets/images/audision_banner.png" alt="first slide" style="display: block; width: 100%;">
+    <div class="carousel-caption d-none d-md-block">
+      <h3>First slide label</h3>
+      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+    </div>
+  </slide>
+  <slide>
+    <img src="../../../assets/images/audision_banner.png" alt="second slide" style="display: block; width: 100%;">
+    <div class="carousel-caption d-none d-md-block">
+      <h3>Second slide label</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+    </div>
+  </slide>
+  <slide>
+    <img src="../../../assets/images/audision_banner.png" alt="third slide" style="display: block; width: 100%;">
+    <div class="carousel-caption d-none d-md-block">
+      <h3>Third slide label</h3>
+      <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+    </div>
+  </slide>
+</carousel> -->
 </div>
-<div class="row" style="margin-left: 0px; margin-right: 0px;">
-  <div class="container">
+<div class="row  search_section mlr">
+  <div class="container padlr_5">
     <div class="sec_part1">
-      <div class="row" style="margin-left: 0px; margin-right: 0px; margin-bottom: 60px;">
-        <div class="col-lg-7 col-xl-7 col-md-12" style="margin-left: 0px; margin-right: 0px; padding-right: 0px; padding-left: 0px;">
-          <h2 class="prime_h1 text_center">Need an Artist or a Movie Technician ? You will find them here.</h2>
+      <div class="row mlr mb60">
+        <div class="col-lg-7 col-xl-7 col-md-12 mlr padding">
+          <h2 class="prime_h1 text_center">Need an Artist or a Movie Technician ? You will find them
+            here.</h2>
           <div class="space32 sapce20"></div>
           <div class="input-group" id="adv-search">
-            <input type="text" class="form-control" placeholder="Search for Artists, Writers, Technicians…" style="height: 50px; border: 0px solid;" />
+            <input type="text" class="form-control searchbar lator" placeholder="Search for Artists, Writers, Technicians…" />
             <div class="input-group-btn">
               <div class="btn-group" role="group">
                 <div class="dropdown dropdown-lg">
-                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false"
-                    style="height: 50px;">Category
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Category
                     <span class="caret"></span>
                   </button>
                   <div class="dropdown-menu dropdown-menu-right" role="menu">
@@ -87,65 +117,61 @@
                         <label for="contain">Contains the words</label>
                         <input class="form-control" type="text" />
                       </div>
-                      <button type="submit" class="btn btn-primary">
+                      <button type="submit" class="btn btn-danger">
                         <i class="fas fa-search"></i>
                       </button>
                     </form>
                   </div>
                 </div>
-                <button type="button" class="btn btn-primary" style="width: 57px; background: #D71727; border: 0px solid;">
-                  <i class="fas fa-search"></i>
+                <button type="button" class="btn btn-danger sbtn">
+                  <i class="icofont icofont-search"></i>
                 </button>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-md-12 col-xl-4 ml-xl-5 ml-lg-5 col-lg-4" style="padding-left: 0px;">
-          <div style="margin-bottom: 25px;">
-            <h4>Newly Added Artist to our world</h4>
+        <div class="col-md-12 col-xl-4 ml-xl-5 ml-lg-5 col-lg-4 padleft">
+          <div class="mb25">
+            <h4 class="mt40 f16 rockwell">Newly Added Artist to our world</h4>
           </div>
-          <div class="row" style="margin-left: 0px; margin-right: 0px;">
-            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-6" style="padding-left: 0px;">
-              <div style="display: flex; margin-bottom: 30px;">
-                <div style="display: inline-block;">
+          <div class="row mlr">
+            <div class="col-xl-12 col-lg-12 col-md-6 col-sm-6 padleft">
+              <div class="new1">
+                <div>
                   <img src="../../../assets/images/Profile_2.png">
                 </div>
-                <div style="display: inline-block; margin-left: 20px;">
-                  <h5 style="color: #D71727; font-size: 14px;"><b spellcheck="true" data-medium-editor-element="true"
-                      role="textbox" aria-multiline="true" data-medium-editor-editor-index="1" medium-editor-index="6c70a88f-437e-864d-adf3-a7ee06f48fca"
-                      data-placeholder="Type your text" data-medium-focused="true">Kirsty Pargeter</b></h5>
-                  <h5><strong style="font-size: 14px;">Singer</strong><small style="font-size: 12px;">&nbsp; from
-                      Hyderabad</small><br></h5>
+                <div class="new11 rockwell">
+                  <h5 class="colred f16 rockwell"><b>Kirsty
+                      Pargeter</b></h5>
+                  <h5><strong class=" f14">Singer</strong><small class="f12">&nbsp;
+                      from Hyderabad</small><br></h5>
                 </div>
               </div>
             </div>
-            <div class="col-lg-12 col-xl-12 col-md-6 col-sm-6" style="padding-left: 0px;">
-              <div style="display: flex;">
+            <div class="col-lg-12 col-xl-12 col-md-6 col-sm-6 padleft">
+              <div class="new2 rockwell">
                 <div style="display: inline-block;">
                   <img src="../../../assets/images/profile_1.png">
                 </div>
-                <div style="display: inline-block; margin-left: 20px;">
-                  <h5 style="color: #D71727; font-size: 14px;"><b spellcheck="true" data-medium-editor-element="true"
-                      role="textbox" aria-multiline="true" data-medium-editor-editor-index="1" medium-editor-index="6c70a88f-437e-864d-adf3-a7ee06f48fca"
-                      data-placeholder="Type your text" data-medium-focused="true">Srinu Pasa</b></h5>
-                  <h5><strong style="font-size: 14px;">Photographers</strong><small style="font-size: 12px;">&nbsp;
-                      from Hyderabad</small><br></h5>
+                <div class="new22">
+                  <h5><b class="colred f16 rockwell">Srinu Pasa</b></h5>
+                  <h5><strong class=" f14 ">Photographers</strong><small class="f12">&nbsp; from Hyderabad</small><br></h5>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="row" style="margin-left: 0px; margin-right: 0px;">
+      <div class="row mlr">
         <div class="title_section">
           <div class="title_bar">
             <img src="../../../assets/images/divider.png" />
           </div>
           <div class="title_text">
-            <h2 class="prime_heading">Find talents that suites your need</h2>
+            <h2 class="prime_heading rockwell">Find talents that suites your need</h2>
           </div>
         </div>
-        <div class="col-xl-12 col-md-12 col-lg-12" style="padding-left: 0px; padding-right: 0px;">
+        <div class="col-xl-12 col-md-12 col-lg-12 padding_lr">
           <div class="container text-center my-3">
             <div class="row mx-auto my-auto">
               <div id="myCarousel" class="carousel slide w-100" data-ride="carousel">
@@ -153,7 +179,7 @@
                   <div class="carousel-item py-5 active">
                     <div class="row">
                       <div class="col-md-6 col-lg-3 col-xl-3">
-                        <div class="card" style="border: 0px solid;">
+                        <div class="card border0">
                           <div class="card-body full_box">
                             <div>
                               <div class="strips_holder">
@@ -166,7 +192,7 @@
                         </div>
                       </div>
                       <div class="col-md-6 col-lg-3 col-xl-3">
-                        <div class="card" style="border: 0px solid;">
+                        <div class="card border0">
                           <div class="card-body full_box">
                             <div>
                               <img src="../../../assets/images/pic_category3.png">
@@ -179,7 +205,7 @@
                         </div>
                       </div>
                       <div class="col-md-6 col-lg-3 col-xl-3">
-                        <div class="card" style="border: 0px solid;">
+                        <div class="card border0">
                           <div class="card-body full_box">
                             <div>
                               <div class="strips_holder">
@@ -192,7 +218,7 @@
                         </div>
                       </div>
                       <div class="col-md-6 col-lg-3 col-xl-3">
-                        <div class="card" style="border: 0px solid;">
+                        <div class="card border0">
                           <div class="card-body full_box">
                             <div>
                               <img src="../../../assets/images/pic_category4.png">
@@ -209,7 +235,7 @@
                   <div class="carousel-item py-5">
                     <div class="row">
                       <div class="col-md-6 col-lg-3 col-xl-3">
-                        <div class="card" style="border: 0px solid;">
+                        <div class="card border0">
                           <div class="card-body full_box">
                             <div>
                               <div class="strips_holder">
@@ -222,7 +248,7 @@
                         </div>
                       </div>
                       <div class="col-md-6 col-lg-3 col-xl-3">
-                        <div class="card" style="border: 0px solid;">
+                        <div class="card border0">
                           <div class="card-body full_box">
                             <div>
                               <img src="../../../assets/images/pic_category3.png">
@@ -235,7 +261,7 @@
                         </div>
                       </div>
                       <div class="col-md-6 col-lg-3 col-xl-3">
-                        <div class="card" style="border: 0px solid;">
+                        <div class="card border0">
                           <div class="card-body full_box">
                             <div>
                               <div class="strips_holder">
@@ -248,7 +274,7 @@
                         </div>
                       </div>
                       <div class="col-md-6 col-lg-3 col-xl-3">
-                        <div class="card" style="border: 0px solid;">
+                        <div class="card border0">
                           <div class="card-body full_box">
                             <div>
                               <img src="../../../assets/images/pic_category4.png">
@@ -265,11 +291,11 @@
                 </div>
               </div>
             </div>
-            <div class="row arrows">
+            <div class="row a mlr">
               <div>
-                <a class="carousel-control-prev text-dark" href="#myCarousel" role="button" data-slide="prev" style="width: 10px;">
+                <a class="carousel-control-prev text-dark" role="button" data-slide="prev" style="width: 10px;">
                   <span class="fa fa-chevron-left" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
-                <a class="carousel-control-next text-dark" href="#myCarousel" role="button" data-slide="next" style="width: 10px;">
+                <a class="carousel-control-next text-dark" role="button" data-slide="next" style="width: 10px;">
                   <span class="fa fa-chevron-right" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
               </div>
             </div>
@@ -279,7 +305,7 @@
     </div>
   </div>
 </div>
-<div class="row" style="margin-left: 0px; margin-right: 0px; background-color: #F4F4F4;">
+<div class="row categories_section">
   <div class="container">
     <div class="sec_part1">
       <div class="title_section">
@@ -287,73 +313,73 @@
           <img src="../../../assets/images/divider.png">
         </div>
         <div class="title_text">
-          <h2 class="prime_heading">Find our Top and New Talents to meet your Creative needs</h2>
+          <h2 class="prime_heading rockwell">Find our Top and New Talents to meet your Creative needs</h2>
         </div>
       </div>
       <div class="row categroy_row">
-        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6">
           <h3 class="category_list">Photographers</h3>
         </div>
-        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6">
           <h3 class="category_list">Dancers</h3>
         </div>
-        <div class="col-xl-2 col-lg-2 col-sm-2 col-md-2">
+        <div class="col-xl-2 col-lg-2 col-md-2 col-6 col-sm-2">
           <h3 class="category_list">Artists</h3>
         </div>
-        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6">
           <h3 class="category_list">Makeup Artists</h3>
         </div>
-        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6">
           <h3 class="category_list">Music Artists</h3>
         </div>
-        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6">
           <h3 class="category_list">Catering</h3>
         </div>
       </div>
       <div class="row categroy_row">
-        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6">
           <h3 class="category_list">Event Organisers</h3>
         </div>
-        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6">
           <h3 class="category_list">Singers</h3>
         </div>
-        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6">
           <h3 class="category_list">Comedians</h3>
         </div>
-        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6">
           <h3 class="category_list">Costume Designers</h3>
         </div>
-        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6">
           <h3 class="category_list">Magicians<br></h3>
         </div>
-        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6">
           <h3 class="category_list">Supporters<br></h3>
         </div>
       </div>
       <div class="row categroy_row">
-        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6">
           <h3 class="category_list">Chefs</h3>
         </div>
-        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6">
           <h3 class="category_list">Decoraters<br></h3>
         </div>
-        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6">
           <h3 class="category_list">Designers<br></h3>
         </div>
-        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
+        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6">
           <h3 class="category_list">Businesses<br></h3>
         </div>
-        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
-          <h3 class="category_list">Projects&nbsp; &nbsp; &nbsp;&nbsp;<br></h3>
+        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6">
+          <h3 class="category_list">Projects<br></h3>
         </div>
-        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2">
-          <h3 class="category_list">Opportunities&nbsp; &nbsp;<br></h3>
+        <div class="col-xl-2 col-lg-2 col-md-2 col-sm-2 col-6">
+          <h3 class="category_list">Opportunities<br></h3>
         </div>
       </div>
     </div>
   </div>
 </div>
-<div class="row" style="margin-left: 0px; margin-right: 0px;background-color:#F4F4F4">
+<div class="row mlr" style="background-color:#F4F4F4">
   <div class="container">
     <div class="sec_part1 py-5 carousel-item">
       <div class="title_section">
@@ -364,7 +390,7 @@
           <h2 class="prime_heading">Find our Top and New Talents to meet your Creative needs</h2>
         </div>
       </div>
-      <div class="row find categories" style="margin-left: 0px; margin-right: 0px;">
+      <div class="row find categories mlr">
         <div class="col-md-4 col-xl-2">
           <li>
             <a>Photographers</a>
@@ -396,7 +422,7 @@
           </li>
         </div>
       </div>
-      <div class="row find categories" style="margin-left: 0px; margin-right: 0px;">
+      <div class="row find categories mlr">
         <div class="col-md-4 col-xl-2">
           <li>
             <a>Event Organisers</a>
@@ -416,7 +442,8 @@
           <li>
           </li>
           <li>
-            <a>Costume Designers</a>
+            <a>Costume
+              Designers</a>
           </li>
         </div>
         <div class="col-md-4 col-xl-2">
@@ -430,7 +457,7 @@
           </li>
         </div>
       </div>
-      <div class="row find categories" style="margin-left: 0px; margin-right: 0px;">
+      <div class="row find categories mlr">
         <div class="col-md-4 col-xl-2">
           <li>
             <a>Chefs</a>
@@ -465,164 +492,170 @@
     </div>
   </div>
 </div>
-<div class="row" style="margin-left: 0px; margin-right: 0px;">
-  <div class="sec_part1 col-xl-12 sec_part3 col-md-12 col-lg-12">
+<div class="row events_setion">
+  <div class="sec_part1 col-xl-12 col-md-12 col-lg-12">
     <div class="container">
       <div class="title_section">
         <div class="title_bar">
           <img src="../../../assets/images/Group%2080.png" />
         </div>
         <div class="title_text">
-          <h2 class="prime_heading2">Latest Events</h2>
+          <h2 class="prime_heading2 rockwell">Latest Events</h2>
         </div>
       </div>
     </div>
     <div>
-      <div class="container-fluid text-center my-3" style="margin-top: 0px; padding-top: 0px; padding-bottom: 0px; margin-bottom: 0px; position: relative;">
-        <div class="row mx-auto my-auto mt-auto mr-auto mb-auto ml-auto" style="position: relative; margin: 0px;">
+      <div class="container-fluid  my-3 events">
+        <div class="row mx-auto my-auto mt-auto mr-auto mb-auto ml-auto mar0 pos_rel">
           <div id="myCarousel1" class="slide w-100 carousel" data-ride="carousel">
             <div class="carousel-inner" role="listbox">
               <div class="carousel-item py-5 active">
-                <div class="row" style="margin-left: 0px; margin-right: 0px;">
-                  <div class="flying_card col-md-6 col-xl-3 col-lg-3">
+                <div class="row mlr">
+                  <div class="col-md-6 col-xl-3 col-lg-6 padlr_5">
                     <div class="card">
-                      <div class="card-body" style="padding: 0px; margin: 0px; overflow: hidden; height: 200px; border-radius: 0px;">
-                        <img src="../../../assets/images/event_pic.png" style="width: 100%; min-height: 200px;">
+                      <div class="card-body padding">
+                        <img src="../../../assets/images/event_pic.png" class="image_4cards">
                       </div>
                     </div>
-                    <div class="card">
-                      <div class="card-body" style="border-radius: 0px;">
-                        <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                    <div class="card mb30">
+                      <div class="card-body">
+                        <h6 class="prime_h6">Sep 29, 2018</h6>
                         <h2 class="prime_h2">Dandia</h2>
-                        <h5 class="prime_h5">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                          Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown
-                          printer took a galley</h5>
-                        <a class="badge badge-danger readmore_button" style="float: right;">Read More</a>
+                        <h5 class="prime_h5">Lorem Ipsum is simply dummy text of the
+                          printing and typesetting industry. Lorem Ipsum has been the
+                          industry’s standard dummy text ever since the 1500s, when an
+                          unknown printer took a galley</h5>
+                        <a class="badge badge-danger readmore_button red_secondary fr">Read More</a>
                       </div>
                     </div>
                   </div>
-                  <div class="flying_card col-xl-3 col-md-6 col-lg-3">
+                  <div class="col-xl-3 col-md-6 col-lg-6 padlr_5">
                     <div class="card">
-                      <div class="card-body" style="padding: 0px; margin: 0px; overflow: hidden; height: 200px; border-radius: 0px;">
-                        <img src="../../../assets/images/Group%2090.png" style="width: 100%; min-height: 200px;">
+                      <div class="card-body padding">
+                        <img src="../../../assets/images/Group%2090.png" class="image_4cards">
                       </div>
                     </div>
-                    <div class="card">
-                      <div class="card-body" style="border-radius: 0px;">
-                        <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                    <div class="card mb30">
+                      <div class="card-body">
+                        <h6 class="prime_h6">Sep 29, 2018</h6>
                         <h2 class="prime_h2">Movie</h2>
-                        <h5 class="prime_h5">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                          Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown
-                          printer took a galley</h5>
-                        <a class="badge badge-danger readmore_button" style="float: right;">Read More</a>
+                        <h5 class="prime_h5">Lorem Ipsum is simply dummy text of the
+                          printing and typesetting industry. Lorem Ipsum has been the
+                          industry’s standard dummy text ever since the 1500s, when an
+                          unknown printer took a galley</h5>
+                        <a class="badge badge-danger readmore_button red_secondary fr">Read More</a>
                       </div>
                     </div>
                   </div>
-                  <div class="flying_card col-xl-3 col-md-6 col-lg-3">
+                  <div class=" col-xl-3 col-md-6 col-lg-6 padlr_5">
                     <div class="card">
-                      <div class="card-body" style="padding: 0px; margin: 0px; overflow: hidden; height: 200px; border-radius: 0px;">
-                        <img src="../../../assets/images/Group%2091.png" style="width: 100%; min-height: 200px;">
+                      <div class="card-body padding">
+                        <img src="../../../assets/images/Group%2091.png" class="image_4cards">
                       </div>
                     </div>
-                    <div class="card">
-                      <div class="card-body" style="border-radius: 0px;">
-                        <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                    <div class="card mb30">
+                      <div class="card-body">
+                        <h6 class="prime_h6">Sep 29, 2018</h6>
                         <h2 class="prime_h2">Dancing</h2>
-                        <h2 class="prime_h2"></h2>
-                        <h5 class="prime_h5">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                          Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown
-                          printer took a galley</h5>
-                        <a class="badge badge-danger readmore_button" style="float: right;">Read More</a>
+                        <h5 class="prime_h5">Lorem Ipsum is simply dummy text of the
+                          printing and typesetting industry. Lorem Ipsum has been the
+                          industry’s standard dummy text ever since the 1500s, when an
+                          unknown printer took a galley</h5>
+                        <a class="badge badge-danger readmore_button red_secondary fr">Read More</a>
                       </div>
                     </div>
                   </div>
-                  <div class="flying_card col-xl-3 col-md-6 col-lg-3">
+                  <div class=" col-xl-3 col-md-6 col-lg-6 padlr_5 ">
                     <div class="card">
-                      <div class="card-body" style="padding: 0px; margin: 0px; overflow: hidden; height: 200px; border-radius: 0px;">
-                        <img src="../../../assets/images/event_pic.png" style="width: 100%; min-height: 200px;">
+                      <div class="card-body padding">
+                        <img src="../../../assets/images/event_pic.png" class="image_4cards">
                       </div>
                     </div>
-                    <div class="card">
-                      <div class="card-body" style="border-radius: 0px;">
-                        <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                    <div class="card mb30">
+                      <div class="card-body">
+                        <h6 class="prime_h6">Sep 29, 2018</h6>
                         <h2 class="prime_h2">Music</h2>
-                        <h5 class="prime_h5">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                          Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown
-                          printer took a galley</h5>
-                        <a class="badge badge-danger readmore_button" style="float: right;">Read More</a>
+                        <h5 class="prime_h5">Lorem Ipsum is simply dummy text of the
+                          printing and typesetting industry. Lorem Ipsum has been the
+                          industry’s standard dummy text ever since the 1500s, when an
+                          unknown printer took a galley</h5>
+                        <a class="badge badge-danger readmore_button red_secondary fr">Read More</a>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="carousel-item py-5">
-                <div class="row" style="margin-left: 0px; margin-right: 0px;">
-                  <div class="flying_card col-md-6 col-lg-3 col-xl-3">
+                <div class="row mlr">
+                  <div class=" col-md-6 col-xl-3 col-lg-6 col-12 padlr_5 ">
                     <div class="card">
-                      <div class="card-body" style="padding: 0px; margin: 0px; overflow: hidden; height: 200px; border-radius: 0px;">
-                        <img src="../../../assets/images/event_pic.png" style="width: 100%; min-height: 200px;">
+                      <div class="card-body padding">
+                        <img src="../../../assets/images/event_pic.png" class="image_4cards">
                       </div>
                     </div>
-                    <div class="card">
-                      <div class="card-body" style="border-radius: 0px;">
-                        <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                    <div class="card mb30">
+                      <div class="card-body">
+                        <h6 class="prime_h6">Sep 29, 2018</h6>
                         <h2 class="prime_h2">Dandia</h2>
-                        <h5 class="prime_h5">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                          Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown
-                          printer took a galley</h5>
-                        <a class="badge badge-danger readmore_button" style="float: right;">Read More</a>
+                        <h5 class="prime_h5">Lorem Ipsum is simply dummy text of the
+                          printing and typesetting industry. Lorem Ipsum has been the
+                          industry’s standard dummy text ever since the 1500s, when an
+                          unknown printer took a galley</h5>
+                        <a class="badge badge-danger readmore_button red_secondary fr">Read More</a>
                       </div>
                     </div>
                   </div>
-                  <div class="flying_card col-md-6 col-lg-3 col-xl-3">
+                  <div class=" col-md-6 col-xl-3 col-lg-6 padlr_5">
                     <div class="card">
-                      <div class="card-body" style="padding: 0px; margin: 0px; overflow: hidden; height: 200px; border-radius: 0px;">
-                        <img src="../../../assets/images/Group%2090.png" style="width: 100%; min-height: 200px;">
+                      <div class="card-body padding">
+                        <img src="../../../assets/images/Group%2090.png" class="image_4cards">
                       </div>
                     </div>
-                    <div class="card">
-                      <div class="card-body" style="border-radius: 0px;">
-                        <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                    <div class="card mb30">
+                      <div class="card-body">
+                        <h6 class="prime_h6">Sep 29, 2018</h6>
                         <h2 class="prime_h2">Movie</h2>
-                        <h5 class="prime_h5">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                          Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown
-                          printer took a galley</h5>
-                        <a class="badge badge-danger readmore_button" style="float: right;">Read More</a>
+                        <h5 class="prime_h5">Lorem Ipsum is simply dummy text of the
+                          printing and typesetting industry. Lorem Ipsum has been the
+                          industry’s standard dummy text ever since the 1500s, when an
+                          unknown printer took a galley</h5>
+                        <a class="badge badge-danger readmore_button red_secondary fr">Read More</a>
                       </div>
                     </div>
                   </div>
-                  <div class="flying_card col-md-6 col-lg-3 col-xl-3">
+                  <div class=" col-md-6 col-xl-3 col-lg-6 padlr_5">
                     <div class="card">
-                      <div class="card-body" style="padding: 0px; margin: 0px; overflow: hidden; height: 200px; border-radius: 0px;">
-                        <img src="../../../assets/images/Group%2091.png" style="width: 100%; min-height: 200px;">
+                      <div class="card-body padding">
+                        <img src="../../../assets/images/Group%2091.png" class="image_4cards">
                       </div>
                     </div>
-                    <div class="card">
-                      <div class="card-body" style="border-radius: 0px;">
-                        <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                    <div class="card mb30">
+                      <div class="card-body">
+                        <h6 class="prime_h6">Sep 29, 2018</h6>
                         <h2 class="prime_h2">Dancing</h2>
-                        <h2 class="prime_h2"></h2>
-                        <h5 class="prime_h5">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                          Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown
-                          printer took a galley</h5>
-                        <a class="badge badge-danger readmore_button" style="float: right;">Read More</a>
+                        <h5 class="prime_h5">Lorem Ipsum is simply dummy text of the
+                          printing and typesetting industry. Lorem Ipsum has been the
+                          industry’s standard dummy text ever since the 1500s, when an
+                          unknown printer took a galley</h5>
+                        <a class="badge badge-danger readmore_button red_secondary fr">Read More</a>
                       </div>
                     </div>
                   </div>
-                  <div class="flying_card col-md-6 col-lg-3 col-xl-3">
+                  <div class=" col-md-6 col-xl-3 col-lg-6 padlr_5">
                     <div class="card">
-                      <div class="card-body" style="padding: 0px; margin: 0px; overflow: hidden; height: 200px; border-radius: 0px;">
-                        <img src="../../../assets/images/event_pic.png" style="width: 100%; min-height: 200px;">
+                      <div class="card-body padding">
+                        <img src="../../../assets/images/event_pic.png" class="image_4cards">
                       </div>
                     </div>
-                    <div class="card">
-                      <div class="card-body" style="border-radius: 0px;">
-                        <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                    <div class="card mb30">
+                      <div class="card-body">
+                        <h6 class="prime_h6">Sep 29, 2018</h6>
                         <h2 class="prime_h2">Music</h2>
-                        <h5 class="prime_h5">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                          Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown
-                          printer took a galley</h5>
-                        <a class="badge badge-danger readmore_button" style="float: right;">Read More</a>
+                        <h5 class="prime_h5">Lorem Ipsum is simply dummy text of the
+                          printing and typesetting industry. Lorem Ipsum has been the
+                          industry’s standard dummy text ever since the 1500s, when an
+                          unknown printer took a galley</h5>
+                        <a class="badge badge-danger readmore_button red_secondary fr">Read More</a>
                       </div>
                     </div>
                   </div>
@@ -632,10 +665,10 @@
           </div>
           <div class="row arrow3">
             <div class="col-12">
-              <a class="carousel-control-prev text-dark" role="button" data-slide="prev" style="width: 10px;"> <span
-                  class="fa fa-chevron-left" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
-              <a class="carousel-control-next text-dark" role="button" data-slide="next" style="width: 10px;"> <span
-                  class="fa fa-chevron-right" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
+              <a class="carousel-control-prev text-dark" role="button" data-slide="prev" style="width: 10px;">
+                <span class="fa fa-chevron-left" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
+              <a class="carousel-control-next text-dark" role="button" data-slide="next" style="width: 10px;">
+                <span class="fa fa-chevron-right" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
             </div>
           </div>
         </div>
@@ -643,166 +676,170 @@
     </div>
   </div>
 </div>
-<div class="row" style="margin-left: 0px; margin-right: 0px;">
-  <div class="sec_part1 col-xl-12 col-lg-12 col-md-12">
+<div class="row news_section">
+  <div class="sec_part1 col-xl-12 col-md-12 col-lg-12">
     <div class="container">
       <div class="title_section">
         <div class="title_bar">
           <img src="../../../assets/images/divider.png" />
         </div>
         <div class="title_text">
-          <h2 class="prime_heading3">Latest News</h2>
+          <h2 class="prime_heading rockwell">Latest News</h2>
         </div>
       </div>
     </div>
     <div>
-      <div class="container-fluid text-center my-3" style="margin-top: 0px; padding-top: 0px; padding-bottom: 0px; margin-bottom: 0px; position: relative;">
-        <div class="row mx-auto my-auto mt-auto mr-auto mb-auto ml-auto" style="position: relative; margin: 0px;">
+      <div class="container-fluid my-3 events">
+        <div class="row mx-auto my-auto mt-auto mr-auto mb-auto ml-auto mar0 pos_rel">
           <div id="myCarousel2" class="slide w-100 carousel" data-ride="carousel">
             <div class="carousel-inner" role="listbox">
               <div class="carousel-item py-5 active">
-                <div class="row" style="margin-left: 0px; margin-right: 0px;">
-                  <div class="flying_card col-md-6 col-lg-3 col-xl-3">
+                <div class="row mlr">
+                  <div class=" col-md-6 col-xl-3 col-lg-6 padlr_5">
                     <div class="card">
-                      <div class="card-body" style="padding: 0px; margin: 0px; overflow: hidden; height: 200px; border-radius: 0px;">
-                        <img src="../../../assets/images/event_pic.png" style="width: 100%; min-height: 200px;">
+                      <div class="card-body padding">
+                        <img src="../../../assets/images/event_pic.png" class="image_4cards">
                       </div>
                     </div>
-                    <div class="card">
-                      <div class="card-body" style="border-radius: 0px;">
-                        <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                    <div class="card mb30">
+                      <div class="card-body">
+                        <h6 class="prime_h6">Sep 29, 2018</h6>
                         <h2 class="prime_h2">Dandia</h2>
-                        <h5 class="prime_h5">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                          Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown
-                          printer took a galley</h5>
-                        <a class="badge badge-danger readmore_button" style="float: right;">Read More</a>
+                        <h5 class="prime_h5">Lorem Ipsum is simply dummy text of the
+                          printing and typesetting industry. Lorem Ipsum has been the
+                          industry’s standard dummy text ever since the 1500s, when an
+                          unknown printer took a galley</h5>
+                        <a class="badge badge-danger readmore_button red_secondary fr">Read More</a>
                       </div>
                     </div>
                   </div>
-                  <div class="flying_card col-md-6 col-lg-3 col-xl-3">
+                  <div class=" col-md-6 col-xl-3 col-lg-6 padlr_5">
                     <div class="card">
-                      <div class="card-body" style="padding: 0px; margin: 0px; overflow: hidden; height: 200px; border-radius: 0px;">
-                        <img src="../../../assets/images/Group%2090.png" style="width: 100%; min-height: 200px;">
+                      <div class="card-body padding">
+                        <img src="../../../assets/images/Group%2090.png" class="image_4cards">
                       </div>
                     </div>
-                    <div class="card">
-                      <div class="card-body" style="border-radius: 0px;">
-                        <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                    <div class="card mb30">
+                      <div class="card-body">
+                        <h6 class="prime_h6">Sep 29, 2018</h6>
                         <h2 class="prime_h2">Movie</h2>
-                        <h5 class="prime_h5">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                          Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown
-                          printer took a galley</h5>
-                        <a class="badge badge-danger readmore_button" style="float: right;">Read More</a>
+                        <h5 class="prime_h5">Lorem Ipsum is simply dummy text of the
+                          printing and typesetting industry. Lorem Ipsum has been the
+                          industry’s standard dummy text ever since the 1500s, when an
+                          unknown printer took a galley</h5>
+                        <a class="badge badge-danger readmore_button red_secondary fr">Read More</a>
                       </div>
                     </div>
                   </div>
-                  <div class="flying_card col-md-6 col-lg-3 col-xl-3">
+                  <div class="col-md-6 col-xl-3 col-lg-6 padlr_5">
                     <div class="card">
-                      <div class="card-body" style="padding: 0px; margin: 0px; overflow: hidden; height: 200px; border-radius: 0px;">
-                        <img src="../../../assets/images/Group%2091.png" style="width: 100%; min-height: 200px;">
+                      <div class="card-body padding">
+                        <img src="../../../assets/images/Group%2091.png" class="image_4cards">
                       </div>
                     </div>
-                    <div class="card">
-                      <div class="card-body" style="border-radius: 0px;">
-                        <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                    <div class="card mb30">
+                      <div class="card-body">
+                        <h6 class="prime_h6">Sep 29, 2018</h6>
                         <h2 class="prime_h2">Dancing</h2>
-                        <h2 class="prime_h2"></h2>
-                        <h5 class="prime_h5">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                          Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown
-                          printer took a galley</h5>
-                        <a class="badge badge-danger readmore_button" style="float: right;">Read More</a>
+                        <h5 class="prime_h5">Lorem Ipsum is simply dummy text of the
+                          printing and typesetting industry. Lorem Ipsum has been the
+                          industry’s standard dummy text ever since the 1500s, when an
+                          unknown printer took a galley</h5>
+                        <a class="badge badge-danger readmore_button red_secondary fr">Read More</a>
                       </div>
                     </div>
                   </div>
-                  <div class="flying_card col-md-6 col-lg-3 col-xl-3">
+                  <div class="col-md-6 col-xl-3 col-lg-6 padlr_5">
                     <div class="card">
-                      <div class="card-body" style="padding: 0px; margin: 0px; overflow: hidden; height: 200px; border-radius: 0px;">
-                        <img src="../../../assets/images/event_pic.png" style="width: 100%; min-height: 200px;">
+                      <div class="card-body padding">
+                        <img src="../../../assets/images/event_pic.png" class="image_4cards">
                       </div>
                     </div>
-                    <div class="card">
-                      <div class="card-body" style="border-radius: 0px;">
-                        <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                    <div class="card mb30">
+                      <div class="card-body">
+                        <h6 class="prime_h6">Sep 29, 2018</h6>
                         <h2 class="prime_h2">Music</h2>
-                        <h5 class="prime_h5">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                          Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown
-                          printer took a galley</h5>
-                        <a class="badge badge-danger readmore_button" style="float: right;">Read More</a>
+                        <h5 class="prime_h5">Lorem Ipsum is simply dummy text of the
+                          printing and typesetting industry. Lorem Ipsum has been the
+                          industry’s standard dummy text ever since the 1500s, when an
+                          unknown printer took a galley</h5>
+                        <a class="badge badge-danger readmore_button red_secondary fr">Read More</a>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
               <div class="carousel-item py-5">
-                <div class="row" style="margin-left: 0px; margin-right: 0px;">
-                  <div class="flying_card col-md-6 col-lg-3 col-xl-3">
+                <div class="row mlr">
+                  <div class="col-md-6 col-xl-3 col-lg-6 padlr_5">
                     <div class="card">
-                      <div class="card-body" style="padding: 0px; margin: 0px; overflow: hidden; height: 200px; border-radius: 0px;">
-                        <img src="../../../assets/images/event_pic.png" style="width: 100%; min-height: 200px;">
+                      <div class="card-body padding">
+                        <img src="../../../assets/images/event_pic.png" class="image_4cards">
                       </div>
                     </div>
-                    <div class="card">
-                      <div class="card-body" style="border-radius: 0px;">
-                        <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                    <div class="card mb30">
+                      <div class="card-body">
+                        <h6 class="prime_h6">Sep 29, 2018</h6>
                         <h2 class="prime_h2">Dandia</h2>
-                        <h5 class="prime_h5">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                          Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown
-                          printer took a galley</h5>
-                        <a class="badge badge-danger readmore_button" style="float: right; border: 0px solid;">Read
-                          More</a>
+                        <h5 class="prime_h5">Lorem Ipsum is simply dummy text of the
+                          printing and typesetting industry. Lorem Ipsum has been the
+                          industry’s standard dummy text ever since the 1500s, when an
+                          unknown printer took a galley</h5>
+                        <a class="badge badge-danger readmore_button red_secondary fr">Read More</a>
                       </div>
                     </div>
                   </div>
-                  <div class="flying_card col-md-6 col-lg-3 col-xl-3">
+                  <div class=" col-md-6 col-xl-3 col-lg-6 padlr_5">
                     <div class="card">
-                      <div class="card-body" style="padding: 0px; margin: 0px; overflow: hidden; height: 200px; border-radius: 0px;">
-                        <img src="../../../assets/images/Group%2090.png" style="width: 100%; min-height: 200px;">
+                      <div class="card-body padding">
+                        <img src="../../../assets/images/Group%2090.png" class="image_4cards">
                       </div>
                     </div>
-                    <div class="card">
-                      <div class="card-body" style="border-radius: 0px;">
-                        <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                    <div class="card mb30">
+                      <div class="card-body">
+                        <h6 class="prime_h6">Sep 29, 2018</h6>
                         <h2 class="prime_h2">Movie</h2>
-                        <h5 class="prime_h5">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                          Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown
-                          printer took a galley</h5>
-                        <a class="badge badge-danger readmore_button" style="float: right; border: 0px solid;">Read
-                          More</a>
+                        <h5 class="prime_h5">Lorem Ipsum is simply dummy text of the
+                          printing and typesetting industry. Lorem Ipsum has been the
+                          industry’s standard dummy text ever since the 1500s, when an
+                          unknown printer took a galley</h5>
+                        <a class="badge badge-danger readmore_button red_secondary fr">Read More</a>
                       </div>
                     </div>
                   </div>
-                  <div class="flying_card col-md-6 col-lg-3 col-xl-3">
+                  <div class=" col-md-6 col-xl-3 col-lg-6 padlr_5">
                     <div class="card">
-                      <div class="card-body" style="padding: 0px; margin: 0px; overflow: hidden; height: 200px; border-radius: 0px;">
-                        <img src="../../../assets/images/Group%2091.png" style="width: 100%; min-height: 200px;">
+                      <div class="card-body padding">
+                        <img src="../../../assets/images/Group%2091.png" class="image_4cards">
                       </div>
                     </div>
-                    <div class="card">
-                      <div class="card-body" style="border-radius: 0px;">
-                        <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                    <div class="card mb30">
+                      <div class="card-body">
+                        <h6 class="prime_h6">Sep 29, 2018</h6>
                         <h2 class="prime_h2">Dancing</h2>
-                        <h2 class="prime_h2"></h2>
-                        <h5 class="prime_h5">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                          Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown
-                          printer took a galley</h5>
-                        <a class="badge badge-danger readmore_button" style="float: right;">Read More</a>
+                        <h5 class="prime_h5">Lorem Ipsum is simply dummy text of the
+                          printing and typesetting industry. Lorem Ipsum has been the
+                          industry’s standard dummy text ever since the 1500s, when an
+                          unknown printer took a galley</h5>
+                        <a class="badge badge-danger readmore_button red_secondary fr">Read More</a>
                       </div>
                     </div>
                   </div>
-                  <div class="flying_card col-md-6 col-lg-3 col-xl-3">
+                  <div class=" col-md-6 col-xl-3 col-lg-6 padlr_5">
                     <div class="card">
-                      <div class="card-body" style="padding: 0px; margin: 0px; overflow: hidden; height: 200px; border-radius: 0px;">
-                        <img src="../../../assets/images/event_pic.png" style="width: 100%; min-height: 200px;">
+                      <div class="card-body padding">
+                        <img src="../../../assets/images/event_pic.png" class="image_4cards">
                       </div>
                     </div>
-                    <div class="card">
-                      <div class="card-body" style="border-radius: 0px;">
-                        <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                    <div class="card mb30">
+                      <div class="card-body">
+                        <h6 class="prime_h6">Sep 29, 2018</h6>
                         <h2 class="prime_h2">Music</h2>
-                        <h5 class="prime_h5">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                          Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown
-                          printer took a galley</h5>
-                        <a class="badge badge-danger readmore_button" style="float: right;">Read More</a>
+                        <h5 class="prime_h5">Lorem Ipsum is simply dummy text of the
+                          printing and typesetting industry. Lorem Ipsum has been the
+                          industry’s standard dummy text ever since the 1500s, when an
+                          unknown printer took a galley</h5>
+                        <a class="badge badge-danger readmore_button red_secondary fr">Read More</a>
                       </div>
                     </div>
                   </div>
@@ -812,10 +849,10 @@
           </div>
           <div class="row arrow4">
             <div class="col-12">
-              <a class="carousel-control-prev text-dark" role="button" data-slide="prev" style="width: 10px;"> <span
-                  class="fa fa-chevron-left" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
-              <a class="carousel-control-next text-dark" role="button" data-slide="next" style="width: 10px;"> <span
-                  class="fa fa-chevron-right" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
+              <a class="carousel-control-prev text-dark" role="button" data-slide="prev" style="width: 10px;">
+                <span class="fa fa-chevron-left" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
+              <a class="carousel-control-next text-dark" role="button" data-slide="next" style="width: 10px;">
+                <span class="fa fa-chevron-right" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
             </div>
           </div>
         </div>
@@ -823,193 +860,195 @@
     </div>
   </div>
 </div>
-<div class="row" style="margin-left: 0px; margin-right: 0px; background-color: #F4F4F4;">
+<div class="row oneshot_row">
   <div class="container">
-    <div class="sec_part1">
-      <div class="row" style="margin-left: 0px; margin-right: 0px;">
-        <div class="title_section">
+    <div class="oneshot_sec">
+      <div class="row rows">
+        <div class="title_section1">
           <div class="title_bar">
             <img src="../../../assets/images/divider.png">
           </div>
           <div class="title_text">
-            <h2 class="prime_heading">Top Profiles</h2>
+            <h2 class="prime_heading rockwell">Top Profiles</h2>
           </div>
         </div>
-        <div class="col-xl-12 col-md-12 col-lg-12" style="padding-left: 0px; padding-right: 0px; margin-bottom: 60px;">
-          <div class="container text-center my-3">
-            <div class="row mx-auto my-auto">
-              <div id="myCarousel3" class="carousel slide w-100" data-ride="carousel">
-                <div class="carousel-inner" role="listbox">
-                  <div class="pb-5 py-5 carousel-item pt-5">
-                    <div class="row">
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
-                            </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
-                            </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+        <div class="row">
+          <div class="col-xl-12 col-md-12 col-lg-12 oneshot_col">
+            <div class="container text-center my-3">
+              <div class="row mx-auto my-auto">
+                <div id="myCarousel3" class="carousel slide w-100" data-ride="carousel">
+                  <div class="carousel-inner" role="listbox">
+                    <div class="pb-5 py-5 carousel-item pt-5 active">
+                      <div class="row">
+                        <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                          <div class="card padding_lr">
+                            <div class="card-body full_box">
+                              <div class="padding_lr">
+                                <img src="../../../assets/images/profile_shot.png" class="image_6cards">
+                              </div>
+                              <div class="pad_2010 mb30">
+                                <h2 class="primeh2">Movie</h2>
+                                <h2 class="prime_h3">Dancer</h2>
+                                <h6 class="primeh6">Sep 29, 2018</h6>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
-                            </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
-                            </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                        <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                          <div class="card padding_lr">
+                            <div class="card-body full_box">
+                              <div class="padding_lr">
+                                <img src="../../../assets/images/profile_shot.png" class="image_6cards">
+                              </div>
+                              <div class="pad_2010 mb30">
+                                <h2 class="primeh2">Movie</h2>
+                                <h2 class="prime_h3">Dancer</h2>
+                                <h6 class="primeh6">Sep 29, 2018</h6>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
-                            </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                        <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                          <div class="card padding_lr">
+                            <div class="card-body full_box">
+                              <div class="padding_lr">
+                                <img src="../../../assets/images/profile_shot.png" class="image_6cards">
+                              </div>
+                              <div class="pad_2010 mb30">
+                                <h2 class="primeh2">Movie</h2>
+                                <h2 class="prime_h3">Dancer</h2>
+                                <h6 class="primeh6">Sep 29, 2018</h6>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
+                        <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                          <div class="card padding_lr">
+                            <div class="card-body full_box">
+                              <div class="padding_lr">
+                                <img src="../../../assets/images/profile_shot.png" class="image_6cards">
+                              </div>
+                              <div class="pad_2010 mb30">
+                                <h2 class="primeh2">Movie</h2>
+                                <h2 class="prime_h3">Dancer</h2>
+                                <h6 class="primeh6">Sep 29, 2018</h6>
+                              </div>
                             </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                          </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                          <div class="card padding_lr">
+                            <div class="card-body full_box">
+                              <div class="padding_lr">
+                                <img src="../../../assets/images/profile_shot.png" class="image_6cards">
+                              </div>
+                              <div class="pad_2010 mb30">
+                                <h2 class="primeh2">Movie</h2>
+                                <h2 class="prime_h3">Dancer</h2>
+                                <h6 class="primeh6">Sep 29, 2018</h6>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                          <div class="card padding_lr">
+                            <div class="card-body full_box">
+                              <div class="padding_lr">
+                                <img src="../../../assets/images/profile_shot.png" class="image_6cards">
+                              </div>
+                              <div class="pad_2010 mb30">
+                                <h2 class="primeh2">Movie</h2>
+                                <h2 class="prime_h3">Dancer</h2>
+                                <h6 class="primeh6">Sep 29, 2018</h6>
+                              </div>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="carousel-item py-5 active">
-                    <div class="row">
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
-                            </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
-                            </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                    <div class="carousel-item py-5 ">
+                      <div class="row">
+                        <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                          <div class="card padding_lr">
+                            <div class="card-body full_box">
+                              <div class="padding_lr">
+                                <img src="../../../assets/images/profile_shot.png" class="image_6cards">
+                              </div>
+                              <div class="pad_2010 mb30">
+                                <h2 class="primeh2">Movie</h2>
+                                <h2 class="prime_h3">Dancer</h2>
+                                <h6 class="primeh6">Sep 29, 2018</h6>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
-                            </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
-                            </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                        <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                          <div class="card padding_lr">
+                            <div class="card-body full_box">
+                              <div class="padding_lr">
+                                <img src="../../../assets/images/profile_shot.png" class="image_6cards">
+                              </div>
+                              <div class="pad_2010 mb30">
+                                <h2 class="primeh2">Movie</h2>
+                                <h2 class="prime_h3">Dancer</h2>
+                                <h6 class="primeh6">Sep 29, 2018</h6>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
-                            </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                        <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                          <div class="card padding_lr">
+                            <div class="card-body full_box">
+                              <div class="padding_lr">
+                                <img src="../../../assets/images/profile_shot.png" class="image_6cards">
+                              </div>
+                              <div class="pad_2010 mb30">
+                                <h2 class="primeh2">Movie</h2>
+                                <h2 class="prime_h3">Dancer</h2>
+                                <h6 class="primeh6">Sep 29, 2018</h6>
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
+                        <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                          <div class="card padding_lr">
+                            <div class="card-body full_box">
+                              <div class="padding_lr">
+                                <img src="../../../assets/images/profile_shot.png" class="image_6cards">
+                              </div>
+                              <div class="pad_2010 mb30">
+                                <h2 class="primeh2">Movie</h2>
+                                <h2 class="prime_h3">Dancer</h2>
+                                <h6 class="primeh6">Sep 29, 2018</h6>
+                              </div>
                             </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                          </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                          <div class="card padding_lr">
+                            <div class="card-body full_box">
+                              <div class="padding_lr">
+                                <img src="../../../assets/images/profile_shot.png" class="image_6cards">
+                              </div>
+                              <div class="pad_2010 mb30">
+                                <h2 class="primeh2">Movie</h2>
+                                <h2 class="prime_h3">Dancer</h2>
+                                <h6 class="primeh6">Sep 29, 2018</h6>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                          <div class="card padding_lr">
+                            <div class="card-body full_box">
+                              <div class="padding_lr">
+                                <img src="../../../assets/images/profile_shot.png" class="image_6cards">
+                              </div>
+                              <div class="pad_2010 mb30">
+                                <h2 class="primeh2">Movie</h2>
+                                <h2 class="prime_h3">Dancer</h2>
+                                <h6 class="primeh6">Sep 29, 2018</h6>
+                              </div>
                             </div>
                           </div>
                         </div>
@@ -1018,114 +1057,115 @@
                   </div>
                 </div>
               </div>
-            </div>
-            <div class="row arrows">
-              <div class="col-12">
-                <a class="carousel-control-prev text-dark" role="button" data-slide="prev" style="width: 10px;"> <span
-                    class="fa fa-chevron-left" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
-                <a class="carousel-control-next text-dark" role="button" data-slide="next" style="width: 10px;"> <span
-                    class="fa fa-chevron-right" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
+              <div class="row arrows">
+                <div class="col-12">
+                  <a class="carousel-control-prev text-dark" role="button" data-slide="prev" style="width: 10px;">
+                    <span class="fa fa-chevron-left" aria-hidden="true"></span> <span class="sr-only">Previous</span>
+                  </a>
+                  <a class="carousel-control-next text-dark" role="button" data-slide="next" style="width: 10px;">
+                    <span class="fa fa-chevron-right" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="title_section">
+      <div class="title_section1">
         <div class="title_bar">
           <img src="../../../assets/images/divider.png">
         </div>
         <div class="title_text">
-          <h2 class="prime_heading">Top Artists</h2>
+          <h2 class="prime_heading rockwell">Top Artists</h2>
         </div>
       </div>
       <div class="row">
-        <div class="col-xl-12 col-lg-12 col-md-12" style="padding-left: 0px; padding-right: 0px; margin-bottom: 60px;">
+        <div class="col-xl-12 col-lg-12 col-md-12 oneshot_col">
           <div class="container text-center my-3">
             <div class="row mx-auto my-auto">
               <div id="myCarousel4" class="carousel slide w-100" data-ride="carousel">
                 <div class="carousel-inner" role="listbox">
                   <div class="pb-5 py-5 carousel-item pt-5">
                     <div class="row">
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
+                      <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                        <div class="card padding_lr">
+                          <div class="card-body full_box">
+                            <div class="padding_lr">
+                              <img src="../../../assets/images/profile_shot.png" class="image_6cards">
                             </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
-                            </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                            <div class="pad_2010 mb30">
+                              <h2 class="primeh2">Movie</h2>
+                              <h2 class="prime_h3">Dancer</h2>
+                              <h6 class="primeh6">Sep 29, 2018</h6>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
+                      <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                        <div class="card padding_lr">
+                          <div class="card-body full_box">
+                            <div class="padding_lr">
+                              <img src="../../../assets/images/profile_shot.png" class="image_6cards">
                             </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
-                            </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                            <div class="pad_2010 mb30">
+                              <h2 class="primeh2">Movie</h2>
+                              <h2 class="prime_h3">Dancer</h2>
+                              <h6 class="primeh6">Sep 29, 2018</h6>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
+                      <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                        <div class="card padding_lr">
+                          <div class="card-body full_box">
+                            <div class="padding_lr">
+                              <img src="../../../assets/images/profile_shot.png" class="image_6cards">
                             </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                            <div class="pad_2010 mb30">
+                              <h2 class="primeh2">Movie</h2>
+                              <h2 class="prime_h3">Dancer</h2>
+                              <h6 class="primeh6">Sep 29, 2018</h6>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
+                      <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                        <div class="card padding_lr">
+                          <div class="card-body full_box">
+                            <div class="padding_lr">
+                              <img src="../../../assets/images/profile_shot.png" class="image_6cards">
                             </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                            <div class="pad_2010 mb30">
+                              <h2 class="primeh2">Movie</h2>
+                              <h2 class="prime_h3">Dancer</h2>
+                              <h6 class="primeh6">Sep 29, 2018</h6>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                        <div class="card padding_lr">
+                          <div class="card-body full_box">
+                            <div class="padding_lr">
+                              <img src="../../../assets/images/profile_shot.png" class="image_6cards">
+                            </div>
+                            <div class="pad_2010 mb30">
+                              <h2 class="primeh2">Movie</h2>
+                              <h2 class="prime_h3">Dancer</h2>
+                              <h6 class="primeh6">Sep 29, 2018</h6>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                        <div class="card padding_lr">
+                          <div class="card-body full_box">
+                            <div class="padding_lr">
+                              <img src="../../../assets/images/profile_shot.png" class="image_6cards">
+                            </div>
+                            <div class="pad_2010 mb30">
+                              <h2 class="primeh2">Movie</h2>
+                              <h2 class="prime_h3">Dancer</h2>
+                              <h6 class="primeh6">Sep 29, 2018</h6>
                             </div>
                           </div>
                         </div>
@@ -1134,86 +1174,86 @@
                   </div>
                   <div class="carousel-item py-5 active">
                     <div class="row">
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
+                      <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                        <div class="card padding_lr">
+                          <div class="card-body full_box">
+                            <div class="padding_lr">
+                              <img src="../../../assets/images/profile_shot.png" class="image_6cards">
                             </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
-                            </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                            <div class="pad_2010 mb30">
+                              <h2 class="primeh2">Movie</h2>
+                              <h2 class="prime_h3">Dancer</h2>
+                              <h6 class="primeh6">Sep 29, 2018</h6>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
+                      <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                        <div class="card padding_lr">
+                          <div class="card-body full_box">
+                            <div class="padding_lr">
+                              <img src="../../../assets/images/profile_shot.png" class="image_6cards">
                             </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
-                            </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                            <div class="pad_2010 mb30">
+                              <h2 class="primeh2">Movie</h2>
+                              <h2 class="prime_h3">Dancer</h2>
+                              <h6 class="primeh6">Sep 29, 2018</h6>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
+                      <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                        <div class="card padding_lr">
+                          <div class="card-body full_box">
+                            <div class="padding_lr">
+                              <img src="../../../assets/images/profile_shot.png" class="image_6cards">
                             </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                            <div class="pad_2010 mb30">
+                              <h2 class="primeh2">Movie</h2>
+                              <h2 class="prime_h3">Dancer</h2>
+                              <h6 class="primeh6">Sep 29, 2018</h6>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
+                      <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                        <div class="card padding_lr">
+                          <div class="card-body full_box">
+                            <div class="padding_lr">
+                              <img src="../../../assets/images/profile_shot.png" class="image_6cards">
                             </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                            <div class="pad_2010 mb30">
+                              <h2 class="primeh2">Movie</h2>
+                              <h2 class="prime_h3">Dancer</h2>
+                              <h6 class="primeh6">Sep 29, 2018</h6>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                        <div class="card padding_lr">
+                          <div class="card-body full_box">
+                            <div class="padding_lr">
+                              <img src="../../../assets/images/profile_shot.png" class="image_6cards">
+                            </div>
+                            <div class="pad_2010 mb30">
+                              <h2 class="primeh2">Movie</h2>
+                              <h2 class="prime_h3">Dancer</h2>
+                              <h6 class="primeh6">Sep 29, 2018</h6>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                        <div class="card padding_lr">
+                          <div class="card-body full_box">
+                            <div class="padding_lr">
+                              <img src="../../../assets/images/profile_shot.png" class="image_6cards">
+                            </div>
+                            <div class="pad_2010 mb30">
+                              <h2 class="primeh2">Movie</h2>
+                              <h2 class="prime_h3">Dancer</h2>
+                              <h6 class="primeh6">Sep 29, 2018</h6>
                             </div>
                           </div>
                         </div>
@@ -1225,111 +1265,111 @@
             </div>
             <div class="row arrows">
               <div class="col-12">
-                <a class="carousel-control-prev text-dark" role="button" data-slide="prev" style="width: 10px;"> <span
-                    class="fa fa-chevron-left" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
-                <a class="carousel-control-next text-dark" role="button" data-slide="next" style="width: 10px;"> <span
-                    class="fa fa-chevron-right" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
+                <a class="carousel-control-prev text-dark" role="button" data-slide="prev" style="width: 10px;">
+                  <span class="fa fa-chevron-left" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
+                <a class="carousel-control-next text-dark" role="button" data-slide="next" style="width: 10px;">
+                  <span class="fa fa-chevron-right" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="title_section">
+      <div class="title_section1">
         <div class="title_bar">
           <img src="../../../assets/images/divider.png">
         </div>
         <div class="title_text">
-          <h2 class="prime_heading">Top Business</h2>
+          <h2 class="prime_heading rockwell">Top Business</h2>
         </div>
       </div>
       <div class="row">
-        <div class="col-xl-12 col-md-12 col-lg-12" style="padding-left: 0px; padding-right: 0px;">
+        <div class="col-xl-12 col-md-12 col-lg-12 oneshot_col">
           <div class="container text-center my-3">
             <div class="row mx-auto my-auto">
               <div id="myCarousel5" class="carousel slide w-100" data-ride="carousel">
                 <div class="carousel-inner" role="listbox">
                   <div class="pb-5 py-5 carousel-item pt-5">
                     <div class="row">
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
+                      <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                        <div class="card padding_lr">
+                          <div class="card-body full_box">
+                            <div class="padding_lr">
+                              <img src="../../../assets/images/profile_shot.png" class="image_6cards">
                             </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
-                            </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                            <div class="pad_2010 mb30">
+                              <h2 class="primeh2">Movie</h2>
+                              <h2 class="prime_h3">Dancer</h2>
+                              <h6 class="primeh6">Sep 29, 2018</h6>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
+                      <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                        <div class="card padding_lr">
+                          <div class="card-body full_box">
+                            <div class="padding_lr">
+                              <img src="../../../assets/images/profile_shot.png" class="image_6cards">
                             </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
-                            </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                            <div class="pad_2010 mb30">
+                              <h2 class="primeh2">Movie</h2>
+                              <h2 class="prime_h3">Dancer</h2>
+                              <h6 class="primeh6">Sep 29, 2018</h6>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
+                      <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                        <div class="card padding_lr">
+                          <div class="card-body full_box">
+                            <div class="padding_lr">
+                              <img src="../../../assets/images/profile_shot.png" class="image_6cards">
                             </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                            <div class="pad_2010 mb30">
+                              <h2 class="primeh2">Movie</h2>
+                              <h2 class="prime_h3">Dancer</h2>
+                              <h6 class="primeh6">Sep 29, 2018</h6>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
+                      <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                        <div class="card padding_lr">
+                          <div class="card-body full_box">
+                            <div class="padding_lr">
+                              <img src="../../../assets/images/profile_shot.png" class="image_6cards">
                             </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                            <div class="pad_2010 mb30">
+                              <h2 class="primeh2">Movie</h2>
+                              <h2 class="prime_h3">Dancer</h2>
+                              <h6 class="primeh6">Sep 29, 2018</h6>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                        <div class="card padding_lr">
+                          <div class="card-body full_box">
+                            <div class="padding_lr">
+                              <img src="../../../assets/images/profile_shot.png" class="image_6cards">
+                            </div>
+                            <div class="pad_2010 mb30">
+                              <h2 class="primeh2">Movie</h2>
+                              <h2 class="prime_h3">Dancer</h2>
+                              <h6 class="primeh6">Sep 29, 2018</h6>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                        <div class="card padding_lr">
+                          <div class="card-body full_box">
+                            <div class="padding_lr">
+                              <img src="../../../assets/images/profile_shot.png" class="image_6cards">
+                            </div>
+                            <div class="pad_2010 mb30">
+                              <h2 class="primeh2">Movie</h2>
+                              <h2 class="prime_h3">Dancer</h2>
+                              <h6 class="primeh6">Sep 29, 2018</h6>
                             </div>
                           </div>
                         </div>
@@ -1338,86 +1378,86 @@
                   </div>
                   <div class="carousel-item py-5 active">
                     <div class="row">
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
+                      <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                        <div class="card padding_lr">
+                          <div class="card-body full_box">
+                            <div class="padding_lr">
+                              <img src="../../../assets/images/profile_shot.png" class="image_6cards">
                             </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
-                            </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                            <div class="pad_2010 mb30">
+                              <h2 class="primeh2">Movie</h2>
+                              <h2 class="prime_h3">Dancer</h2>
+                              <h6 class="primeh6">Sep 29, 2018</h6>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
+                      <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                        <div class="card padding_lr">
+                          <div class="card-body full_box">
+                            <div class="padding_lr">
+                              <img src="../../../assets/images/profile_shot.png" class="image_6cards">
                             </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
-                            </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                            <div class="pad_2010 mb30">
+                              <h2 class="primeh2">Movie</h2>
+                              <h2 class="prime_h3">Dancer</h2>
+                              <h6 class="primeh6">Sep 29, 2018</h6>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
+                      <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                        <div class="card padding_lr">
+                          <div class="card-body full_box">
+                            <div class="padding_lr">
+                              <img src="../../../assets/images/profile_shot.png" class="image_6cards">
                             </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                            <div class="pad_2010 mb30">
+                              <h2 class="primeh2">Movie</h2>
+                              <h2 class="prime_h3">Dancer</h2>
+                              <h6 class="primeh6">Sep 29, 2018</h6>
                             </div>
                           </div>
                         </div>
                       </div>
-                      <div class="col-xl-2 col-lg-2 col-md-4" style="margin: 0px; padding: 0px 3px;">
-                        <div class="card" style="padding-left: 0px; padding-right: 0px;">
-                          <div class="card-body full_box" style="padding: 0px;">
-                            <div style="padding-left: 0px; padding-right: 0px;">
-                              <img src="../../../assets/images/profile_shot.png" style="width: 100%;">
+                      <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                        <div class="card padding_lr">
+                          <div class="card-body full_box">
+                            <div class="padding_lr">
+                              <img src="../../../assets/images/profile_shot.png" class="image_6cards">
                             </div>
-                            <div style="padding: 20px 10px;">
-                              <h2 class="prime_h2">Movie</h2>
-                              <h2 class="prime_h2" style="color: #D71727; font-size: 12px;">Dancer</h2>
-                              <h6 style="text-align: left; font-size: 12px;">Sep 29, 2018</h6>
+                            <div class="pad_2010 mb30">
+                              <h2 class="primeh2">Movie</h2>
+                              <h2 class="prime_h3">Dancer</h2>
+                              <h6 class="primeh6">Sep 29, 2018</h6>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                        <div class="card padding_lr">
+                          <div class="card-body full_box">
+                            <div class="padding_lr">
+                              <img src="../../../assets/images/profile_shot.png" class="image_6cards">
+                            </div>
+                            <div class="pad_2010 mb30">
+                              <h2 class="primeh2">Movie</h2>
+                              <h2 class="prime_h3">Dancer</h2>
+                              <h6 class="primeh6">Sep 29, 2018</h6>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1">
+                        <div class="card padding_lr">
+                          <div class="card-body full_box">
+                            <div class="padding_lr">
+                              <img src="../../../assets/images/profile_shot.png" class="image_6cards">
+                            </div>
+                            <div class="pad_2010 mb30">
+                              <h2 class="primeh2">Movie</h2>
+                              <h2 class="prime_h3">Dancer</h2>
+                              <h6 class="primeh6">Sep 29, 2018</h6>
                             </div>
                           </div>
                         </div>
@@ -1429,10 +1469,10 @@
             </div>
             <div class="row arrows">
               <div class="col-12">
-                <a class="carousel-control-prev text-dark" role="button" data-slide="prev" style="width: 10px;"> <span
-                    class="fa fa-chevron-left" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
-                <a class="carousel-control-next text-dark" role="button" data-slide="next" style="width: 10px;"> <span
-                    class="fa fa-chevron-right" aria-hidden="true"></span> <span class="sr-only">Next</span> </a>
+                <a class="carousel-control-prev text-dark" role="button" data-slide="prev" style="width: 10px;">
+                  <span class="fa fa-chevron-left" aria-hidden="true"></span> <span class="sr-only">Previous</span> </a>
+                <a class="carousel-control-next text-dark" role="button" data-slide="next" style="width: 10px;">
+                  <span class="fa fa-chevron-right" aria-hidden="true"></span> </a>
               </div>
             </div>
           </div>
@@ -1441,36 +1481,28 @@
     </div>
   </div>
 </div>
-<div class="row" style="margin-left: 0px; margin-right: 0px; background-color: #F4F4F4;">
-  <div class="col-xl-12 col-lg-12 col-md-12" style="position: relative; padding-left: 0px; padding-right: 0px;">
-    <div class="row" style="margin-left: 0px; margin-right: 0px;">
-      <div class="col-xl-7 col-lg-7 col-md-6">
-        <img src="../../../assets/images/shape2.png" />
-      </div>
-      <div class="col-xl-5 col-lg-5 col-md-6">
-      </div>
-    </div>
-    <div style="position: absolute; width: 100%; top: 0px;">
-      <div class="row" style="margin: 0px;">
-        <div class="container">
-          <div class="row" style="margin-left: 0px; margin-right: 0px;">
-            <div class="col-xl-6 col-lg-7 col-md-6">
-              <img src="../../../assets/images/singing_girl.png" style="height: 316px; position: relative; bottom: 30px;" />
+<div class="row testmonial_section">
+  <div class="container-fluid backdrop-img padding_lr">
+    <div class="container">
+      <span class="sr-only">Next</span>
+      <div class="row mlr">
+        <div class="col-md-6 col-sm-12 col-12 col-xl-7 col-lg-7">
+          <div class="img_holder">
+            <img src="../../../assets/images/singing_girl.png" class="slideimg_2-1">
+          </div>
+        </div>
+        <div class="col-md-6 col-12 col-sm-12 bg_w col-xl-5 col-lg-5">
+          <div class="testimonial">
+            <div style="display: block;">
+              <img src="../../../assets/images/Profile_2.png">
             </div>
-            <div class="col-xl-5 col-lg-5 col-md-6">
-              <div class="testimonial">
-                <div style="display: block;">
-                  <img src="../../../assets/images/Profile_2.png">
-                </div>
-                <div>
-                  <h3 style="font-size: 16px; font-weight: bold; width: 100%; display: inline-block;">Kirsty Pargeter</h3>
-                </div>
-                <div>
-                  <p>Connect to Tollywood is the right platform to find one from largest Community of Artist / Talented
-                    People over many Cities like Telangana Hyderabad, Vizag, Andhrapradesh. Register for free and Start
-                    your move in finding the right one and make your events successful.</p>
-                </div>
-              </div>
+            <div>
+              <h3 class="slide_name">Kirsty Pargeter</h3>
+            </div>
+            <div>
+              <p class="lator fonts16"><q>Connect to Tollywood is the right platform to find one from
+                  largest Community of Artist&nbsp; Talented People over many Cities like
+                  Telangana Hyderabad, Vizag, Andhrapradesh.</q></p>
             </div>
           </div>
         </div>
@@ -1478,31 +1510,34 @@
     </div>
   </div>
 </div>
-<div class="row" style="margin-left: 0px; margin-right: 0px; background-color: #F4F4F4;">
+<div class="row account_section">
   <div class="container">
     <div class="sec_part1">
-      <div class="row" style="margin-left: 0px; margin-right: 0px;">
+      <div class="row mlr">
         <div class="title_section">
           <div class="title_bar">
             <img src="../../../assets/images/divider.png">
           </div>
           <div class="title_text">
-            <h2 class="prime_heading">Searching for a talented artist</h2>
+            <h2 class="prime_heading rockwell">Searching for a talented artist</h2>
           </div>
         </div>
         <div class="col-xl-8 col-lg-8 col-md-6">
-          <p>Connect to Tollywood is the right platform to find one from largest Community of Artist / Talented People
-            over many Cities like Telangana Hyderabad, Vizag, Andhrapradesh. Register for free and Start your move in
-            finding the right one and make your events successful.&nbsp;Connect to Tollywood is the right platform to
-            find one from largest Community of Artist / Talented People over many Cities like Telangana Hyderabad,
-            Vizag, Andhrapradesh. Register for free and Start your move in finding the right one and make your events
-            successful.Connect to Tollywood is the right platform to find one from largest Community of Artist /
-            Talented People over many Cities like Telangana Hyderabad, Vizag, Andhrapradesh.&nbsp;</p>
+          <div class="row">
+            <p class="lator fonts14">Connect to Tollywood is the right platform to find one from largest
+              Community of Artist Talented People over many Cities like Telangana Hyderabad, Vizag,
+              Andhrapradesh. Register for free and Start your move in finding the right one and make
+              your events successful.&nbsp;Connect to Tollywood is the right platform to find one
+              from largest Community of Artist&nbsp; Talented People over many Cities like Telangana
+              Hyderabad, Vizag, Andhrapradesh. Register for free and Start your move in finding the
+              right one and make your events successful.Connect to Tollywood is the right platform to
+              find one from largest Community of Artist&nbsp; Talented People over many Cities like
+              Telangana Hyderabad, Vizag, Andhrapradesh.&nbsp;</p>
+          </div>
         </div>
-        <div class="col-xl-4 col-lg-4 col-md-6" style="padding-left: 40px;">
+        <div class="col-xl-4 col-lg-4 col-md-6 padleft_40">
           <div>
-            <h3 style="font-size: 16px; font-weight: bold; width: 100%; display: inline-block; margin-bottom: 20px;">Create
-              Account</h3>
+            <h3 class="create_account rockwell">Create Account</h3>
           </div>
           <form>
             <div class="form-group">
@@ -1511,49 +1546,48 @@
             <div class="form-group">
               <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
             </div>
-            <div class="form-check">
-              <label class="form-check-label">
-                <input type="checkbox" class="form-check-input" />
-                Check me out
-              </label>
-            </div>
-            <button type="submit" class="btn btn-primary" style="background-color: #EE2A45; width: 100%; height: 40px; border-radius: 0px; margin-top: 20px; border: 0px solid;">Create
-              Account</button>
+            <button type="submit" class="btn btn-danger btn_create latob mt0">Create Account</button>
+            <p class="f12 lator mt10">
+              By creating an account, I agree to <br /><strong>Connect to Tollywood Website</strong> Terms, Privacy
+              Policy, and Licensing Terms. </p>
           </form>
         </div>
       </div>
     </div>
   </div>
 </div>
-<div class="row" style="margin-left: 0px; margin-right: 0px; background-color: #000000; width: 100%; height: 150px;">
+<div class="row register_section">
   <div class="container">
     <div class="row">
       <div class="container col-xl-8 col-lg-8 col-md-8">
-        <h1 class="register" style="margin-top: 30px; color: #f7f7f7; font-size: 28px;">Are you a singer or a writer or
-          a director or Do you manage artists?</h1>
+        <div>
+          <h1 class="register_text cc">Are you a singer or a writer or a director or Do you manage artists?</h1>
+        </div>
       </div>
-      <div class="container col-xl-4 col-lg-4 col-md-4" style="padding-left: 40px;">
-        <button type="submit" class="btn btn-primary" style="background-color: #EE2A45; width: 100%; height: 40px; margin-top: 60px; border: 0px none; border-radius: 0px;">Register
-          Now</button>
+      <div class="container col-xl-4 col-lg-4 col-md-4">
+        <div class="cc">
+          <button type="submit" class="btn btn-danger btn_register latob">Register Now</button>
+        </div>
       </div>
     </div>
   </div>
 </div>
-<div class="row" style="margin-left: 0px; margin-right: 0px; background-color: #961124; width: 100%; padding-top: 60px; padding-bottom: 60px;">
+<div class="row info_section">
   <div class="container">
     <div class="row">
-      <div class="col-xl-4 col-lg-4 col-md-12" style="margin-bottom: 30px;">
-        <img src="../../../assets/images/logo.png" style="width: 80px; height: 80px; align-self: flex-end;" />
+      <div class="col-xl-4 col-lg-4 col-md-12 mb30">
+        <img src="../../../assets/images/logo.png" class="logo2" />
         <div>
-          <p style="color: #ffffff;">Connect to Tollywood is the right platform to find one from largest Community of
-            Artist / Talented People over many Cities like Telangana Hyderabad, Vizag, Andhrapradesh. Register for free
-            and Start your move in finding the right one and make your events successful.</p>
+          <p class="lator w">Connect to Tollywood is the right platform to find one from largest Community
+            of Artist&nbsp; Talented People over many Cities like Telangana Hyderabad, Vizag,
+            Andhrapradesh. Register for free and Start your move in finding the right one and make your
+            events successful.</p>
         </div>
       </div>
-      <div class="col-xl-8 col-lg-8 col-md-12" style="display: inline-flex;">
-        <div class="row" style="width: 100%;">
-          <div style="color: #ffffff;" class="col-xl-4 col-lg-4 col-md-4">
-            <ul style="list-style-type: none; padding-left: 0px;">
+      <div class="col-xl-8 col-lg-8 col-md-12 line_flex">
+        <div class="row full_width">
+          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+            <ul class="info_list">
               <li>Home</li>
               <li>About Us</li>
               <li>Investor Relations</li>
@@ -1562,8 +1596,8 @@
               <li>Contact Us</li>
             </ul>
           </div>
-          <div class="col-xl-4 col-lg-4 col-md-4" style="color: #ffffff;">
-            <ul style="list-style-type: none; padding-left: 0px;">
+          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+            <ul class="info_list">
               <li>
                 <strong>Legal</strong>
               </li>
@@ -1573,15 +1607,15 @@
               <li>Patents</li>
             </ul>
             <div>
-              <h3 style="font-size: 18px;">Follow</h3>
-              <i class="fab fa-facebook" style="margin-left: 5px; margin-right: 5px; font-size: 20px;"></i>
-              <i class="fab fa-instagram" style="margin-left: 5px; margin-right: 5px; font-size: 20px;"></i>
-              <i class="fab fa-twitter" style="margin-left: 5px; margin-right: 5px; font-size: 20px;"></i>
-              <i class="fab fa-youtube" style="margin-left: 5px; margin-right: 5px; font-size: 20px;"></i>
+              <h3 class="follow lator">Follow</h3>
+              <i class="fab fa-facebook social_icon"></i>
+              <i class="fab fa-instagram social_icon"></i>
+              <i class="fab fa-twitter social_icon"></i>
+              <i class="fab fa-youtube social_icon"></i>
             </div>
           </div>
-          <div class="col-xl-4 col-lg-4 col-md-4">
-            <ul style="list-style-type: none; color: #ffffff; padding-left: 0px;">
+          <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+            <ul class="info_list">
               <li>
                 <strong>Help</strong>
               </li>
@@ -1599,7 +1633,6 @@
     </div>
   </div>
 </div>
-
 
 <app-modal-basic #modalDefault>
   <div class="app-modal-header">

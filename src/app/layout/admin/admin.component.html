@@ -35,14 +35,16 @@
                 <i class="ti-angle-down"></i>
                 <!-- </a> -->
                 <ul class="show-notification profile-notification">
-                  <li>
+                  <!-- <li>
                     <a [routerLink]="['/crm-contact']">
                       <i class="ti-settings"></i> My Bussiness Profile
                     </a>
-                  </li>
+                  </li> -->
                   <li>
                     <a [routerLink]="['/user/profile']">
-                      <i class="ti-user"></i> Profile
+                      <i class="ti-user"></i>
+                      <span *ngIf="currentUser?.role == 'Hire People'">Profile</span>
+                      <span *ngIf="currentUser?.role == 'Manager'">My Bussiness Profile</span>
                     </a>
                   </li>
                   <li>

@@ -6,7 +6,10 @@ import {HttpClientModule }from '@angular/common/http';
 import {C2TComponent }from './c2t.component'; 
 import {SignupComponent}from './signup/signup.component'; 
 import {SharedModule}from '../shared/shared.module'; 
-import {FormsModule, ReactiveFormsModule }from '@angular/forms'; 
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
+// import { CarouselModule } from 'ngx-bootstrap';
+// import { CarouselConfig } from 'ngx-bootstrap/carousel';
+
 
 export const c2tRoutes:Routes = [ {
     path:'', 
@@ -28,6 +31,6 @@ export const c2tRoutes:Routes = [ {
     ReactiveFormsModule, 
     HttpClientModule
   ], 
-  declarations:[C2TComponent, SignupComponent]
+  declarations: [C2TComponent, SignupComponent]
 })
 export class C2TModule {}

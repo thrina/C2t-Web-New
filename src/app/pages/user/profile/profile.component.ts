@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Http} from '@angular/http';
-import {animate, style, transition, trigger} from '@angular/animations';
+import {animate, style, AUTO_STYLE, state, transition, trigger} from '@angular/animations';
 import '../../../../assets/charts/echart/echarts-all.js';
 import { FileUploader } from 'ng2-file-upload';
 import { ProfileService } from './profile.service';
@@ -24,7 +24,23 @@ const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
         style({transform: 'translate(0)'}),
         animate('400ms ease-in-out', style({opacity: 0}))
       ])
-    ])
+    ]),
+    trigger('mobileMenuTop', [
+      state('no-block, void',
+        style({
+          overflow: 'hidden',
+          height: '0px',
+        })
+      ),
+      state('yes-block',
+        style({
+          height: AUTO_STYLE,
+        })
+      ),
+      transition('no-block <=> yes-block', [
+        animate('400ms ease-in-out')
+      ])
+    ]),
   ]
 })
 export class ProfileComponent implements OnInit {
@@ -161,9 +177,11 @@ export class ProfileComponent implements OnInit {
   updateUserForm() {
     console.log(this.currentUser,"llllllllllllllllll");
     this.profileService.updateUser(this.currentUser).subscribe(data => {
-      console.log("updated result",data);
-      
-      
+      console.log("updated result", data);
+      if (data.messsage == "success") {
+        this.currentUser = { ...this.currentUser };
+        this.toggleEditProfile();
+      }
     })
   }
 

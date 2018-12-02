@@ -1,6 +1,6 @@
 <!--profile cover start-->
 <div class="row">
-  <div class="col-lg-12">
+  <div class="col-lg-12" style="margin-top: -150px;">
     <div class="cover-profile">
       <div class="profile-bg-img">
         <img class="profile-bg-img img-fluid" src="assets/images/user-profile/bg-img1.jpg" alt="bg-img">
@@ -236,7 +236,7 @@
             </div>
           </ng-template>
         </ngb-tab>
-        <ngb-tab title="My Bussiness Profile" *ngIf="currentUser.role == 'Bussiness Manager'">
+        <ngb-tab title="My Bussiness Profile" *ngIf="currentUser.role == 'Manager'">
           <ng-template ngbTabContent>
             <div [@fadeInOutTranslate] class="m-t-15">
               <div class="card">
@@ -264,19 +264,19 @@
                                       <label class="label-font">Bussiness Name</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-7">
-                                      <label class="value-font">Pavan Kumar</label>
+                                      <label class="value-font">{{currentUser?.firstName}} {{currentUser?.lastName}}</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-5">
                                       <label class="label-font">Bussiness Mobile</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-7">
-                                      <label class="value-font">84586566677</label>
+                                      <label class="value-font">{{currentUser?.mobile}}</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-5">
                                       <label class="label-font">Bussiness Email</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-7">
-                                      <label class="value-font">pavan.a@wowdea</label>
+                                      <label class="value-font">{{currentUser?.email}}</label>
                                     </div>
                                   </div>
                                 </div>
@@ -286,13 +286,13 @@
                                       <label class="label-font">Date Started</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-7">
-                                      <label class="value-font">24-Nov-2018</label>
+                                      <label class="value-font">{{currentUser?.bob}}</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-5">
                                       <label class="label-font">PAN Card</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-7">
-                                      <label class="value-font">xxxxxxxxxxxxx</label>
+                                      <label class="value-font">{{currentUser?.pan}}</label>
                                     </div>
                                   </div>
                                 </div>
@@ -542,7 +542,7 @@
             </div>
           </ng-template>
         </ngb-tab>
-        <ngb-tab title="Team Profiles" *ngIf="currentUser.role == 'Bussiness Manager'">
+        <ngb-tab title="Team Profiles" *ngIf="currentUser.role == 'Manager'">
           <ng-template ngbTabContent>
             <div [@fadeInOutTranslate] class="m-t-15">
               <div class="card">
@@ -559,11 +559,38 @@
                       <div class="col-lg-12">
                         <div class="general-info">
                           <div class="card" *ngIf="editProfile">
-                            <div class="card-header">
-                              gffffffff
+                            <div class="col-md-12">
+                              <app-card>
+                                <div class="table-responsive">
+                                  <table class="table table-hover">
+                                    <tbody>
+                                      <tr>
+                                        <td>
+                                          <div class="fl" style="min-height: 100px;">
+                                            <a href="javascript:"><img class="img-radius" src="assets/images/avatar-1.jpg"
+                                                alt="chat-user"></a>
+                                          </div>
+                                          <div class="fl p-l-20">
+                                            <p class="label-font m-b-5">Josephin Doe</p>
+                                            <p class="value-font m-b-5">898t45005634</p>
+                                            <p class="value-font m-b-5">Vijay@gmail.com</p>
+                                            <p> But I must explain to you how all this mistaken idea of denouncing... </p>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <a href="javascript:"><i class="icofont icofont-pen-alt-1  f-18 text-c-blue"></i></a>
+                                          <a href="javascript:"><i class="icofont icofont-eraser f-18 text-default"></i></a>
+                                          <a href="javascript:"><i class="icofont icofont-star f-18 text-default"></i></a>
+
+                                        </td>
+                                      </tr>
+
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </app-card>
                             </div>
                           </div>
-
                         </div>
                       </div>
                     </div>

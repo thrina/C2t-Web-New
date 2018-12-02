@@ -10,7 +10,7 @@ export class ProfileService {
     constructor(private http:HttpClient) {}
 
     updateUser(userDetails):Observable < any >  {
-      return  this.http.put(process.url + "/userupdate", userDetails)
+      return  this.http.put(process.url + "/updateuser", userDetails)
     
     }
 
