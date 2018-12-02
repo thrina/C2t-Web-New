@@ -7,7 +7,7 @@
         <div class="card-body user-info" style="margin-top: -130px;">
           <div class="col-md-12">
             <div class="media-left">
-              <a href="javascript:;" class="profile-image">
+              <a class="profile-image">
                 <img class="user-img img-radius" src="assets/images/avatar-4.jpg" alt="user-img">
               </a>
             </div>
@@ -112,13 +112,13 @@
                                       <label class="label-font">City</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-7">
-                                      <label class="value-font">{{currentUser?.city}}</label>
+                                      <label class="value-font">{{currentUser?.city || 'NA'}}</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-5">
                                       <label class="label-font">Location</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-7">
-                                      <label class="value-font">{{currentUser?.location}}</label>
+                                      <label class="value-font">{{currentUser?.location || 'NA'}}</label>
                                     </div>
                                   </div>
 
@@ -129,13 +129,13 @@
                                       <label class="label-font">Pin</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-7">
-                                      <label class="value-font">{{currentUser?.pin}}</label>
+                                      <label class="value-font">{{currentUser?.pin || 'NA'}}</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-5">
                                       <label class="label-font">Area</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-7">
-                                      <label class="value-font">{{currentUser?.area}}</label>
+                                      <label class="value-font">{{currentUser?.area || 'NA'}}</label>
                                     </div>
                                   </div>
                                 </div>
@@ -286,13 +286,13 @@
                                       <label class="label-font">Date Started</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-7">
-                                      <label class="value-font">{{currentUser?.bob}}</label>
+                                      <label class="value-font">{{currentUser?.bob || 'NA'}}</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-5">
                                       <label class="label-font">PAN Card</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-7">
-                                      <label class="value-font">{{currentUser?.pan}}</label>
+                                      <label class="value-font">{{currentUser?.pan || 'NA'}}</label>
                                     </div>
                                   </div>
                                 </div>
@@ -312,19 +312,19 @@
                                     </div>
                                     <div class="col-lg-12 col-xl-7">
                                       <!-- <a >www.facebook.com</a> -->
-                                      <label class="value-font">www.facebook.com</label>
+                                      <label class="value-font">{{currentUser?.facebookLink || 'NA'}}</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-5">
-                                      <label class="label-font">Linkdin</label>
+                                      <label class="label-font">Linkedin</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-7">
-                                      <label class="value-font">www.linkdin.com</label>
+                                      <label class="value-font">{{currentUser?.linkedInLink || 'NA'}}</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-5">
                                       <label class="label-font">Instagram</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-7">
-                                      <label class="value-font">www.instagram.com</label>
+                                      <label class="value-font">{{currentUser?.instagramLink || 'NA'}}</label>
                                     </div>
                                   </div>
 
@@ -335,19 +335,19 @@
                                       <label class="label-font">Twitter</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-7">
-                                      <label class="value-font">www.twitter.com</label>
+                                      <label class="value-font">{{currentUser?.twitterLink || 'NA'}}</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-5">
                                       <label class="label-font">Google+</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-7">
-                                      <label class="value-font">www.google.com</label>
+                                      <label class="value-font">{{currentUser?.googleplusLink || 'NA'}}</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-5">
                                       <label class="label-font">Youtube</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-7">
-                                      <label class="value-font">www.youtube.com</label>
+                                      <label class="value-font">{{currentUser?.youtubeLink || 'NA'}}</label>
                                     </div>
                                   </div>
                                 </div>
@@ -366,13 +366,13 @@
                                       <label class="label-font">City</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-7">
-                                      <label class="value-font">Hyderabad</label>
+                                      <label class="value-font">{{currentUser?.city || 'NA'}}</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-5">
                                       <label class="label-font">Location</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-7">
-                                      <label class="value-font">Jntu</label>
+                                      <label class="value-font">{{currentUser?.location || 'NA'}}</label>
                                     </div>
                                   </div>
                                 </div>
@@ -382,13 +382,13 @@
                                       <label class="label-font">Pin</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-7">
-                                      <label class="value-font">500093</label>
+                                      <label class="value-font">{{currentUser?.pin || 'NA'}}</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-5">
                                       <label class="label-font">Area</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-7">
-                                      <label class="value-font">Manjera mall</label>
+                                      <label class="value-font">{{currentUser?.area || 'NA'}}</label>
                                     </div>
                                   </div>
                                 </div>
@@ -402,7 +402,7 @@
                   <div class="edit-info" *ngIf="!editProfile">
                     <div class="row">
                       <div class="col-lg-12">
-                        <form>
+                        <form #managerForm="ngForm" (ngSubmit)="updateUserForm()">
                           <div class="general-info">
                             <div class="row">
                               <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
@@ -411,27 +411,36 @@
                               <div class="col-lg-6">
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
-                                  <input type="text" class="form-control" placeholder="Bussiness Name" value="Josephine Villa">
+                                  <input type="text" class="form-control" placeholder="First Name" name="firstName"
+                                    [(ngModel)]="currentUser.firstName">
                                 </div>
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-calendar"></i></span>
-                                  <input id="dropper-default" class="form-control" type="text" value="October 25th, 1990"
+                                  <input id="dropper-default" class="form-control" type="text" name="dob" [(ngModel)]="currentUser.dob"
                                     placeholder="Select Your Birth Date" />
                                 </div>
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-pan"></i></span>
-                                  <input type="text" class="form-control" placeholder="Upload PAN">
+                                  <input type="text" class="form-control" placeholder="Upload PAN" name="pan"
+                                    [(ngModel)]="currentUser.pan">
                                 </div>
                               </div>
                               <!-- end of table col-lg-6 -->
                               <div class="col-lg-6">
                                 <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
+                                  <input type="text" class="form-control" placeholder="Last Name" name="lastName"
+                                    [(ngModel)]="currentUser.lastName">
+                                </div>
+                                <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-mobile-phone"></i></span>
-                                  <input type="text" class="form-control" value="(0123) - 4567891" placeholder="Mobile Number">
+                                  <input type="text" class="form-control" name="mobile" [(ngModel)]="currentUser.mobile"
+                                    placeholder="Mobile Number">
                                 </div>
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-email"></i></span>
-                                  <input type="email" class="form-control" value="codedthemes.demo" placeholder="Email Id">
+                                  <input type="email" class="form-control" name="email" [(ngModel)]="currentUser.email"
+                                    placeholder="Email Id">
                                 </div>
                               </div>
                             </div>
@@ -441,30 +450,36 @@
                               </div>
                               <div class="col-lg-6">
                                 <div class="input-group">
-                                  <span class="input-group-addon"><i class="icofont icofont-facebook"></i></span>
-                                  <input type="text" class="form-control" placeholder="Facebook">
+                                  <span class="input-group-addon"><i class="ti-facebook"></i></span>
+                                  <input type="text" class="form-control" name="facebookLink" [(ngModel)]="currentUser.facebookLink"
+                                    placeholder="Facebook">
                                 </div>
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-linkedin"></i></span>
-                                  <input type="text" class="form-control" placeholder="Linkedin">
+                                  <input type="text" class="form-control" name="linkedInLink" [(ngModel)]="currentUser.linkedInLink"
+                                    placeholder="Linkedin">
                                 </div>
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-instagram"></i></span>
-                                  <input type="text" class="form-control" placeholder="Instagram">
+                                  <input type="text" class="form-control" name="instagramLink" [(ngModel)]="currentUser.instagramLink"
+                                    placeholder="Instagram">
                                 </div>
                               </div>
                               <div class="col-lg-6">
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-twitter"></i></span>
-                                  <input type="text" class="form-control" placeholder="Twitter">
+                                  <input type="text" class="form-control" name="twitterLink" [(ngModel)]="currentUser.twitterLink"
+                                    placeholder="Twitter">
                                 </div>
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-google-plus"></i></span>
-                                  <input type="text" class="form-control" placeholder="Google +">
+                                  <input type="text" class="form-control" name="googleplusLink" [(ngModel)]="currentUser.googleplusLink"
+                                    placeholder="Google +">
                                 </div>
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-youtube"></i></span>
-                                  <input type="text" class="form-control" placeholder="Youtube">
+                                  <input type="text" class="form-control" name="youtubeLink" [(ngModel)]="currentUser.youtubeLink"
+                                    placeholder="Youtube">
                                 </div>
                               </div>
                             </div>
@@ -475,29 +490,33 @@
                               <div class="col-lg-6">
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
-                                  <input type="text" class="form-control" placeholder="City">
+                                  <input type="text" class="form-control" name="city" [(ngModel)]="currentUser.city"
+                                    placeholder="City">
                                 </div>
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
-                                  <input type="text" class="form-control" placeholder="Location">
+                                  <input type="text" class="form-control" name="location" [(ngModel)]="currentUser.location"
+                                    placeholder="Location">
                                 </div>
                               </div>
                               <div class="col-lg-6">
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
-                                  <input type="text" class="form-control" placeholder="Pin">
+                                  <input type="text" class="form-control" name="pin" [(ngModel)]="currentUser.pin"
+                                    placeholder="Pin">
                                 </div>
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
-                                  <input type="text" class="form-control" placeholder="Area">
+                                  <input type="text" class="form-control" name="area" [(ngModel)]="currentUser.area"
+                                    placeholder="Area">
                                 </div>
                               </div>
                             </div>
                             <!-- end of row -->
                             <div class="text-right">
-                              <a href="javascript:;" id="edit-cancel" style="background-color:#d71727; border-color:#d71727; color:#fff"
-                                class="btn btn-danger waves-effect" (click)="toggleEditProfile()">Cancel</a>
-                              <a href="javascript:;" class="btn btn-success waves-effect waves-light m-r-20">Save</a>
+                              <button type="button" id="edit-cancel" style="background-color:#d71727; border-color:#d71727; color:#fff"
+                                class="btn btn-danger waves-effect" (click)="toggleEditProfile()">Cancel</button>
+                              <button type="submit" class="btn btn-success waves-effect waves-light m-r-20">Save</button>
                             </div>
                           </div>
                         </form>
@@ -520,21 +539,24 @@
                       </button>
                     </div>
                     <div class="card-body user-desc">
-                      <div class="view-desc" *ngIf="editAbout">
-                        <div [innerHTML]="editorContent"></div>
-                      </div>
-                      <div class="edit-desc" *ngIf="!editAbout">
-                        <div class="col-md-12">
-                          <quill-editor [(ngModel)]="editorContent" [options]="editorConfig" (blur)="onEditorBlured($event)"
-                            (focus)="onEditorFocused($event)" (ready)="onEditorCreated($event)" (change)="onContentChanged($event)">
-                          </quill-editor>
+                      <form #managerFormDesc (ngSubmit)="updateUserForm()">
+                        <div class="view-desc" *ngIf="editAbout">
+                          <div [innerHTML]="currentUser.aboutBussiness"></div>
                         </div>
-                        <div class="text-right">
-                          <a href="javascript:;" id="edit-cancel-btn" style="background-color:#d71727; border-color:#d71727; color:#fff"
-                            class="btn btn-default waves-effect m-t-20" (click)="toggleEditAbout()">Cancel</a>
-                          <a href="javascript:;" class="btn btn-success waves-effect waves-light m-r-20 m-t-20">Save</a>
+                        <div class="edit-desc" *ngIf="!editAbout">
+                          <div class="col-md-12">
+                            <quill-editor [(ngModel)]="currentUser.aboutBussiness" name="aboutBussiness" [options]="editorConfig"
+                              (blur)="onEditorBlured($event)" (focus)="onEditorFocused($event)" (ready)="onEditorCreated($event)"
+                              (change)="onContentChanged($event)">
+                            </quill-editor>
+                          </div>
+                          <div class="text-right">
+                            <button type="button" id="edit-cancel-btn" style="background-color:#d71727; border-color:#d71727; color:#fff"
+                              class="btn btn-default waves-effect m-t-20" (click)="toggleEditAbout()">Cancel</button>
+                            <button type="submit" class="btn btn-success waves-effect waves-light m-r-20 m-t-20">Save</button>
+                          </div>
                         </div>
-                      </div>
+                      </form>
                     </div>
                   </div>
                 </div>
@@ -574,7 +596,8 @@
                                             <p class="label-font m-b-5">Josephin Doe</p>
                                             <p class="value-font m-b-5">898t45005634</p>
                                             <p class="value-font m-b-5">Vijay@gmail.com</p>
-                                            <p> But I must explain to you how all this mistaken idea of denouncing... </p>
+                                            <p> But I must explain to you how all this mistaken idea of denouncing...
+                                            </p>
                                           </div>
                                         </td>
                                         <td>
@@ -598,7 +621,7 @@
                   <div class="edit-info" *ngIf="!editProfile">
                     <div class="row">
                       <div class="col-lg-12">
-                        <form>
+                        <form #managerTeamForm (ngSubmit)="createManagerTeam()">
                           <div class="general-info">
                             <div class="row">
                               <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
@@ -607,42 +630,50 @@
                               <div class="col-lg-6">
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
-                                  <input type="text" class="form-control" placeholder="Name" value="">
+                                  <input type="text" class="form-control" [(ngModel)]="managerUser.name" name="name"
+                                    placeholder="Name">
                                 </div>
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-email"></i></span>
-                                  <input type="email" class="form-control" value="" placeholder="Email Id">
+                                  <input type="email" class="form-control" [(ngModel)]="managerUser.email" name="email"
+                                    placeholder="Email Id">
                                 </div>
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-pan"></i></span>
-                                  <input type="text" class="form-control" placeholder="Talent">
+                                  <input type="text" class="form-control" [(ngModel)]="managerUser.talent" name="talent"
+                                    placeholder="Talent">
                                 </div>
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-pan"></i></span>
-                                  <input type="text" class="form-control" placeholder="PAN">
+                                  <input type="text" class="form-control" [(ngModel)]="managerUser.pan" name="pan"
+                                    placeholder="PAN">
                                 </div>
                               </div>
                               <!-- end of table col-lg-6 -->
                               <div class="col-lg-6">
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-mobile-phone"></i></span>
-                                  <input type="text" class="form-control" value="" placeholder="Mobile Number">
+                                  <input type="text" class="form-control" [(ngModel)]="managerUser.mobile" name="mobile"
+                                    placeholder="Mobile Number">
                                 </div>
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-upload-alt"></i></span>
-                                  <input type="email" class="form-control" value="" placeholder="Photo">
+                                  <input type="email" class="form-control" [(ngModel)]="managerUser.photo" name="photo"
+                                    placeholder="Photo">
                                 </div>
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-address-book"></i></span>
-                                  <input type="email" class="form-control" value="" placeholder="Address">
+                                  <input type="email" class="form-control" [(ngModel)]="managerUser.address" name="address"
+                                    placeholder="Address">
                                 </div>
                               </div>
                             </div>
 
-                            <!-- <div class="text-right">
-                            <a href="javascript:;" id="edit-cancel" style="background-color:#d71727; border-color:#d71727; color:#fff" class="btn btn-danger waves-effect" (click)="toggleEditProfile()">Cancel</a>
-                            <a href="javascript:;" class="btn btn-success waves-effect waves-light m-r-20">Save</a>
-                          </div> -->
+                            <div class="text-right">
+                              <button type="button" id="edit-cancel" style="background-color:#d71727; border-color:#d71727; color:#fff"
+                                class="btn btn-danger waves-effect" (click)="toggleEditProfile()">Cancel</button>
+                              <button type="submit" class="btn btn-success waves-effect waves-light m-r-20">Save</button>
+                            </div>
                           </div>
                         </form>
                         <!-- end of edit info -->
@@ -690,9 +721,9 @@
                           <textarea class="form-control" id="exampleTextarea" rows="5" placeholder="Keywords group"></textarea>
                         </div>
                         <div class="text-right">
-                          <a href="javascript:;" id="edit-cancel-btn" style="background-color:#d71727; border-color:#d71727; color:#fff"
+                          <a id="edit-cancel-btn" style="background-color:#d71727; border-color:#d71727; color:#fff"
                             class="btn btn-default waves-effect m-t-20" (click)="toggleEditAbout()">Cancel</a>
-                          <a href="javascript:;" class="btn btn-success waves-effect waves-light m-r-20 m-t-20">Save</a>
+                          <a class="btn btn-success waves-effect waves-light m-r-20 m-t-20">Save</a>
                         </div>
                       </div>
                     </div>

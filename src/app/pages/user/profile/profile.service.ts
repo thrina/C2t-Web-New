@@ -12,6 +12,10 @@ export class ProfileService {
     updateUser(userDetails):Observable < any >  {
       return  this.http.put(process.url + "/updateuser", userDetails)
     
-    }
+  }
+  
+  getUpdatedInfo(user): Observable <any> {
+    return this.http.get(process.url + "/getuser",user)
+  }
 
 }

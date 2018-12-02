@@ -2,7 +2,6 @@ import {Component, OnInit }from '@angular/core';
 import {FormControl, FormGroup, Validators }from '@angular/forms'; 
 import {HomeService }from './home.service'; 
 import {Router }from '@angular/router'; 
-import { CarouselConfig } from 'ngx-bootstrap/carousel';
 
 @Component( {
 selector:'app-home', 
@@ -42,41 +41,30 @@ currtpassword:password,
 }); 
 }
 
-ngOnInit() {
-}
+    ngOnInit() {
+    }
 
-onSignup() {
-console.log("sign up"); 
+    onSignup() {
+    }
 
-}
+    register() {
+        let data = this.homeService.getRegistered(this.myForm.value); 
 
-register() {
-console.log(this.myForm.value, "dataa"); 
+    }
 
-let data = this.homeService.getRegistered(this.myForm.value); 
-console.log(data, "values"); 
+    login() {
+        let userCredentials =  {"email":this.loginForm.value.emailID, "password":this.loginForm.value.currtpassword  }; 
+        this.homeService.userLogin(userCredentials).subscribe(data =>  {
+        if (data && data['successMessage'] == "success") {
+        this.currentUser = data.rowData; 
+        localStorage.setItem('currentUser', this.currentUser); 
+        this.router.navigate(['/user/profile']); 
+        }else {
+        this.isValidUser = false; 
+        }
+        })
 
-
-}
-
-login() {
-let userCredentials =  {"email":this.loginForm.value.emailID, "password":this.loginForm.value.currtpassword  }; 
-this.homeService.userLogin(userCredentials).subscribe(data =>  {
-console.log(data.rowData, "logined"); 
-
-if (data && data['successMessage'] == "success") {
-console.log("success", typeof data.rowData); 
-this.currentUser = data.rowData; 
-console.log("success1", typeof this.currentUser); 
-
-localStorage.setItem('currentUser', this.currentUser); 
-this.router.navigate(['/user/profile']); 
-}else {
-this.isValidUser = false; 
-}
-})
-
-}
+    }
 
 
 }

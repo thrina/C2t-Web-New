@@ -59,12 +59,9 @@ export class ProfileComponent implements OnInit {
   firstName: string;
 
   public editor;
-  public editorContent = `<p>
-                              But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and I will give
-                              you a complete account of the system, and expound the actual teachings of the great explorer of the truth, the master-builder
-                            </p>`;
+  public editorContent = '';
   public editorConfig = {
-    placeholder: 'About Your Self'
+    placeholder: 'About Your Bussiness'
   };
 
 
@@ -74,6 +71,7 @@ export class ProfileComponent implements OnInit {
   public sortBy = '';
   public sortOrder = 'desc';
   profitChartOption: any;
+  managerUser: any = {};
 
   constructor(public http: Http, private profileService: ProfileService) {
     let currtUser = JSON.parse(JSON.stringify(localStorage.getItem('currentUser')));
@@ -81,12 +79,6 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
-    setTimeout(() => {
-      this.editorContent = this.editorContent;
-      console.log('you can use the quill instance object to do something', this.editor);
-      // this.editor.disable();
-    }, 2800);
-
     this.http.get(`assets/data/data.json`)
       .subscribe((data) => {
         this.data = data.json();
@@ -158,20 +150,16 @@ export class ProfileComponent implements OnInit {
   }
 
   onEditorBlured(quill) {
-    console.log('editor blur!', quill);
   }
 
   onEditorFocused(quill) {
-    console.log('editor focus!', quill);
   }
 
   onEditorCreated(quill) {
     this.editor = quill;
-    console.log('quill is ready! this is current quill instance object', quill);
   }
 
   onContentChanged({quill, html, text}) {
-    console.log('quill content is changed!', quill, html, text);
   }
 
   updateUserForm() {
@@ -180,9 +168,32 @@ export class ProfileComponent implements OnInit {
       console.log("updated result", data);
       if (data.messsage == "success") {
         this.currentUser = { ...this.currentUser };
+        this.getLatestInfo();
         this.toggleEditProfile();
+        this.toggleEditAbout();
       }
     })
+  }
+
+  getLatestInfo() {
+    this.profileService.getUpdatedInfo(this.currentUser).subscribe(data => {
+      console.log(data, "updated info");
+      this.toggleEditProfile();
+        this.toggleEditAbout();
+    })
+    
+  }
+
+  createManagerTeam() {
+    console.log(this.managerUser,"jjjjjjjjjjjjjjjjjj",typeof this.currentUser, ">>>>>>>>><<<<<<<<<<<<",typeof this.currentUser['teamMenbers']);
+    if (this.currentUser && this.currentUser['teamMenbers'] ) {
+      this.currentUser['teamMenbers'].push(this.managerUser);
+    } else {
+    this.currentUser['teamMenbers'] = [];
+    this.currentUser['teamMenbers'].push(this.managerUser);
+    }
+    this.updateUserForm();
+      
   }
 
 }
