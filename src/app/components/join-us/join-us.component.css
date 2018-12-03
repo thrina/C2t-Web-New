@@ -1,0 +1,23 @@
+.float_down {
+    margin-top: 10px;
+}
+
+.fr {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row !important;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+
+.fr_s {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row !important;
+    justify-content: start !important;
+    align-items: center !important;
+}
+.h200{
+    height:200px;
+}
