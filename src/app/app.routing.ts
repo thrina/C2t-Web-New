@@ -4,6 +4,7 @@ import {AuthComponent} from './layout/auth/auth.component';
 import {SignupComponent} from './components/signup/signup.component';
 import {AppComponent} from './app.component';
 import {HomeComponent} from './components/home/home.component';
+import {JoinUsComponent }from './components/join-us/join-us.component'; 
 
 
 export const AppRoutes: Routes = [
@@ -18,6 +19,10 @@ export const AppRoutes: Routes = [
     },{
       path: 'home',
       component: HomeComponent
+
+    },{
+      path: 'joinus',
+      component: JoinUsComponent
 
     }]
   },

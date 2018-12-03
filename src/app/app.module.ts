@@ -16,7 +16,7 @@ import {FormsModule, ReactiveFormsModule }from '@angular/forms';
 import {HomeComponent }from './components/home/home.component'; 
 import {HomeService }from './components/home/home.service'; 
 import {HttpClientModule }from '@angular/common/http'; 
-
+import {JoinUsComponent }from './components/join-us/join-us.component'; 
 
 
 @NgModule( {
@@ -26,7 +26,8 @@ import {HttpClientModule }from '@angular/common/http';
     BreadcrumbsComponent, 
     TitleComponent, 
     AuthComponent, 
-    HomeComponent
+    HomeComponent,
+    JoinUsComponent
   ], 
   imports:[
     BrowserModule, 

@@ -24590,15 +24590,22 @@ body.dark #styleSelector .form-control {
   margin-left: 0px;
   margin-right: 0px;
 }
-
+.link_hover:hover{
+  color:#d82428 !important;
+}
 .border0 {
   border: 0px;
 }
-
+.curser_pointer{
+  cursor:pointer !important;
+}
 .mt0 {
   margin-top: 0px;
 }
-
+.hit_area{
+  height:20px;
+  width:20px;
+}
 .mt10 {
   margin-top: 10px;
 }
@@ -24677,7 +24684,6 @@ body.dark #styleSelector .form-control {
 
 .menu_list_item {
   padding-left: 20px;
-  font-weight: bold;
   overflow: hidden;
   display: flex;
   vertical-align: middle;
@@ -25627,7 +25633,9 @@ img {
 .mt60 {
   margin-top: 60px;
 }
-
+.border_n{
+  border:none !important;
+}
 .pos_rel {
   position: relative;
 }
@@ -25714,7 +25722,7 @@ img {
 /* my css */
 
 .modal-content {
-  height: 90vh !important;
+  max-height: 90vh !important;
 
 }
 
