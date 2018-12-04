@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HomeService } from './home.service';
 import { Router } from '@angular/router';
+import { CustomNotifyService } from '../shared/custom-notify.service';
 
 @Component({
     selector: 'app-home',
@@ -14,9 +15,9 @@ export class HomeComponent implements OnInit {
     loginMsg: any;
     isValidUser: boolean = true;
     currentUser: any = {}
+    pnotify: any;
 
-
-    constructor(private homeService: HomeService, private router: Router) {
+    constructor(private homeService: HomeService, private router: Router, private notify: CustomNotifyService) {
         const firstName = new FormControl('', Validators.required);
         const lastName = new FormControl('', Validators.required);
         const mobile = new FormControl('', Validators.required);
@@ -42,14 +43,18 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
-    }
-
-    onSignup() {
+        this.pnotify = this.notify.getPNotify();
     }
 
     register() {
-        let data = this.homeService.getRegistered(this.myForm.value);
-
+        this.homeService.getRegistered(this.myForm.value).subscribe(data => {
+            console.log(data, "sign up");
+            if (data.messsage == "Registered successfully") {
+                this.pnotify.success("Registered successfully");
+            } else {
+                this.pnotify.error("Registration failure");
+            }
+        })
     }
 
     login() {
@@ -57,14 +62,14 @@ export class HomeComponent implements OnInit {
         this.homeService.userLogin(userCredentials).subscribe(data => {
             if (data && data['successMessage'] == "success") {
                 this.currentUser = data.rowData;
+                this.pnotify.success('Loggin successfully');
                 localStorage.setItem('currentUser', this.currentUser);
                 this.router.navigate(['/user/profile']);
             } else {
                 this.isValidUser = false;
+                this.pnotify.error(data.failureMesssage);
             }
         })
-
     }
-
 
 }

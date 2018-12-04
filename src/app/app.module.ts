@@ -16,7 +16,11 @@ import {FormsModule, ReactiveFormsModule }from '@angular/forms';
 import {HomeComponent }from './components/home/home.component'; 
 import {HomeService }from './components/home/home.service'; 
 import {HttpClientModule }from '@angular/common/http'; 
-import {JoinUsComponent }from './components/join-us/join-us.component'; 
+import { JoinUsComponent } from './components/join-us/join-us.component'; 
+import { CustomNotifyService } from './components/shared/custom-notify.service'; 
+import { CarouselModule } from 'ngx-bootstrap';
+
+
 
 
 @NgModule( {
@@ -37,9 +41,10 @@ import {JoinUsComponent }from './components/join-us/join-us.component';
     SharedModule, 
     FormsModule, 
     ReactiveFormsModule, 
-    HttpClientModule
+    HttpClientModule,
+    CarouselModule.forRoot()
   ], 
-  providers:[HomeService], 
+  providers:[HomeService, CustomNotifyService], 
   bootstrap:[AppComponent, HomeComponent]
 })
 export class AppModule {}

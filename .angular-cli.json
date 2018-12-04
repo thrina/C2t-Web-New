@@ -3,51 +3,49 @@
   "project": {
     "name": "guru-new-able"
   },
-  "apps": [
-    {
-      "root": "src",
-      "outDir": "dist",
-      "assets": [
-        "assets",
-        "favicon.ico"
-      ],
-      "index": "index.html",
-      "main": "main.ts",
-      "polyfills": "polyfills.ts",
-      "test": "test.ts",
-      "tsconfig": "tsconfig.app.json",
-      "testTsconfig": "tsconfig.spec.json",
-      "prefix": "app",
-      "styles": [
-        "../node_modules/bootstrap/dist/css/bootstrap.min.css",
-        "../node_modules/ti-icons/css/themify-icons.css",
-        "assets/icon/icofont/css/icofont.min.css",
-        "styles.css"
-      ],
-      "scripts": [
-        "../node_modules/jquery/dist/jquery.min.js",
-        "../node_modules/froala-editor/js/froala_editor.pkgd.min.js",
-        "assets/charts/flot/jquery.flot.js",
-        "assets/charts/flot/jquery.flot.categories.js",
-        "assets/charts/flot/jquery.flot.pie.js",
-        "assets/charts/knob/jquery.knob.js",
-        "assets/charts/waterball/createWaterBall-jquery.js",
-        "../node_modules/jquery-sparkline/jquery.sparkline.min.js"
-      ],
-      "environmentSource": "environments/environment.ts",
-      "environments": {
-        "dev": "environments/environment.ts",
-        "prod": "environments/environment.prod.ts"
-      }
+  "apps": [{
+    "root": "src",
+    "outDir": "dist",
+    "assets": [
+      "assets",
+      "favicon.ico"
+    ],
+    "index": "index.html",
+    "main": "main.ts",
+    "polyfills": "polyfills.ts",
+    "test": "test.ts",
+    "tsconfig": "tsconfig.app.json",
+    "testTsconfig": "tsconfig.spec.json",
+    "prefix": "app",
+    "styles": [
+      "../node_modules/bootstrap/dist/css/bootstrap.min.css",
+      "../node_modules/ti-icons/css/themify-icons.css",
+      "assets/icon/icofont/css/icofont.min.css",
+      "../node_modules/pnotify/dist/PNotifyBrightTheme.css",
+      "styles.css"
+    ],
+    "scripts": [
+      "../node_modules/jquery/dist/jquery.min.js",
+      "../node_modules/froala-editor/js/froala_editor.pkgd.min.js",
+      "assets/charts/flot/jquery.flot.js",
+      "assets/charts/flot/jquery.flot.categories.js",
+      "assets/charts/flot/jquery.flot.pie.js",
+      "assets/charts/knob/jquery.knob.js",
+      "assets/charts/waterball/createWaterBall-jquery.js",
+      "../node_modules/jquery-sparkline/jquery.sparkline.min.js"
+    ],
+    "environmentSource": "environments/environment.ts",
+    "environments": {
+      "dev": "environments/environment.ts",
+      "prod": "environments/environment.prod.ts"
     }
-  ],
+  }],
   "e2e": {
     "protractor": {
       "config": "./protractor.conf.js"
     }
   },
-  "lint": [
-    {
+  "lint": [{
       "project": "src/tsconfig.app.json"
     },
     {
