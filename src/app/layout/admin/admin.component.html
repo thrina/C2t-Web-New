@@ -44,7 +44,8 @@
                     <a [routerLink]="['/user/profile']">
                       <i class="ti-user"></i>
                       <span *ngIf="currentUser?.role == 'Hire People'">Profile</span>
-                      <span *ngIf="currentUser?.role == 'Manager'">My Bussiness Profile</span>
+                      <span *ngIf="currentUser?.role == 'Manager' || currentUser?.role == 'Bussiness Manager'">My
+                        Bussiness Profile</span>
                     </a>
                   </li>
                   <li>

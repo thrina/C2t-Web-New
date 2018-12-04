@@ -149,7 +149,7 @@ export class AdminComponent implements OnInit {
 
   ngOnInit() {
     let currtUser = JSON.parse(JSON.stringify(localStorage.getItem('currentUser')));
-    this.currentUser = JSON.parse(currtUser.toString())
+    this.currentUser = JSON.parse(currtUser)
     this.setBackgroundPattern('pattern2');
   }
 

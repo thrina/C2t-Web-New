@@ -38,7 +38,7 @@
   <div class="col-lg-12">
     <div class="md-tabs">
       <ngb-tabset>
-        <ngb-tab title="My Profile" *ngIf="currentUser.role == 'Hire People'">
+        <ngb-tab title="My Profile" *ngIf="currentUser.role == 'Hire People' || currentUser.role == 'Artist'  || currentUser?.role == 'Bussiness Manager'">
           <ng-template ngbTabContent>
             <div [@fadeInOutTranslate] class="m-t-15">
               <!-- personal card start -->
@@ -236,19 +236,19 @@
             </div>
           </ng-template>
         </ngb-tab>
-        <ngb-tab title="My Bussiness Profile" *ngIf="currentUser.role == 'Manager'">
+        <ngb-tab title="My Bussiness Profile" *ngIf="currentUser.role == 'Manager' ">
           <ng-template ngbTabContent>
             <div [@fadeInOutTranslate] class="m-t-15">
               <div class="card">
                 <div class="card-header  border-bottom-line">
                   <h5 class="card-header-text">Bussiness Profile</h5>
                   <button id="edit-btn" type="button" style="background-color:#d71727; border-color:#d71727; color:#fff"
-                    class="btn btn-sm btn-primary waves-effect waves-light f-right" (click)="toggleEditProfile()">
+                    class="btn btn-sm btn-primary waves-effect waves-light f-right" (click)="toggleManagerProfile()">
                     <i class="icofont {{ editProfileIcon }}"></i>
                   </button>
                 </div>
                 <div class="card-body">
-                  <div class="view-info" *ngIf="editProfile">
+                  <div class="view-info" *ngIf="editManager">
                     <div class="row">
                       <div class="col-lg-12">
                         <div class="general-info">
@@ -399,7 +399,7 @@
                       </div>
                     </div>
                   </div>
-                  <div class="edit-info" *ngIf="!editProfile">
+                  <div class="edit-info" *ngIf="!editManager">
                     <div class="row">
                       <div class="col-lg-12">
                         <form #managerForm="ngForm" (ngSubmit)="updateUserForm()">
@@ -515,7 +515,7 @@
                             <!-- end of row -->
                             <div class="text-right">
                               <button type="button" id="edit-cancel" style="background-color:#d71727; border-color:#d71727; color:#fff"
-                                class="btn btn-danger waves-effect" (click)="toggleEditProfile()">Cancel</button>
+                                class="btn btn-danger waves-effect" (click)="toggleManagerProfile()">Cancel</button>
                               <button type="submit" class="btn btn-success waves-effect waves-light m-r-20">Save</button>
                             </div>
                           </div>
@@ -564,24 +564,24 @@
             </div>
           </ng-template>
         </ngb-tab>
-        <ngb-tab title="Team Profiles" *ngIf="currentUser.role == 'Manager'">
+        <ngb-tab title="My Bussiness Profile" *ngIf="currentUser.role == 'Bussiness Manager'">
           <ng-template ngbTabContent>
             <div [@fadeInOutTranslate] class="m-t-15">
               <div class="card">
                 <div class="card-header  border-bottom-line">
                   <h5 class="card-header-text">Team Profiles</h5>
-                  <button id="edit-btn" type="button" style="background-color:#d71727; border-color:#d71727; color:#fff"
-                    class="btn btn-sm btn-primary waves-effect waves-light f-right" (click)="toggleEditProfile()">
-                    Add Team
+                  <button id="edit-btn" *ngIf="editBussinessManager" type="button" style="background-color:#d71727; border-color:#d71727; color:#fff"
+                    class="btn btn-sm btn-primary waves-effect waves-light f-right" (click)="toggleBussinessManagerProfile()">
+                    Add Bussiness
                   </button>
                 </div>
                 <div class="card-body">
-                  <div class="view-info" *ngIf="editProfile">
+                  <div class="view-info" *ngIf="editBussinessManager">
                     <div class="row">
                       <div class="col-lg-12">
                         <div class="general-info">
-                          <div class="card" *ngIf="editProfile">
-                            <div class="col-md-12">
+                          <div class="card" *ngIf="editBussinessManager">
+                            <div class="col-md-12" *ngFor="let bussMngr of currentUser?.bussinessProfiles">
                               <app-card>
                                 <div class="table-responsive">
                                   <table class="table table-hover">
@@ -593,21 +593,279 @@
                                                 alt="chat-user"></a>
                                           </div>
                                           <div class="fl p-l-20">
-                                            <p class="label-font m-b-5">Josephin Doe</p>
-                                            <p class="value-font m-b-5">898t45005634</p>
-                                            <p class="value-font m-b-5">Vijay@gmail.com</p>
+                                            <p class="label-font m-b-5">{{bussMngr.name}}</p>
+                                            <p class="value-font m-b-5">{{bussMngr.mobile}}</p>
+                                            <p class="value-font m-b-5">{{bussMngr.email}}</p>
                                             <p> But I must explain to you how all this mistaken idea of denouncing...
                                             </p>
                                           </div>
                                         </td>
                                         <td>
-                                          <a href="javascript:"><i class="icofont icofont-pen-alt-1  f-18 text-c-blue"></i></a>
-                                          <a href="javascript:"><i class="icofont icofont-eraser f-18 text-default"></i></a>
-                                          <a href="javascript:"><i class="icofont icofont-star f-18 text-default"></i></a>
+                                          <a><i class="icofont icofont-pen-alt-1  f-18 text-c-blue"></i></a>
+                                          <a><i class="icofont icofont-eraser f-18 text-default"></i></a>
+                                          <a><i class="icofont icofont-star f-18 text-default"></i></a>
 
                                         </td>
                                       </tr>
 
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </app-card>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="edit-info" *ngIf="!editBussinessManager">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <form #bussinessmanagerForm="ngForm" (ngSubmit)="addBussinessProfile()">
+                          <div class="general-info">
+                            <div class="row">
+                              <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
+                                <label>Bussiness Info</label>
+                              </div>
+                              <div class="col-lg-6">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
+                                  <input type="text" class="form-control" placeholder="Bussiness Name" name="name"
+                                    [(ngModel)]="bussinessProfile.name">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-calendar"></i></span>
+                                  <input id="dropper-default" class="form-control" type="text" name="startDate"
+                                    [(ngModel)]="bussinessProfile.startDate" placeholder="Select Start Date" />
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-pan"></i></span>
+                                  <input type="text" class="form-control" placeholder="Upload PAN" name="pan"
+                                    [(ngModel)]="bussinessProfile.pan">
+                                </div>
+                              </div>
+                              <!-- end of table col-lg-6 -->
+                              <div class="col-lg-6">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-mobile-phone"></i></span>
+                                  <input type="text" class="form-control" name="mobile" [(ngModel)]="bussinessProfile.mobile"
+                                    placeholder="Bussiness Phone">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-email"></i></span>
+                                  <input type="email" class="form-control" name="email" [(ngModel)]="bussinessProfile.email"
+                                    placeholder="Bussiness Email">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
+                                <label>Social Media Links</label>
+                              </div>
+                              <div class="col-lg-6">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="ti-facebook"></i></span>
+                                  <input type="text" class="form-control" name="facebookLink" [(ngModel)]="bussinessProfile.facebookLink"
+                                    placeholder="Facebook">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-linkedin"></i></span>
+                                  <input type="text" class="form-control" name="linkedInLink" [(ngModel)]="bussinessProfile.linkedInLink"
+                                    placeholder="Linkedin">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-instagram"></i></span>
+                                  <input type="text" class="form-control" name="instagramLink" [(ngModel)]="bussinessProfile.instagramLink"
+                                    placeholder="Instagram">
+                                </div>
+                              </div>
+                              <div class="col-lg-6">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-twitter"></i></span>
+                                  <input type="text" class="form-control" name="twitterLink" [(ngModel)]="bussinessProfile.twitterLink"
+                                    placeholder="Twitter">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-google-plus"></i></span>
+                                  <input type="text" class="form-control" name="googleplusLink" [(ngModel)]="bussinessProfile.googleplusLink"
+                                    placeholder="Google +">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-youtube"></i></span>
+                                  <input type="text" class="form-control" name="youtubeLink" [(ngModel)]="bussinessProfile.youtubeLink"
+                                    placeholder="Youtube">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
+                                <label>Address</label>
+                              </div>
+                              <div class="col-lg-6">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
+                                  <input type="text" class="form-control" name="city" [(ngModel)]="bussinessProfile.city"
+                                    placeholder="City">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
+                                  <input type="text" class="form-control" name="location" [(ngModel)]="bussinessProfile.location"
+                                    placeholder="Location">
+                                </div>
+                              </div>
+                              <div class="col-lg-6">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
+                                  <input type="text" class="form-control" name="pin" [(ngModel)]="bussinessProfile.pin"
+                                    placeholder="Pin">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
+                                  <input type="text" class="form-control" name="area" [(ngModel)]="bussinessProfile.area"
+                                    placeholder="Area">
+                                </div>
+                              </div>
+                            </div>
+                            <!-- end of row -->
+                            <div class="text-right">
+                              <button type="button" id="edit-cancel" style="background-color:#d71727; border-color:#d71727; color:#fff"
+                                class="btn btn-danger waves-effect" (click)="toggleBussinessManagerProfile()">Cancel</button>
+                              <button type="submit" class="btn btn-success waves-effect waves-light m-r-20">Save</button>
+                            </div>
+                          </div>
+                        </form>
+                        <!-- end of edit info -->
+                      </div>
+                      <!-- end of col-lg-12 -->
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="card">
+                          <div class="card-header">
+                            <h5 class="card-header-text">About Bussiness</h5>
+                            <button id="edit-info-btn" type="button" style="background-color:#d71727; border-color:#d71727; color:#fff"
+                              class="btn btn-sm btn-primary waves-effect waves-light f-right" (click)="toggleEditAbout()">
+                              <i class="icofont {{ editAboutIcon }}"></i>
+                            </button>
+                          </div>
+                          <div class="card-body user-desc">
+                            <form #bussinessManagerFormDesc (ngSubmit)="addBussinessProfile()">
+                              <div class="view-desc" *ngIf="editAbout">
+                                <div [innerHTML]="bussinessProfile.aboutBussiness"></div>
+                              </div>
+                              <div class="edit-desc" *ngIf="!editAbout">
+                                <div class="col-md-12">
+                                  <quill-editor [(ngModel)]="bussinessProfile.aboutBussiness" name="aboutBussiness"
+                                    [options]="editorConfig" (blur)="onEditorBlured($event)" (focus)="onEditorFocused($event)"
+                                    (ready)="onEditorCreated($event)" (change)="onContentChanged($event)">
+                                  </quill-editor>
+                                </div>
+                                <div class="text-right">
+                                  <button type="button" id="edit-cancel-btn" style="background-color:#d71727; border-color:#d71727; color:#fff"
+                                    class="btn btn-default waves-effect m-t-20" (click)="toggleBussinessManagerProfile()">Cancel</button>
+                                  <button type="submit" [disabled]="!bussinessProfile.aboutBussiness" class="btn btn-success waves-effect waves-light m-r-20 m-t-20">Save</button>
+                                </div>
+                              </div>
+                            </form>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- end of row -->
+                  </div>
+                </div>
+              </div>
+              <div class="row" *ngIf="!editProfile">
+                <div class="col-lg-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <h5 class="card-header-text">Portfolio</h5>
+                      <!-- <button id="edit-info-btn" type="button" style="background-color:#d71727; border-color:#d71727; color:#fff" class="btn btn-sm btn-primary waves-effect waves-light f-right" (click)="toggleEditAbout()">
+                        <i class="icofont {{ editAboutIcon }}"></i>
+                      </button> -->
+                    </div>
+                    <div class="card-body user-desc">
+
+                      <div class="edit-desc">
+                        <div class="col-md-12">
+
+                        </div>
+                        <div class="col-md-12">
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="input-group">
+                                <span class="input-group-addon"><i class="icofont icofont-pen-alt-1"></i></span>
+                                <input type="text" class="form-control" placeholder="Title" value="">
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="input-group">
+                                <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
+                                <input type="text" class="form-control" placeholder="Bussiness Name" value="Dancer">
+                              </div>
+                            </div>
+
+
+                          </div>
+                        </div>
+                        <div class="col-md-12">
+                          <textarea class="form-control" id="exampleTextarea" rows="5" placeholder="Keywords group"></textarea>
+                        </div>
+                        <div class="text-right">
+                          <a id="edit-cancel-btn" style="background-color:#d71727; border-color:#d71727; color:#fff"
+                            class="btn btn-default waves-effect m-t-20" (click)="toggleEditAbout()">Cancel</a>
+                          <a class="btn btn-success waves-effect waves-light m-r-20 m-t-20">Save</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab title="Team Profiles" *ngIf="currentUser.role == 'Manager' || currentUser.role == 'Bussiness Manager'">
+          <ng-template ngbTabContent>
+            <div [@fadeInOutTranslate] class="m-t-15">
+              <div class="card">
+                <div class="card-header  border-bottom-line">
+                  <h5 class="card-header-text">Team Profiles</h5>
+                  <button id="edit-btn" type="button" *ngIf="editProfile" style="background-color:#d71727; border-color:#d71727; color:#fff"
+                    class="btn btn-sm btn-primary waves-effect waves-light f-right" (click)="toggleEditProfile()">
+                    Add Team
+                  </button>
+                </div>
+                <div class="card-body">
+                  <div class="view-info" *ngIf="editProfile">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="general-info">
+                          <div class="card" *ngIf="editProfile">
+                            <div class="col-md-12" *ngFor="let teamMbr of currentUser?.teamMenbers">
+                              <app-card>
+                                <div class="table-responsive">
+                                  <table class="table table-hover">
+                                    <tbody>
+                                      <tr>
+                                        <td>
+                                          <div class="fl" style="min-height: 100px;">
+                                            <a href="javascript:"><img class="img-radius" src="assets/images/avatar-1.jpg"
+                                                alt="chat-user"></a>
+                                          </div>
+                                          <div class="fl p-l-20">
+                                            <p class="label-font m-b-5">{{teamMbr.name}}</p>
+                                            <p class="value-font m-b-5">{{teamMbr.mobile}}</p>
+                                            <p class="value-font m-b-5">{{teamMbr.email}}</p>
+                                            <p> But I must explain to you how all this mistaken idea of denouncing...
+                                            </p>
+                                          </div>
+                                        </td>
+                                        <td>
+                                          <a><i class="icofont icofont-pen-alt-1  f-18 text-c-blue"></i></a>
+                                          <a><i class="icofont icofont-eraser f-18 text-default"></i></a>
+                                          <a><i class="icofont icofont-star f-18 text-default"></i></a>
+                                        </td>
+                                      </tr>
                                     </tbody>
                                   </table>
                                 </div>
@@ -713,8 +971,6 @@
                                 <input type="text" class="form-control" placeholder="Bussiness Name" value="Dancer">
                               </div>
                             </div>
-
-
                           </div>
                         </div>
                         <div class="col-md-12">
