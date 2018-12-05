@@ -20,9 +20,9 @@
               </div>
               <div>
                 <div class="pull-right cover-btn">
-                  <button type="button" style="background-color:#d71727; border-color:#d71727; color:#fff" class="btn btn-primary m-b-10 m-r-10"><i
+                  <button type="button" style="background-color:#d71727; border-color:#d71727; color:#fff" class="btn btn-danger m-b-10 m-r-10"><i
                       class="icofont icofont-plus"></i> Follow</button>
-                  <button type="button" style="background-color:#d71727; border-color:#d71727; color:#fff" class="btn btn-primary m-b-10"><i
+                  <button type="button" style="background-color:#d71727; border-color:#d71727; color:#fff" class="btn btn-danger m-b-10"><i
                       class="icofont icofont-ui-messaging"></i> Message</button>
                 </div>
               </div>
@@ -70,7 +70,7 @@
                                       <label class="value-font">{{currentUser?.firstName}} {{currentUser?.lastName}}</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-5">
-                                      <label class="label-font">Bussiness Mobile</label>
+                                      <label class="label-font">Mobile</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-7">
                                       <label class="value-font">{{currentUser?.mobile}}</label>
@@ -244,7 +244,7 @@
                   <h5 class="card-header-text">Bussiness Profile</h5>
                   <button id="edit-btn" type="button" style="background-color:#d71727; border-color:#d71727; color:#fff"
                     class="btn btn-sm btn-primary waves-effect waves-light f-right" (click)="toggleManagerProfile()">
-                    <i class="icofont {{ editProfileIcon }}"></i>
+                    <i class="icofont {{ editMngrProfileIcon }}"></i>
                   </button>
                 </div>
                 <div class="card-body">
@@ -416,11 +416,11 @@
                                 </div>
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-calendar"></i></span>
-                                  <input id="dropper-default" class="form-control" type="text" name="bussinessStartDate" [(ngModel)]="currentUser.bussinessStartDate"
-                                    placeholder="Start Date" />
+                                  <input id="dropper-default" class="form-control" type="text" name="bussinessStartDate"
+                                    [(ngModel)]="currentUser.bussinessStartDate" placeholder="Start Date" />
                                 </div>
                                 <div class="input-group">
-                                  <span class="input-group-addon"><i class="icofont icofont-pan"></i></span>
+                                  <span class="input-group-addon"><i class="icofont icofont-upload-alt"></i></span>
                                   <input type="text" class="form-control" placeholder="Upload PAN" name="pan"
                                     [(ngModel)]="currentUser.pan">
                                 </div>
@@ -455,29 +455,29 @@
                                     placeholder="Facebook">
                                 </div>
                                 <div class="input-group">
-                                  <span class="input-group-addon"><i class="icofont icofont-linkedin"></i></span>
+                                  <span class="input-group-addon"><i class="ti-linkedin"></i></span>
                                   <input type="text" class="form-control" name="linkedInLink" [(ngModel)]="currentUser.linkedInLink"
                                     placeholder="Linkedin">
                                 </div>
                                 <div class="input-group">
-                                  <span class="input-group-addon"><i class="icofont icofont-instagram"></i></span>
+                                  <span class="input-group-addon"><i class="ti-instagram"></i></span>
                                   <input type="text" class="form-control" name="instagramLink" [(ngModel)]="currentUser.instagramLink"
                                     placeholder="Instagram">
                                 </div>
                               </div>
                               <div class="col-lg-6">
                                 <div class="input-group">
-                                  <span class="input-group-addon"><i class="icofont icofont-twitter"></i></span>
+                                  <span class="input-group-addon"><i class="ti-twitter-alt"></i></span>
                                   <input type="text" class="form-control" name="twitterLink" [(ngModel)]="currentUser.twitterLink"
                                     placeholder="Twitter">
                                 </div>
                                 <div class="input-group">
-                                  <span class="input-group-addon"><i class="icofont icofont-google-plus"></i></span>
+                                  <span class="input-group-addon"><i class="ti-google"></i></span>
                                   <input type="text" class="form-control" name="googleplusLink" [(ngModel)]="currentUser.googleplusLink"
                                     placeholder="Google +">
                                 </div>
                                 <div class="input-group">
-                                  <span class="input-group-addon"><i class="icofont icofont-youtube"></i></span>
+                                  <span class="input-group-addon"><i class="ti-youtube"></i></span>
                                   <input type="text" class="form-control" name="youtubeLink" [(ngModel)]="currentUser.youtubeLink"
                                     placeholder="Youtube">
                                 </div>
@@ -897,12 +897,12 @@
                                     placeholder="Email Id">
                                 </div>
                                 <div class="input-group">
-                                  <span class="input-group-addon"><i class="icofont icofont-pan"></i></span>
+                                  <span class="input-group-addon"><i class="icofont icofont-guiter"></i></span>
                                   <input type="text" class="form-control" [(ngModel)]="managerUser.talent" name="talent"
                                     placeholder="Talent">
                                 </div>
                                 <div class="input-group">
-                                  <span class="input-group-addon"><i class="icofont icofont-pan"></i></span>
+                                  <span class="input-group-addon"><i class="icofont icofont-upload-alt"></i></span>
                                   <input type="text" class="form-control" [(ngModel)]="managerUser.pan" name="pan"
                                     placeholder="PAN">
                                 </div>

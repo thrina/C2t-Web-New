@@ -54,7 +54,7 @@ export class ProfileComponent implements OnInit {
   editManager = true;
   editBussinessManager = true;
   editProfileIcon = 'icofont-edit';
-
+editMngrProfileIcon = 'icofont-edit';
   editAbout = true;
   editAboutIcon = 'icofont-edit';
   currentUser: Object = {};
@@ -147,7 +147,7 @@ export class ProfileComponent implements OnInit {
   }
 
   toggleManagerProfile() {
-    this.editProfileIcon = (this.editProfileIcon === 'icofont-close') ? 'icofont-edit' : 'icofont-close';
+    this.editMngrProfileIcon = (this.editMngrProfileIcon === 'icofont-close') ? 'icofont-edit' : 'icofont-close';
     this.editManager = !this.editManager;
   }
 
@@ -194,8 +194,8 @@ export class ProfileComponent implements OnInit {
   getLatestInfo() {
     this.profileService.getUpdatedInfo(this.currentUser).subscribe(data => {
       console.log(data, "updated info");
-      this.toggleEditProfile();
-      this.toggleEditAbout();
+      // this.toggleEditProfile();
+      // this.toggleEditAbout();
     })
 
   }
