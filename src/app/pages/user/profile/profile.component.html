@@ -38,7 +38,7 @@
   <div class="col-lg-12">
     <div class="md-tabs">
       <ngb-tabset>
-        <ngb-tab title="My Profile" *ngIf="currentUser.role == 'Hire People' || currentUser.role == 'Artist'  || currentUser?.role == 'Bussiness Manager'">
+        <ngb-tab title="My Profile">
           <ng-template ngbTabContent>
             <div [@fadeInOutTranslate] class="m-t-15">
               <!-- personal card start -->
@@ -84,7 +84,7 @@
                                       <label class="label-font">Date Started</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-7">
-                                      <label class="value-font">{{currentUser?.startDate}}</label>
+                                      <label class="value-font">{{currentUser?.startDate || 'NA'}}</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-5">
                                       <label class="label-font">Email</label>
@@ -264,19 +264,19 @@
                                       <label class="label-font">Bussiness Name</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-7">
-                                      <label class="value-font">{{currentUser?.firstName}} {{currentUser?.lastName}}</label>
+                                      <label class="value-font">{{currentUser?.bussinessName || 'NA'}}</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-5">
                                       <label class="label-font">Bussiness Mobile</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-7">
-                                      <label class="value-font">{{currentUser?.mobile}}</label>
+                                      <label class="value-font">{{currentUser?.bussinessMobile || 'NA'}}</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-5">
                                       <label class="label-font">Bussiness Email</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-7">
-                                      <label class="value-font">{{currentUser?.email}}</label>
+                                      <label class="value-font">{{currentUser?.bussinessEmail || 'NA'}}</label>
                                     </div>
                                   </div>
                                 </div>
@@ -286,7 +286,7 @@
                                       <label class="label-font">Date Started</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-7">
-                                      <label class="value-font">{{currentUser?.bob || 'NA'}}</label>
+                                      <label class="value-font">{{currentUser?.bussinessStartDate || 'NA'}}</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-5">
                                       <label class="label-font">PAN Card</label>
@@ -366,13 +366,13 @@
                                       <label class="label-font">City</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-7">
-                                      <label class="value-font">{{currentUser?.city || 'NA'}}</label>
+                                      <label class="value-font">{{currentUser?.bussinessCity || 'NA'}}</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-5">
                                       <label class="label-font">Location</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-7">
-                                      <label class="value-font">{{currentUser?.location || 'NA'}}</label>
+                                      <label class="value-font">{{currentUser?.bussinessLocation || 'NA'}}</label>
                                     </div>
                                   </div>
                                 </div>
@@ -382,13 +382,13 @@
                                       <label class="label-font">Pin</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-7">
-                                      <label class="value-font">{{currentUser?.pin || 'NA'}}</label>
+                                      <label class="value-font">{{currentUser?.bussinessPin || 'NA'}}</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-5">
                                       <label class="label-font">Area</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-7">
-                                      <label class="value-font">{{currentUser?.area || 'NA'}}</label>
+                                      <label class="value-font">{{currentUser?.bussinessArea || 'NA'}}</label>
                                     </div>
                                   </div>
                                 </div>
@@ -411,13 +411,13 @@
                               <div class="col-lg-6">
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
-                                  <input type="text" class="form-control" placeholder="First Name" name="firstName"
-                                    [(ngModel)]="currentUser.firstName">
+                                  <input type="text" class="form-control" placeholder="Bussiness Name" name="bussinessName"
+                                    [(ngModel)]="currentUser.bussinessName">
                                 </div>
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-calendar"></i></span>
-                                  <input id="dropper-default" class="form-control" type="text" name="dob" [(ngModel)]="currentUser.dob"
-                                    placeholder="Select Your Birth Date" />
+                                  <input id="dropper-default" class="form-control" type="text" name="bussinessStartDate" [(ngModel)]="currentUser.bussinessStartDate"
+                                    placeholder="Start Date" />
                                 </div>
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-pan"></i></span>
@@ -427,19 +427,19 @@
                               </div>
                               <!-- end of table col-lg-6 -->
                               <div class="col-lg-6">
-                                <div class="input-group">
+                                <!-- <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
                                   <input type="text" class="form-control" placeholder="Last Name" name="lastName"
                                     [(ngModel)]="currentUser.lastName">
-                                </div>
+                                </div> -->
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-mobile-phone"></i></span>
-                                  <input type="text" class="form-control" name="mobile" [(ngModel)]="currentUser.mobile"
+                                  <input type="text" class="form-control" name="mobile" [(ngModel)]="currentUser.bussinessMobile"
                                     placeholder="Mobile Number">
                                 </div>
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-email"></i></span>
-                                  <input type="email" class="form-control" name="email" [(ngModel)]="currentUser.email"
+                                  <input type="email" class="form-control" name="email" [(ngModel)]="currentUser.bussinessEmail"
                                     placeholder="Email Id">
                                 </div>
                               </div>
@@ -490,24 +490,24 @@
                               <div class="col-lg-6">
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
-                                  <input type="text" class="form-control" name="city" [(ngModel)]="currentUser.city"
+                                  <input type="text" class="form-control" name="bussinessCity" [(ngModel)]="currentUser.bussinessCity"
                                     placeholder="City">
                                 </div>
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
-                                  <input type="text" class="form-control" name="location" [(ngModel)]="currentUser.location"
-                                    placeholder="Location">
+                                  <input type="text" class="form-control" name="location" [(ngModel)]="currentUser.bussinessLocation"
+                                    placeholder="Bussiness Location">
                                 </div>
                               </div>
                               <div class="col-lg-6">
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
-                                  <input type="text" class="form-control" name="pin" [(ngModel)]="currentUser.pin"
+                                  <input type="text" class="form-control" name="bussinessPin" [(ngModel)]="currentUser.bussinessPin"
                                     placeholder="Pin">
                                 </div>
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
-                                  <input type="text" class="form-control" name="area" [(ngModel)]="currentUser.area"
+                                  <input type="text" class="form-control" name="area" [(ngModel)]="currentUser.bussinessArea"
                                     placeholder="Area">
                                 </div>
                               </div>
