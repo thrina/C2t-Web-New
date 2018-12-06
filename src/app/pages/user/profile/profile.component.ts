@@ -4,6 +4,7 @@ import { animate, style, AUTO_STYLE, state, transition, trigger } from '@angular
 import '../../../../assets/charts/echart/echarts-all.js';
 import { FileUploader } from 'ng2-file-upload';
 import { ProfileService } from './profile.service';
+import { CustomNotifyService } from '../../../components/shared/custom-notify.service';
 
 
 const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
@@ -54,11 +55,12 @@ export class ProfileComponent implements OnInit {
   editManager = true;
   editBussinessManager = true;
   editProfileIcon = 'icofont-edit';
-editMngrProfileIcon = 'icofont-edit';
+  editMngrProfileIcon = 'icofont-edit';
   editAbout = true;
   editAboutIcon = 'icofont-edit';
   currentUser: Object = {};
   firstName: string;
+  pnotify: any;
 
   public editor;
   public editorContent = '';
@@ -75,12 +77,13 @@ editMngrProfileIcon = 'icofont-edit';
   profitChartOption: any;
   managerUser: any = {};
   bussinessProfile: any = {};
-  constructor(public http: Http, private profileService: ProfileService) {
+  constructor(public http: Http, private profileService: ProfileService, private notify: CustomNotifyService) {
     let currtUser = JSON.parse(JSON.stringify(localStorage.getItem('currentUser')));
     this.currentUser = JSON.parse(currtUser)
   }
 
   ngOnInit() {
+    this.pnotify = this.notify.getPNotify();
     this.http.get(`assets/data/data.json`)
       .subscribe((data) => {
         this.data = data.json();
@@ -179,8 +182,10 @@ editMngrProfileIcon = 'icofont-edit';
       if (data.messsage == "success") {
         this.currentUser = { ...this.currentUser };
         this.getLatestInfo();
-        if (!this.editProfile)
+        if (!this.editProfile) {
+          this.pnotify.success("Profile updated successfully");
           this.toggleEditProfile();
+        }
         if (!this.editAbout)
           this.toggleEditAbout();
         if (!this.editBussinessManager)

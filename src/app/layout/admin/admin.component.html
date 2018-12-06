@@ -44,7 +44,8 @@
                     <a [routerLink]="['/user/profile']">
                       <i class="ti-user"></i>
                       <span *ngIf="currentUser?.role == 'Hire People' || currentUser?.role == 'Artist'">Profile</span>
-                      <span *ngIf="currentUser?.role == 'Manager' || currentUser?.role == 'Bussiness Manager'">My Bussiness Profile</span>
+                      <span *ngIf="currentUser?.role == 'Manager' || currentUser?.role == 'Bussiness Manager'">My
+                        Bussiness Profile</span>
                     </a>
                   </li>
                   <li>
@@ -58,7 +59,7 @@
                     <!-- </a> -->
                   </li>
                   <li>
-                    <a (click)="logout()">
+                    <a (click)="logout()" class="curser_pointer">
                       <i class="ti-layout-sidebar-left"></i> Logout
                     </a>
                   </li>
