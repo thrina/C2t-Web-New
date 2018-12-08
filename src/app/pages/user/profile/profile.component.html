@@ -8,7 +8,8 @@
           <div class="col-md-12">
             <div class="media-left">
               <a class="profile-image">
-                <img class="user-img img-radius" src="assets/images/avatar-4.jpg" alt="user-img">
+                <input type="file" id="imgFileUpload" ng2FileSelect (change)="changeImg($event)" style="display:none">
+                <img class="user-img img-radius curser_pointer" src="assets/images/avatar-4.jpg" alt="user-img" (click)="changeProfileImg()">
               </a>
             </div>
             <div class="media-body row">
@@ -81,10 +82,10 @@
                                 <div class="col-lg-12 col-xl-6">
                                   <div class="row">
                                     <div class="col-lg-12 col-xl-5">
-                                      <label class="label-font">Date Started</label>
+                                      <label class="label-font">Date of birth</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-7">
-                                      <label class="value-font">{{currentUser?.startDate || 'NA'}}</label>
+                                      <label class="value-font">{{currentUser?.dob | date:'dd-MMM-yyyy' || 'NA'}}</label>
                                     </div>
                                     <div class="col-lg-12 col-xl-5">
                                       <label class="label-font">Email</label>
@@ -164,8 +165,8 @@
                                 </div>
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-calendar"></i></span>
-                                  <input id="dropper-default" class="form-control" type="text" [(ngModel)]="currentUser.dob"
-                                    name="dob" placeholder="Select Your Birth Date" />
+                                  <input type="date" class="form-control" [(ngModel)]="currentUser.dob" name="dob"
+                                    placeholder="Select Your Birth Date" />
                                 </div>
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-email"></i></span>

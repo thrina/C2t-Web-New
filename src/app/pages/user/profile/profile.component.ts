@@ -6,10 +6,7 @@ import { FileUploader } from 'ng2-file-upload';
 import { ProfileService } from './profile.service';
 import { CustomNotifyService } from '../../../components/shared/custom-notify.service';
 
-
 const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
-
-
 
 @Component({
   selector: 'app-profile',
@@ -47,10 +44,7 @@ const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 export class ProfileComponent implements OnInit {
 
   hasBaseDropZoneOver = false;
-  uploader1: FileUploader = new FileUploader({
-    url: URL,
-    isHTML5: true
-  });
+  
   editProfile = true;
   editManager = true;
   editBussinessManager = true;
@@ -183,7 +177,7 @@ export class ProfileComponent implements OnInit {
         this.currentUser = { ...this.currentUser };
         this.getLatestInfo();
         if (!this.editProfile) {
-          this.pnotify.success("Profile updated successfully");
+          this.pnotify.success({title:"Profile updated successfully",delay:2000});
           this.toggleEditProfile();
         }
         if (!this.editAbout)
@@ -198,9 +192,6 @@ export class ProfileComponent implements OnInit {
 
   getLatestInfo() {
     this.profileService.getUpdatedInfo(this.currentUser).subscribe(data => {
-      console.log(data, "updated info");
-      // this.toggleEditProfile();
-      // this.toggleEditAbout();
     })
 
   }
@@ -226,6 +217,24 @@ export class ProfileComponent implements OnInit {
       this.currentUser['bussinessProfiles'].push(this.bussinessProfile);
     }
     this.updateUserForm();
+  }
+
+  changeProfileImg() {
+    console.log("?????????????????????????");
+    var fileupload = document.getElementById("imgFileUpload");
+    fileupload.click();
+  
+  }
+
+  changeImg(event) {
+    console.log(event.target.files, "eveg");
+    let file = event.target.files[0];
+    const formData = new FormData();
+   
+    formData.append("myImg", file, file.name);
+    console.log(formData,"??????????????????????",file);
+    
+    
   }
 
 }
