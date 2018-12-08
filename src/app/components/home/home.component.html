@@ -1664,32 +1664,34 @@
       </div>
       <div class="form-group row">
         <div class="col-sm-12">
-          <input type="text" class="form-control" id="mobile" placeholder="Mobile Number" formControlName="mobile">
-          <div class="messages text-danger" *ngIf="(myForm.controls.mobile?.dirty || myForm.controls.mobile?.touched) && myForm.controls.mobile.invalid">Mobile
-            can't be blank</div>
+          <input type="text" class="form-control" pattern="[0-9]{10}" id="mobile" placeholder="Mobile Number"
+            formControlName="mobile">
+          <div class="messages text-danger" *ngIf="(myForm.controls.mobile?.dirty || myForm.controls.mobile?.touched) && myForm.controls.mobile.invalid">Enter
+            valid 10 digit mobile number</div>
         </div>
       </div>
       <div class="form-group row">
         <div class="col-sm-12">
-          <input type="text" class="form-control" id="email" placeholder="Email Address" formControlName="email">
-          <div class="messages text-danger" *ngIf="(myForm.controls.email?.dirty || myForm.controls.email?.touched) && myForm.controls.email.invalid">Email
-            can't be blank</div>
+          <input type="text" class="form-control" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" id="email"
+            placeholder="Email Address" formControlName="email">
+          <div class="messages text-danger" *ngIf="(myForm.controls.email?.dirty || myForm.controls.email?.touched) && myForm.controls.email.invalid">Enter
+            valid email-id</div>
         </div>
       </div>
       <div class="form-group row">
         <div class="col-sm-12">
-          <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password">
+          <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password"
+            maxlength="8">
           <div class="messages text-danger error" *ngIf="(myForm.controls.password?.dirty || myForm.controls.password?.touched) && myForm.controls.password.invalid">Password
-            can't be blank</div>
+            must be atleast 8 characters</div>
         </div>
       </div>
       <div class="form-group row">
         <div class="col-sm-12">
-          <input type="password" class="form-control" id="rpassword" placeholder="Confirm Password" formControlName="rpassword">
-          <div class="messages text-danger" *ngIf="(myForm.controls.rpassword?.dirty || myForm.controls.rpassword?.touched) && myForm.controls.rpassword.invalid">Repeat
-            password can't be blank</div>
-          <div class="messages text-danger" *ngIf="myForm.controls.rpassword.errors?.equalTo">The passwords does not
-            match</div>
+          <input type="password" class="form-control" id="rpassword" placeholder="Confirm Password" formControlName="rpassword"
+            maxlength="8">
+          <div class="messages text-danger" *ngIf="myForm.controls.rpassword.errors?.equalTo && ((myForm.controls.rpassword?.dirty || myForm.controls.rpassword?.touched) && myForm.controls.rpassword.invalid )">Confirm
+            passwords does not match</div>
         </div>
       </div>
 

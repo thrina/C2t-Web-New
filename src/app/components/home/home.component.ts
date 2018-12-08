@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HomeService } from './home.service';
 import { Router } from '@angular/router';
 import { CustomNotifyService } from '../shared/custom-notify.service';
+import {CustomValidators} from 'ng2-validation';
 
 @Component({
     selector: 'app-home',
@@ -24,7 +25,7 @@ export class HomeComponent implements OnInit {
         const password = new FormControl('', Validators.required);
         const role = new FormControl('', Validators.required);
         const email = new FormControl('', [Validators.required, Validators.email]);
-        const rpassword = new FormControl('', [Validators.required]);
+        const rpassword = new FormControl('', [Validators.required, CustomValidators.equalTo(password)]);
 
         this.myForm = new FormGroup({
             firstName: firstName,
@@ -50,7 +51,8 @@ export class HomeComponent implements OnInit {
         this.homeService.getRegistered(this.myForm.value).subscribe(data => {
             console.log(data, "sign up");
             if (data.messsage == "Registered successfully") {
-                this.pnotify.success("Registered successfully");
+                this.myForm.reset();
+                this.pnotify.success({text:'Registered successfully',delay:2000});
             } else {
                 this.pnotify.error("Registration failure");
             }
@@ -62,12 +64,12 @@ export class HomeComponent implements OnInit {
         this.homeService.userLogin(userCredentials).subscribe(data => {
             if (data && data['successMessage'] == "success") {
                 this.currentUser = data.rowData;
-                this.pnotify.success('Loggin successfully');
+                this.pnotify.success({text:'Loggin successfully',delay:2000});
                 localStorage.setItem('currentUser', this.currentUser);
                 this.router.navigate(['/user/profile']);
             } else {
                 this.isValidUser = false;
-                this.pnotify.error(data.failureMesssage);
+                this.pnotify.error({ text: data.failureMesssage,delay:2000 });
             }
         })
     }
