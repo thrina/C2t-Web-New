@@ -29,17 +29,10 @@
             </ul>
             <ul [@mobileMenuTop]="isCollapsedMobile" class="nav-right" [ngClass]="isCollapsedMobile">
               <li class="user-profile header-notification">
-                <!-- <a [routerLink]="['/']"> -->
                 <img src="assets/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
                 <span>{{currentUser.firstName}} {{currentUser.lastName}}</span>
                 <i class="ti-angle-down"></i>
-                <!-- </a> -->
                 <ul class="show-notification profile-notification">
-                  <!-- <li>
-                    <a [routerLink]="['/crm-contact']">
-                      <i class="ti-settings"></i> My Bussiness Profile
-                    </a>
-                  </li> -->
                   <li>
                     <a [routerLink]="['/user/profile']">
                       <i class="ti-user"></i>
@@ -47,16 +40,6 @@
                       <span *ngIf="currentUser?.role == 'Manager' || currentUser?.role == 'Bussiness Manager'">My
                         Bussiness Profile</span>
                     </a>
-                  </li>
-                  <li>
-                    <!-- <a [routerLink]="['/advance/notifications']"> -->
-                    <i class="ti-email"></i> My Messages
-                    <!-- </a> -->
-                  </li>
-                  <li>
-                    <!-- <a [routerLink]="['/authentication/lock-screen']" target="_blank"> -->
-                    <i class="ti-lock"></i> Lock Screen
-                    <!-- </a> -->
                   </li>
                   <li>
                     <a (click)="logout()" class="curser_pointer">

@@ -24590,22 +24590,28 @@ body.dark #styleSelector .form-control {
   margin-left: 0px;
   margin-right: 0px;
 }
-.link_hover:hover{
-  color:#d82428 !important;
+
+.link_hover:hover {
+  color: #d82428 !important;
 }
+
 .border0 {
   border: 0px;
 }
-.curser_pointer{
-  cursor:pointer !important;
+
+.curser_pointer {
+  cursor: pointer !important;
 }
+
 .mt0 {
   margin-top: 0px;
 }
-.hit_area{
-  height:20px;
-  width:20px;
+
+.hit_area {
+  height: 20px;
+  width: 20px;
 }
+
 .mt10 {
   margin-top: 10px;
 }
@@ -25204,6 +25210,7 @@ img {
 .searchbar {
   height: 50px;
 }
+
 /* 
 .nav-tabs .nav-link.active {
   color: #D71727;
@@ -25633,9 +25640,11 @@ img {
 .mt60 {
   margin-top: 60px;
 }
-.border_n{
-  border:none !important;
+
+.border_n {
+  border: none !important;
 }
+
 .pos_rel {
   position: relative;
 }
@@ -25722,15 +25731,21 @@ img {
 /* my css */
 
 .modal-content {
-  max-height: 90vh !important;
+  max-height: 85vh !important;
 
 }
 
 .modal-dialog .modal-content .modal-body {
+  max-height: 60vh !important;
   overflow-y: auto;
   overflow-x: hidden;
 }
 
 .app-modal-footer {
   width: 100% !important;
+}
+
+.btn:disabled {
+  cursor: not-allowed !important;
+  opacity: 0.5;
 }

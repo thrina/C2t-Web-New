@@ -1,77 +1,34 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { HomeService } from './home.service';
 import { Router } from '@angular/router';
 import { CustomNotifyService } from '../shared/custom-notify.service';
-import {CustomValidators} from 'ng2-validation';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
+import { AuthenticationFormComponent } from '../authentication/authentication-form/authentication-form.component';
 
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
     styleUrls: ['./home.component.css']
 })
+    
 export class HomeComponent implements OnInit {
-    myForm: FormGroup;
-    loginForm: FormGroup;
-    loginMsg: any;
-    isValidUser: boolean = true;
-    currentUser: any = {}
-    pnotify: any;
+    authForm: BsModalRef;
 
-    constructor(private homeService: HomeService, private router: Router, private notify: CustomNotifyService) {
-        const firstName = new FormControl('', Validators.required);
-        const lastName = new FormControl('', Validators.required);
-        const mobile = new FormControl('', Validators.required);
-        const password = new FormControl('', Validators.required);
-        const role = new FormControl('', Validators.required);
-        const email = new FormControl('', [Validators.required, Validators.email]);
-        const rpassword = new FormControl('', [Validators.required, CustomValidators.equalTo(password)]);
-
-        this.myForm = new FormGroup({
-            firstName: firstName,
-            lastName: lastName,
-            mobile: mobile,
-            email: email,
-            password: password,
-            rpassword: rpassword,
-            role: role
-        });
-
-        this.loginForm = new FormGroup({
-            emailID: email,
-            currtpassword: password,
-        });
-    }
+    constructor(private homeService: HomeService, private router: Router, private modalService: BsModalService) {    }
 
     ngOnInit() {
-        this.pnotify = this.notify.getPNotify();
     }
 
-    register() {
-        this.homeService.getRegistered(this.myForm.value).subscribe(data => {
-            console.log(data, "sign up");
-            if (data.messsage == "Registered successfully") {
-                this.myForm.reset();
-                this.pnotify.success({text:'Registered successfully',delay:2000});
-            } else {
-                this.pnotify.error("Registration failure");
-            }
-        })
+    openSignUpModal() {
+        let config = { animated: true, keyboard: true, backdrop: true, ignoreBackdropClick: true}
+        this.authForm = this.modalService.show(AuthenticationFormComponent, config);
+        (<AuthenticationFormComponent>this.authForm.content).showConfirmationModal('Sign Up');
     }
 
-    login() {
-        let userCredentials = { "email": this.loginForm.value.emailID, "password": this.loginForm.value.currtpassword };
-        this.homeService.userLogin(userCredentials).subscribe(data => {
-            if (data && data['successMessage'] == "success") {
-                this.currentUser = data.rowData;
-                this.pnotify.success({text:'Loggin successfully',delay:2000});
-                localStorage.setItem('currentUser', this.currentUser);
-                this.router.navigate(['/user/profile']);
-            } else {
-                this.isValidUser = false;
-                this.pnotify.error({ text: data.failureMesssage,delay:2000 });
-            }
-        })
+    openSignInModal() {
+        let config = { animated: true, keyboard: true, backdrop: true, ignoreBackdropClick: true}
+        this.authForm = this.modalService.show(AuthenticationFormComponent, config);
+        (<AuthenticationFormComponent>this.authForm.content).showConfirmationModal('Sign In');
     }
-
 }

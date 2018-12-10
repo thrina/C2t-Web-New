@@ -19,14 +19,14 @@
                   <span class="text-white" *ngIf="currentUser.role != 'Hire People'">{{currentUser?.role}}</span>
                 </div>
               </div>
-              <div>
+              <!-- <div>
                 <div class="pull-right cover-btn">
                   <button type="button" style="background-color:#d71727; border-color:#d71727; color:#fff" class="btn btn-danger m-b-10 m-r-10"><i
                       class="icofont icofont-plus"></i> Follow</button>
                   <button type="button" style="background-color:#d71727; border-color:#d71727; color:#fff" class="btn btn-danger m-b-10"><i
                       class="icofont icofont-ui-messaging"></i> Message</button>
                 </div>
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
@@ -45,7 +45,10 @@
               <!-- personal card start -->
               <div class="card">
                 <div class="card-header  border-bottom-line">
-                  <h5 class="card-header-text">My Profile</h5>
+                  <h5 class="card-header-text">
+                    <label *ngIf="editProfile">My Profile</label>
+                    <label *ngIf="!editProfile">Edit Profile</label>
+                  </h5>
                   <button id="edit-btn" type="button" style="background-color:#d71727; border-color:#d71727; color:#fff"
                     class="btn btn-sm btn-primary waves-effect waves-light f-right" (click)="toggleEditProfile()">
                     <i class="icofont {{ editProfileIcon }}"></i>
@@ -170,8 +173,8 @@
                                 </div>
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-email"></i></span>
-                                  <input type="email" class="form-control" [(ngModel)]="currentUser.email" name="email"
-                                    placeholder="Email Id">
+                                  <input type="email" disabled class="form-control" [(ngModel)]="currentUser.email"
+                                    name="email" placeholder="Email Id">
                                 </div>
                               </div>
                               <div class="col-lg-6">
@@ -182,9 +185,11 @@
                                 </div>
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-mobile-phone"></i></span>
-                                  <input type="text" class="form-control" [(ngModel)]="currentUser.mobile" name="mobile"
-                                    placeholder="Mobile Number">
+                                  <input type="text" class="form-control" pattern="[0-9]{10}" [(ngModel)]="currentUser.mobile"
+                                    name="mobile" placeholder="Mobile Number" #mobile="ngModel">
                                 </div>
+                                <div class="messages text-danger" *ngIf="mobile.invalid">Enter
+                                  valid 10 digit mobile number</div>
                               </div>
                             </div>
                             <div class="row">
@@ -206,9 +211,11 @@
                               <div class="col-lg-6">
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
-                                  <input type="text" class="form-control" [(ngModel)]="currentUser.pin" name="pin"
-                                    placeholder="Pin">
+                                  <input type="text" class="form-control" pattern="[0-9]{6}" [(ngModel)]="currentUser.pin"
+                                    name="pin" placeholder="Pin Code" #pin="ngModel" required>
                                 </div>
+                                <div class="messages text-danger" *ngIf="(pin.invalid || pin.invalid) && pin.invalid">Enter
+                                  valid pin code</div>
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
                                   <input type="text" class="form-control" [(ngModel)]="currentUser.area" name="area"
@@ -220,7 +227,7 @@
                             <div class="text-right">
                               <button id="edit-cancel" style="background-color:#d71727; border-color:#d71727; color:#fff"
                                 class="btn btn-danger waves-effect" (click)="toggleEditProfile()">Cancel</button>
-                              <button type="submit" class="btn btn-success waves-effect waves-light m-r-20">Save</button>
+                              <button type="submit" [disabled]="updateForm.invalid" class="btn btn-success waves-effect waves-light m-r-20">Save</button>
                             </div>
                           </div>
                         </form>

@@ -19,9 +19,8 @@ import {HttpClientModule }from '@angular/common/http';
 import { JoinUsComponent } from './components/join-us/join-us.component'; 
 import { CustomNotifyService } from './components/shared/custom-notify.service'; 
 import { CarouselModule } from 'ngx-bootstrap';
-
-
-
+import { AuthenticationFormComponent } from './components/authentication/authentication-form/authentication-form.component';
+import { ModalModule } from 'ngx-bootstrap';
 
 @NgModule( {
   declarations:[
@@ -31,7 +30,8 @@ import { CarouselModule } from 'ngx-bootstrap';
     TitleComponent, 
     AuthComponent, 
     HomeComponent,
-    JoinUsComponent
+    JoinUsComponent,
+    AuthenticationFormComponent
   ], 
   imports:[
     BrowserModule, 
@@ -42,9 +42,11 @@ import { CarouselModule } from 'ngx-bootstrap';
     FormsModule, 
     ReactiveFormsModule, 
     HttpClientModule,
-    CarouselModule.forRoot()
+    CarouselModule.forRoot(),
+    ModalModule.forRoot()
   ], 
   providers:[HomeService, CustomNotifyService], 
-  bootstrap:[AppComponent, HomeComponent]
+  bootstrap: [AppComponent, HomeComponent],
+  entryComponents: [AuthenticationFormComponent]
 })
 export class AppModule {}

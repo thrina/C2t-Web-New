@@ -7,8 +7,8 @@
   <div class="col-12 wid100">
 
     <div class="top_info_pa1">
-      <a class="text-black-50 link_button f16 rockwell curser_pointer" (click)="modalDefault.show()">Sign Up</a>
-      <a class="link_button text-black-50 f16 rockwell curser_pointer" (click)="loginModal.show()">Sign In</a>
+      <a class="text-black-50 link_button f16 rockwell curser_pointer" (click)="openSignUpModal()">Sign Up</a>
+      <a class="link_button text-black-50 f16 rockwell curser_pointer" (click)="openSignInModal()">Sign In</a>
     </div>
     <div class="top_info_pa2 mr_30">
       <i class="far fa-envelope f14"></i>
@@ -141,7 +141,7 @@
               <div class="new1">
                 <div>
                   <img src="../../../assets/images/Profile_2.png">
-                  
+
                 </div>
                 <div class="new11 rockwell">
                   <h5 class="colred f16 rockwell"><b>Kirsty
@@ -1636,180 +1636,3 @@
     </div>
   </div>
 </div>
-
-<app-modal-basic #modalDefault>
-  <div class="app-modal-header">
-    <h4 class="modal-title">Sign Up</h4>
-    <button type="button" class="close basic-close curser_pointer hit_area" (click)="modalDefault.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="app-modal-body">
-    <form [formGroup]="myForm" (ngSubmit)="register()">
-      <div class="form-group row">
-        <div class="col-sm-12">
-          <input type="text" class="form-control" id="firstName" placeholder="First Name" formControlName="firstName">
-          <div class="messages text-danger" *ngIf="(myForm.controls.firstName?.dirty || myForm.controls.firstName?.touched) && myForm.controls.firstName.invalid">First
-            name
-            can't be blank</div>
-        </div>
-      </div>
-      <div class="form-group row">
-        <div class="col-sm-12">
-          <input type="text" class="form-control" id="lastName" placeholder="Last Name" formControlName="lastName">
-          <div class="messages text-danger" *ngIf="(myForm.controls.lastName?.dirty || myForm.controls.lastName?.touched) && myForm.controls.lastName.invalid">Last
-            name
-            can't be blank</div>
-        </div>
-      </div>
-      <div class="form-group row">
-        <div class="col-sm-12">
-          <input type="text" class="form-control" pattern="[0-9]{10}" id="mobile" placeholder="Mobile Number"
-            formControlName="mobile">
-          <div class="messages text-danger" *ngIf="(myForm.controls.mobile?.dirty || myForm.controls.mobile?.touched) && myForm.controls.mobile.invalid">Enter
-            valid 10 digit mobile number</div>
-        </div>
-      </div>
-      <div class="form-group row">
-        <div class="col-sm-12">
-          <input type="text" class="form-control" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" id="email"
-            placeholder="Email Address" formControlName="email">
-          <div class="messages text-danger" *ngIf="(myForm.controls.email?.dirty || myForm.controls.email?.touched) && myForm.controls.email.invalid">Enter
-            valid email-id</div>
-        </div>
-      </div>
-      <div class="form-group row">
-        <div class="col-sm-12">
-          <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password"
-            maxlength="8">
-          <div class="messages text-danger error" *ngIf="(myForm.controls.password?.dirty || myForm.controls.password?.touched) && myForm.controls.password.invalid">Password
-            must be atleast 8 characters</div>
-        </div>
-      </div>
-      <div class="form-group row">
-        <div class="col-sm-12">
-          <input type="password" class="form-control" id="rpassword" placeholder="Confirm Password" formControlName="rpassword"
-            maxlength="8">
-          <div class="messages text-danger" *ngIf="myForm.controls.rpassword.errors?.equalTo && ((myForm.controls.rpassword?.dirty || myForm.controls.rpassword?.touched) && myForm.controls.rpassword.invalid )">Confirm
-            passwords does not match</div>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="col-sm-12">
-          <div class="form-check form-check-inline">
-            <label class="form-check-label label-font">
-              <input class="form-check-input" type="radio" value="Hire People" formControlName="role"> I Hire people
-            </label>
-          </div>
-        </div>
-        <div class="col-sm-12">
-
-          <div class="form-check form-check-inline">
-            <label class="form-check-label label-font">
-              <input class="form-check-input" type="radio" value="Artist" formControlName="role"> I am
-              Artist/Technician
-            </label>
-          </div>
-        </div>
-        <div class="col-sm-12">
-
-          <div class="form-check form-check-inline">
-            <label class="form-check-label label-font">
-              <input class="form-check-input" type="radio" value="Manager" formControlName="role"> I am manager for
-              one or more Artist(s)/Technician(s)
-            </label>
-          </div>
-        </div>
-        <div class="col-sm-12">
-
-          <div class="form-check form-check-inline">
-            <label class="form-check-label label-font">
-              <input class="form-check-input" type="radio" value="Bussiness Manager" formControlName="role"> I am
-              Owner/Manager
-              of a bussiness related to Film Industry
-            </label>
-          </div>
-          <div class="messages text-danger" *ngIf="myForm.controls.role?.touched && myForm.controls.role.errors?.required">Gender
-            can't be blank</div>
-        </div>
-      </div>
-
-
-      <div class="form-group row">
-        <!-- <label class="col-sm-2"></label> -->
-        <div class="col-sm-12">
-          <button type="submit" style="width:100%; background-color:#d71727; color:#fff" class="btn btn-primary border_n m-b-0"
-            (click)="modalDefault.hide();" [disabled]="myForm.invalid">Register</button>
-        </div>
-      </div>
-    </form>
-  </div>
-  <div class="app-modal-footer">
-    <!-- <button type="button" class="btn btn-default waves-effect" (click)="modalDefault.hide()">Close</button>
-          <button type="button" class="btn btn-primary waves-effect waves-light ">Save changes</button> -->
-    <div class="row">
-      <div class="col-md-8">
-        <p class="value-font col-12">Connect 2 Tollywood</p>
-        <p class="label-font col-12">Authentication Terms</p>
-      </div>
-      <div class="col-md-4 text-right">
-        <span class="">
-          <img src="../../../assets/images/logo.png" height="50" alt=" c2t logo">
-        </span>
-      </div>
-    </div>
-  </div>
-</app-modal-basic>
-
-
-
-<app-modal-basic #loginModal>
-  <div class="app-modal-header">
-    <h4 class="modal-title">Sign In</h4>
-    <button type="button" class="close basic-close hit_area curser_pointer" (click)="loginModal.hide()">
-      <span aria-hidden="true">&times;</span>
-    </button>
-  </div>
-  <div class="app-modal-body">
-    <form [formGroup]="loginForm" (ngSubmit)="login()">
-      <div class="form-group row">
-        <div class="col-sm-12">
-          <input type="text" class="form-control" id="emailID" placeholder="Your Email Address" formControlName="emailID">
-          <!-- <div class="messages text-danger" *ngIf="myForm.controls.email.errors?.required">Email can't be blank</div> -->
-        </div>
-      </div>
-      <div class="form-group row">
-        <div class="col-sm-12">
-          <input type="password" class="form-control" id="currtpassword" placeholder="Password" formControlName="currtpassword">
-          <!-- <div class="messages text-danger error" *ngIf="myForm.controls.password.errors?.required">Password can't be blank</div> -->
-        </div>
-      </div>
-
-      <div class="form-group row">
-        <!-- <label class="col-sm-2"></label> -->
-        <div class="col-sm-12">
-          <!-- <a [routerLink]="['/user/profile']"> -->
-          <button type="submit" style="width:100%; background-color:#d71727; color:#fff" class="btn btn-primary border_n m-b-0"
-            (click)="loginModal.hide()" [disabled]="loginForm.invalid">Sign In</button>
-          <!-- </a> -->
-        </div>
-      </div>
-    </form>
-  </div>
-  <div class="app-modal-footer">
-    <!-- <button type="button" class="btn btn-default waves-effect" (click)="modalDefault.hide()">Close</button>
-            <button type="button" class="btn btn-primary waves-effect waves-light ">Save changes</button> -->
-    <div class="row">
-      <div class="col-6">
-        <label class="value-font col-12">Thank you and enjoy our website</label>
-        <label class="label-font col-12">Your Authentication Team</label>
-      </div>
-      <div class="col-6 text-right">
-        <span class="">
-          <img src="../../../assets/images/logo.png" height="50" alt=" c2t logo">
-        </span>
-      </div>
-    </div>
-  </div>
-</app-modal-basic>
