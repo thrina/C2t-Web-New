@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HomeService } from './home.service';
 import { Router } from '@angular/router';
-import { CustomNotifyService } from '../shared/custom-notify.service';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { AuthenticationFormComponent } from '../authentication/authentication-form/authentication-form.component';
@@ -15,7 +14,7 @@ import { AuthenticationFormComponent } from '../authentication/authentication-fo
 export class HomeComponent implements OnInit {
     authForm: BsModalRef;
 
-    constructor(private homeService: HomeService, private router: Router, private modalService: BsModalService) {    }
+    constructor(private modalService: BsModalService) {    }
 
     ngOnInit() {
     }
