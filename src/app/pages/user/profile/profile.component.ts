@@ -73,7 +73,7 @@ export class ProfileComponent implements OnInit {
   bussinessProfile: any = {};
   constructor(public http: Http, private profileService: ProfileService, private notify: CustomNotifyService) {
     let currtUser = JSON.parse(JSON.stringify(localStorage.getItem('currentUser')));
-    this.currentUser = JSON.parse(currtUser)
+    this.currentUser = JSON.parse(currtUser);
   }
 
   ngOnInit() {

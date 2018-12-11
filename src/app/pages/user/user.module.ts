@@ -16,9 +16,6 @@ export const UserRoutes:Routes = [ {
     children:[ {
         path:'profile', 
         loadChildren:'./profile/profile.module#ProfileModule'
-      },  {
-        path:'card', 
-        loadChildren:'./card/card.module#CardModule'
       }
     ]
   }

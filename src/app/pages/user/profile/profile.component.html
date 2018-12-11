@@ -35,7 +35,7 @@
   </div>
 </div>
 <!--profile cover end-->
-<div class="row">
+<div class="row" *ngIf="currentUser?.role != 'Admin'">
   <div class="col-lg-12">
     <div class="md-tabs">
       <ngb-tabset>

@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
 export interface BadgeItem {
   type: string;
@@ -31,14 +31,33 @@ export interface Menu {
 }
 
 const MENUITEMS = [
- 
+  {
+    routerLink: 'dashboard',
+    name: 'Dashboard'
+  },
+  {
+    routerLink: 'news',
+    name: 'News'
+  },
+  {
+    routerLink: 'events',
+    name: 'Events'
+  },
+  {
+    routerLink: 'profiles',
+    name: 'Profiles'
+  },
+  {
+    routerLink: 'categories',
+    name: 'Categories'
+  }
 ];
 
 @Injectable()
 export class MenuItems {
-  getAll(): Menu[] {
+  getAll() {
     return MENUITEMS;
   }
 
- 
+
 }
