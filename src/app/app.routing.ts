@@ -41,9 +41,6 @@ export const AppRoutes: Routes = [
       }, {
         path: 'user',
         loadChildren: './pages/user/user.module#UserModule'
-      }, {
-        path: 'change-log',
-        loadChildren: './pages/change-log/change-log.module#ChangeLogModule'
       }
     ]
   }, {
