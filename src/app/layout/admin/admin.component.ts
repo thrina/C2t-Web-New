@@ -111,7 +111,7 @@ export class AdminComponent implements OnInit {
     this.verticalPlacement = 'left';
     this.verticalLayout = 'wide';
     this.deviceType = 'desktop';
-    this.verticalNavType = 'offcanvas';
+    this.verticalNavType = 'expanded';
     this.verticalEffect = 'shrink';
     this.pcodedHeaderPosition = 'fixed';
     this.pcodedSidebarPosition = 'fixed';
@@ -144,13 +144,13 @@ export class AdminComponent implements OnInit {
     const scrollHeight = window.screen.height - 150;
     this.innerHeight = scrollHeight + 'px';
     this.windowWidth = window.innerWidth;
-    this.setMenuAttributes(this.windowWidth);
   }
 
   ngOnInit() {
     let currtUser = JSON.parse(JSON.stringify(localStorage.getItem('currentUser')));
-    this.currentUser = JSON.parse(currtUser)
+    this.currentUser = JSON.parse(currtUser);
     this.setBackgroundPattern('pattern2');
+    this.setMenuAttributes(this.windowWidth);
   }
 
   onResize(event) {
@@ -180,8 +180,10 @@ export class AdminComponent implements OnInit {
       this.verticalEffect = 'overlay';
     } else {
       this.deviceType = 'desktop';
-      this.verticalNavType = 'offcanvas';
-      this.verticalEffect = 'push';
+      this.verticalNavType = this.currentUser.role == 'Admin' ? 'expanded' : 'offcanvas';
+      this.verticalEffect = this.currentUser.role == 'Admin' ? 'shrink' : 'push';
+      // this.verticalNavType = 'expanded';
+      // this.verticalEffect = 'shrink';
     }
   }
 
@@ -190,7 +192,6 @@ export class AdminComponent implements OnInit {
       this.toggleOn = this.verticalNavType === 'offcanvas' ? true : this.toggleOn;
     }
     this.verticalNavType = this.verticalNavType === 'expanded' ? 'offcanvas' : 'expanded';
-    console.log(this.verticalNavType,"???????????",this.toggleOn)
   }
 
   onClickedOutside(e: Event) {
