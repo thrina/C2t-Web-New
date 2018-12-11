@@ -38,15 +38,6 @@ export const AppRoutes: Routes = [
       {
         path: 'c2t',
         loadChildren: './components/c2t.module#C2TModule'
-      } ,{
-        path: 'animations',
-        loadChildren: './pages/animations/animations.module#AnimationsModule'
-      },{
-        path: 'charts',
-        loadChildren: './pages/charts/charts.module#ChartsModule',
-      }, {
-        path: 'map',
-        loadChildren: './pages/map/map.module#MapModule',
       }, {
         path: 'maintenance/error',
         loadChildren: './pages/maintenance/error/error.module#ErrorModule'
