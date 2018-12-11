@@ -42,17 +42,8 @@ export const AppRoutes: Routes = [
         path: 'user',
         loadChildren: './pages/user/user.module#UserModule'
       }, {
-        path: 'task',
-        loadChildren: './pages/task/task.module#TaskModule'
-      }, {
-        path: 'invoice',
-        loadChildren: './pages/invoice/invoice.module#InvoiceModule'
-      }, {
         path: 'change-log',
         loadChildren: './pages/change-log/change-log.module#ChangeLogModule'
-      }, {
-        path: 'simple-page',
-        loadChildren: './pages/simple-page/simple-page.module#SimplePageModule'
       }
     ]
   }, {
