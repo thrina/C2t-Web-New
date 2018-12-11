@@ -39,12 +39,6 @@ export const AppRoutes: Routes = [
         path: 'c2t',
         loadChildren: './components/c2t.module#C2TModule'
       }, {
-        path: 'maintenance/error',
-        loadChildren: './pages/maintenance/error/error.module#ErrorModule'
-      }, {
-        path: 'maintenance/coming-soon',
-        loadChildren: './pages/maintenance/coming-soon/coming-soon.module#ComingSoonModule'
-      }, {
         path: 'user',
         loadChildren: './pages/user/user.module#UserModule'
       }, {
@@ -68,9 +62,6 @@ export const AppRoutes: Routes = [
       {
         path: 'authentication',
         loadChildren: './pages/authentication/authentication.module#AuthenticationModule'
-      }, {
-        path: 'maintenance/offline-ui',
-        loadChildren: './pages/maintenance/offline-ui/offline-ui.module#OfflineUiModule'
       }
     ]
   }
