@@ -38,29 +38,10 @@ export const AppRoutes: Routes = [
       {
         path: 'c2t',
         loadChildren: './components/c2t.module#C2TModule'
-      },
-       {
-        path: 'dashboard',
-        loadChildren: './pages/dashboard/dashboard.module#DashboardModule'
-      }, {
-        path: 'widget',
-        loadChildren: './pages/widget/widget.module#WidgetModule'
-      }, {
-        path: 'basic',
-        loadChildren: './pages/ui-elements/basic/basic.module#BasicModule'
-      }, {
-        path: 'advance',
-        loadChildren: './pages/ui-elements/advance/advance.module#AdvanceModule'
-      }, {
+      } ,{
         path: 'animations',
         loadChildren: './pages/animations/animations.module#AnimationsModule'
-      }, {
-        path: 'bootstrap-table',
-        loadChildren: './pages/ui-elements/tables/bootstrap-table/bootstrap-table.module#BootstrapTableModule',
-      }, {
-        path: 'data-table',
-        loadChildren: './pages/ui-elements/tables/data-table/data-table.module#DataTableModule',
-      }, {
+      },{
         path: 'charts',
         loadChildren: './pages/charts/charts.module#ChartsModule',
       }, {
@@ -76,20 +57,11 @@ export const AppRoutes: Routes = [
         path: 'user',
         loadChildren: './pages/user/user.module#UserModule'
       }, {
-        path: 'crm-contact',
-        loadChildren: './pages/ui-elements/crm-contact/crm-contact.module#CrmContactModule'
-      }, {
         path: 'task',
         loadChildren: './pages/task/task.module#TaskModule'
       }, {
-        path: 'editor',
-        loadChildren: './pages/ui-elements/editor/editor.module#EditorModule'
-      }, {
         path: 'invoice',
         loadChildren: './pages/invoice/invoice.module#InvoiceModule'
-      }, {
-        path: 'file-upload',
-        loadChildren: './pages/ui-elements/file-upload/file-upload.module#FileUploadUIModule'
       }, {
         path: 'change-log',
         loadChildren: './pages/change-log/change-log.module#ChangeLogModule'
