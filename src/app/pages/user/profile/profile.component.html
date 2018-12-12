@@ -186,10 +186,12 @@
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-mobile-phone"></i></span>
                                   <input type="text" class="form-control" pattern="[0-9]{10}" [(ngModel)]="currentUser.mobile"
-                                    name="mobile" placeholder="Mobile Number" #mobile="ngModel">
+                                    name="mobile" placeholder="Mobile Number" #mobile="ngModel" required>
                                 </div>
-                                <div class="messages text-danger" *ngIf="mobile.invalid">Enter
+                                <div class="validation_input">
+                                <div class="messages text-danger valid_popup1" *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)">Enter
                                   valid 10 digit mobile number</div>
+                                </div>
                               </div>
                             </div>
                             <div class="row">
@@ -214,8 +216,9 @@
                                   <input type="text" class="form-control" pattern="[0-9]{6}" [(ngModel)]="currentUser.pin"
                                     name="pin" placeholder="Pin Code" #pin="ngModel" required>
                                 </div>
-                                <div class="messages text-danger" *ngIf="(pin.invalid || pin.invalid) && pin.invalid">Enter
-                                  valid pin code</div>
+                                <div class="validation_input">
+                                <div class="messages text-danger valid_popup1" *ngIf="(pin.invalid || pin.invalid) && pin.invalid">Enter
+                                  valid pin code</div></div>
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
                                   <input type="text" class="form-control" [(ngModel)]="currentUser.area" name="area"
