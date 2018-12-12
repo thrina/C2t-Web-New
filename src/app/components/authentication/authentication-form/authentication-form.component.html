@@ -117,16 +117,20 @@
     <div class="form-group row">
       <div class="col-sm-12">
         <input type="text" class="form-control" id="emailID" placeholder="Your Email Address" formControlName="emailID">
-        <!-- <div class="messages text-danger" *ngIf="myForm.controls.email.errors?.required">Email can't be blank</div> -->
-      </div>
+        <div class="validation_input">
+          <div class="messages text-danger valid_popup" *ngIf="(myForm.controls.email?.dirty || myForm.controls.email?.touched) && myForm.controls.email.invalid">Enter
+            valid email-id</div>
+            </div>      </div>
     </div>
     <div class="form-group row">
       <div class="col-sm-12">
         <input type="password" class="form-control" id="currtpassword" placeholder="Password" formControlName="currtpassword">
-        <!-- <div class="messages text-danger error" *ngIf="myForm.controls.password.errors?.required">Password can't be blank</div> -->
-      </div>
+        <div class="validation_input">
+          <div class="messages text-danger error valid_popup" *ngIf="(myForm.controls.password?.dirty || myForm.controls.password?.touched) && myForm.controls.password.invalid">Password
+            must be atleast 8 characters</div>
+         </div>  
+        </div>
     </div>
-
     <div class="form-group row">
       <div class="col-sm-12">
         <button type="submit" style="width:100%; background-color:#d71727; color:#fff" class="btn btn-primary border_n m-b-0"
