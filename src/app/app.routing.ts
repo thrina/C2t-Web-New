@@ -31,7 +31,7 @@ export const AppRoutes: Routes = [
     children: [
       {
         path: '',
-        redirectTo: 'c2t/signup',
+        redirectTo: 'c2t/dashboard',
         pathMatch: 'full'
       },
       {

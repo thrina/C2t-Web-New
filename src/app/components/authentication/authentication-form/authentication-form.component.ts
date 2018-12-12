@@ -79,7 +79,12 @@ export class AuthenticationFormComponent implements OnInit {
                 this.authForm.hide();
                 this.pnotify.success({ text: 'Loggin successfully', delay: 2000 });
                 localStorage.setItem('currentUser', this.currentUser);
+                console.log( this.currentUser,"dddddddddddddd");
+                if (JSON.parse(this.currentUser).role != 'Admin') {
                 this.router.navigate(['/user/profile']);
+                } else {
+                    this.router.navigate(['/c2t/dashboard'])
+                }
             } else {
                 this.pnotify.error({ text: data.failureMesssage, delay: 2000 });
             }

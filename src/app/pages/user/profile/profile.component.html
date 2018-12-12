@@ -1,5 +1,5 @@
 <!--profile cover start-->
-<div class="row">
+<div class="row" *ngIf="currentUser?.role != 'Admin'">
   <div class="col-lg-12" style="margin-top: -150px;">
     <div class="cover-profile">
       <div class="profile-bg-img">
@@ -189,8 +189,8 @@
                                     name="mobile" placeholder="Mobile Number" #mobile="ngModel" required>
                                 </div>
                                 <div class="validation_input">
-                                <div class="messages text-danger valid_popup1" *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)">Enter
-                                  valid 10 digit mobile number</div>
+                                  <div class="messages text-danger valid_popup1" *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)">Enter
+                                    valid 10 digit mobile number</div>
                                 </div>
                               </div>
                             </div>
@@ -217,8 +217,9 @@
                                     name="pin" placeholder="Pin Code" #pin="ngModel" required>
                                 </div>
                                 <div class="validation_input">
-                                <div class="messages text-danger valid_popup1" *ngIf="(pin.invalid || pin.invalid) && pin.invalid">Enter
-                                  valid pin code</div></div>
+                                  <div class="messages text-danger valid_popup1" *ngIf="(pin.invalid || pin.invalid) && pin.invalid">Enter
+                                    valid pin code</div>
+                                </div>
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
                                   <input type="text" class="form-control" [(ngModel)]="currentUser.area" name="area"

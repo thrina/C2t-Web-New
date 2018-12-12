@@ -8,10 +8,10 @@
       [attr.header-theme]="headerTheme">
       <div class="navbar-wrapper">
         <div class="navbar-logo" [attr.logo-theme]="logoTheme">
-          <a *ngIf="currentUser?.role == 'Admin'" class="mobile-menu" id="mobile-collapse" href="javascript:;" (click)="toggleOpened()"
+          <!-- <a *ngIf="currentUser?.role == 'Admin'" class="mobile-menu" id="mobile-collapse" href="javascript:;" (click)="toggleOpened()"
             [exclude]="'#main_navbar'" (clickOutside)="onClickedOutside($event)">
             <i class="ti-menu"></i>
-          </a>
+          </a> -->
           <a>
             <img class="img-fluid" src="assets/images/logo.png" alt="Theme-Logo" />
           </a>
@@ -190,7 +190,7 @@
             <div slimScroll width="100%" height="calc(100% - 80px)" size="4px" color="#fff" opacity="0.3"
               allowPageScroll="false">
               <div *ngFor="let asideItems of menuItems.getAll()" class="d-color">
-                <a>{{asideItems.name}}</a>
+                <!-- <a>{{asideItems.name}}</a> -->
 
 
 

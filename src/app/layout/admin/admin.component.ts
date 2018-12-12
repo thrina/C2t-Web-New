@@ -111,7 +111,7 @@ export class AdminComponent implements OnInit {
     this.verticalPlacement = 'left';
     this.verticalLayout = 'wide';
     this.deviceType = 'desktop';
-    this.verticalNavType = 'expanded';
+    this.verticalNavType = 'offcanvas';
     this.verticalEffect = 'shrink';
     this.pcodedHeaderPosition = 'fixed';
     this.pcodedSidebarPosition = 'fixed';
@@ -180,10 +180,10 @@ export class AdminComponent implements OnInit {
       this.verticalEffect = 'overlay';
     } else {
       this.deviceType = 'desktop';
-      this.verticalNavType = this.currentUser.role == 'Admin' ? 'expanded' : 'offcanvas';
-      this.verticalEffect = this.currentUser.role == 'Admin' ? 'shrink' : 'push';
-      // this.verticalNavType = 'expanded';
-      // this.verticalEffect = 'shrink';
+      // this.verticalNavType = this.currentUser.role == 'Admin' ? 'expanded' : 'offcanvas';
+      // this.verticalEffect = this.currentUser.role == 'Admin' ? 'shrink' : 'push';
+      // this.verticalNavType = 'offcanvas';
+      // this.verticalEffect = 'push';
     }
   }
 

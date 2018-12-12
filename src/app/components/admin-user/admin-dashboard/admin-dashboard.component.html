@@ -1,0 +1,136 @@
+<div class="row">
+  <div class="col-md-6 col-xl-4">
+    <div class="card widget-card-1">
+      <div class="card-block-small">
+        <i class="icofont icofont-pie-chart bg-c-blue card1-icon"></i>
+        <span class="f-w-600">Registered Users</span>
+        <div class="row m-t-10">
+          <div class="col-md-12 col-xl-12">
+            <span class="f-left m-t-10 text-muted">
+              <i class="f-16 icofont icofont-user m-r-10"></i>Talented Users
+            </span>
+            <span class="f-right m-t-10 text-muted">
+              <label>45</label>
+            </span>
+          </div>
+          <div class="col-md-12 col-xl-12">
+            <span class="f-left m-t-10 text-muted">
+              <i class="f-16 icofont icofont-user m-r-10"></i>Manager of Users
+            </span>
+            <span class="f-right m-t-10 text-muted">
+              <label>45</label>
+            </span>
+          </div>
+          <div class="col-md-12 col-xl-12">
+            <span class="f-left m-t-10 text-muted">
+              <i class="f-16 icofont icofont-user m-r-10"></i>Manager of Bussiness
+            </span>
+            <span class="f-right m-t-10 text-muted">
+              <label>45</label>
+            </span>
+          </div>
+          <div class="col-md-12 col-xl-12">
+            <span class="f-left m-t-10 text-muted">
+              <i class="f-16 icofont icofont-user m-r-10"></i>Users who Hire People
+            </span>
+            <span class="f-right m-t-10 text-muted">
+              <label>45</label>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-xl-4">
+    <div class="card widget-card-1">
+      <div class="card-block-small">
+        <i class="icofont icofont-ui-home bg-c-pink card1-icon"></i>
+        <span class="text-c-pink f-w-600">Profile Status</span>
+        <div class="row m-t-10">
+          <div class="col-md-12 col-xl-12">
+            <span class="f-left m-t-20 text-muted">
+              <i class="f-16 icofont icofont-user m-r-10"></i>Under Review
+            </span>
+            <span class="f-right m-t-20 text-muted">
+              <label>45</label>
+            </span>
+          </div>
+          <div class="col-md-12 col-xl-12">
+            <span class="f-left m-t-20 text-muted">
+              <i class="f-16 icofont icofont-user m-r-10"></i>Active Users
+            </span>
+            <span class="f-right m-t-20 text-muted">
+              <label>45</label>
+            </span>
+          </div>
+          <div class="col-md-12 col-xl-12">
+            <span class="f-left m-t-20 text-muted">
+              <i class="f-16 icofont icofont-user m-r-10"></i>Rejected
+            </span>
+            <span class="f-right m-t-20 text-muted">
+              <label>45</label>
+            </span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-xl-4">
+    <div class="card widget-card-1">
+      <div class="card-block-small">
+        <i class="icofont icofont-social-twitter bg-c-yellow card1-icon"></i>
+        <span class="text-c-yellow f-w-600">Actions</span>
+        <div class="row m-t-10">
+          <div class="col-md-12 col-xl-12">
+            <span class="f-left m-t-20 text-muted">
+              <i class="f-16 icofont icofont-user m-r-10"></i>Events
+            </span>
+            <span class="f-right m-t-20 text-muted">
+              <label>45</label>
+            </span>
+          </div>
+          <div class="col-md-12 col-xl-12">
+            <span class="f-left m-t-20 text-muted">
+              <i class="f-16 icofont icofont-user m-r-10"></i>Auditions
+            </span>
+            <span class="f-right m-t-20 text-muted">
+              <label>45</label>
+            </span>
+          </div>
+          <div class="col-md-12 col-xl-12">
+            <span class="f-left m-t-20 text-muted">
+              <i class="f-16 icofont icofont-user m-r-10"></i>News
+            </span>
+            <span class="f-right m-t-20 text-muted">
+              <label>45</label>
+            </span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row m-t-20">
+  <div class="col-sm-12">
+    <app-card [title]="'Users'">
+      <div class="col-xs-12 col-sm-12 col-md-12 m-b-5">
+        <div style="text-align: right;">
+          <input type="search" [(ngModel)]="filterQuery" class="form-control input-sm full-data-search" placeholder="Name/Email/Mobile/User type ">
+          <button type="button" class="btn btn-primary p-t-10 p-b-10">Search</button>
+        </div>
+      </div>
+      <ngx-datatable class="material" [rows]="rowsBasic" [loadingIndicator]="loadingIndicator" [columns]="columns"
+        [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="50" [reorderable]="reorderable">
+      </ngx-datatable>
+      <!-- <ng-template #hdrTpl let-column="column">
+        <strong>Fancy</strong>: ghhh !!
+      </ng-template>
+      <ng-template #editTmpl let-row="row" let-value="value">
+        fghjk,.
+      </ng-template> -->
+    </app-card>
+  </div>
+</div>

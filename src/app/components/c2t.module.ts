@@ -4,12 +4,12 @@ import {RouterModule, Routes }from '@angular/router';
 import {HttpClientModule }from '@angular/common/http'; 
 
 import {C2TComponent }from './c2t.component'; 
-import {SignupComponent}from './signup/signup.component'; 
+import { SignupComponent } from './signup/signup.component'; 
+import {AdminDashboardComponent}from './admin-user/admin-dashboard/admin-dashboard.component'; 
 import {SharedModule}from '../shared/shared.module'; 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
-// import { CarouselModule } from 'ngx-bootstrap';
-// import { CarouselConfig } from 'ngx-bootstrap/carousel';
-
+import {NgxDatatableModule} from '@swimlane/ngx-datatable';
+import { NewsComponent } from './admin-user/news/news.component';
 
 export const c2tRoutes:Routes = [ {
     path:'', 
@@ -17,7 +17,15 @@ export const c2tRoutes:Routes = [ {
     children:[ {
         path:'signup', 
         component:SignupComponent
-      }
+    },
+    {
+      path:'dashboard', 
+      component:AdminDashboardComponent
+    },
+    {
+      path:'news', 
+      component:NewsComponent
+    }
     ]
   }
 ]; 
@@ -29,8 +37,9 @@ export const c2tRoutes:Routes = [ {
     SharedModule, 
     FormsModule, 
     ReactiveFormsModule, 
-    HttpClientModule
+    HttpClientModule,
+    NgxDatatableModule
   ], 
-  declarations: [C2TComponent, SignupComponent]
+  declarations: [C2TComponent, SignupComponent, AdminDashboardComponent, NewsComponent]
 })
 export class C2TModule {}

@@ -31,26 +31,7 @@ export interface Menu {
 }
 
 const MENUITEMS = [
-  {
-    routerLink: 'dashboard',
-    name: 'Dashboard'
-  },
-  {
-    routerLink: 'news',
-    name: 'News'
-  },
-  {
-    routerLink: 'events',
-    name: 'Events'
-  },
-  {
-    routerLink: 'profiles',
-    name: 'Profiles'
-  },
-  {
-    routerLink: 'categories',
-    name: 'Categories'
-  }
+  
 ];
 
 @Injectable()
