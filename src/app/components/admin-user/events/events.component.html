@@ -1,12 +1,12 @@
 <div class="row">
   <div class="col-sm-12">
-    <app-card [title]="'News'">
+    <app-card [title]="'Events'">
       <div class="col-xs-12 col-sm-12 col-md-12 m-b-5">
         <div style="text-align: right;">
           <input type="search" [(ngModel)]="filterQuery" class="form-control input-sm full-data-search" placeholder="Name/Email/Mobile/User type ">
           <button type="button" class="btn btn-primary p-t-10 p-b-10">Search</button>
           <button type="button" style="background-color:#d71727; border-color:#d71727; color:#fff" class="btn btn-danger p-t-10 p-b-10">Add
-            News</button>
+            Event</button>
         </div>
       </div>
       <ngx-datatable class="material" [rows]="rowsBasic" [loadingIndicator]="loadingIndicator" [columnMode]="'force'"

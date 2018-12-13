@@ -12,12 +12,13 @@ export class AdminDashboardComponent implements OnInit {
   filterQuery = '';
 
   columns = [
-    { prop: 'name' },
+    { name: 'name' },
     { name: 'date' },
     { name: 'email' },
-    { prop: 'mobile' },
+    { name: 'mobile' },
     { name: 'role' },
-    { name: 'status' }
+    { name: 'status' },
+
   ];
 
   constructor() { }
@@ -29,9 +30,9 @@ export class AdminDashboardComponent implements OnInit {
         "gender": "female",
         "mobile": "8965999996",
         "role": "Talent",
-       "status":"",
+       "status":"pending",
         "email": "vijay@gmail.com",
-        "date":"23-04-2018"
+        "date": "23-04-2018",
       },
       {
         "name": "Claudine Neal",

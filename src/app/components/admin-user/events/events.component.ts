@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-news',
-  templateUrl: './news.component.html',
-  styleUrls: ['./news.component.css']
+  selector: 'app-events',
+  templateUrl: './events.component.html',
+  styleUrls: ['./events.component.css']
 })
-export class NewsComponent implements OnInit {
-  rowsBasic: any = [];
+export class EventsComponent implements OnInit {
   loadingIndicator = true;
   reorderable = true;
   filterQuery = '';
-
+  rowsBasic: any = [];
 
   columns = [
     { name: 'Image' },
@@ -19,7 +18,6 @@ export class NewsComponent implements OnInit {
     { name: 'Content' },
     { name: 'Category' },
   ];
-
   constructor() { }
 
   ngOnInit() {
@@ -61,16 +59,6 @@ export class NewsComponent implements OnInit {
       }    
     ]
     setTimeout(() => { this.loadingIndicator = false; }, 1500);
-  }
-
-  onClick(row) {
-    console.log(row,"?");
-    
-  }
-
-  onSelect(event) {
-    console.log(event,"event");
-    
   }
 
 }

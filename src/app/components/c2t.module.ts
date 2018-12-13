@@ -10,6 +10,12 @@ import {SharedModule}from '../shared/shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms'; 
 import {NgxDatatableModule} from '@swimlane/ngx-datatable';
 import { NewsComponent } from './admin-user/news/news.component';
+import {TagInputModule} from 'ngx-chips';
+import { UiSwitchModule } from 'ng2-ui-switch/dist';
+import { EventsComponent } from './admin-user/events/events.component';
+
+import { AdvertisementsComponent } from './admin-user/advertisements/advertisements.component';
+
 
 export const c2tRoutes:Routes = [ {
     path:'', 
@@ -25,6 +31,14 @@ export const c2tRoutes:Routes = [ {
     {
       path:'news', 
       component:NewsComponent
+    },
+    {
+      path:'events', 
+      component:EventsComponent
+    },
+    {
+      path:'advertisements', 
+      component:AdvertisementsComponent
     }
     ]
   }
@@ -38,8 +52,10 @@ export const c2tRoutes:Routes = [ {
     FormsModule, 
     ReactiveFormsModule, 
     HttpClientModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    TagInputModule,
+    UiSwitchModule
   ], 
-  declarations: [C2TComponent, SignupComponent, AdminDashboardComponent, NewsComponent]
+  declarations: [C2TComponent, SignupComponent, AdminDashboardComponent, NewsComponent, EventsComponent, AdvertisementsComponent]
 })
 export class C2TModule {}

@@ -122,15 +122,23 @@
           <button type="button" class="btn btn-primary p-t-10 p-b-10">Search</button>
         </div>
       </div>
-      <ngx-datatable class="material" [rows]="rowsBasic" [loadingIndicator]="loadingIndicator" [columns]="columns"
-        [columnMode]="'force'" [headerHeight]="50" [footerHeight]="50" [rowHeight]="50" [reorderable]="reorderable">
+
+      <ngx-datatable class="material" [rows]="rowsBasic" [loadingIndicator]="loadingIndicator" [columnMode]="'force'"
+        [headerHeight]="50" [footerHeight]="50" [rowHeight]="50" [reorderable]="reorderable">
+        <ngx-datatable-column *ngFor="let col of columns" [name]="col.name">
+          <ng-template #editTmpl let-row="row" let-value="value">
+            {{value}}
+          </ng-template>
+        </ngx-datatable-column>
+        <ngx-datatable-column name="Actions">
+          <ng-template let-column="column" ngx-datatable-header-template>
+            Actions
+          </ng-template>
+          <ng-template let-value="value" ngx-datatable-cell-template>
+            <ui-switch class="js-danger" color="#e74c3c" switchColor="#fff" size="medium" checked></ui-switch>
+          </ng-template>
+        </ngx-datatable-column>
       </ngx-datatable>
-      <!-- <ng-template #hdrTpl let-column="column">
-        <strong>Fancy</strong>: ghhh !!
-      </ng-template>
-      <ng-template #editTmpl let-row="row" let-value="value">
-        fghjk,.
-      </ng-template> -->
     </app-card>
   </div>
 </div>

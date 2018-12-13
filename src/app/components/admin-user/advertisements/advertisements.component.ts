@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-news',
-  templateUrl: './news.component.html',
-  styleUrls: ['./news.component.css']
+  selector: 'app-advertisements',
+  templateUrl: './advertisements.component.html',
+  styleUrls: ['./advertisements.component.css']
 })
-export class NewsComponent implements OnInit {
+export class AdvertisementsComponent implements OnInit {
   rowsBasic: any = [];
   loadingIndicator = true;
   reorderable = true;
@@ -61,16 +61,6 @@ export class NewsComponent implements OnInit {
       }    
     ]
     setTimeout(() => { this.loadingIndicator = false; }, 1500);
-  }
-
-  onClick(row) {
-    console.log(row,"?");
-    
-  }
-
-  onSelect(event) {
-    console.log(event,"event");
-    
   }
 
 }
