@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 
 @Component({
   selector: 'app-news',
@@ -10,7 +10,7 @@ export class NewsComponent implements OnInit {
   loadingIndicator = true;
   reorderable = true;
   filterQuery = '';
-
+  isAddNews: boolean = false;
 
   columns = [
     { name: 'Image' },
@@ -61,6 +61,15 @@ export class NewsComponent implements OnInit {
       }    
     ]
     setTimeout(() => { this.loadingIndicator = false; }, 1500);
+  }
+
+  openAddNews() {
+    this.isAddNews = true;
+    
+  }
+
+  closeAddNews() {
+    this.isAddNews = false;
   }
 
   onClick(row) {

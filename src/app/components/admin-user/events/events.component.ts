@@ -10,6 +10,7 @@ export class EventsComponent implements OnInit {
   reorderable = true;
   filterQuery = '';
   rowsBasic: any = [];
+  isAddEvent: boolean = false;
 
   columns = [
     { name: 'Image' },
@@ -59,6 +60,15 @@ export class EventsComponent implements OnInit {
       }    
     ]
     setTimeout(() => { this.loadingIndicator = false; }, 1500);
+  }
+
+  openAddEvent() {
+    this.isAddEvent = true;
+    
+  }
+
+  closeAddEvent() {
+    this.isAddEvent = false;
   }
 
 }

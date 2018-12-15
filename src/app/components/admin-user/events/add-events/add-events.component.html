@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-md-12">
+    <app-card [title]="'Add Event'">
+      <form #addNEvents="ngForm">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="row">
+              <div class="col-md-12">
+                <!-- <input type="file" ng2FileSelect [uploader]="uploader" class="custom-file-input"> -->
+                <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)"
+                  [uploader]="uploader" class="well ngb-drop-zone text-center">
+                  Upload Image or video
+                </div>
+              </div>
+            </div>
+
+
+            <div class="row">
+              <div class="col-md-6">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="icofont icofont-pen-alt-1"></i></span>
+                  <input type="text" class="form-control" name="title" placeholder="Title" [(ngModel)]="event.title">
+                </div>
+
+              </div>
+              <div class="col-md-6">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="icofont icofont-calendar"></i></span>
+                  <input type="date" class="form-control" [(ngModel)]="event.date" name="date" placeholder="Date" />
+                </div>
+              </div>
+            </div>
+            <div class="row" style="display:block">
+              <div class="col-md -12">
+                <quill-editor [(ngModel)]="event.content" name="content" [options]="editorConfig" (blur)="onEditorBlured($event)"
+                  (focus)="onEditorFocused($event)" (ready)="onEditorCreated($event)" (change)="onContentChanged($event)">
+                </quill-editor>
+              </div>
+            </div>
+            <div class="row m-t-20">
+              <div class="col-md-12">
+                <div class="text-right">
+                  <button style="background-color:#d71727; border-color:#d71727; color:#fff" class="btn btn-danger waves-effect"
+                    (click)="cancelAddEvent()">Cancel</button>
+                  <button type="button" class="btn btn-success waves-effect waves-light" (click)="publishEvent()">Publish</button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </form>
+    </app-card>
+  </div>
+</div>

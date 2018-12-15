@@ -11,58 +11,58 @@
       <div class="col-sm-12">
         <input type="text" class="form-control" id="firstName" placeholder="First Name" formControlName="firstName">
         <div class="validation_input">
-        <div class="messages text-danger valid_popup" *ngIf="(myForm.controls.firstName?.dirty || myForm.controls.firstName?.touched) && myForm.controls.firstName.invalid">First
-          name can't be blank</div>
-          </div>
+          <div class="messages text-danger valid_popup" *ngIf="(myForm.controls.firstName?.dirty || myForm.controls.firstName?.touched) && myForm.controls.firstName.invalid">First
+            name can't be blank</div>
+        </div>
       </div>
     </div>
     <div class="form-group row">
       <div class="col-sm-12">
         <input type="text" class="form-control" id="lastName" placeholder="Last Name" formControlName="lastName">
         <div class="validation_input">
-        <div class="messages text-danger valid_popup" *ngIf="(myForm.controls.lastName?.dirty || myForm.controls.lastName?.touched) && myForm.controls.lastName.invalid">Last
-          name can't be blank</div>
-          </div>
+          <div class="messages text-danger valid_popup" *ngIf="(myForm.controls.lastName?.dirty || myForm.controls.lastName?.touched) && myForm.controls.lastName.invalid">Last
+            name can't be blank</div>
+        </div>
       </div>
     </div>
     <div class="form-group row">
       <div class="col-sm-12">
         <input type="text" class="form-control" pattern="[0-9]{10}" id="mobile" placeholder="Mobile Number"
           formControlName="mobile">
-          <div class="validation_input">
-        <div class="messages text-danger valid_popup" *ngIf="(myForm.controls.mobile?.dirty || myForm.controls.mobile?.touched) && myForm.controls.mobile.invalid">Enter
-          valid 10 digit mobile number</div>
-          </div>
+        <div class="validation_input">
+          <div class="messages text-danger valid_popup" *ngIf="(myForm.controls.mobile?.dirty || myForm.controls.mobile?.touched) && myForm.controls.mobile.invalid">Enter
+            valid 10 digit mobile number</div>
+        </div>
       </div>
     </div>
     <div class="form-group row">
       <div class="col-sm-12">
         <input type="text" class="form-control" pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" id="email"
           placeholder="Email Address" formControlName="email">
-          <div class="validation_input">
-        <div class="messages text-danger valid_popup" *ngIf="(myForm.controls.email?.dirty || myForm.controls.email?.touched) && myForm.controls.email.invalid">Enter
-          valid email-id</div>
-          </div>
+        <div class="validation_input">
+          <div class="messages text-danger valid_popup" *ngIf="(myForm.controls.email?.dirty || myForm.controls.email?.touched) && myForm.controls.email.invalid">Enter
+            valid email-id</div>
+        </div>
       </div>
     </div>
     <div class="form-group row">
       <div class="col-sm-12">
         <input type="password" class="form-control" id="password" placeholder="Password" formControlName="password"
           maxlength="8">
-          <div class="validation_input">
-        <div class="messages text-danger error valid_popup" *ngIf="(myForm.controls.password?.dirty || myForm.controls.password?.touched) && myForm.controls.password.invalid">Password
-          must be atleast 8 characters</div>
-          </div>
+        <div class="validation_input">
+          <div class="messages text-danger error valid_popup" *ngIf="(myForm.controls.password?.dirty || myForm.controls.password?.touched) && myForm.controls.password.invalid">Password
+            must be atleast 8 characters</div>
+        </div>
       </div>
     </div>
     <div class="form-group row">
       <div class="col-sm-12">
         <input type="password" class="form-control" id="rpassword" placeholder="Confirm Password" formControlName="rpassword"
           maxlength="8">
-          <div class="validation_input">
-        <div class="messages text-danger valid_popup" *ngIf="myForm.controls.rpassword.errors?.equalTo && ((myForm.controls.rpassword?.dirty || myForm.controls.rpassword?.touched) && myForm.controls.rpassword.invalid )">Confirm
-          passwords does not match</div>
-          </div>
+        <div class="validation_input">
+          <div class="messages text-danger valid_popup" *ngIf="myForm.controls.rpassword.errors?.equalTo && ((myForm.controls.rpassword?.dirty || myForm.controls.rpassword?.touched) && myForm.controls.rpassword.invalid )">Confirm
+            passwords does not match</div>
+        </div>
       </div>
     </div>
 
@@ -108,7 +108,7 @@
 
     <div class="form-group row">
       <div class="col-sm-12">
-        <button type="submit" style="width:100%; background-color:#d71727; color:#fff" class="btn btn-primary border_n m-b-0"
+        <button type="submit" style="width:100%; background-color:#d71727; color:#fff" class="btn btn-danger border_n m-b-0"
           [disabled]="myForm.invalid">Register</button>
       </div>
     </div>
@@ -120,7 +120,8 @@
         <div class="validation_input">
           <div class="messages text-danger valid_popup" *ngIf="(myForm.controls.email?.dirty || myForm.controls.email?.touched) && myForm.controls.email.invalid">Enter
             valid email-id</div>
-            </div>      </div>
+        </div>
+      </div>
     </div>
     <div class="form-group row">
       <div class="col-sm-12">
@@ -128,8 +129,8 @@
         <div class="validation_input">
           <div class="messages text-danger error valid_popup" *ngIf="(myForm.controls.password?.dirty || myForm.controls.password?.touched) && myForm.controls.password.invalid">Password
             must be atleast 8 characters</div>
-         </div>  
         </div>
+      </div>
     </div>
     <div class="form-group row">
       <div class="col-sm-12">

@@ -10,7 +10,7 @@ export class AdvertisementsComponent implements OnInit {
   loadingIndicator = true;
   reorderable = true;
   filterQuery = '';
-
+  isAddAdvertisement: boolean = false;
 
   columns = [
     { name: 'Image' },
@@ -18,6 +18,7 @@ export class AdvertisementsComponent implements OnInit {
     { name: 'Date' },
     { name: 'Content' },
     { name: 'Category' },
+    { name: 'Applications' }
   ];
 
   constructor() { }
@@ -29,7 +30,8 @@ export class AdvertisementsComponent implements OnInit {
         "title": "News title",
         "content": "Talent",
        "category":"Film",
-        "date":"23-04-2018"
+        "date": "23-04-2018",
+        "applications": "7"
       },
       {
         "image": "",
@@ -61,6 +63,15 @@ export class AdvertisementsComponent implements OnInit {
       }    
     ]
     setTimeout(() => { this.loadingIndicator = false; }, 1500);
+  }
+
+  openAddAds() {
+    this.isAddAdvertisement = true;
+    
+  }
+
+  closeAddAds() {
+    this.isAddAdvertisement = false;
   }
 
 }

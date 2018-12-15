@@ -15,6 +15,11 @@ import { UiSwitchModule } from 'ng2-ui-switch/dist';
 import { EventsComponent } from './admin-user/events/events.component';
 
 import { AdvertisementsComponent } from './admin-user/advertisements/advertisements.component';
+import { AddNewsComponent } from './admin-user/news/add-news/add-news.component';
+import {QuillEditorModule} from 'ngx-quill-editor';
+import {FileUploadModule} from "ng2-file-upload";
+import { AddEventsComponent } from './admin-user/events/add-events/add-events.component';
+import { AddAdvertisementComponent } from './admin-user/advertisements/add-advertisement/add-advertisement.component';
 
 
 export const c2tRoutes:Routes = [ {
@@ -54,8 +59,10 @@ export const c2tRoutes:Routes = [ {
     HttpClientModule,
     NgxDatatableModule,
     TagInputModule,
-    UiSwitchModule
+    UiSwitchModule,
+    QuillEditorModule,
+    FileUploadModule
   ], 
-  declarations: [C2TComponent, SignupComponent, AdminDashboardComponent, NewsComponent, EventsComponent, AdvertisementsComponent]
+  declarations: [C2TComponent, SignupComponent, AdminDashboardComponent, NewsComponent, EventsComponent, AdvertisementsComponent, AddNewsComponent, AddEventsComponent, AddAdvertisementComponent]
 })
 export class C2TModule {}
