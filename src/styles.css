@@ -18413,7 +18413,9 @@ table.footable-paging-center>tfoot>tr.footable-paging>td {
   align-items: flex-start;
 }
 */
-
+.pb_30{
+  padding-bottom: 30px;
+}
 
 .social-login {
   border-bottom: 1px solid #ccc;
@@ -25730,10 +25732,10 @@ img {
 
 /* my css */
 
-.modal-content {
-  max-height: 85vh !important;
+/* .modal-content {
+  max-height: 95vh !important;
 
-}
+}  */
 
 .modal-dialog .modal-content .modal-body {
   max-height: 60vh !important;
@@ -25743,6 +25745,7 @@ img {
 
 .app-modal-footer {
   width: 100% !important;
+  max-height: 60vh !important;
 }
 
 .btn:disabled {

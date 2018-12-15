@@ -1,8 +1,8 @@
 <div class="card {{ fullCard }} {{ cardLoad }}" [@cardClose]="cardClose" [ngClass]="cardClass">
   <div class="card-header" *ngIf="title">
     <h5>{{ title }}</h5>
-    <span *ngIf="!classHeader">{{ headerContent }}</span>
-    <span *ngIf="classHeader">
+    <!-- <span *ngIf="!classHeader">{{ headerContent }}</span> -->
+    <!-- <span *ngIf="classHeader">
       <ng-content select=".code-header"></ng-content>
     </span>
     <div class="card-header-right">
@@ -14,7 +14,7 @@
         <li *ngIf="isCardToggled"><i class="icofont icofont-refresh reload-card" (click)="cardRefresh($event)" ></i></li>
         <li *ngIf="isCardToggled"><i class="icofont icofont-error close-card" (click)="closeCard($event)"></i></li>
       </ul>
-    </div>
+    </div> -->
   </div>
 
   <div [@cardToggle]="cardToggle">

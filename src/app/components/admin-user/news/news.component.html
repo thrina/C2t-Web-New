@@ -1,14 +1,31 @@
 <div class="row">
   <div class="col-sm-12">
     <app-card [title]="'News'">
-      <div class="col-xs-12 col-sm-12 col-md-12 m-b-5">
+
+        <div class="row pb_30">
+            <div class="col-xs-12 col-sm-12 col-md-7 m-b-5"></div> 
+            <div class="col-xs-12 col-sm-12 col-md-3 m-b-5" >
+              <div style="display:flex;text-align: right;">
+                <input type="search" [(ngModel)]="filterQuery" class="form-control " placeholder="Name/Email/Mobile/Usertype">
+                <button type="button" class="btn btn-primary " style="width:100px;"> search</button>
+              </div>
+            </div>
+                <div class="col-xs-12 col-sm-12 col-md-2 m-b-5" >
+                <button type="button" style=" margin-right:10px;background-color:#d71727; border-color:#d71727; color:#fff; border-radius: 200px;" class="btn btn-danger p-t-10 p-b-10">Add
+                    NEWS</button>
+            
+            </div>
+            </div>
+
+      <!-- <div class="col-xs-12 col-sm-12 col-md-12 m-b-5">
         <div style="text-align: right;">
           <input type="search" [(ngModel)]="filterQuery" class="form-control input-sm full-data-search" placeholder="Name/Email/Mobile/User type ">
           <button type="button" class="btn btn-primary p-t-10 p-b-10">Search</button>
-          <button type="button" style="background-color:#d71727; border-color:#d71727; color:#fff" class="btn btn-danger p-t-10 p-b-10">Add
+          <button type="button" style="background-color:#d71727; border-color:#d71727; color:#fff; border-radius: 200px;" class="btn btn-danger p-t-10 p-b-10">Add
             News</button>
         </div>
-      </div>
+      </div> -->
+
       <ngx-datatable class="material" [rows]="rowsBasic" [loadingIndicator]="loadingIndicator" [columnMode]="'force'"
         [headerHeight]="50" [footerHeight]="50" [rowHeight]="50" [reorderable]="reorderable" [selectionType]="'single'"
         (select)='onSelect($event)'>
