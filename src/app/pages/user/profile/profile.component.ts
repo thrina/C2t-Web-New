@@ -44,7 +44,17 @@ const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 export class ProfileComponent implements OnInit {
 
   hasBaseDropZoneOver = false;
-  
+  uploader: FileUploader = new FileUploader({
+    isHTML5: true
+  });
+isBussinessActive: boolean = true;
+selectedBussiness: any = {};
+ isTeamActive = false;
+ isPortfolioActive = false;
+    selectedTeam: any = {};
+keyword: string;
+  keywordGroup: any;
+  portfolio: any = {};
   editProfile = true;
   editManager = true;
   editBussinessManager = true;
@@ -77,7 +87,11 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(this.currentUser['role'] == 'Manager'){
+      this.isTeamActive = true;
+    }
     this.pnotify = this.notify.getPNotify();
+    this.getPortfolios();
     this.http.get(`assets/data/data.json`)
       .subscribe((data) => {
         this.data = data.json();
@@ -134,6 +148,24 @@ export class ProfileComponent implements OnInit {
     }, 1);
   }
 
+  getPortfolios() {
+    let query = {};
+    if (this.currentUser['role'] != 'Bussiness Manager') {
+      query['userID'] = this.currentUser['_id'];
+      
+    }
+    if (this.currentUser['role'] == 'Bussiness Manager') {
+      query['userID'] = this.currentUser['_id'];
+      query['bussinessID'] = this.currentUser['bussinessID'];
+
+    }
+  
+    this.profileService.getPortfolios(query).subscribe(data => {
+      console.log(data,"getttttttttttt");
+      
+    })
+  }
+
   fileOverBase(e: any): void {
     this.hasBaseDropZoneOver = e;
   }
@@ -177,7 +209,7 @@ export class ProfileComponent implements OnInit {
         this.currentUser = { ...this.currentUser };
         this.getLatestInfo();
         if (!this.editProfile) {
-          this.pnotify.success({title:"Profile updated successfully",delay:2000});
+          this.pnotify.success({ title: "Profile updated successfully", delay: 2000 });
           this.toggleEditProfile();
         }
         if (!this.editAbout)
@@ -223,18 +255,83 @@ export class ProfileComponent implements OnInit {
     console.log("?????????????????????????");
     var fileupload = document.getElementById("imgFileUpload");
     fileupload.click();
-  
+
   }
 
   changeImg(event) {
     console.log(event.target.files, "eveg");
     let file = event.target.files[0];
     const formData = new FormData();
-   
+
     formData.append("myImg", file, file.name);
-    console.log(formData,"??????????????????????",file);
-    
-    
+    console.log(formData, "??????????????????????", file);
+
+
+  }
+
+  onTabChange(event) {
+    this.editProfile = true;
+    this.editManager = true;
+    this.editBussinessManager = true;
+    this.editProfileIcon = "icofont-edit";
+    this.editMngrProfileIcon = 'icofont-edit';
+    this.editAbout = true;
+    this.editAboutIcon = 'icofont-edit';
+  }
+
+  addKeyWord() {
+    if (this.portfolio.keywordGroup == undefined) {
+      this.portfolio.keywordGroup = this.portfolio.talent;
+    }
+    this.portfolio.keywordGroup = this.portfolio.keywordGroup + ", " + this.keyword;     
+    this.keyword = '';
+  }
+
+  addPortfolio() {
+    console.log(this.portfolio,this.currentUser);
+    this.portfolio['userID'] = this.currentUser['_id'];
+    this.profileService.createPortfolio(this.portfolio).subscribe(data => {
+      if (data.status == 'success') {
+        this.pnotify.success({ title: "Portfolio added successfully", delay: 1000 });
+        this.togglePortfolio();
+      } else {
+        this.pnotify.error({ title: data.status, delay: 1000 });
+      }
+    })
+  }
+
+  togglePortfolio() {
+    this.editProfile = true;
+  }
+
+  onBussinessSelect(selectedBussiness){
+    console.log("onBussinessSelect()")
+    this.isBussinessActive = false;
+    this.isTeamActive= true;
+    this.isPortfolioActive = false;
+    this.selectedBussiness = {...selectedBussiness};
+  }
+
+  backToBusiness(){
+    this.isBussinessActive = true;
+    this.isTeamActive = false;
+    this.isPortfolioActive = false;
+    this.selectedBussiness = {};
+    this.selectedTeam = {};
+  }
+
+  onSelectedTeam(selectedTeam){
+    this.isTeamActive = false;
+    this.isBussinessActive = false;
+    this.isPortfolioActive = true;
+    this.selectedTeam = {...selectedTeam};
+  }
+
+  backToTeams(){
+  this.isBussinessActive = false;
+    this.isTeamActive = true;
+    this.isPortfolioActive = false;
+    this.selectedTeam = {};
   }
 
 }

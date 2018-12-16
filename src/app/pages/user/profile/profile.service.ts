@@ -18,4 +18,12 @@ export class ProfileService {
     return this.http.get(process.url + "/getuser",user)
   }
 
+  createPortfolio(data): Observable <any>  {
+    return this.http.put(process.url + "/portfolio/create",data)
+  }
+
+  getPortfolios(params): Observable <any>  {
+    return this.http.get(process.url + "/portfolio/list",params)
+  }
+
 }

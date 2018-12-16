@@ -4,6 +4,7 @@ import {UserComponent }from './user.component';
 import {RouterModule, Routes}from '@angular/router'; 
 import {SharedModule }from '../../shared/shared.module'; 
 import {ProfileService }from './profile/profile.service'; 
+import {FileUploadModule} from "ng2-file-upload";
 
 
 
@@ -25,7 +26,8 @@ export const UserRoutes:Routes = [ {
   imports:[
     CommonModule, 
     RouterModule.forChild(UserRoutes), 
-    SharedModule
+    SharedModule,
+    FileUploadModule
   ], 
   declarations:[UserComponent], 
   providers:[ProfileService]

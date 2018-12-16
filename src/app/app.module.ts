@@ -21,6 +21,7 @@ import { CustomNotifyService } from './components/shared/custom-notify.service';
 import { CarouselModule } from 'ngx-bootstrap';
 import { AuthenticationFormComponent } from './components/authentication/authentication-form/authentication-form.component';
 import { ModalModule } from 'ngx-bootstrap';
+import {FileUploadModule} from "ng2-file-upload";
 
 @NgModule( {
   declarations:[
@@ -43,7 +44,8 @@ import { ModalModule } from 'ngx-bootstrap';
     ReactiveFormsModule, 
     HttpClientModule,
     CarouselModule.forRoot(),
-    ModalModule.forRoot()
+    ModalModule.forRoot(),
+    FileUploadModule
   ], 
   providers:[HomeService, CustomNotifyService], 
   bootstrap: [AppComponent, HomeComponent],
