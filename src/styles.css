@@ -25182,7 +25182,7 @@ img {
 
 .oneshot_col1 {
   margin: 0px;
-  padding: 0px 3px;
+  /* padding: 0px 3px; */
 }
 
 .card {
@@ -25809,4 +25809,24 @@ img {
 .validation_input {
   position: absolute;
   width: auto;
+}
+
+.news_pannel .custom-file-input{
+  width: calc(100% - 30px) !important;
+  height: 3.5rem;
+  margin: 0;
+  opacity: 0;
+  position: absolute;
+}
+.news_content_card{
+  border: 1px solid rgba(0, 0, 0, 0.125);
+}
+
+.carousel-control-prev{
+  width: auto;
+  padding-left: 20px;
+}
+.carousel-control-next{
+  width: auto;
+  padding-right: 20px;
 }
