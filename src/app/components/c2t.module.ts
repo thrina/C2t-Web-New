@@ -20,6 +20,7 @@ import {QuillEditorModule} from 'ngx-quill-editor';
 import {FileUploadModule} from "ng2-file-upload";
 import { AddEventsComponent } from './admin-user/events/add-events/add-events.component';
 import { AddAdvertisementComponent } from './admin-user/advertisements/add-advertisement/add-advertisement.component';
+import {NewsService }from './admin-user/news/news.service'; 
 
 
 export const c2tRoutes:Routes = [ {
@@ -63,6 +64,7 @@ export const c2tRoutes:Routes = [ {
     QuillEditorModule,
     FileUploadModule
   ], 
-  declarations: [C2TComponent, SignupComponent, AdminDashboardComponent, NewsComponent, EventsComponent, AdvertisementsComponent, AddNewsComponent, AddEventsComponent, AddAdvertisementComponent]
+  declarations: [C2TComponent, SignupComponent, AdminDashboardComponent, NewsComponent, EventsComponent, AdvertisementsComponent, AddNewsComponent, AddEventsComponent, AddAdvertisementComponent],
+  providers:[NewsService]
 })
 export class C2TModule {}

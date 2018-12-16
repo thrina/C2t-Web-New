@@ -25,4 +25,8 @@ export class HomeService {
         return this.http.post(process.url + "/login", data)
     }
 
+    getNews(): Observable<any> {    
+        return this.http.get( process.url + "/news/list" );
+      }
+
 }

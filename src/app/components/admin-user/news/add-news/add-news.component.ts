@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import {FileUploader} from 'ng2-file-upload';
+import { NewsService } from '../news.service';
+import { CustomNotifyService } from '../../../shared/custom-notify.service';
 
 @Component({
   selector: 'app-add-news',
@@ -9,6 +11,7 @@ import {FileUploader} from 'ng2-file-upload';
 export class AddNewsComponent implements OnInit {
   news: any = {};
   hasBaseDropZoneOver = false;
+  pnotify: any;
 
   public editor;
   public editorConfig = {
@@ -21,9 +24,10 @@ export class AddNewsComponent implements OnInit {
   @Input() isAddNews: any;
   @Output() isDisplayChange = new EventEmitter<boolean>();
 
-  constructor() { }
+  constructor(private newsService: NewsService,  private notify: CustomNotifyService) { }
 
   ngOnInit() {
+    this.pnotify = this.notify.getPNotify();
   }
 
   onEditorBlured(quill) {
@@ -44,7 +48,15 @@ export class AddNewsComponent implements OnInit {
   }
 
   publishNews() {
-    console.log(this.news,"news");
+    console.log(this.news, "news");
+    this.newsService.addNews(this.news).subscribe(data => {
+      if (data.status == 'success') {
+        this.pnotify.success({ text: 'Published successfully', delay: 2000 });
+        this.cancelAddNews();
+      } else {
+        this.pnotify.error({ text: data.status, delay: 2000 });        
+      }
+    })
     
   }
 

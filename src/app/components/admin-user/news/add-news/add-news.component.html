@@ -6,7 +6,7 @@
           <div class="col-md-12">
             <div class="row">
               <div class="col-md-12">
-                <!-- <input type="file" ng2FileSelect [uploader]="uploader" class="custom-file-input"> -->
+                <input type="file" ng2FileSelect [uploader]="uploader" class="custom-file-input">
                 <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)"
                   [uploader]="uploader" class="well ngb-drop-zone text-center">
                   Upload Image or video
@@ -30,18 +30,18 @@
                 <div class="input-group">
                   <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
                   <!-- <input type="text" class="form-control" placeholder="Bussiness Name" value="Dancer"> -->
-                  <select id="hello-single" name="titleOption" [(ngModel)]="news.titleOption" class="form-control">
+                  <select id="hello-single" name="category" [(ngModel)]="news.category" class="form-control">
                     <option value="">Choose </option>
-                    <option value="married">Film</option>
-                    <option value="single" selected>General</option>
-                    <option value="unmarried">Gossips</option>
+                    <option value="film">Film</option>
+                    <option value="general" selected>General</option>
+                    <option value="gossips">Gossips</option>
                   </select>
                 </div>
               </div>
             </div>
             <div class="row" style="display:block">
               <div class="col-md -12">
-                <quill-editor [(ngModel)]="news.content" name="content" [options]="editorConfig" (blur)="onEditorBlured($event)"
+                <quill-editor [(ngModel)]="news.description" name="content" [options]="editorConfig" (blur)="onEditorBlured($event)"
                   (focus)="onEditorFocused($event)" (ready)="onEditorCreated($event)" (change)="onContentChanged($event)">
                 </quill-editor>
               </div>
