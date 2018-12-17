@@ -43,27 +43,27 @@
                   </li>
                   <li *ngIf="currentUser?.role == 'Admin'">
                     <a [routerLink]="['/c2t/dashboard']">
-                      <i class="ti-layout-sidebar-left"></i> Dashboard
+                      <i class="ti-home"></i> Dashboard
                     </a>
                   </li>
                   <li *ngIf="currentUser?.role == 'Admin'">
                     <a [routerLink]="['/c2t/news']">
-                      <i class="ti-layout-sidebar-left"></i> News
+                      <i class="ti-rss"></i> News
                     </a>
                   </li>
                   <li *ngIf="currentUser?.role == 'Admin'">
                     <a [routerLink]="['/c2t/events']">
-                      <i class="ti-layout-sidebar-left"></i> Events
+                      <i class="ti-map-alt"></i> Events
                     </a>
                   </li>
                   <li *ngIf="currentUser?.role == 'Admin'">
                     <a [routerLink]="['/c2t/advertisements']">
-                      <i class="ti-layout-sidebar-left"></i> Advertisements
+                      <i class="ti-blackboard"></i> Advertisements
                     </a>
                   </li>
                   <li>
                     <a (click)="logout()" class="curser_pointer">
-                      <i class="ti-layout-sidebar-left"></i> Logout
+                      <i class="ti-power-off"></i> Logout
                     </a>
                   </li>
                 </ul>
