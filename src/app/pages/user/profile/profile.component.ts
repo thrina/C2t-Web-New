@@ -51,7 +51,10 @@ isBussinessActive: boolean = true;
 selectedBussiness: any = {};
  isTeamActive = false;
  isPortfolioActive = false;
-    selectedTeam: any = {};
+  selectedTeam: any = {};
+  portfolioList: any = [];
+  teamList: any = [];
+  bussinessProfiles: any = [];
 keyword: string;
   keywordGroup: any;
   portfolio: any = {};
@@ -87,8 +90,12 @@ keyword: string;
   }
 
   ngOnInit() {
-    if(this.currentUser['role'] == 'Manager'){
+    if (this.currentUser['role'] == 'Manager') {
+      this.getTeamUsers()
       this.isTeamActive = true;
+    }
+    if (this.currentUser['role'] == 'Bussiness Manager') {
+      this.getBussinessProfiles();
     }
     this.pnotify = this.notify.getPNotify();
     this.getPortfolios();
@@ -150,6 +157,27 @@ keyword: string;
 
   getPortfolios() {
     let query = {};
+    if (this.currentUser['role'] == 'Artist') {
+      query['userID'] = this.currentUser['_id'];
+    }
+    if (this.currentUser['role'] == 'Manager') {
+      query['userID'] = this.selectedTeam['_id'];
+    }
+    if (this.currentUser['role'] == 'Bussiness Manager') {
+      query['userID'] = this.currentUser['_id'];
+      query['bussinessID'] = this.currentUser['bussinessID'];
+    }
+  
+    this.profileService.getPortfolios(query).subscribe(data => {
+      if (data.status == "success") {
+        this.portfolioList = data.rows;
+      }
+      
+    })
+  }
+
+  getTeamUsers() {
+    let query = {};
     if (this.currentUser['role'] != 'Bussiness Manager') {
       query['userID'] = this.currentUser['_id'];
       
@@ -160,11 +188,25 @@ keyword: string;
 
     }
   
-    this.profileService.getPortfolios(query).subscribe(data => {
-      console.log(data,"getttttttttttt");
+    this.profileService.getTeamList(query).subscribe(data => {
+      if (data.status == "success") {
+        this.teamList = data.rows;
+      }
       
     })
   }
+
+  getBussinessProfiles(){
+    let query = {};
+      query['userID'] = this.currentUser['_id'];
+    this.profileService.getBussiness(query).subscribe(data => {
+      if (data.status == "success") {
+        this.bussinessProfiles = data.rows;
+      }
+      
+    })
+  }
+
 
   fileOverBase(e: any): void {
     this.hasBaseDropZoneOver = e;
@@ -229,7 +271,6 @@ keyword: string;
   }
 
   createManagerTeam() {
-    console.log(this.managerUser, "jjjjjjjjjjjjjjjjjj", typeof this.currentUser, ">>>>>>>>><<<<<<<<<<<<", typeof this.currentUser['teamMenbers']);
     if (this.currentUser && this.currentUser['teamMenbers']) {
       this.currentUser['teamMenbers'].push(this.managerUser);
     } else {
@@ -240,33 +281,56 @@ keyword: string;
 
   }
 
+  createTeam() {
+    this.managerUser['userID'] = this.currentUser['_id'];
+    this.profileService.createTeamMember(this.managerUser).subscribe(data => {
+      if (data.status == "success") {
+        if (!this.editProfile) {
+          this.toggleEditProfile();
+        }
+        if (!this.editAbout)
+          this.toggleEditAbout();
+        if (!this.editBussinessManager)
+          this.toggleBussinessManagerProfile();
+        if (!this.editManager)
+          this.toggleManagerProfile()
+          this.pnotify.success({ title: "Team member added successfully", delay: 1000 });
+      } else {
+        this.pnotify.console.error({title:data.status, delay: 1000});
+      }
+    })
+    
+  }
+
   addBussinessProfile() {
-    console.log(this.bussinessProfile, "ddddddddddddd");
-    if (this.currentUser && this.currentUser['bussinessProfiles']) {
-      this.currentUser['bussinessProfiles'].push(this.bussinessProfile);
-    } else {
-      this.currentUser['bussinessProfiles'] = [];
-      this.currentUser['bussinessProfiles'].push(this.bussinessProfile);
-    }
-    this.updateUserForm();
+    this.bussinessProfile['userID'] = this.currentUser['_id'];
+    this.profileService.createBussiness(this.bussinessProfile).subscribe(data => {
+      if (data.status == "success") {
+        this.pnotify.success({ title: "Bisinesss added successfully", delay: 1000 });
+        this.getBussinessProfiles();
+        if (!this.editAbout)
+        this.toggleEditAbout();
+      if (!this.editBussinessManager)
+        this.toggleBussinessManagerProfile();
+      if (!this.editManager)
+        this.toggleManagerProfile()
+      } else {
+        this.pnotify.console.error({title:data.status, delay: 1000});
+      }
+    })
+    // this.updateUserForm();
   }
 
   changeProfileImg() {
-    console.log("?????????????????????????");
     var fileupload = document.getElementById("imgFileUpload");
     fileupload.click();
 
   }
 
   changeImg(event) {
-    console.log(event.target.files, "eveg");
     let file = event.target.files[0];
     const formData = new FormData();
-
     formData.append("myImg", file, file.name);
-    console.log(formData, "??????????????????????", file);
-
-
   }
 
   onTabChange(event) {
@@ -288,12 +352,17 @@ keyword: string;
   }
 
   addPortfolio() {
-    console.log(this.portfolio,this.currentUser);
+    if (this.currentUser['role'] == "Artist") {
     this.portfolio['userID'] = this.currentUser['_id'];
+    }
+    if (this.currentUser['role'] == "Manager") {
+      this.portfolio['userID'] = this.selectedTeam['_id'];
+    }
     this.profileService.createPortfolio(this.portfolio).subscribe(data => {
       if (data.status == 'success') {
         this.pnotify.success({ title: "Portfolio added successfully", delay: 1000 });
         this.togglePortfolio();
+        this.getPortfolios();
       } else {
         this.pnotify.error({ title: data.status, delay: 1000 });
       }
@@ -305,11 +374,11 @@ keyword: string;
   }
 
   onBussinessSelect(selectedBussiness){
-    console.log("onBussinessSelect()")
     this.isBussinessActive = false;
     this.isTeamActive= true;
     this.isPortfolioActive = false;
-    this.selectedBussiness = {...selectedBussiness};
+    this.selectedBussiness = { ...selectedBussiness };
+    this.getBussinessTeamMember();
   }
 
   backToBusiness(){
@@ -324,7 +393,8 @@ keyword: string;
     this.isTeamActive = false;
     this.isBussinessActive = false;
     this.isPortfolioActive = true;
-    this.selectedTeam = {...selectedTeam};
+    this.selectedTeam = { ...selectedTeam };
+    this.getTeamUserPortfolio();
   }
 
   backToTeams(){
@@ -332,6 +402,24 @@ keyword: string;
     this.isTeamActive = true;
     this.isPortfolioActive = false;
     this.selectedTeam = {};
+  }
+
+  getTeamUserPortfolio() {
+    let query = { "userID": this.selectedTeam['_id'] };
+    this.profileService.getPortfolios(query).subscribe(data => {
+      if (data.status == "success") {
+        this.portfolioList = data.rows;
+      }
+    })
+  }
+
+  getBussinessTeamMember() {
+    let query = { "userID": this.selectedBussiness['_id'] };
+    this.profileService.getTeamList(query).subscribe(data => {
+      if (data.status == "success") {
+        this.teamList = data.rows;
+      }
+    })
   }
 
 }

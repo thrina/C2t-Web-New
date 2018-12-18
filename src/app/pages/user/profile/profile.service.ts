@@ -19,11 +19,35 @@ export class ProfileService {
   }
 
   createPortfolio(data): Observable <any>  {
-    return this.http.put(process.url + "/portfolio/create",data)
+    return this.http.post(process.url + "/portfolio/create",data)
   }
 
-  getPortfolios(params): Observable <any>  {
-    return this.http.get(process.url + "/portfolio/list",params)
+  getPortfolios(params): Observable<any>  {
+    let url = process.url + "/portfolio/list" +"?"+ this.queryString(params);
+    return this.http.get(url);
   }
+
+  createTeamMember(data): Observable <any>  {
+    return this.http.post(process.url + "/team/create",data)
+  }
+
+  getTeamList(params): Observable<any>  {
+    let url = process.url + "/team/list" +"?"+ this.queryString(params);
+    return this.http.get(url);
+  }
+
+  createBussiness(data): Observable <any>  {
+    return this.http.post(process.url + "/business/create",data)
+  }
+
+  getBussiness(params): Observable<any>  {
+    let url = process.url + "/business/list" +"?"+ this.queryString(params);
+    return this.http.get(url);
+  }
+
+  queryString  (query)  {
+    let queryString = Object.entries(query).map(([key, val]) => `${key}=${val}`).join('&');
+     return queryString;
+ }
 
 }
