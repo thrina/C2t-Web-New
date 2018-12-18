@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { EventsService } from './events.service';
 @Component({
   selector: 'app-events',
   templateUrl: './events.component.html',
@@ -19,49 +19,30 @@ export class EventsComponent implements OnInit {
     { name: 'Content' },
     { name: 'Category' },
   ];
-  constructor() { }
+
+  page= {"totalRecords":0,"page":1,"limit":10}
+  constructor(private eventsService:EventsService) { }
 
   ngOnInit() {
-    this.rowsBasic = [
-      {
-        "image": "",
-        "title": "News title",
-        "content": "Talent",
-       "category":"Film",
-        "date":"23-04-2018"
-      },
-      {
-        "image": "",
-        "title": "News title",
-        "content": "Talent",
-       "category":"Film",
-        "date":"23-04-2018"
-      },
-      {
-        "image": "",
-        "title": "News title",
-        "content": "Talent",
-       "category":"Film",
-        "date":"23-04-2018"
-      },
-      {
-        "image": "",
-        "title": "News title",
-        "content": "Talent",
-       "category":"Film",
-        "date":"23-04-2018"
-      },
-      {
-        "image": "",
-        "title": "News title",
-        "content": "Talent",
-       "category":"Film",
-        "date":"23-04-2018"
-      }    
-    ]
+    this.setPage({ offset: 0 });
     setTimeout(() => { this.loadingIndicator = false; }, 1500);
   }
 
+  setPage(pageInfo) {
+    this.page.page = parseInt(pageInfo.offset) + 1;
+    this.getEvents(this.page);
+  }
+
+   
+  getEvents(params) {
+    this.eventsService.getEvents(params).subscribe(data => {
+      if (data.status == "success") {
+        this.rowsBasic = data.rows;
+        this.page.totalRecords= data.totalRecords
+      }
+    })
+  }
+  
   openAddEvent() {
     this.isAddEvent = true;
     

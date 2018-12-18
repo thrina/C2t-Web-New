@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdvertisementService } from './advertisement.service';
 
 @Component({
   selector: 'app-advertisements',
@@ -20,54 +21,26 @@ export class AdvertisementsComponent implements OnInit {
     { name: 'Category' },
     { name: 'Applications' }
   ];
+  page= {"totalRecords":0,"page":1,"limit":10}
 
-  constructor() { }
+  constructor(private adService:AdvertisementService) { }
 
   ngOnInit() {
-    this.rowsBasic = [
-      {
-        "image": "",
-        "title": "News title",
-        "content": "Talent",
-       "category":"Film",
-        "date": "23-04-2018",
-        "applications": "7"
-      },
-      {
-        "image": "",
-        "title": "News title",
-        "content": "Talent",
-       "category":"Film",
-        "date":"23-04-2018"
-      },
-      {
-        "image": "",
-        "title": "News title",
-        "content": "Talent",
-       "category":"Film",
-        "date":"23-04-2018"
-      },
-      {
-        "image": "",
-        "title": "News title",
-        "content": "Talent",
-       "category":"Film",
-        "date":"23-04-2018"
-      },
-      {
-        "image": "",
-        "title": "News title",
-        "content": "Talent",
-       "category":"Film",
-        "date":"23-04-2018"
-      }    
-    ]
+   
     setTimeout(() => { this.loadingIndicator = false; }, 1500);
+  }
+
+  getAds(params) {
+    this.adService.getAdvertisements(params).subscribe(data => {
+      if (data.status == "success") {
+        this.rowsBasic = data.rows;
+        this.page.totalRecords= data.totalRecords
+      }
+    })
   }
 
   openAddAds() {
     this.isAddAdvertisement = true;
-    
   }
 
   closeAddAds() {

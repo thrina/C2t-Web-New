@@ -21,7 +21,8 @@ import {FileUploadModule} from "ng2-file-upload";
 import { AddEventsComponent } from './admin-user/events/add-events/add-events.component';
 import { AddAdvertisementComponent } from './admin-user/advertisements/add-advertisement/add-advertisement.component';
 import {NewsService }from './admin-user/news/news.service'; 
-
+import {EventsService }from './admin-user/events/events.service'; 
+import { AdvertisementService } from './admin-user/advertisements/advertisement.service';
 
 export const c2tRoutes:Routes = [ {
     path:'', 
@@ -65,6 +66,6 @@ export const c2tRoutes:Routes = [ {
     FileUploadModule
   ], 
   declarations: [C2TComponent, SignupComponent, AdminDashboardComponent, NewsComponent, EventsComponent, AdvertisementsComponent, AddNewsComponent, AddEventsComponent, AddAdvertisementComponent],
-  providers:[NewsService]
+  providers:[NewsService,EventsService, AdvertisementService]
 })
 export class C2TModule {}

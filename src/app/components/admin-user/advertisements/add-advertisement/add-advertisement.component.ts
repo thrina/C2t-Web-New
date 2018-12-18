@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, Output, EventEmitter  } from '@angular/core';
 import {FileUploader} from 'ng2-file-upload';
+import {AdvertisementService} from '../advertisement.service';
+import { CustomNotifyService } from '../../../shared/custom-notify.service';
 
 @Component({
   selector: 'app-add-advertisement',
@@ -9,6 +11,7 @@ import {FileUploader} from 'ng2-file-upload';
 export class AddAdvertisementComponent implements OnInit {
   ads: any = {};
   hasBaseDropZoneOver = false;
+  pnotify: any;
 
   public editor;
   public editorConfig = {
@@ -21,10 +24,10 @@ export class AddAdvertisementComponent implements OnInit {
   @Input() isAddAdvertisement: any;
   @Output() isDisplayChange = new EventEmitter<boolean>();
 
-
-  constructor() { }
+  constructor(private adService: AdvertisementService, private notify: CustomNotifyService) { }
 
   ngOnInit() {
+    this.pnotify = this.notify.getPNotify();
   }
 
   onEditorBlured(quill) {
@@ -45,11 +48,17 @@ export class AddAdvertisementComponent implements OnInit {
   }
 
   publishNews() {
-    console.log(this.ads,"ads");
-    
+    this.adService.addAdvertisement(this.ads).subscribe(data => {
+      if (data.status == 'success') {
+        this.pnotify.success({ text: 'Published successfully', delay: 1000 });
+        this.cancelAd();
+      } else {
+        this.pnotify.error({ text: data.status, delay: 1000 });        
+      }
+    })
   }
 
-  cancelAddNews() {
+  cancelAd() {
     this.isDisplayChange.emit();
   }
 
