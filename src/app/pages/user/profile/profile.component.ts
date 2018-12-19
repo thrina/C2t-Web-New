@@ -166,8 +166,8 @@ export class ProfileComponent implements OnInit {
       query['userID'] = this.selectedTeam['_id'];
     }
     if (this.currentUser['role'] == 'Bussiness Manager') {
-      query['userID'] = this.currentUser['_id'];
-      query['bussinessID'] = this.currentUser['bussinessID'];
+      query['userID'] = this.selectedTeam['_id'];
+      // query['bussinessID'] = this.currentUser['bussinessID'];
     }
 
     this.profileService.getPortfolios(query).subscribe(data => {
@@ -284,7 +284,11 @@ export class ProfileComponent implements OnInit {
   }
 
   createTeam() {
-    this.managerUser['userID'] = this.currentUser['_id'];
+    if (this.currentUser['role'] == "Manager")
+      this.managerUser['userID'] = this.currentUser['_id'];
+    if (this.currentUser['role'] == "Bussiness Manager")
+      this.managerUser['userID'] = this.selectedBussiness['_id'];
+
     this.profileService.createTeamMember(this.managerUser).subscribe(data => {
       if (data.status == "success") {
         if (!this.editProfile) {
@@ -296,6 +300,14 @@ export class ProfileComponent implements OnInit {
           this.toggleBussinessManagerProfile();
         if (!this.editManager)
           this.toggleManagerProfile()
+        let query = {}
+        if (this.currentUser['role'] == "Manager") {
+          query = { "userID": this.currentUser['_id'] };
+        }
+        if (this.currentUser['role'] == "Bussiness Manager") {
+          query = { "userID": this.selectedBussiness['_id'] };
+        }
+        this.getTeams(query);
         this.pnotify.success({ title: "Team member added successfully", delay: 1000 });
       } else {
         this.pnotify.console.error({ title: data.status, delay: 1000 });
@@ -360,6 +372,9 @@ export class ProfileComponent implements OnInit {
     if (this.currentUser['role'] == "Manager") {
       this.portfolio['userID'] = this.selectedTeam['_id'];
     }
+    if (this.currentUser['role'] == "Bussiness Manager") {
+      this.portfolio['userID'] = this.selectedTeam['_id'];
+    }
     this.profileService.createPortfolio(this.portfolio).subscribe(data => {
       if (data.status == 'success') {
         this.pnotify.success({ title: "Portfolio added successfully", delay: 1000 });
@@ -415,13 +430,23 @@ export class ProfileComponent implements OnInit {
     })
   }
 
-  getBussinessTeamMember() {
-    let query = { "userID": this.selectedBussiness['_id'] };
+  getTeams(query) {
+    // let query = { "userID": this.currentUser['_id'] };
     this.profileService.getTeamList(query).subscribe(data => {
       if (data.status == "success") {
         this.teamList = data.rows;
       }
     })
+  }
+
+  getBussinessTeamMember() {
+    let query = { "userID": this.selectedBussiness['_id'] };
+    this.getTeams(query);
+    // this.profileService.getTeamList(query).subscribe(data => {
+    //   if (data.status == "success") {
+    //     this.teamList = data.rows;
+    //   }
+    // })
   }
 
 }

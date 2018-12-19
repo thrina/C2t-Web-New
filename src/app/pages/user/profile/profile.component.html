@@ -284,11 +284,7 @@
                                             <p class="value-font m-b-5">{{artistPortfolio.description}}</p>
                                           </div>
                                         </td>
-                                        <td>
-                                          <a><i class="icofont icofont-pen-alt-1  f-18 text-c-blue"></i></a>
-                                          <a><i class="icofont icofont-eraser f-18 text-default"></i></a>
-                                          <a><i class="icofont icofont-star f-18 text-default"></i></a>
-                                        </td>
+
                                       </tr>
                                     </tbody>
                                   </table>
@@ -741,11 +737,7 @@
                                             </p> -->
                                           </div>
                                         </td>
-                                        <td>
-                                          <a><i class="icofont icofont-pen-alt-1  f-18 text-c-blue"></i></a>
-                                          <a><i class="icofont icofont-eraser f-18 text-default"></i></a>
-                                          <a><i class="icofont icofont-star f-18 text-default"></i></a>
-                                        </td>
+
                                       </tr>
                                     </tbody>
                                   </table>
@@ -851,18 +843,12 @@
                                                 alt="chat-user"></a>
                                           </div>
                                           <div class="fl p-l-20">
-                                            <p class="label-font m-b-5">{{teamMbr.name}}</p>
-                                            <p class="value-font m-b-5">{{teamMbr.mobile}}</p>
-                                            <p class="value-font m-b-5">{{teamMbr.email}}</p>
-                                            <p> But I must explain to you how all this mistaken idea of denouncing...
-                                            </p>
+                                            <p class="label-font m-b-5">{{teamMbr.title}}</p>
+                                            <p class="value-font m-b-5">{{teamMbr.talent}}</p>
+                                            <p class="m-b-5">{{teamMbr.description}}</p>
                                           </div>
                                         </td>
-                                        <td>
-                                          <a><i class="icofont icofont-pen-alt-1  f-18 text-c-blue"></i></a>
-                                          <a><i class="icofont icofont-eraser f-18 text-default"></i></a>
-                                          <a><i class="icofont icofont-star f-18 text-default"></i></a>
-                                        </td>
+
                                       </tr>
                                     </tbody>
                                   </table>
@@ -937,8 +923,8 @@
                               </div>
                               <div class="text-right">
                                 <a id="edit-cancel-btn" style="background-color:#d71727; border-color:#d71727; color:#fff"
-                                  class="btn btn-default waves-effect m-t-20" (click)="togglePortfolio()">Cancel</a>
-                                <a class="btn btn-success waves-effect waves-light m-r-20 m-t-20" (click)="addPortfolio()">Save</a>
+                                  class="btn btn-default waves-effect m-t-20" (click)="togglePortfolio();portfolio1.reset()">Cancel</a>
+                                <a class="btn btn-success waves-effect waves-light m-r-20 m-t-20" (click)="addPortfolio();portfolio1.reset()">Save</a>
                               </div>
                             </div>
                           </form>
@@ -981,18 +967,13 @@
                                                 alt="chat-user"></a>
                                           </div>
                                           <div class="fl p-l-20">
-                                            <p class="label-font m-b-5">{{bussMngr.name}}</p>
-                                            <p class="value-font m-b-5">{{bussMngr.mobile}}</p>
-                                            <p class="value-font m-b-5">{{bussMngr.email}}</p>
-                                            <p> But I must explain to you how all this mistaken idea of denouncing...
-                                            </p>
+                                            <p class="label-font m-b-5">{{bussMngr?.name}}</p>
+                                            <p class="value-font m-b-5">{{bussMngr?.mobile}}</p>
+                                            <p class="value-font m-b-5">{{bussMngr?.email}}</p>
+                                            <p class="value-font m-b-5" [innerHTML]="bussMngr.aboutBussiness"></p>
                                           </div>
                                         </td>
-                                        <td>
-                                          <a><i class="icofont icofont-pen-alt-1  f-18 text-c-blue"></i></a>
-                                          <a><i class="icofont icofont-eraser f-18 text-default"></i></a>
-                                          <a><i class="icofont icofont-star f-18 text-default"></i></a>
-                                        </td>
+
                                       </tr>
                                     </tbody>
                                   </table>
@@ -1007,7 +988,7 @@
                   <div class="edit-info" *ngIf="!editBussinessManager">
                     <div class="row">
                       <div class="col-lg-12">
-                        <form #bussinessmanagerForm="ngForm" (ngSubmit)="addBussinessProfile()">
+                        <form #bussinessmanagerForm="ngForm">
                           <div class="general-info">
                             <div class="row">
                               <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
@@ -1111,51 +1092,26 @@
                                     placeholder="Area">
                                 </div>
                               </div>
+                              <div class="col-md-12">
+                                <label>About Bussiness</label>
+
+                                <quill-editor [(ngModel)]="bussinessProfile.aboutBussiness" name="aboutBussiness"
+                                  [options]="editorConfig" (blur)="onEditorBlured($event)" (focus)="onEditorFocused($event)"
+                                  (ready)="onEditorCreated($event)" (change)="onContentChanged($event)">
+                                </quill-editor>
+                              </div>
                             </div>
                             <!-- end of row -->
-                            <div class="text-right">
+                            <div class="text-right" style="margin-top: 70px">
                               <button type="button" id="edit-cancel" style="background-color:#d71727; border-color:#d71727; color:#fff"
-                                class="btn btn-danger waves-effect" (click)="toggleBussinessManagerProfile()">Cancel</button>
-                              <button type="submit" class="btn btn-success waves-effect waves-light m-r-20">Save</button>
+                                class="btn btn-danger waves-effect" (click)="toggleBussinessManagerProfile();bussinessmanagerForm.reset()">Cancel</button>
+                              <button type="submit" (click)="addBussinessProfile();bussinessmanagerForm.reset()" class="btn btn-success waves-effect waves-light m-r-20">Save</button>
                             </div>
                           </div>
                         </form>
                         <!-- end of edit info -->
                       </div>
                       <!-- end of col-lg-12 -->
-                    </div>
-                    <div class="row">
-                      <div class="col-lg-12">
-                        <div class="card">
-                          <div class="card-header">
-                            <h5 class="card-header-text">About Bussiness</h5>
-                            <button id="edit-info-btn" type="button" style="background-color:#d71727; border-color:#d71727; color:#fff"
-                              class="btn btn-sm btn-primary waves-effect waves-light f-right" (click)="toggleEditAbout()">
-                              <i class="icofont {{ editAboutIcon }}"></i>
-                            </button>
-                          </div>
-                          <div class="card-body user-desc">
-                            <form #bussinessManagerFormDesc (ngSubmit)="addBussinessProfile()">
-                              <div class="view-desc" *ngIf="editAbout">
-                                <div [innerHTML]="bussinessProfile.aboutBussiness"></div>
-                              </div>
-                              <div class="edit-desc" *ngIf="!editAbout">
-                                <div class="col-md-12">
-                                  <quill-editor [(ngModel)]="bussinessProfile.aboutBussiness" name="aboutBussiness"
-                                    [options]="editorConfig" (blur)="onEditorBlured($event)" (focus)="onEditorFocused($event)"
-                                    (ready)="onEditorCreated($event)" (change)="onContentChanged($event)">
-                                  </quill-editor>
-                                </div>
-                                <div class="text-right">
-                                  <button type="button" id="edit-cancel-btn" style="background-color:#d71727; border-color:#d71727; color:#fff"
-                                    class="btn btn-default waves-effect m-t-20" (click)="toggleBussinessManagerProfile()">Cancel</button>
-                                  <button type="submit" [disabled]="!bussinessProfile.aboutBussiness" class="btn btn-success waves-effect waves-light m-r-20 m-t-20">Save</button>
-                                </div>
-                              </div>
-                            </form>
-                          </div>
-                        </div>
-                      </div>
                     </div>
                     <!-- end of row -->
                   </div>
@@ -1195,15 +1151,9 @@
                                             <p class="label-font m-b-5">{{teamMbr.name}}</p>
                                             <p class="value-font m-b-5">{{teamMbr.mobile}}</p>
                                             <p class="value-font m-b-5">{{teamMbr.email}}</p>
-                                            <p> But I must explain to you how all this mistaken idea of denouncing...
-                                            </p>
                                           </div>
                                         </td>
-                                        <td>
-                                          <a><i class="icofont icofont-pen-alt-1  f-18 text-c-blue"></i></a>
-                                          <a><i class="icofont icofont-eraser f-18 text-default"></i></a>
-                                          <a><i class="icofont icofont-star f-18 text-default"></i></a>
-                                        </td>
+
                                       </tr>
                                     </tbody>
                                   </table>
@@ -1218,7 +1168,7 @@
                   <div class="edit-info" *ngIf="!editProfile">
                     <div class="row">
                       <div class="col-lg-12">
-                        <form #managerTeamForm (ngSubmit)="createTeam()">
+                        <form #managerTeamForm (ngSubmit)="createTeam();managerTeamForm.reset()">
                           <div class="general-info">
                             <div class="row">
                               <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
@@ -1268,7 +1218,7 @@
 
                             <div class="text-right" *ngIf="currentUser.role != 'Artist'">
                               <button type="button" id="edit-cancel" style="background-color:#d71727; border-color:#d71727; color:#fff"
-                                class="btn btn-danger waves-effect" (click)="toggleEditProfile()">Cancel</button>
+                                class="btn btn-danger waves-effect" (click)="toggleEditProfile();managerTeamForm.reset()">Cancel</button>
                               <button type="submit" class="btn btn-success waves-effect waves-light m-r-20">Save</button>
                             </div>
                           </div>
@@ -1295,7 +1245,7 @@
                       <div class="col-lg-12">
                         <div class="general-info">
                           <div class="card" *ngIf="editProfile">
-                            <div class="col-md-12" *ngFor="let teamMbr of currentUser?.teamMenbers">
+                            <div class="col-md-12" *ngFor="let teamMbr of portfolioList">
                               <app-card>
                                 <div class="table-responsive">
                                   <table class="table table-hover">
@@ -1307,17 +1257,10 @@
                                                 alt="chat-user"></a>
                                           </div>
                                           <div class="fl p-l-20">
-                                            <p class="label-font m-b-5">{{teamMbr.name}}</p>
-                                            <p class="value-font m-b-5">{{teamMbr.mobile}}</p>
-                                            <p class="value-font m-b-5">{{teamMbr.email}}</p>
-                                            <p> But I must explain to you how all this mistaken idea of denouncing...
-                                            </p>
+                                            <p class="label-font m-b-5">{{teamMbr.title}}</p>
+                                            <p class="value-font m-b-5">{{teamMbr.talent}}</p>
+                                            <p class="value-font m-b-5">{{teamMbr.description}}</p>
                                           </div>
-                                        </td>
-                                        <td>
-                                          <a><i class="icofont icofont-pen-alt-1  f-18 text-c-blue"></i></a>
-                                          <a><i class="icofont icofont-eraser f-18 text-default"></i></a>
-                                          <a><i class="icofont icofont-star f-18 text-default"></i></a>
                                         </td>
                                       </tr>
                                     </tbody>
@@ -1393,8 +1336,9 @@
                               </div>
                               <div class="text-right">
                                 <a id="edit-cancel-btn" style="background-color:#d71727; border-color:#d71727; color:#fff"
-                                  class="btn btn-default waves-effect m-t-20" (click)="togglePortfolio()">Cancel</a>
-                                <a class="btn btn-success waves-effect waves-light m-r-20 m-t-20" (click)="addPortfolio()">Save</a>
+                                  class="btn btn-default waves-effect m-t-20" (click)="togglePortfolio();portfolio1.reset()">Cancel</a>
+                                <a class="btn btn-success waves-effect waves-light m-r-20 m-t-20" style="color:#fff"
+                                  (click)="addPortfolio();portfolio1.reset()">Save</a>
                               </div>
                             </div>
                           </form>
