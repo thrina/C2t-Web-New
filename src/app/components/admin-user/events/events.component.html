@@ -28,7 +28,8 @@
       </div>
 
       <ngx-datatable class="material" [rows]="rowsBasic" [loadingIndicator]="loadingIndicator" [columnMode]="'force'"
-        [headerHeight]="50" [footerHeight]="50" [rowHeight]="50" [reorderable]="reorderable" [selectionType]="'single'"
+        [headerHeight]="50" [footerHeight]="50" [rowHeight]="50" [reorderable]="reorderable" [externalPaging]="true"
+        [count]="page.totalRecords" [offset]="page.page" [limit]="page.limit" (page)='setPage($event)' [selectionType]="'single'"
         (select)='onSelect($event)'>
         <ngx-datatable-column *ngFor="let col of columns" [name]="col.name">
           <ng-template *ngIf="col.name != 'Image'" #editTmpl let-row="row" let-value="value">

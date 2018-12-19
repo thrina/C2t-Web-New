@@ -50,6 +50,7 @@ export class EventsComponent implements OnInit {
 
   closeAddEvent() {
     this.isAddEvent = false;
+    this.setPage({offset:0});
   }
 
 }

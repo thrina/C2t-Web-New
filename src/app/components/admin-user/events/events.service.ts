@@ -10,13 +10,13 @@ export class EventsService {
 
   getEvents(params): Observable<any> {
     
-    let url = process.url + "/events/list" +"?"+ this.queryString(params);
+    let url = process.url + "/event/list" +"?"+ this.queryString(params);
   
     return this.http.get(url);
   }
   
   addEvent(data):Observable<any> {
-    return this.http.post(process.url + "/events/create", data)
+    return this.http.post(process.url + "/event/create", data)
     
   }
   queryString  (query)  {

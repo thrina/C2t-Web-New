@@ -13,7 +13,9 @@ export class AdminDashboardComponent implements OnInit {
   filterQuery = '';
   usersCount: any = {};
   statusCount: any = {};
-
+  advertismentsCount: any;
+  eventsCount: any;
+  newsCount: any;
   columns = [
     { name: 'Name' },
     { name: 'Date' },
@@ -45,6 +47,9 @@ export class AdminDashboardComponent implements OnInit {
       if (data.status == "success") {
         this.usersCount = data.usersCount;
         this.statusCount = data.statusCount;
+        this.advertismentsCount = data.advertismentsCount;
+        this.eventsCount = data.eventsCount;
+        this.newsCount = data.newsCount;
       }
      
    })

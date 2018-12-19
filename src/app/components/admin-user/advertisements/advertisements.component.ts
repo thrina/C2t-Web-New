@@ -26,7 +26,7 @@ export class AdvertisementsComponent implements OnInit {
   constructor(private adService:AdvertisementService) { }
 
   ngOnInit() {
-   
+    this.setPage({offset:0});
     setTimeout(() => { this.loadingIndicator = false; }, 1500);
   }
 
@@ -43,8 +43,14 @@ export class AdvertisementsComponent implements OnInit {
     this.isAddAdvertisement = true;
   }
 
+  setPage(pageInfo) {
+    this.page.page = parseInt(pageInfo.offset) + 1;
+    this.getAds(this.page);
+  }
+
   closeAddAds() {
     this.isAddAdvertisement = false;
+    this.setPage({offset:0});
   }
 
 }
