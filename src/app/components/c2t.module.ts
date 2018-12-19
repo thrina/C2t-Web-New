@@ -23,6 +23,8 @@ import { AddAdvertisementComponent } from './admin-user/advertisements/add-adver
 import {NewsService }from './admin-user/news/news.service'; 
 import {EventsService }from './admin-user/events/events.service'; 
 import { AdvertisementService } from './admin-user/advertisements/advertisement.service';
+import { AdminDashboardService } from './admin-user/admin-dashboard/admin-dashboard.service';
+
 
 export const c2tRoutes:Routes = [ {
     path:'', 
@@ -66,6 +68,6 @@ export const c2tRoutes:Routes = [ {
     FileUploadModule
   ], 
   declarations: [C2TComponent, SignupComponent, AdminDashboardComponent, NewsComponent, EventsComponent, AdvertisementsComponent, AddNewsComponent, AddEventsComponent, AddAdvertisementComponent],
-  providers:[NewsService,EventsService, AdvertisementService]
+  providers:[NewsService,EventsService, AdvertisementService, AdminDashboardService]
 })
 export class C2TModule {}

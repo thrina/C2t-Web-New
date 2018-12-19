@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AdminDashboardService } from './admin-dashboard.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -10,69 +11,64 @@ export class AdminDashboardComponent implements OnInit {
   loadingIndicator = true;
   reorderable = true;
   filterQuery = '';
+  usersCount: any = {};
+  statusCount: any = {};
 
   columns = [
-    { name: 'name' },
-    { name: 'date' },
-    { name: 'email' },
-    { name: 'mobile' },
-    { name: 'role' },
-    { name: 'status' },
-
+    { name: 'Name' },
+    { name: 'Date' },
+    { name: 'Email' },
+    { name: 'Mobile' },
+    { name: 'Role' },
+    { name: 'Email verified' },
+    { name: 'Status' },
   ];
 
-  constructor() { }
+  page= {"totalRecords":0,"page":1,"limit":10}
+
+  constructor(private dashboardService: AdminDashboardService) { }
 
   ngOnInit() {
-    this.rowsBasic = [
-      {
-        "name": "Ethel Price",
-        "gender": "female",
-        "mobile": "8965999996",
-        "role": "Talent",
-       "status":"pending",
-        "email": "vijay@gmail.com",
-        "date": "23-04-2018",
-      },
-      {
-        "name": "Claudine Neal",
-        "gender": "female",
-        "mobile": "8965999996",
-        "role": "Talent",
-       "status":"",
-        "email": "vijay@gmail.com",
-        "date":"23-04-2018"
-      },
-      {
-        "name": "Beryl Rice",
-        "gender": "male",
-        "mobile": "8965999996",
-        "role": "Talent",
-       "status":"",
-        "email": "vijay@gmail.com",
-        "date":"23-04-2018"
-      },
-      {
-        "name": "Wilder Gonzales",
-        "gender": "female",
-        "mobile": "8965999996",
-        "role": "Talent",
-       "status":"",
-        "email": "vijay@gmail.com",
-        "date":"23-04-2018"
-      },
-      {
-        "name": "Georgina Schultz",
-        "gender": "female",
-        "mobile": "8965999996",
-        "role": "Talent",
-       "status":"",
-        "email": "vijay@gmail.com",
-        "date":"23-04-2018"
-      }    
-    ]
+    this.setPage({ offset: 0 });
     setTimeout(() => { this.loadingIndicator = false; }, 1500);
+  }
+
+  setPage(pageInfo) {
+    this.page.page = parseInt(pageInfo.offset) + 1;
+    this.getUsers(this.page);
+    this.getCount();
+  }
+
+  getCount() {
+    this.dashboardService.getDashboardCount().subscribe(data => {
+      console.log(data, "counts");
+      if (data.status == "success") {
+        this.usersCount = data.usersCount;
+        this.statusCount = data.statusCount;
+      }
+     
+   })
+  }
+
+  getUsers(params) {
+    this.dashboardService.getUsers(params).subscribe(data => {
+      console.log(data, "users")
+      if (data.status == "success") {
+        for (let x of data.rows) {
+          x['status'] = "active";
+        }
+        this.rowsBasic = data.rows;
+      }
+    })
+  }
+
+  onSelect(event) {
+    console.log(event,"event");
     
+  }
+
+  onChange(event) {
+    console.log(event, "switch");
   }
 
 }
