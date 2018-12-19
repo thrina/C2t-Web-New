@@ -87,7 +87,10 @@ export class AuthenticationFormComponent implements OnInit {
                 }
             } else {
                 this.pnotify.error({ text: data.failureMesssage, delay: 2000 });
-            }
+            }           
+        },
+        error => {
+            this.pnotify.error({ text: "Technical Error", delay: 2000 });                
         })
     }
 
