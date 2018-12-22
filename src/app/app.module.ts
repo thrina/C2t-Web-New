@@ -22,6 +22,8 @@ import { CarouselModule } from 'ngx-bootstrap';
 import { AuthenticationFormComponent } from './components/authentication/authentication-form/authentication-form.component';
 import { ModalModule } from 'ngx-bootstrap';
 import {FileUploadModule} from "ng2-file-upload";
+import { HashLocationStrategy, LocationStrategy} from "@angular/common";
+
 
 @NgModule( {
   declarations:[
@@ -47,7 +49,7 @@ import {FileUploadModule} from "ng2-file-upload";
     ModalModule.forRoot(),
     FileUploadModule
   ], 
-  providers:[HomeService, CustomNotifyService], 
+  providers:[{provide:LocationStrategy, useClass:HashLocationStrategy}, HomeService, CustomNotifyService], 
   bootstrap: [AppComponent, HomeComponent],
   entryComponents: [AuthenticationFormComponent]
 })
