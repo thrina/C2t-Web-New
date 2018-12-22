@@ -28,6 +28,7 @@ export class AddNewsComponent implements OnInit {
 
   ngOnInit() {
     this.pnotify = this.notify.getPNotify();
+    this.news.category="choose";
   }
 
   onEditorBlured(quill) {
@@ -54,7 +55,7 @@ export class AddNewsComponent implements OnInit {
         this.pnotify.success({ text: 'Published successfully', delay: 2000 });
         this.cancelAddNews();
       } else {
-        this.pnotify.error({ text: data.status, delay: 2000 });        
+        this.pnotify.error({ text: "Please check the details", delay: 2000 });        
       }
     })
     

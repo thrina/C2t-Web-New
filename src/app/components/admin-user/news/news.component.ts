@@ -31,7 +31,8 @@ export class NewsComponent implements OnInit {
   ngOnInit() {
     this.setPage({ offset: 0 });
     this.getCategories();
-
+    this.category="all";
+    
     setTimeout(() => { this.loadingIndicator = false; }, 1500);
   }
 
