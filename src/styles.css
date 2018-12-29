@@ -25100,6 +25100,16 @@ img {
   font-family: lato-regular;
 }
 
+.body_control{
+  height: 60px;
+  overflow: hidden;
+}
+
+.card_height{
+  height:200px;
+}
+
+
 .readmore_button {
   padding: 10px;
   border-radius: 0px;

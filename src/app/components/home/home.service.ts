@@ -27,6 +27,10 @@ export class HomeService {
 
     getNews(): Observable<any> {    
         return this.http.get( process.url + "/news/list" );
-      }
+    }
+
+    getEvents(): Observable<any> {    
+        return this.http.get( process.url + "/event/list" );
+    }
 
 }
