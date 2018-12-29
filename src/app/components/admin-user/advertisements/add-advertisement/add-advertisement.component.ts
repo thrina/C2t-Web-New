@@ -57,7 +57,6 @@ export class AddAdvertisementComponent implements OnInit {
       }
     })
   }
-
   cancelAd() {
     this.isDisplayChange.emit();
   }
