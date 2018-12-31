@@ -308,10 +308,8 @@
                           <div class="col-md-12">
                             <div class="row">
                               <div class="col-md-12 news_pannel">
-                                <input type="file" ng2FileSelect class="custom-file-input">
-                                <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)"
-                                  class="well ngb-drop-zone text-center">
-                                  Upload Image or video
+                                <div class="input-group">
+                                  <input type="file" name="portfolioImage" class="form-control" value="Upload File" (change)="uploadFile($event)">
                                 </div>
                               </div>
                               <div class="col-md-6">

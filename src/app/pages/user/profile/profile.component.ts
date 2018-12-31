@@ -43,6 +43,7 @@ const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 })
 export class ProfileComponent implements OnInit {
 
+  selectedFiles: FileList;
   hasBaseDropZoneOver = false;
   uploader: FileUploader = new FileUploader({
     isHTML5: true
@@ -366,6 +367,8 @@ export class ProfileComponent implements OnInit {
   }
 
   addPortfolio() {
+    let test = this.portfolio;
+    let formData : FormData = new FormData();
     if (this.currentUser['role'] == "Artist") {
       this.portfolio['userID'] = this.currentUser['_id'];
     }
@@ -375,15 +378,34 @@ export class ProfileComponent implements OnInit {
     if (this.currentUser['role'] == "Bussiness Manager") {
       this.portfolio['userID'] = this.selectedTeam['_id'];
     }
-    this.profileService.createPortfolio(this.portfolio).subscribe(data => {
-      if (data.status == 'success') {
-        this.pnotify.success({ title: "Portfolio added successfully", delay: 1000 });
-        this.togglePortfolio();
-        this.getPortfolios();
-      } else {
-        this.pnotify.error({ title: data.status, delay: 1000 });
-      }
-    })
+    if(this.selectedFiles !== null){
+      Object.keys(test).forEach(function(key) {
+        formData.append(key,test[key]);
+      });
+
+      formData.append("portfolioImage", this.selectedFiles.item(0));
+    }
+    if(formData != null){
+      this.profileService.createPortfolio(formData).subscribe(data => {
+        if (data.status == 'success') {
+          this.pnotify.success({ title: "Portfolio added successfully", delay: 1000 });
+          this.togglePortfolio();
+          this.getPortfolios();
+        } else {
+          this.pnotify.error({ title: data.status, delay: 1000 });
+        }
+      })
+    }else{
+      this.profileService.createPortfolio(this.portfolio).subscribe(data => {
+        if (data.status == 'success') {
+          this.pnotify.success({ title: "Portfolio added successfully", delay: 1000 });
+          this.togglePortfolio();
+          this.getPortfolios();
+        } else {
+          this.pnotify.error({ title: data.status, delay: 1000 });
+        }
+      })
+    }
   }
 
   togglePortfolio() {
@@ -447,6 +469,10 @@ export class ProfileComponent implements OnInit {
     //     this.teamList = data.rows;
     //   }
     // })
+  }
+
+  uploadFile(event:any){
+    this.selectedFiles = event.target.files;
   }
 
 }
