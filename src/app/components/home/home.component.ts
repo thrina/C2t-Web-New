@@ -14,17 +14,27 @@ import { AuthenticationFormComponent } from '../authentication/authentication-fo
 export class HomeComponent implements OnInit {
     authForm: BsModalRef;
     newsList: any = [];
+    eventList: any = [];
 
     constructor(private modalService: BsModalService, private homeService :HomeService) {    }
 
     ngOnInit() {
         this.getLatestNews();
+        this.getLatestEvents();
     }
 
     getLatestNews() {
         this.homeService.getNews().subscribe(data => {
             if (data.status == "success") {
             this.newsList = data.rows;
+            }
+        })
+    }
+
+    getLatestEvents() {
+        this.homeService.getEvents().subscribe(data => {
+            if (data.status == "success") {
+            this.eventList = data.rows;
             }
         })
     }

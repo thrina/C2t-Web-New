@@ -38,6 +38,9 @@
         [headerHeight]="50" [footerHeight]="50" [rowHeight]="50" [reorderable]="reorderable" [externalPaging]="true"
         [count]="page.totalRecords" [offset]="page.page" [limit]="page.limit" (page)='setPage($event)' (select)='onSelect($event)'>
         <ngx-datatable-column *ngFor="let col of columns" [name]="col.name">
+         <ng-template *ngIf="col.name == 'Id'" #editTmpl let-row="row" let-value="value">
+                <span>{{value}}</span>
+          </ng-template>  
           <ng-template *ngIf="col.name != 'Image'" #editTmpl let-row="row" let-value="value">
             <span (click)="onClick(row)">{{value}}</span>
           </ng-template>
@@ -45,6 +48,12 @@
             ngx-datatable-cell-template>
             <img src="assets/images/avatar-1.jpg" height="45px" width="70px">
           </ng-template>
+
+          <ng-template *ngIf="col.name == 'Date'" #editTmpl let-row="row" let-value="value"
+            ngx-datatable-cell-template>
+            <span>{{value | date:'mediumDate'}}</span>
+          </ng-template>
+
         </ngx-datatable-column>
         <ngx-datatable-column name="Actions">
           <ng-template let-column="column" ngx-datatable-header-template>

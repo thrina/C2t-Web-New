@@ -31,7 +31,7 @@
               </div>
             </div>
             <div class="row" style="display:block">
-              <div class="col-md -12">
+              <div class="col-md-12">
                 <quill-editor [(ngModel)]="event.content" name="content" [options]="editorConfig" (blur)="onEditorBlured($event)"
                   (focus)="onEditorFocused($event)" (ready)="onEditorCreated($event)" (change)="onContentChanged($event)">
                 </quill-editor>
