@@ -86,8 +86,8 @@ export class ProfileComponent implements OnInit {
   managerUser: any = {};
   bussinessProfile: any = {};
   constructor(public http: Http, private profileService: ProfileService, private notify: CustomNotifyService) {
-    let currtUser = JSON.parse(JSON.stringify(localStorage.getItem('currentUser')));
-    this.currentUser = JSON.parse(currtUser);
+    let currtUser = localStorage.getItem('currentUser');
+    this.currentUser = currtUser;
   }
 
   ngOnInit() {
@@ -368,7 +368,7 @@ export class ProfileComponent implements OnInit {
 
   addPortfolio() {
     let test = this.portfolio;
-    let formData : FormData = new FormData();
+    let formData: FormData = new FormData();
     if (this.currentUser['role'] == "Artist") {
       this.portfolio['userID'] = this.currentUser['_id'];
     }
@@ -378,14 +378,14 @@ export class ProfileComponent implements OnInit {
     if (this.currentUser['role'] == "Bussiness Manager") {
       this.portfolio['userID'] = this.selectedTeam['_id'];
     }
-    if(this.selectedFiles !== null){
-      Object.keys(test).forEach(function(key) {
-        formData.append(key,test[key]);
+    if (this.selectedFiles !== null) {
+      Object.keys(test).forEach(function (key) {
+        formData.append(key, test[key]);
       });
 
       formData.append("portfolioImage", this.selectedFiles.item(0));
     }
-    if(formData != null){
+    if (formData != null) {
       this.profileService.createPortfolio(formData).subscribe(data => {
         if (data.status == 'success') {
           this.pnotify.success({ title: "Portfolio added successfully", delay: 1000 });
@@ -395,7 +395,7 @@ export class ProfileComponent implements OnInit {
           this.pnotify.error({ title: data.status, delay: 1000 });
         }
       })
-    }else{
+    } else {
       this.profileService.createPortfolio(this.portfolio).subscribe(data => {
         if (data.status == 'success') {
           this.pnotify.success({ title: "Portfolio added successfully", delay: 1000 });
@@ -471,7 +471,7 @@ export class ProfileComponent implements OnInit {
     // })
   }
 
-  uploadFile(event:any){
+  uploadFile(event: any) {
     this.selectedFiles = event.target.files;
   }
 

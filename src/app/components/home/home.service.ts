@@ -9,28 +9,27 @@ export class HomeService {
     constructor(private http: HttpClient) { }
 
 
-    getRegistered(data):Observable<any> {
-        return this.http.post(process.url + "/signup", data);
+    getRegistered(data): Observable<any> {
+        return this.http.post(process.url + "/myaccount/signup", data);
     }
 
     getRegisteredDetails() {
         this.http.get(process.url + "/users").subscribe(data => {
-            console.log(data, "userssssssssssssssssssssss");
             return data;
         })
     }
 
     userLogin(data): Observable<any> {
         let rawData: any;
-        return this.http.post(process.url + "/login", data)
+        return this.http.post(process.url + "/myaccount/login", data)
     }
 
-    getNews(): Observable<any> {    
-        return this.http.get( process.url + "/news/list" );
+    getNews(): Observable<any> {
+        return this.http.get(process.url + "/news/list");
     }
 
-    getEvents(): Observable<any> {    
-        return this.http.get( process.url + "/event/list" );
+    getEvents(): Observable<any> {
+        return this.http.get(process.url + "/event/list");
     }
 
 }

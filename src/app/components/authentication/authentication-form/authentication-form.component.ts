@@ -19,7 +19,7 @@ export class AuthenticationFormComponent implements OnInit {
     isSignUp: boolean;
     isSignIn: boolean;
     title: string;
-    
+
     constructor(private homeService: HomeService, private router: Router, private notify: CustomNotifyService, public authForm: BsModalRef) {
         const firstName = new FormControl('', Validators.required);
         const lastName = new FormControl('', Validators.required);
@@ -61,12 +61,15 @@ export class AuthenticationFormComponent implements OnInit {
 
     register() {
         this.homeService.getRegistered(this.myForm.value).subscribe(data => {
-            if (data.messsage == "Registered successfully") {
+            if (data.status == "success") {
                 this.authForm.hide();
                 this.myForm.reset();
                 this.pnotify.success({ text: 'Registered successfully', delay: 2000 });
             } else {
-                this.pnotify.error("Registration failure");
+                if (data.status !== "Email alreay exist.")
+                    this.pnotify.error("Registration failure");
+                else
+                    this.pnotify.error("Email alreay exist.");
             }
         })
     }
@@ -74,24 +77,23 @@ export class AuthenticationFormComponent implements OnInit {
     login() {
         let userCredentials = { "email": this.loginForm.value.emailID, "password": this.loginForm.value.currtpassword };
         this.homeService.userLogin(userCredentials).subscribe(data => {
-            if (data && data['successMessage'] == "success") {
-                this.currentUser = data.rowData;
+            if (data && data.status == "success") {
+                this.currentUser = JSON.parse(JSON.stringify(data.rows));
                 this.authForm.hide();
-                this.pnotify.success({ text: 'Loggin successfully', delay: 2000 });
+                this.pnotify.success({ text: 'Login successfully', delay: 2000 });
                 localStorage.setItem('currentUser', this.currentUser);
-                console.log( this.currentUser,"dddddddddddddd");
-                if (JSON.parse(this.currentUser).role != 'Admin') {
-                this.router.navigate(['/user/profile']);
+                if (this.currentUser.role != "Admin") {
+                    this.router.navigate(['/user/profile']);
                 } else {
                     this.router.navigate(['/c2t/dashboard'])
                 }
             } else {
-                this.pnotify.error({ text: data.failureMesssage, delay: 2000 });
-            }           
+                this.pnotify.error({ text: data.message, delay: 2000 });
+            }
         },
-        error => {
-            this.pnotify.error({ text: "Technical Error", delay: 2000 });                
-        })
+            error => {
+                this.pnotify.error({ text: "Technical Error", delay: 2000 });
+            })
     }
 
 }

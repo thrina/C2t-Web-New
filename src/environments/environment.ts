@@ -5,5 +5,5 @@
 
 export const environment =  {
   production:false, 
-  url:'http://159.65.146.61:3000/c2tapi'
+  url:'http://localhost:3000/c2tapi'
 }; 
