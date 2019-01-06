@@ -78,11 +78,12 @@ export class AuthenticationFormComponent implements OnInit {
         let userCredentials = { "email": this.loginForm.value.emailID, "password": this.loginForm.value.currtpassword };
         this.homeService.userLogin(userCredentials).subscribe(data => {
             if (data && data.status == "success") {
-                this.currentUser = JSON.parse(JSON.stringify(data.rows));
+                // this.currentUser = JSON.parse(JSON.stringify(data.rows));
                 this.authForm.hide();
                 this.pnotify.success({ text: 'Login successfully', delay: 2000 });
-                localStorage.setItem('currentUser', this.currentUser);
-                if (this.currentUser.role != "Admin") {
+                // localStorage.setItem('currentUser', this.currentUser);
+                localStorage.setItem('currentUser', JSON.stringify(data.rows));
+                if (this.currentUser.role != "ADMIN") {
                     this.router.navigate(['/user/profile']);
                 } else {
                     this.router.navigate(['/c2t/dashboard'])

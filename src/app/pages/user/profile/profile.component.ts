@@ -86,87 +86,87 @@ export class ProfileComponent implements OnInit {
   managerUser: any = {};
   bussinessProfile: any = {};
   constructor(public http: Http, private profileService: ProfileService, private notify: CustomNotifyService) {
-    let currtUser = localStorage.getItem('currentUser');
+    let currtUser = JSON.parse(localStorage.getItem('currentUser'));
     this.currentUser = currtUser;
   }
 
   ngOnInit() {
-    if (this.currentUser['role'] == 'Manager') {
-      this.getTeamUsers()
+    if (this.currentUser['role'] == 'MANAGER') {
+      this.getTeamUsers();
       this.isTeamActive = true;
     }
-    if (this.currentUser['role'] == 'Bussiness Manager') {
+    if (this.currentUser['role'] == 'BUSSINESS MANAGER') {
       this.getBussinessProfiles();
     }
     this.pnotify = this.notify.getPNotify();
-    if (this.currentUser['role'] == "Artist") {
+    if (this.currentUser['role'] == "ARTIST") {
       this.getPortfolios();
     }
-    this.http.get(`assets/data/data.json`)
-      .subscribe((data) => {
-        this.data = data.json();
-      });
-    setTimeout(() => {
-      this.profitChartOption = {
-        tooltip: {
-          trigger: 'item',
-          formatter: function (params) {
-            const date = new Date(params.value[0]);
-            let data = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ';
-            data += date.getHours() + ':' + date.getMinutes();
-            return data + '<br/>' + params.value[1] + ', ' + params.value[2];
-          },
-          responsive: true
-        },
-        dataZoom: {
-          show: true,
-          start: 70
-        },
-        legend: {
-          data: ['Profit']
-        },
-        grid: {
-          y2: 80
-        },
-        xAxis: [{
-          type: 'time',
-          splitNumber: 10
-        }],
-        yAxis: [{
-          type: 'value'
-        }],
-        series: [{
-          name: 'Profit',
-          type: 'line',
-          showAllSymbol: true,
-          symbolSize: function (value) {
-            return Math.round(value[2] / 10) + 2;
-          },
-          data: (function () {
-            const d: any = [];
-            let len = 0;
-            const now = new Date();
-            while (len++ < 200) {
-              const random1: any = (Math.random() * 30).toFixed(2);
-              const random2: any = (Math.random() * 100).toFixed(2);
-              d.push([new Date(2014, 9, 1, 0, len * 10000), random1 - 0, random2 - 0]);
-            }
-            return d;
-          })()
-        }]
-      };
-    }, 1);
+    // this.http.get(`assets/data/data.json`)
+    //   .subscribe((data) => {
+    //     this.data = data.json();
+    // });
+    // setTimeout(() => {
+    //   this.profitChartOption = {
+    //     tooltip: {
+    //       trigger: 'item',
+    //       formatter: function (params) {
+    //         const date = new Date(params.value[0]);
+    //         let data = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ';
+    //         data += date.getHours() + ':' + date.getMinutes();
+    //         return data + '<br/>' + params.value[1] + ', ' + params.value[2];
+    //       },
+    //       responsive: true
+    //     },
+    //     dataZoom: {
+    //       show: true,
+    //       start: 70
+    //     },
+    //     legend: {
+    //       data: ['Profit']
+    //     },
+    //     grid: {
+    //       y2: 80
+    //     },
+    //     xAxis: [{
+    //       type: 'time',
+    //       splitNumber: 10
+    //     }],
+    //     yAxis: [{
+    //       type: 'value'
+    //     }],
+    //     series: [{
+    //       name: 'Profit',
+    //       type: 'line',
+    //       showAllSymbol: true,
+    //       symbolSize: function (value) {
+    //         return Math.round(value[2] / 10) + 2;
+    //       },
+    //       data: (function () {
+    //         const d: any = [];
+    //         let len = 0;
+    //         const now = new Date();
+    //         while (len++ < 200) {
+    //           const random1: any = (Math.random() * 30).toFixed(2);
+    //           const random2: any = (Math.random() * 100).toFixed(2);
+    //           d.push([new Date(2014, 9, 1, 0, len * 10000), random1 - 0, random2 - 0]);
+    //         }
+    //         return d;
+    //       })()
+    //     }]
+    //   };
+    // }, 1);
   }
 
   getPortfolios() {
     let query = {};
-    if (this.currentUser['role'] == 'Artist') {
+    if (this.currentUser['role'] == 'ARTIST') {
       query['userID'] = this.currentUser['_id'];
     }
-    if (this.currentUser['role'] == 'Manager') {
+    if (this.currentUser['role'] == 'MANAGER') {
       query['userID'] = this.selectedTeam['_id'];
     }
-    if (this.currentUser['role'] == 'Bussiness Manager') {
+    if (this.currentUser['role'] == 'BUSSINESS MANAGER') {
       query['userID'] = this.selectedTeam['_id'];
       // query['bussinessID'] = this.currentUser['bussinessID'];
     }
@@ -181,11 +181,11 @@ export class ProfileComponent implements OnInit {
 
   getTeamUsers() {
     let query = {};
-    if (this.currentUser['role'] != 'Bussiness Manager') {
+    if (this.currentUser['role'] != 'BUSSINESS MANAGER') {
       query['userID'] = this.currentUser['_id'];
 
     }
-    if (this.currentUser['role'] == 'Bussiness Manager') {
+    if (this.currentUser['role'] == 'BUSSINESS MANAGER') {
       query['userID'] = this.currentUser['_id'];
       query['bussinessID'] = this.currentUser['bussinessID'];
 
@@ -285,9 +285,9 @@ export class ProfileComponent implements OnInit {
   }
 
   createTeam() {
-    if (this.currentUser['role'] == "Manager")
+    if (this.currentUser['role'] == "MANAGER")
       this.managerUser['userID'] = this.currentUser['_id'];
-    if (this.currentUser['role'] == "Bussiness Manager")
+    if (this.currentUser['role'] == "BUSSINESS MANAGER")
       this.managerUser['userID'] = this.selectedBussiness['_id'];
 
     this.profileService.createTeamMember(this.managerUser).subscribe(data => {
@@ -302,10 +302,10 @@ export class ProfileComponent implements OnInit {
         if (!this.editManager)
           this.toggleManagerProfile()
         let query = {}
-        if (this.currentUser['role'] == "Manager") {
+        if (this.currentUser['role'] == "MANAGER") {
           query = { "userID": this.currentUser['_id'] };
         }
-        if (this.currentUser['role'] == "Bussiness Manager") {
+        if (this.currentUser['role'] == "BUSSINESS MANAGER") {
           query = { "userID": this.selectedBussiness['_id'] };
         }
         this.getTeams(query);
@@ -369,20 +369,19 @@ export class ProfileComponent implements OnInit {
   addPortfolio() {
     let test = this.portfolio;
     let formData: FormData = new FormData();
-    if (this.currentUser['role'] == "Artist") {
+    if (this.currentUser['role'] == "ARTIST") {
       this.portfolio['userID'] = this.currentUser['_id'];
     }
-    if (this.currentUser['role'] == "Manager") {
+    if (this.currentUser['role'] == "MANAGER") {
       this.portfolio['userID'] = this.selectedTeam['_id'];
     }
-    if (this.currentUser['role'] == "Bussiness Manager") {
+    if (this.currentUser['role'] == "BUSSINESS MANAGER") {
       this.portfolio['userID'] = this.selectedTeam['_id'];
     }
     if (this.selectedFiles !== null) {
       Object.keys(test).forEach(function (key) {
         formData.append(key, test[key]);
       });
-
       formData.append("portfolioImage", this.selectedFiles.item(0));
     }
     if (formData != null) {

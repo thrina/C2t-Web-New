@@ -1,0 +1,11 @@
+.portfolio_img{
+    height: 100px;
+}
+.portfolio_img_wrapp{
+    height: 100px;
+    width:100px;
+    overflow: hidden;
+}
+.portfolio_card{
+    height: 150px;
+}

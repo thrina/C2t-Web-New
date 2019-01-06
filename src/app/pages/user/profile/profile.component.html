@@ -1,5 +1,5 @@
 <!--profile cover start-->
-<div class="row" *ngIf="currentUser?.role != 'Admin'">
+<div class="row" *ngIf="currentUser?.role != 'ADMIN'">
   <div class="col-lg-12" style="margin-top: -150px;">
     <div class="cover-profile">
       <div class="profile-bg-img">
@@ -16,7 +16,7 @@
               <div class="col-lg-12">
                 <div class="user-title">
                   <h2>{{currentUser?.firstName}} {{currentUser?.lastName}}</h2>
-                  <span class="text-white" *ngIf="currentUser.role != 'Hire People'">{{currentUser?.role}}</span>
+                  <span class="text-white" *ngIf="currentUser.role != 'HIRE PEOPLE'">{{currentUser?.role}}</span>
                 </div>
               </div>
               <!-- <div>
@@ -54,7 +54,7 @@
                     <i class="icofont {{ editProfileIcon }}"></i>
                   </button>
                 </div>
-                <div class="card-body">
+                <div class="card-body" style="min-height:400px;">
                   <div class="view-info" *ngIf="editProfile">
                     <div class="row">
                       <div class="col-lg-12">
@@ -249,11 +249,11 @@
           </ng-template>
         </ngb-tab>
 
-        <ngb-tab title="My Portfolio" *ngIf="currentUser?.role == 'Artist'">
+        <ngb-tab title="My Portfolio" *ngIf="currentUser?.role == 'ARTIST'">
           <ng-template ngbTabContent>
             <div [@fadeInOutTranslate] class="m-t-15">
               <!-- personal card start -->
-              <div class="card">
+              <div class="card p-b-20">
                 <div class="card-header  border-bottom-line">
                   <h5 class="card-header-text">My Portfolio</h5>
                   <button id="edit-btn" type="button" *ngIf="editProfile" style="background-color:#d71727; border-color:#d71727; color:#fff"
@@ -267,16 +267,16 @@
                       <div class="col-lg-12">
                         <div class="general-info">
                           <div class="card" *ngIf="editProfile">
-                            <div class="col-md-12" *ngFor="let artistPortfolio of portfolioList">
+                            <div class="col-md-12 portfolio_card" *ngFor="let artistPortfolio of portfolioList">
                               <app-card>
                                 <div class="table-responsive">
                                   <table class="table table-hover">
                                     <tbody>
                                       <tr>
                                         <td>
-                                          <div class="fl" style="min-height: 100px;">
-                                            <a href="javascript:"><img class="img-radius" src="assets/images/avatar-1.jpg"
-                                                alt="chat-user"></a>
+                                          <div class="fl portfolio_img_wrapp">
+                                            <a href="javascript:">
+                                              <img class="img-radius portfolio_img" src="http://localhost:3000/{{artistPortfolio.imgUrl.replace('public','')}}" alt="chat-user"></a>
                                           </div>
                                           <div class="fl p-l-20">
                                             <p class="label-font m-b-5">{{artistPortfolio.title}}</p>
@@ -309,7 +309,7 @@
                             <div class="row">
                               <div class="col-md-12 news_pannel">
                                 <div class="input-group">
-                                  <input type="file" name="portfolioImage" class="form-control" value="Upload File" (change)="uploadFile($event)">
+                                  <input type="file" name="portfolioImage" class="form-control welcomeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" value="Upload File" (change)="uploadFile($event)">
                                 </div>
                               </div>
                               <div class="col-md-6">
@@ -371,7 +371,7 @@
 
 
 
-        <ngb-tab title="My Bussiness Profile" *ngIf="currentUser.role == 'Manager' ">
+        <ngb-tab title="My Bussiness Profile" *ngIf="currentUser.role == 'MANAGER' ">
           <ng-template ngbTabContent>
             <div [@fadeInOutTranslate] class="m-t-15">
               <div class="card">
@@ -798,7 +798,7 @@
                               </div>
                             </div>
 
-                            <div class="text-right" *ngIf="currentUser.role != 'Artist'">
+                            <div class="text-right" *ngIf="currentUser.role != 'ARTIST'">
                               <button type="button" id="edit-cancel" style="background-color:#d71727; border-color:#d71727; color:#fff"
                                 class="btn btn-danger waves-effect" (click)="toggleEditProfile()">Cancel</button>
                               <button type="submit" class="btn btn-success waves-effect waves-light m-r-20">Save</button>
@@ -936,7 +936,7 @@
             </div>
           </ng-template>
         </ngb-tab>
-        <ngb-tab title="My Bussiness Profile" *ngIf="currentUser.role == 'Bussiness Manager'">
+        <ngb-tab title="My Bussiness Profile" *ngIf="currentUser.role == 'BUSSINESS MANAGER'">
           <ng-template ngbTabContent>
             <div [@fadeInOutTranslate] class="m-t-15">
               <div class="card" *ngIf="isBussinessActive">
@@ -1214,7 +1214,7 @@
                               </div>
                             </div>
 
-                            <div class="text-right" *ngIf="currentUser.role != 'Artist'">
+                            <div class="text-right" *ngIf="currentUser.role != 'ARTIST'">
                               <button type="button" id="edit-cancel" style="background-color:#d71727; border-color:#d71727; color:#fff"
                                 class="btn btn-danger waves-effect" (click)="toggleEditProfile();managerTeamForm.reset()">Cancel</button>
                               <button type="submit" class="btn btn-success waves-effect waves-light m-r-20">Save</button>
@@ -1226,8 +1226,6 @@
                   </div>
                 </div>
               </div>
-
-
               <div class="card" *ngIf="isPortfolioActive">
                 <div class="card-header  border-bottom-line">
                   <h5 class="card-header-text"><a (click)="backToBusiness()" class="curser_pointer">{{selectedBussiness.name}}</a>/

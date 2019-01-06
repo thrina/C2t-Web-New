@@ -33,30 +33,30 @@
                 <span>{{currentUser.firstName}} {{currentUser.lastName}}</span>
                 <i class="ti-angle-down"></i>
                 <ul class="show-notification profile-notification">
-                  <li *ngIf="currentUser?.role != 'Admin'">
+                  <li *ngIf="currentUser?.role != 'ADMIN'">
                     <a [routerLink]="['/user/profile']">
                       <i class="ti-user"></i>
-                      <span *ngIf="currentUser?.role == 'Hire People' || currentUser?.role == 'Artist'">Profile</span>
-                      <span *ngIf="currentUser?.role == 'Manager' || currentUser?.role == 'Bussiness Manager'">My
+                      <span *ngIf="currentUser?.role == 'HIRE PEOPLE' || currentUser?.role == 'ARTIS'">Profile</span>
+                      <span *ngIf="currentUser?.role == 'MANAGER' || currentUser?.role == 'BUSINESS MANAGER'">My
                         Bussiness Profile</span>
                     </a>
                   </li>
-                  <li *ngIf="currentUser?.role == 'Admin'">
+                  <li *ngIf="currentUser?.role == 'ADMIN'">
                     <a [routerLink]="['/c2t/dashboard']">
                       <i class="ti-home"></i> Dashboard
                     </a>
                   </li>
-                  <li *ngIf="currentUser?.role == 'Admin'">
+                  <li *ngIf="currentUser?.role == 'ADMIN'">
                     <a [routerLink]="['/c2t/news']">
                       <i class="ti-rss"></i> News
                     </a>
                   </li>
-                  <li *ngIf="currentUser?.role == 'Admin'">
+                  <li *ngIf="currentUser?.role == 'ADMIN'">
                     <a [routerLink]="['/c2t/events']">
                       <i class="ti-map-alt"></i> Events
                     </a>
                   </li>
-                  <li *ngIf="currentUser?.role == 'Admin'">
+                  <li *ngIf="currentUser?.role == 'ADMIN'">
                     <a [routerLink]="['/c2t/advertisements']">
                       <i class="ti-blackboard"></i> Advertisements
                     </a>
