@@ -17,8 +17,8 @@ export class AdminDashboardComponent implements OnInit {
   eventsCount: any;
   newsCount: any;
   columns = [
-    { name: 'Name' },
-    { name: 'Date' },
+    { name: 'firstName' },
+    { name: 'createdAt' },
     { name: 'Email' },
     { name: 'Mobile' },
     { name: 'Role' },

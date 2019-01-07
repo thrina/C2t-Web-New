@@ -13,13 +13,12 @@ export class ProfileService {
   updateUser(userDetails:any):Observable < any >  {
     console.log("The user details are ");
     console.log(userDetails);
-    return  this.http.put(process.url + "/updateuser", userDetails)
+    console.log(process.url);
+    return  this.http.put(process.url + "/myaccount", userDetails)
   }
-  
   getUpdatedInfo(user:any): Observable <any> {
-    return this.http.get(process.url + "/getuser",user)
+    return this.http.get(process.url + "/myaccount",user)
   }
-
   createPortfolio(data:any): Observable <any>  {
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
@@ -27,16 +26,13 @@ export class ProfileService {
 
     return this.http.post(process.url + "/portfolio/create",data, { headers: headers})
   }
-
   getPortfolios(params:any): Observable<any>  {
     let url = process.url + "/portfolio/list" +"?"+ this.queryString(params);
     return this.http.get(url);
   }
-
   createTeamMember(data:any): Observable <any>  {
     return this.http.post(process.url + "/team/create",data)
   }
-
   getTeamList(params:any): Observable<any>  {
     let url = process.url + "/team/list" +"?"+ this.queryString(params);
     return this.http.get(url);

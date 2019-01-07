@@ -250,7 +250,7 @@ export class ProfileComponent implements OnInit {
 
   updateUserForm() {
     this.profileService.updateUser(this.currentUser).subscribe(data => {
-      if (data.messsage == "success") {
+      if (data.status == "success") {
         this.currentUser = { ...this.currentUser };
         this.getLatestInfo();
         if (!this.editProfile) {
