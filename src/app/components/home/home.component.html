@@ -1356,19 +1356,19 @@
         </div>
         <div class="col-xl-4 col-lg-4 col-md-6 padleft_40">
           <div>
-            <h3 class="create_account rockwell">LogIn</h3>
+            <h3 class="create_account rockwell">Sign In</h3>
           </div>
-          <form >
+          <form [formGroup]="loginForm" (ngSubmit)="login()">
             <div class="form-group">
-              <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" />
+              <input type="email" class="form-control" id="emailID" aria-describedby="emailHelp" placeholder="Enter email" formControlName="emailID" />
             </div>
             <div class="form-group">
-              <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password" />
+              <input type="password" class="form-control" id="currtpassword" placeholder="Password" formControlName="currtpassword"/>
             </div>
-            <button type="submit" class="btn btn-danger btn_create latob mt0" (click)="openSignInModal()">LogIn</button>
-            <p class="f12 lator mt10">
-              By creating an account, I agree to <br /><strong>Connect to Tollywood Website</strong> Terms, Privacy
-              Policy, and Licensing Terms. </p>
+              <button type="submit" class="btn btn-danger btn_create latob mt0" [disabled]="loginForm.invalid">Sign In</button>
+              <p class="f12 lator mt10">
+                By creating an account, I agree to <br /><strong>Connect to Tollywood Website</strong> Terms, Privacy
+                Policy, and Licensing Terms. </p>
           </form>
         </div>
       </div>

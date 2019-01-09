@@ -14,10 +14,11 @@ export class ProfileService {
     console.log("The user details are ");
     console.log(userDetails);
     console.log(process.url);
-    return  this.http.put(process.url + "/myaccount", userDetails)
+    let url = process.url + "/myaccount/"+userDetails["_id"];
+    return this.http.put(url,userDetails);
   }
   getUpdatedInfo(user:any): Observable <any> {
-    return this.http.get(process.url + "/myaccount",user)
+    return this.http.get(process.url+"/myaccount/",user)
   }
   createPortfolio(data:any): Observable <any>  {
     let headers = new HttpHeaders();

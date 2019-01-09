@@ -79,6 +79,7 @@ export class AuthenticationFormComponent implements OnInit {
         this.homeService.userLogin(userCredentials).subscribe(data => {
             if (data && data.status == "success") {
                 this.currentUser = JSON.parse(JSON.stringify(data.rows));
+                console.log("authentication..",data.rows);
                 this.authForm.hide();
                 this.pnotify.success({ text: 'Login successfully', delay: 2000 });
                 localStorage.setItem('currentUser', JSON.stringify(data.rows));

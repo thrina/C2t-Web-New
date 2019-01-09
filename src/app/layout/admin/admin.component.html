@@ -26,36 +26,37 @@
                 <div class="sidebar_toggle"><a href="javascript:;" (click)="toggleOpened()"><i class="ti-menu f-18"></i></a></div>
               </li>
             </ul>
+            
             <ul [@mobileMenuTop]="isCollapsedMobile" class="nav-right" [ngClass]="isCollapsedMobile">
               <li class="user-profile header-notification">
                 <img src="assets/images/avatar-4.jpg" class="img-radius" alt="User-Profile-Image">
                 <span>{{currentUser.firstName}} {{currentUser.lastName}}</span>
                 <i class="ti-angle-down"></i>
                 <ul class="show-notification profile-notification">
-                  <li *ngIf="currentUser?.role != 'ADMIN'">
+                  <li *ngIf="currentUser.role !== 'ADMIN'">
                     <a [routerLink]="['/user/profile']">
                       <i class="ti-user"></i>
-                      <span *ngIf="currentUser?.role == 'HIRE PEOPLE' || currentUser?.role == 'ARTIS'">Profile</span>
-                      <span *ngIf="currentUser?.role == 'MANAGER' || currentUser?.role == 'BUSINESS MANAGER'">My
+                      <span *ngIf="currentUser.role === 'HIRE PEOPLE' || currentUser.role === 'ARTIS'">Profile</span>
+                      <span *ngIf="currentUser.role === 'MANAGER' || currentUser.role === 'BUSINESS MANAGER'">My
                         Bussiness Profile</span>
                     </a>
                   </li>
-                  <li *ngIf="currentUser?.role == 'ADMIN'">
+                  <li *ngIf="currentUser.role === 'ADMIN'">
                     <a [routerLink]="['/c2t/dashboard']">
                       <i class="ti-home"></i> Dashboard
                     </a>
                   </li>
-                  <li *ngIf="currentUser?.role == 'ADMIN'">
+                  <li *ngIf="currentUser?.role === 'ADMIN'">
                     <a [routerLink]="['/c2t/news']">
                       <i class="ti-rss"></i> News
                     </a>
                   </li>
-                  <li *ngIf="currentUser?.role == 'ADMIN'">
+                  <li *ngIf="currentUser?.role === 'ADMIN'">
                     <a [routerLink]="['/c2t/events']">
                       <i class="ti-map-alt"></i> Events
                     </a>
                   </li>
-                  <li *ngIf="currentUser?.role == 'ADMIN'">
+                  <li *ngIf="currentUser?.role === 'ADMIN'">
                     <a [routerLink]="['/c2t/advertisements']">
                       <i class="ti-blackboard"></i> Advertisements
                     </a>

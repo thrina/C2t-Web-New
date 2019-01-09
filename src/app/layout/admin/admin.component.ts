@@ -98,7 +98,7 @@ export class AdminComponent implements OnInit {
   configOpenRightBar: string;
   isSidebarChecked: boolean;
   isHeaderChecked: boolean;
-  currentUser: any = {}
+  currentUser: any = {};
 
   @ViewChild('searchFriends') search_friends: ElementRef;
   /*  @ViewChild('toggleButton') toggle_button: ElementRef;
@@ -147,8 +147,8 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit() {
-    let currtUser = localStorage.getItem('currentUser');
-    this.currentUser = currtUser;
+    this.currentUser = localStorage.getItem('currentUser');
+    this.currentUser = JSON.parse(this.currentUser);
     this.setBackgroundPattern('pattern2');
     this.setMenuAttributes(this.windowWidth);
   }
@@ -180,10 +180,10 @@ export class AdminComponent implements OnInit {
       this.verticalEffect = 'overlay';
     } else {
       this.deviceType = 'desktop';
-      // this.verticalNavType = this.currentUser.role == 'Admin' ? 'expanded' : 'offcanvas';
-      // this.verticalEffect = this.currentUser.role == 'Admin' ? 'shrink' : 'push';
-      // this.verticalNavType = 'offcanvas';
-      // this.verticalEffect = 'push';
+      this.verticalNavType = this.currentUser.role == 'ADMIN' ? 'expanded' : 'offcanvas';
+      this.verticalEffect = this.currentUser.role == 'ADMIN' ? 'shrink' : 'push';
+      this.verticalNavType = 'offcanvas';
+      this.verticalEffect = 'push';
     }
   }
 
