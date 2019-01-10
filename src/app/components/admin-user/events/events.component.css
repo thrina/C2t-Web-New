@@ -1,0 +1,13 @@
+.filter-search input{
+    width: 75% !important;
+    float: left;
+    border-radius: 2px 0px 0px 2px;
+    }
+    .filter-search .btn-primary{
+        width: 25% !important;
+        float: left;
+        border-radius: 0px 2px 2px 0px;
+    }
+    .form-control{
+        height: 40px !important;
+    }

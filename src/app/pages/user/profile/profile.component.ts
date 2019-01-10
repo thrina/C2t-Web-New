@@ -5,6 +5,7 @@ import '../../../../assets/charts/echart/echarts-all.js';
 import { FileUploader } from 'ng2-file-upload';
 import { ProfileService } from './profile.service';
 import { CustomNotifyService } from '../../../components/shared/custom-notify.service';
+import { UrlHandlingStrategy } from '@angular/router';
 
 const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 
@@ -69,7 +70,7 @@ export class ProfileComponent implements OnInit {
   currentUser: Object = {};
   firstName: string;
   pnotify: any;
-
+  id:any;
   public editor;
   public editorContent = '';
   public editorConfig = {
@@ -473,5 +474,12 @@ export class ProfileComponent implements OnInit {
   uploadFile(event: any) {
     this.selectedFiles = event.target.files;
   }
+  deletePortfilo(query: any){ 
+      this.profileService.deletePortfolio(query).subscribe(data => {
+      if (data.status == "success") {
+        console.log("deleted");
+      }
+    })
+  }  
 
 }
