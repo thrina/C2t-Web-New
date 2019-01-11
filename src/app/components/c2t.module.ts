@@ -24,6 +24,7 @@ import {NewsService }from './admin-user/news/news.service';
 import {EventsService }from './admin-user/events/events.service'; 
 import { AdvertisementService } from './admin-user/advertisements/advertisement.service';
 import { AdminDashboardService } from './admin-user/admin-dashboard/admin-dashboard.service';
+import { SettingsComponent } from './admin-user/settings/settings.component';
 
 
 export const c2tRoutes:Routes = [ {
@@ -48,6 +49,10 @@ export const c2tRoutes:Routes = [ {
     {
       path:'advertisements', 
       component:AdvertisementsComponent
+    },
+    {
+      path:'settings', 
+      component:SettingsComponent
     }
     ]
   }
@@ -67,7 +72,7 @@ export const c2tRoutes:Routes = [ {
     QuillEditorModule,
     FileUploadModule
   ], 
-  declarations: [C2TComponent, SignupComponent, AdminDashboardComponent, NewsComponent, EventsComponent, AdvertisementsComponent, AddNewsComponent, AddEventsComponent, AddAdvertisementComponent],
+  declarations: [C2TComponent, SignupComponent, AdminDashboardComponent, NewsComponent, EventsComponent, AdvertisementsComponent, AddNewsComponent, AddEventsComponent, AddAdvertisementComponent, SettingsComponent],
   providers:[NewsService,EventsService, AdvertisementService, AdminDashboardService]
 })
 export class C2TModule {}

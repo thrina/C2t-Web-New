@@ -1,5 +1,10 @@
 .portfolio_img{
     height: 100px;
+    width:100px;
+    overflow-x: hidden;
+}
+.portfolio_img img{
+    height: 100px;
 }
 .portfolio_img_wrapp{
     height: 100px;

@@ -61,6 +61,11 @@
                       <i class="ti-blackboard"></i> Advertisements
                     </a>
                   </li>
+                  <li *ngIf="currentUser?.role === 'ADMIN'">
+                    <a [routerLink]="['/c2t/settings']">
+                      <i class="ti-settings"></i> settings
+                    </a>
+                  </li>
                   <li>
                     <a (click)="logout()" class="curser_pointer">
                       <i class="ti-power-off"></i> Logout

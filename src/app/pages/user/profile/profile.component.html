@@ -88,7 +88,7 @@
                                         <label class="label-font">Date of birth</label>
                                       </div>
                                       <div class="col-lg-12 col-xl-7">
-                                        <label class="value-font">{{currentUser?.dob | date:'dd-MMM-yyyy' || 'NA'}}</label>
+                                        <label class="value-font">{{currentUser?.dob | date:'mediumDate' || 'NA'}}</label>
                                       </div>
                                       <div class="col-lg-12 col-xl-5">
                                         <label class="label-font">Email</label>
@@ -125,7 +125,6 @@
                                         <label class="value-font">{{currentUser?.location || 'NA'}}</label>
                                       </div>
                                     </div>
-  
                                   </div>
                                   <div class="col-lg-12 col-xl-6">
                                     <div class="row">
@@ -286,7 +285,6 @@
                                            
                                           </td> 
                                           <div class="col-md-3 ">
-                                            {{artistPortfolio}}
                                             <span><button (click)="deletePortfilo(artistPortfolio)" style="margin-top:33px;">delete</button></span>
                                           </div>
                                         </tr>
@@ -300,7 +298,6 @@
                         </div>
                       </div>
                     </div>
-  
                   </div>
                 </div>
                 <div class="row" *ngIf="!editProfile">
@@ -313,7 +310,7 @@
                               <div class="row">
                                 <div class="col-md-12 news_pannel">
                                   <div class="input-group">
-                                    <input type="file" name="portfolioImage" class="form-control welcomeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee" value="Upload File" (change)="uploadFile($event)">
+                                    <input type="file" name="portfolioImage" class="form-control" value="Upload File" (change)="uploadFile($event)">
                                   </div>
                                 </div>
                                 <div class="col-md-6">
@@ -361,7 +358,7 @@
                               <a id="edit-cancel-btn" style="background-color:#d71727; border-color:#d71727; color:#fff"
                                 class="btn btn-default waves-effect m-t-20" (click)="togglePortfolio()">Cancel</a>
                               <a class="btn btn-success waves-effect waves-light m-r-20 m-t-20" (click)="addPortfolio()">Save</a>
-                            </div>
+                          </div>
                           </div>
                         </form>
   
@@ -425,7 +422,7 @@
                                         <label class="label-font">Date Started</label>
                                       </div>
                                       <div class="col-lg-12 col-xl-7">
-                                        <label class="value-font">{{currentUser?.bussinessStartDate || 'NA'}}</label>
+                                        <label class="value-font">{{currentUser?.bussinessStartDate | date:"mediumDate" || 'NA'}}</label>
                                       </div>
                                       <div class="col-lg-12 col-xl-5">
                                         <label class="label-font">PAN Card</label>
@@ -555,8 +552,9 @@
                                   </div>
                                   <div class="input-group">
                                     <span class="input-group-addon"><i class="icofont icofont-calendar"></i></span>
-                                    <input id="dropper-default" class="form-control" type="text" name="bussinessStartDate"
-                                      [(ngModel)]="currentUser.bussinessStartDate" placeholder="Start Date" />
+                                    <!-- <input id="dropper-default" class="form-control" type="text" name="bussinessStartDate"
+                                      [(ngModel)]="currentUser.bussinessStartDate" placeholder="Start Date" /> -->
+                                      <input type="date" class="form-control" [(ngModel)]="currentUser.bussinessStartDate" name="bussinessStartDate" placeholder="Date" (ngModelChange)="dateSearch()" />
                                   </div>
                                   <div class="input-group">
                                     <span class="input-group-addon"><i class="icofont icofont-upload-alt"></i></span>
@@ -703,7 +701,7 @@
               </div>
             </ng-template>
           </ngb-tab>
-          <ngb-tab title="Team Profiles" *ngIf="currentUser.role == 'Manager'">
+          <ngb-tab title="Team Profiles" *ngIf="currentUser.role == 'MANAGER'">
             <ng-template ngbTabContent>
               <div [@fadeInOutTranslate] class="m-t-15">
                 <div class="card" *ngIf="isTeamActive">
@@ -728,8 +726,12 @@
                                         <tr>
                                           <td>
                                             <div class="fl" style="min-height: 100px;">
-                                              <a href="javascript:"><img class="img-radius" src="assets/images/avatar-1.jpg"
-                                                  alt="chat-user"></a>
+                                              <div class="portfolio_img">
+                                                <a href="javascript:">
+                                                    <img class="img-radius" src="http://localhost:3000/{{teamMbr.imgUrl.replace('public','')}}" alt="chat-user">
+                                                    <!-- <img class="img-radius" src="http://localhost:3000/assets/img-case-sudies-6.png" alt="chat-user"> -->
+                                                </a>
+                                              </div>
                                             </div>
                                             <div class="fl p-l-20">
                                               <p class="label-font m-b-5">{{teamMbr.name}}</p>
@@ -778,8 +780,10 @@
                                   </div>
                                   <div class="input-group">
                                     <span class="input-group-addon"><i class="icofont icofont-upload-alt"></i></span>
-                                    <input type="text" class="form-control" [(ngModel)]="managerUser.pan" name="pan"
-                                      placeholder="PAN">
+                                    <!-- <input type="text" class="form-control" [(ngModel)]="managerUser.pan" name="pan"
+                                      placeholder="PAN"> -->
+                                    <input type="file" name="pan" placeholder="PAN" class="form-control" value="Upload Pan" (change)="panUpload($event)">
+
                                   </div>
                                 </div>
                                 <!-- end of table col-lg-6 -->
@@ -791,8 +795,10 @@
                                   </div>
                                   <div class="input-group">
                                     <span class="input-group-addon"><i class="icofont icofont-upload-alt"></i></span>
-                                    <input type="email" class="form-control" [(ngModel)]="managerUser.photo" name="photo"
-                                      placeholder="Photo">
+                                    <!-- <input type="email" class="form-control" [(ngModel)]="managerUser.photo" name="photo"
+                                      placeholder="photo"> -->
+                                    <input type="file" name="photo" placeholder="photo" class="form-control" value="Upload Photo" (change)="teamImgUpload($event)">
+
                                   </div>
                                   <div class="input-group">
                                     <span class="input-group-addon"><i class="icofont icofont-address-book"></i></span>

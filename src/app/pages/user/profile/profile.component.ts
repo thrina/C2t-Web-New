@@ -43,8 +43,9 @@ const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
   ]
 })
 export class ProfileComponent implements OnInit {
-
+  portifolioTitle :any;
   selectedFiles: FileList;
+  selectedTeamImg: FileList;
   hasBaseDropZoneOver = false;
   uploader: FileUploader = new FileUploader({
     isHTML5: true
@@ -286,37 +287,103 @@ export class ProfileComponent implements OnInit {
   }
 
   createTeam() {
+    let test = this.managerUser;
+    let formData: FormData = new FormData();
     if (this.currentUser['role'] == "MANAGER")
       this.managerUser['userID'] = this.currentUser['_id'];
     if (this.currentUser['role'] == "BUSSINESS MANAGER")
       this.managerUser['userID'] = this.selectedBussiness['_id'];
-
-    this.profileService.createTeamMember(this.managerUser).subscribe(data => {
-      if (data.status == "success") {
-        if (!this.editProfile) {
-          this.toggleEditProfile();
+    if (this.selectedTeamImg !== null) {
+      Object.keys(test).forEach(function (key) {
+        formData.append(key, test[key]);
+      });
+      formData.append("photo", this.selectedTeamImg.item(0));
+    }
+    if (formData != null) {
+      this.profileService.createTeamMember(formData).subscribe(data => {
+        if (data.status == 'success') {
+          this.pnotify.success({ title: "Team member added successfully", delay: 1000 });
+          if (!this.editProfile) {
+            this.toggleEditProfile();
+          }
+          if (!this.editAbout)
+            this.toggleEditAbout();
+          if (!this.editBussinessManager)
+            this.toggleBussinessManagerProfile();
+          if (!this.editManager)
+            this.toggleManagerProfile()
+          let query = {}
+          if (this.currentUser['role'] == "MANAGER") {
+            query = { "userID": this.currentUser['_id'] };
+          }
+          if (this.currentUser['role'] == "BUSSINESS MANAGER") {
+            query = { "userID": this.selectedBussiness['_id'] };
+          }
+          this.getTeams(query);
+        } else {
+          this.pnotify.error({ title: data.status, delay: 1000 });
         }
-        if (!this.editAbout)
-          this.toggleEditAbout();
-        if (!this.editBussinessManager)
-          this.toggleBussinessManagerProfile();
-        if (!this.editManager)
-          this.toggleManagerProfile()
-        let query = {}
-        if (this.currentUser['role'] == "MANAGER") {
-          query = { "userID": this.currentUser['_id'] };
+      })
+    }
+    else{
+      this.profileService.createTeamMember(this.managerUser).subscribe(data => {
+        if (data.status == "success") {
+          if (!this.editProfile) {
+            this.toggleEditProfile();
+          }
+          if (!this.editAbout)
+            this.toggleEditAbout();
+          if (!this.editBussinessManager)
+            this.toggleBussinessManagerProfile();
+          if (!this.editManager)
+            this.toggleManagerProfile()
+          let query = {}
+          if (this.currentUser['role'] == "MANAGER") {
+            query = { "userID": this.currentUser['_id'] };
+          }
+          if (this.currentUser['role'] == "BUSSINESS MANAGER") {
+            query = { "userID": this.selectedBussiness['_id'] };
+          }
+          this.getTeams(query);
+          this.pnotify.success({ title: "Team member added successfully", delay: 1000 });
+        } else {
+          this.pnotify.console.error({ title: data.status, delay: 1000 });
         }
-        if (this.currentUser['role'] == "BUSSINESS MANAGER") {
-          query = { "userID": this.selectedBussiness['_id'] };
-        }
-        this.getTeams(query);
-        this.pnotify.success({ title: "Team member added successfully", delay: 1000 });
-      } else {
-        this.pnotify.console.error({ title: data.status, delay: 1000 });
-      }
-    })
-
+      })
+    }
   }
+  // createTeam() {
+  //   if (this.currentUser['role'] == "MANAGER")
+  //     this.managerUser['userID'] = this.currentUser['_id'];
+  //   if (this.currentUser['role'] == "BUSSINESS MANAGER")
+  //     this.managerUser['userID'] = this.selectedBussiness['_id'];
+
+  //   this.profileService.createTeamMember(this.managerUser).subscribe(data => {
+  //     if (data.status == "success") {
+  //       if (!this.editProfile) {
+  //         this.toggleEditProfile();
+  //       }
+  //       if (!this.editAbout)
+  //         this.toggleEditAbout();
+  //       if (!this.editBussinessManager)
+  //         this.toggleBussinessManagerProfile();
+  //       if (!this.editManager)
+  //         this.toggleManagerProfile()
+  //       let query = {}
+  //       if (this.currentUser['role'] == "MANAGER") {
+  //         query = { "userID": this.currentUser['_id'] };
+  //       }
+  //       if (this.currentUser['role'] == "BUSSINESS MANAGER") {
+  //         query = { "userID": this.selectedBussiness['_id'] };
+  //       }
+  //       this.getTeams(query);
+  //       this.pnotify.success({ title: "Team member added successfully", delay: 1000 });
+  //     } else {
+  //       this.pnotify.console.error({ title: data.status, delay: 1000 });
+  //     }
+  //   })
+
+  // }
 
   addBussinessProfile() {
     this.bussinessProfile['userID'] = this.currentUser['_id'];
@@ -474,12 +541,21 @@ export class ProfileComponent implements OnInit {
   uploadFile(event: any) {
     this.selectedFiles = event.target.files;
   }
+  teamImgUpload(event: any){
+    this.selectedTeamImg = event.target.files;
+  }
+  
   deletePortfilo(query: any){ 
-      this.profileService.deletePortfolio(query).subscribe(data => {
-      if (data.status == "success") {
-        console.log("deleted");
+    this.profileService.deletePortfolio(query).subscribe(data => {
+    if (data.status == "success") {
+      console.log("deleted");
+      this.portifolioTitle=JSON.parse(JSON.stringify(query));
+      if (this.currentUser['role'] == "ARTIST"){
+        this.getPortfolios();          
       }
-    })
-  }  
+      this.pnotify.success({ title:query.title+ " delete successfully", delay: 2000 });
 
-}
+    }
+    })
+  } 
+} 

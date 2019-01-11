@@ -30,7 +30,6 @@ export class ProfileService {
     let headers = new HttpHeaders();
     headers.append('Content-Type', 'application/json');
     headers.append('Accept', 'multipart/form-data');
-
     return this.http.post(process.url + "/portfolio/create",data, { headers: headers})
   }
   getPortfolios(params:any): Observable<any>  {
@@ -38,7 +37,10 @@ export class ProfileService {
     return this.http.get(url);
   }
   createTeamMember(data:any): Observable <any>  {
-    return this.http.post(process.url + "/team/create",data)
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'multipart/form-data');
+    return this.http.post(process.url + "/team/create",data, { headers: headers})
   }
   getTeamList(params:any): Observable<any>  {
     let url = process.url + "/team/list" +"?"+ this.queryString(params);
