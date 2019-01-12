@@ -14,7 +14,7 @@ export class AdvertisementsComponent implements OnInit {
   isAddAdvertisement: boolean = false;
 
   columns = [
-    { name: 'Image' },
+    { name: 'imgUrl' },
     { name: 'Title' },
     { name: 'Date' },
     { name: 'Content' },

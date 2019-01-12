@@ -12,7 +12,7 @@ import { CustomNotifyService } from '../../../shared/custom-notify.service';
 export class AddEventsComponent implements OnInit {
   event: any = {};
   hasBaseDropZoneOver = false;
-
+  eventImage: FileList;
   public editor;
   public editorConfig = {
     placeholder: 'Enter Event content'
@@ -45,24 +45,60 @@ export class AddEventsComponent implements OnInit {
   onContentChanged({ quill, html, text }) {
   }
 
-  fileOverBase(e: any): void {
-    this.hasBaseDropZoneOver = e;
+  fileOverBase(event: any){
+    this.eventImage = event.target.files;
   }
+
+  // publishEvent() {
+  //   console.log(this.event,"event");
+  //   this.eventsService.addEvent(this.event).subscribe(data => {
+  //     if (data.status == 'success') {
+  //       this.pnotify.success({ text: 'Published successfully', delay: 1000 });
+  //       this.cancelAddEvent();
+  //     } else {
+  //       this.pnotify.error({ text: data.status, delay: 1000 });        
+  //     }
+  //   })
+  // }
 
   publishEvent() {
-    console.log(this.event,"event");
-    this.eventsService.addEvent(this.event).subscribe(data => {
-      if (data.status == 'success') {
-        this.pnotify.success({ text: 'Published successfully', delay: 1000 });
-        this.cancelAddEvent();
-      } else {
-        this.pnotify.error({ text: data.status, delay: 1000 });        
-      }
-    })
-  }
 
+    let test = this.event;
+       let formData: FormData = new FormData();
+       console.log(test, "event");
+        if (this.eventImage !== null) {
+         Object.keys(test).forEach(function (key) {
+           formData.append(key, test[key]);
+           console.log(formData);
+         });
+         formData.append("eventImage", this.eventImage.item(0));
+       }
+       if (formData != null) {
+         this.eventsService.addEvent(formData).subscribe(data => {
+           if (data.status == 'success') {
+             this.pnotify.success({ title: "Event Published successfully", delay: 1000 });
+             this.cancelAddEvent();
+           } else {
+             console.log("form data submitted");
+             this.pnotify.error({ title: "Please check the details" + data.status, delay: 1000 });
+           }
+         })
+       } else {
+         this.eventsService.addEvent(this.event).subscribe(data => {
+           if (data.status == 'success') {
+             this.pnotify.success({ title: "Portfolio added successfully", delay: 1000 });
+             this.cancelAddEvent();
+           } else {
+             console.log("form event submitted");
+             this.pnotify.error({ title: "Please check the details"+data.status, delay: 1000 });
+           }
+         })
+       }   
+
+      }
   cancelAddEvent() {
     this.isDisplayChange.emit();
   }
+
 
 }

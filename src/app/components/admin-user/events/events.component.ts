@@ -15,7 +15,7 @@ export class EventsComponent implements OnInit {
   date: any;
 
   columns = [
-    { name: 'Image' },
+    { name: 'imgUrl' },
     { name: 'Title' },
     { name: 'Date' },
     { name: 'Content' },

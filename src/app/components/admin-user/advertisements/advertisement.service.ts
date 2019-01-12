@@ -16,8 +16,10 @@ export class AdvertisementService {
   }
   
   addAdvertisement(data):Observable<any> {
-    return this.http.post(process.url + "/advertisement/create", data)
-    
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'multipart/form-data');
+    return this.http.post(process.url + "/advertisement/create", data, { headers: headers})
   }
   queryString  (query)  {
     let queryString = Object.entries(query).map(([key, val]) => `${key}=${val}`).join('&');

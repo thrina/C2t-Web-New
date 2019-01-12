@@ -31,12 +31,14 @@
         [count]="page.totalRecords" [offset]="page.page" [limit]="page.limit" (page)='setPage($event)' [selectionType]="'single'"
         (select)='onSelect($event)'>
         <ngx-datatable-column *ngFor="let col of columns" [name]="col.name">
-          <ng-template *ngIf="col.name != 'Image'" #editTmpl let-row="row" let-value="value">
+          <ng-template *ngIf="col.name != 'imgUrl'" #editTmpl let-row="row" let-value="value">
             <span (click)="onClick(row)">{{value}}</span>
           </ng-template>
-          <ng-template *ngIf="col.name == 'Image'" #editTmpl let-row="row" let-value="value"
+          <ng-template *ngIf="col.name == 'imgUrl'" #editTmpl let-row="row" let-value="value"
             ngx-datatable-cell-template>
-            <img src="assets/images/avatar-1.jpg" height="45px" width="70px">
+            <!-- <img src="assets/images/avatar-1.jpg" height="45px" width="70px"> -->
+            <img class="img-radius portfolio_img" src="http://localhost:3000{{value.replace('public','')}}" alt="chat-user" height="45px" width="70px">
+
           </ng-template>
         </ngx-datatable-column>
         <ngx-datatable-column name="Actions">
