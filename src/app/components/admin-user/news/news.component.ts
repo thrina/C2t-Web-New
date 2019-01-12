@@ -64,7 +64,7 @@ export class NewsComponent implements OnInit {
     this.newsService.getNews(params).subscribe(data => {
       if (data.status == "success") {
         this.rowsBasic = data.rows;
-        this.page.totalRecords= data.totalRecords
+        this.page.totalRecords= data.totalRecords;
       }
     })
   }

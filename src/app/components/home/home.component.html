@@ -29,7 +29,7 @@
       <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
         <div class="navbar-nav">
           <a class="nav-item nav-link menu_list_item f14 fl latob p-l-20 link_hover curser_pointer">Home <span class="sr-only">(current)</span></a>
-          <a class="nav-item nav-link menu_list_item f14 fl latob p-l-20 link_hover curser_pointer">Search</a>
+          <a class="nav-item nav-link menu_list_item f14 fl latob p-l-20 link_hover curser_pointer" [routerLink]="['/search']">Search</a>
           <a class="nav-item nav-link menu_list_item f14 fl latob p-l-20 link_hover curser_pointer">Opportunities</a>
           <a class="nav-item nav-link menu_list_item f14 fl latob p-l-20 link_hover curser_pointer">Projects</a>
           <a class="nav-item nav-link menu_list_item f14 fl latob p-l-20 link_hover curser_pointer">About Us</a>
@@ -92,7 +92,7 @@
             here.</h2>
           <div class="space32 sapce20"></div>
           <div class="input-group" id="adv-search">
-            <input type="text" class="form-control searchbar lator" placeholder="Search for Artists, Writers, Technicians�" />
+            <input type="text" class="form-control searchbar lator" placeholder="Search for Artists, Writers, Technicians" />
             <div class="input-group-btn">
               <div class="btn-group" role="group">
                 <div class="dropdown dropdown-lg">
@@ -125,9 +125,9 @@
                     </form>
                   </div>
                 </div>
-                <button type="button" class="btn btn-danger sbtn">
-                  <i class="icofont icofont-search"></i>
-                </button>
+                  <button type="button" class="btn btn-danger sbtn" (click)="search()">
+                    <i class="icofont icofont-search"></i>
+                  </button>
               </div>
             </div>
           </div>

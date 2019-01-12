@@ -1,0 +1,224 @@
+<div class="logo_wrapper">
+  <div class="container">
+      <img src="../../../assets/images/logo.png" class="mainlogo">
+  </div>
+</div>
+<div class="row top_nav">
+  <div class="col-12 wid100">
+      <div class="top_info_pa1">
+          <a href="" class="text-black-50 link_button f16 rockwell">Sign Up</a>
+          <a href="" class="link_button text-black-50 f16 rockwell">Sign In</a>
+      </div>
+      <div class="top_info_pa2 mr_30">
+          <i class="far fa-envelope f14"></i>
+          <a href="" class="contact_links rockwell f14 text-muted">connect2tollywood.com</a>
+          <i class="fas fa-phone f14"></i>
+          <a href="" class="contact_links f14 rockwell text-muted">+91 9876543210</a>
+      </div>
+  </div>
+</div>
+<div class="row navbar_section">
+  <div class="container padl_80">
+      <nav class="navbar navbar-expand-lg navbar-light hero_nav backcolor_f4">
+          <a class="navbar-brand" href="#"></a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+              <div class="navbar-nav">
+                  <a class="nav-item nav-link menu_list_item f16 fl" [routerLink]="['/home']">Home</a>
+                  <a class="nav-item nav-link menu_list_item f16 fl" [routerLink]="['/search']">Search <span class="sr-only">(current)</span></a>
+                  <a class="nav-item nav-link menu_list_item f16 fl" href="#">Opportunities</a>
+                  <a class="nav-item nav-link menu_list_item f16 fl" href="#">Projects</a>
+                  <a class="nav-item nav-link menu_list_item f16 fl" href="#">About Us</a>
+                  <a class="nav-item nav-link menu_list_item f16 fl" [routerLink]="['/joinus']"href="#">Join Us</a>
+                  <a class="nav-item nav-link menu_list_item f16 fl" href="#">Contact Us</a>
+              </div>
+          </div>
+      </nav>
+  </div>
+</div>
+<div class="row rows margin_40">
+  <div class="container padlr_5">
+      <div class="row rows ">
+          <div class="col-lg-7 col-xl-7 col-md-12 rows padding_lr">
+              <div class="input-group" id="adv-search">
+                  <input type="text" class="form-control searchbar lator" [(ngModel)]="filterQuery" placeholder="Search for Artists, Writers, Technicians…"/>
+                  <div class="input-group-btn">
+                      <div class="btn-group" role="group">
+                          <div class="dropdown dropdown-lg">
+                              <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Category
+                                  <span class="caret"></span>
+                              </button>
+                              <div class="dropdown-menu dropdown-menu-right" role="menu">
+                                  <form class="form-horizontal" role="form">
+                                      <div class="form-group">
+                                          <label for="filter">Filter by</label>
+                                          <select class="form-control">
+                                              <option value="0" selected>All Snippets</option>
+                                              <option value="1">Featured</option>
+                                              <option value="2">Most popular</option>
+                                              <option value="3">Top rated</option>
+                                              <option value="4">Most commented</option>
+                                          </select>
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="contain">Author</label>
+                                          <input class="form-control" type="text"/>
+                                      </div>
+                                      <div class="form-group">
+                                          <label for="contain">Contains the words</label>
+                                          <input class="form-control" type="text"/>
+                                      </div>
+                                      <button type="submit" class="btn btn-danger">
+                                          <i class="fas fa-search"></i>
+                                      </button>
+                                  </form>
+                              </div>
+                          </div>
+                          
+                          <button type="button" class="btn btn-danger sbtn" (click)="megasearch()">
+                              <i class="fas fa-search"></i>
+                          </button>
+                      </div>
+                  </div>
+              </div>
+          </div>                     
+      </div>
+  </div>
+</div>
+<div class="row margin_lr">
+  <div class="container">
+      <ul class="nav nav-tabs margin10" role="tablist">                      
+          <li class="nav-item">
+              <a class="active nav-link popular" href="#tab1" data-toggle="tab" role="tab" aria-controls="tab1" aria-expanded="true">Most Popular</a>                          
+          </li>
+          <li class="nav-item popular"> 
+              <a class="nav-link" href="#tab2" data-toggle="tab" role="tab" aria-controls="tab2" aria-expanded="true">New Profiles</a> 
+          </li>                     
+      </ul>
+      <div class="tab-content">
+          <div class="tab-pane active" role="tabpanel" aria-labelledby="tab1-tab" id="tab1">
+              <div class="col-xl-12 col-md-12 col-lg-12 oneshot_col">
+                  <div class="row">
+                    <!-- search loop starting -->
+                      <div class="col-xl-2 col-lg-2 col-md-4 oneshot_col1" *ngFor="let searchResults of rowsBasic">
+                          <div class="card padding_lr">
+                              <div class="card-body full_box">
+                                  <div class="padding_lr">
+                                      <img src="../../../assets/images/profile_shot.png" class="image_6cards">
+                                  </div>
+                                  <div class="pad_2010 mb30">
+                                      <h2 class="primeh2 pad10">{{searchResults.firstName}}</h2>
+                                      <h2 class="prime_h3 pad10">Dancer</h2>
+                                      <h6 class="primeh6 pad10">{{searchResults.createdAt | date:"mediumDate"}}</h6>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                     <!-- search loop ending -->
+                  </div>
+              </div>
+          </div>
+          <nav aria-label="Page navigation example">
+              <ul class="pagination">
+                  <li>
+                      <a class="page-link text-danger" href="#" aria-label="Previous"> <span aria-hidden="true">&laquo;</span> <span class="sr-only">Previous</span> </a>
+                  </li>
+                  <li class="page-item">
+                      <a class="page-link text-danger" href="#">1</a>
+                  </li>
+                  <li class="page-item">
+                      <a class="page-link text-danger" href="#">2</a>
+                  </li>
+                  <li class="page-item">
+                      <a class="page-link text-danger" href="#">3</a>
+                  </li>
+                  <li class="page-item">
+                      <a class="page-link text-danger" href="#" aria-label="Next"> <span aria-hidden="true">&raquo;</span> <span class="sr-only">Next</span> </a>
+                  </li>
+              </ul>
+          </nav>
+          <div class="tab-pane" role="tabpanel" aria-labelledby="tab2-tab" id="tab2">
+              <p>Tab 2 content goes here...</p>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="row register_section">
+  <div class="container">
+      <div class="row">
+          <div class="container col-xl-8 col-lg-8 col-md-8">
+              <div>
+                  <h1 class="register_text cc">Are you a singer or a writer or a director or Do you manage artists?</h1>
+              </div>
+          </div>
+          <div class="container col-xl-4 col-lg-4 col-md-4">
+              <div class="cc">
+                  <button type="submit" class="btn btn-danger btn_register latob">Register Now</button>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+<div class="row info_section">
+  <div class="container">
+      <div class="row">
+          <div class="col-xl-4 col-lg-4 col-md-12 mb30">
+              <img src="../../../assets/images/logo.png" class="logo2"/>
+              <div>
+                  <p class="lator w">Connect to Tollywood is the right platform to find one from largest Community
+                  of Artist&nbsp; Talented People over many Cities like Telangana Hyderabad, Vizag,
+                  Andhrapradesh. Register for free and Start your move in finding the right one and make your
+                  events successful.</p>
+              </div>
+          </div>
+          <div class="col-xl-8 col-lg-8 col-md-12 line_flex">
+              <div class="row full_width">
+                  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+                      <ul class="info_list">
+                          <li>Home</li>
+                          <li>About Us</li>
+                          <li>Investor Relations</li>
+                          <li>In the News</li>
+                          <li>Investor Relations</li>
+                          <li>Contact Us</li>
+                      </ul>
+                  </div>
+                  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+                      <ul class="info_list">
+                          <li>
+                              <strong>Legal</strong>
+                          </li>
+                          <li>Website Terms of Use </li>
+                          <li>License Agreement</li>
+                          <li>Privacy Policy</li>
+                          <li>Patents</li>
+                      </ul>
+                      <div>
+                          <h3 class="follow lator">Follow</h3>
+                          <i class="fab fa-facebook social_icon"></i>
+                          <i class="fab fa-instagram social_icon"></i>
+                          <i class="fab fa-twitter social_icon"></i>
+                          <i class="fab fa-youtube social_icon"></i>
+                      </div>
+                  </div>
+                  <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                      <ul class="info_list">
+                          <li>
+                              <strong>Help</strong>
+                          </li>
+                          <li>Support Center</li>
+                          <li>Contact Us</li>
+                          <li>
+                              <strong>Sales</strong>
+                          </li>
+                          <li>+91 9876543210</li>
+                          <li>connect2tollywood.com</li>
+                      </ul>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>

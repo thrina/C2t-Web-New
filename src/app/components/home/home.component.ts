@@ -17,11 +17,16 @@ export class HomeComponent implements OnInit {
     authForm: BsModalRef;
     newsList: any = [];
     eventList: any = [];
+    rowsBasic: any = [];
     pnotify: any;
     myForm: FormGroup;
     loginForm: FormGroup;
-    currentUser: any = {}
+    filterQuery = '';
+    currentUser: any = {};
     isSignIn: boolean;
+
+    page= {"totalRecords":0,"page":1,"limit":10}
+
     constructor(private modalService: BsModalService, private router: Router, private homeService :HomeService, private notify: CustomNotifyService) {  
         const password = new FormControl('', Validators.required);
         const email = new FormControl('', [Validators.required, Validators.email]);
@@ -84,4 +89,11 @@ export class HomeComponent implements OnInit {
             this.pnotify.error({ text: "Technical Error", delay: 2000 });
         })
     }
+
+    search() {
+        this.router.navigateByUrl('/search');
+        // let sarch = { "searchText": this.filterQuery, "page": 1, "limit": 10 };
+        // this.getSearch(sarch);
+    }
+
 }
