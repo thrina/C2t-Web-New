@@ -17,7 +17,7 @@ export class NewsComponent implements OnInit {
   date: any;
 
   columns = [
-    { name: 'Image' },
+    { name: 'imgUrl' },
     { name: 'Title' },
     { name: 'Date' },
     { name: 'Description' },

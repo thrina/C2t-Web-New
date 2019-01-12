@@ -407,7 +407,6 @@ export class ProfileComponent implements OnInit {
   changeProfileImg() {
     var fileupload = document.getElementById("imgFileUpload");
     fileupload.click();
-
   }
 
   changeImg(event) {

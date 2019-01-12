@@ -16,8 +16,10 @@ export class NewsService {
   }
   
   addNews(data):Observable<any> {
-    return this.http.post(process.url + "/news/create", data)
-    
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'multipart/form-data');
+    return this.http.post(process.url + "/news/create", data, { headers: headers})
   }
 
   getCategories() {

@@ -12,7 +12,7 @@ export class AddNewsComponent implements OnInit {
   news: any = {};
   hasBaseDropZoneOver = false;
   pnotify: any;
-
+  newsImage: FileList;
   public editor;
   public editorConfig = {
     placeholder: 'Enter news content'
@@ -44,21 +44,52 @@ export class AddNewsComponent implements OnInit {
   onContentChanged({ quill, html, text }) {
   }
 
-  fileOverBase(e: any): void {
-    this.hasBaseDropZoneOver = e;
+  fileOverBase(event: any){
+    this.newsImage = event.target.files;
   }
 
+    //publishNews() {
+    // console.log(this.news, "news");
+    // this.newsService.addNews(this.news).subscribe(data => {
+    //   if (data.status == 'success') {
+    //     this.pnotify.success({ text: 'Published successfully', delay: 2000 });
+    //     this.cancelAddNews();
+    //   } else {
+    //     this.pnotify.error({ text: "Please check the details", delay: 2000 });        
+    //   }
+    // })
   publishNews() {
-    console.log(this.news, "news");
-    this.newsService.addNews(this.news).subscribe(data => {
-      if (data.status == 'success') {
-        this.pnotify.success({ text: 'Published successfully', delay: 2000 });
-        this.cancelAddNews();
-      } else {
-        this.pnotify.error({ text: "Please check the details", delay: 2000 });        
+      let test = this.news;
+      let formData: FormData = new FormData();
+      console.log(test, "news");
+       if (this.newsImage !== null) {
+        Object.keys(test).forEach(function (key) {
+          formData.append(key, test[key]);
+          console.log(formData);
+        });
+        formData.append("newsImage", this.newsImage.item(0));
       }
-    })
-    
+      if (formData != null) {
+        this.newsService.addNews(formData).subscribe(data => {
+          if (data.status == 'success') {
+            this.pnotify.success({ title: "News Published successfully", delay: 1000 });
+            this.cancelAddNews();
+          } else {
+            console.log("form data submitted");
+            this.pnotify.error({ title: "Please check the details" + data.status, delay: 1000 });
+          }
+        })
+      } else {
+        this.newsService.addNews(this.news).subscribe(data => {
+          if (data.status == 'success') {
+            this.pnotify.success({ title: "Portfolio added successfully", delay: 1000 });
+            this.cancelAddNews();
+          } else {
+            console.log("form news submitted");
+            this.pnotify.error({ title: "Please check the details"+data.status, delay: 1000 });
+          }
+        })
+      }   
   }
 
   cancelAddNews() {
