@@ -5,7 +5,9 @@ body {
   color: #353c4e;
   font-family: "Open Sans", sans-serif;
 }
-
+.bg_white{
+  background-color: white;
+}
 *:focus {
   outline: none;
 }

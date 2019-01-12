@@ -4,8 +4,6 @@ import {SignupComponent} from './components/signup/signup.component';
 import {AppComponent} from './app.component';
 import {HomeComponent} from './components/home/home.component';
 import {JoinUsComponent }from './components/join-us/join-us.component'; 
-import {SearchComponent }from './components/search/search.component'; 
-
 export const AppRoutes: Routes = [
   { 
     path: '',
@@ -23,10 +21,6 @@ export const AppRoutes: Routes = [
       path: 'joinus',
       component: JoinUsComponent
 
-    },
-    {
-      path: 'search',
-      component: SearchComponent
     }]
   },
   {

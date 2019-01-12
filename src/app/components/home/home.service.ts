@@ -31,5 +31,13 @@ export class HomeService {
     getEvents(): Observable<any> {
         return this.http.get(process.url + "/event/list");
     }
-
+    getSearch(params): Observable<any> {
+        let url = process.url + "/search/list" +"?"+ this.queryString(params);
+        console.log("search string is",url);
+        return this.http.get(url);
+      }
+      queryString (query)  {
+          let queryString = Object.entries(query).map(([key, val]) => `${key}=${val}`).join('&');
+          return queryString;
+      }
 }

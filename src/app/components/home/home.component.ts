@@ -18,13 +18,15 @@ export class HomeComponent implements OnInit {
     newsList: any = [];
     eventList: any = [];
     rowsBasic: any = [];
+    searchResultsArr: any = [];
     pnotify: any;
     myForm: FormGroup;
     loginForm: FormGroup;
     filterQuery = '';
     currentUser: any = {};
     isSignIn: boolean;
-
+    homePage: boolean;
+    
     page= {"totalRecords":0,"page":1,"limit":10}
 
     constructor(private modalService: BsModalService, private router: Router, private homeService :HomeService, private notify: CustomNotifyService) {  
@@ -39,6 +41,7 @@ export class HomeComponent implements OnInit {
         this.getLatestNews();
         this.getLatestEvents();
         this.pnotify = this.notify.getPNotify();
+        this.homePage=true;
     }
     getLatestNews() {
         this.homeService.getNews().subscribe(data => {
@@ -89,11 +92,21 @@ export class HomeComponent implements OnInit {
             this.pnotify.error({ text: "Technical Error", delay: 2000 });
         })
     }
-
+    getSearch(params) {
+        this.homeService.getSearch(params).subscribe(data => {
+          if (data.status == "success") {
+            this.searchResultsArr = data.rows;
+            this.page.totalRecords= data.totalRecords
+          }
+        })
+    }
     search() {
-        this.router.navigateByUrl('/search');
-        // let sarch = { "searchText": this.filterQuery, "page": 1, "limit": 10 };
-        // this.getSearch(sarch);
+        this.homePage=false;
+        let sarch = { "searchText": this.filterQuery, "page": 1, "limit": 10 };
+        this.getSearch(sarch);
+    }
+    switchPage(){
+        this.homePage=true;
     }
 
 }

@@ -17,14 +17,12 @@ import {HomeComponent }from './components/home/home.component';
 import {HomeService }from './components/home/home.service'; 
 import {HttpClientModule }from '@angular/common/http'; 
 import { JoinUsComponent } from './components/join-us/join-us.component'; 
-import { SearchComponent } from './components/search/search.component'; 
 import { CustomNotifyService } from './components/shared/custom-notify.service'; 
 import { CarouselModule } from 'ngx-bootstrap';
 import { AuthenticationFormComponent } from './components/authentication/authentication-form/authentication-form.component';
 import { ModalModule } from 'ngx-bootstrap';
 import {FileUploadModule} from "ng2-file-upload";
 import { HashLocationStrategy, LocationStrategy} from "@angular/common";
-import { SearchService } from './components/search/search.service';
 
 
 @NgModule( {
@@ -35,7 +33,6 @@ import { SearchService } from './components/search/search.service';
     TitleComponent, 
     AuthComponent, 
     HomeComponent,
-    SearchComponent,
     JoinUsComponent,
     AuthenticationFormComponent
   ], 
@@ -52,7 +49,7 @@ import { SearchService } from './components/search/search.service';
     ModalModule.forRoot(),
     FileUploadModule
   ], 
-  providers:[{provide:LocationStrategy, useClass:HashLocationStrategy}, HomeService, SearchService, CustomNotifyService], 
+  providers:[{provide:LocationStrategy, useClass:HashLocationStrategy}, HomeService, CustomNotifyService], 
   bootstrap: [AppComponent, HomeComponent],
   entryComponents: [AuthenticationFormComponent]
 })
