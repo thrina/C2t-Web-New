@@ -3,7 +3,9 @@ import {AdminComponent} from './layout/admin/admin.component';
 import {SignupComponent} from './components/signup/signup.component';
 import {AppComponent} from './app.component';
 import {HomeComponent} from './components/home/home.component';
-import {JoinUsComponent }from './components/join-us/join-us.component'; 
+import {JoinUsComponent }from './components/join-us/join-us.component';
+import { ContactComponent } from './components/contact/contact.component';
+
 export const AppRoutes: Routes = [
   { 
     path: '',
@@ -21,6 +23,9 @@ export const AppRoutes: Routes = [
       path: 'joinus',
       component: JoinUsComponent
 
+    },{
+      path: 'contact',
+      component: ContactComponent
     }]
   },
   {

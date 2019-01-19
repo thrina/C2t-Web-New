@@ -282,11 +282,12 @@
                                               <p class="value-font m-b-5">{{artistPortfolio.talent}}</p>
                                               <p class="value-font m-b-5">{{artistPortfolio.description}}</p>
                                             </div>
-                                           
                                           </td> 
+                                          <td>
                                           <div class="col-md-3 ">
                                             <span><button (click)="deletePortfilo(artistPortfolio)" style="margin-top:33px;">delete</button></span>
                                           </div>
+                                        </td>
                                         </tr>
                                       </tbody>
                                     </table>
@@ -369,9 +370,6 @@
               </div>
             </ng-template>
           </ngb-tab>
-  
-  
-  
           <ngb-tab title="My Bussiness Profile" *ngIf="currentUser.role == 'MANAGER' ">
             <ng-template ngbTabContent>
               <div [@fadeInOutTranslate] class="m-t-15">
@@ -971,8 +969,7 @@
                                         <tr>
                                           <td>
                                             <div class="fl" style="min-height: 100px;">
-                                              <a href="javascript:"><img class="img-radius" src="assets/images/avatar-1.jpg"
-                                                  alt="chat-user"></a>
+                                              <a href="javascript:"><img class="img-radius portfolio_img" src="http://localhost:3000/{{bussMngr.imgUrl.replace('public','')}}" alt="chat-user"></a>
                                             </div>
                                             <div class="fl p-l-20">
                                               <p class="label-font m-b-5">{{bussMngr?.name}}</p>
@@ -981,7 +978,11 @@
                                               <p class="value-font m-b-5" [innerHTML]="bussMngr.aboutBussiness"></p>
                                             </div>
                                           </td>
-  
+                                          <td>
+                                              <div class="col-md-3 ">
+                                                <span><button (click)="deleteBuss(bussMngr)" style="margin-top:33px;">delete</button></span>
+                                              </div>
+                                          </td>  
                                         </tr>
                                       </tbody>
                                     </table>
@@ -1018,6 +1019,7 @@
                                     <input type="text" class="form-control" placeholder="Upload PAN" name="pan"
                                       [(ngModel)]="bussinessProfile.pan">
                                   </div>
+
                                 </div>
                                 <!-- end of table col-lg-6 -->
                                 <div class="col-lg-6">
@@ -1030,6 +1032,10 @@
                                     <span class="input-group-addon"><i class="icofont icofont-email"></i></span>
                                     <input type="email" class="form-control" name="email" [(ngModel)]="bussinessProfile.email"
                                       placeholder="Bussiness Email">
+                                  </div>
+                                  <div class="input-group">
+                                      <span class="input-group-addon"><i class="icofont icofont-upload-alt"></i></span>
+                                      <input type="file" name="bussImage" class="form-control" value="Upload File" (change)="uploadbussImage($event)"> 
                                   </div>
                                 </div>
                               </div>
@@ -1113,7 +1119,7 @@
                               <div class="text-right" style="margin-top: 70px">
                                 <button type="button" id="edit-cancel" style="background-color:#d71727; border-color:#d71727; color:#fff"
                                   class="btn btn-danger waves-effect" (click)="toggleBussinessManagerProfile();bussinessmanagerForm.reset()">Cancel</button>
-                                <button type="submit" (click)="addBussinessProfile();bussinessmanagerForm.reset()" class="btn btn-success waves-effect waves-light m-r-20">Save</button>
+                                <button type="submit" (click)="addBussinessProfile(); bussinessmanagerForm.reset()" class="btn btn-success waves-effect waves-light m-r-20">Save</button>
                               </div>
                             </div>
                           </form>
@@ -1152,7 +1158,7 @@
                                         <tr>
                                           <td>
                                             <div class="fl" style="min-height: 100px;">
-                                              <a href="javascript:"><img class="img-radius" src="assets/images/avatar-1.jpg"
+                                              <a href="javascript:"><img class="img-radius portfolio_img" height="" src="http://localhost:3000/{{teamMbr.imgUrl.replace('public','')}}"
                                                   alt="chat-user"></a>
                                             </div>
                                             <div class="fl p-l-20">
@@ -1176,7 +1182,7 @@
                     <div class="edit-info" *ngIf="!editProfile">
                       <div class="row">
                         <div class="col-lg-12">
-                          <form #managerTeamForm (ngSubmit)="createTeam();managerTeamForm.reset()">
+                          <form #managerTeamForm (ngSubmit)="createTeam(); managerTeamForm.reset()">
                             <div class="general-info">
                               <div class="row">
                                 <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
@@ -1213,8 +1219,11 @@
                                   </div>
                                   <div class="input-group">
                                     <span class="input-group-addon"><i class="icofont icofont-upload-alt"></i></span>
-                                    <input type="email" class="form-control" [(ngModel)]="managerUser.photo" name="photo"
-                                      placeholder="Photo">
+                                    <div class="input-group">
+                                        <input type="file" name="teamImg" class="form-control" value="Upload File" (change)="buzManazFile($event)">
+                                    </div>
+                                    <!-- <input type="email" class="form-control" [(ngModel)]="managerUser.photo" name="photo"
+                                      placeholder="Photo"> -->
                                   </div>
                                   <div class="input-group">
                                     <span class="input-group-addon"><i class="icofont icofont-address-book"></i></span>
@@ -1259,7 +1268,7 @@
                                         <tr>
                                           <td>
                                             <div class="fl" style="min-height: 100px;">
-                                              <a href="javascript:"><img class="img-radius" src="assets/images/avatar-1.jpg"
+                                              <a href="javascript:"><img class="img-radius portfolio_img" src="http://localhost:3000/{{teamMbr.imgUrl.replace('public','')}}"
                                                   alt="chat-user"></a>
                                             </div>
                                             <div class="fl p-l-20">
@@ -1292,11 +1301,7 @@
                                 <div class="col-md-12">
                                   <div class="row">
                                     <div class="col-md-12 news_pannel">
-                                      <input type="file" ng2FileSelect class="custom-file-input">
-                                      <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)"
-                                        class="well ngb-drop-zone text-center">
-                                        Upload Image or video
-                                      </div>
+                                       <input type="file" name="portfolioImage" class="form-control" value="Upload File" (change)="uploadFile($event)">                                       
                                     </div>
                                     <div class="col-md-6">
                                       <div class="input-group">
@@ -1344,7 +1349,7 @@
                                   <a id="edit-cancel-btn" style="background-color:#d71727; border-color:#d71727; color:#fff"
                                     class="btn btn-default waves-effect m-t-20" (click)="togglePortfolio();portfolio1.reset()">Cancel</a>
                                   <a class="btn btn-success waves-effect waves-light m-r-20 m-t-20" style="color:#fff"
-                                    (click)="addPortfolio();portfolio1.reset()">Save</a>
+                                    (click)="addPortfolio(); portfolio1.reset()">Save</a>
                                 </div>
                               </div>
                             </form>

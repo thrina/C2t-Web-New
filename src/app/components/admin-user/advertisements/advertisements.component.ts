@@ -23,15 +23,29 @@ export class AdvertisementsComponent implements OnInit {
   ];
   page= {"totalRecords":0,"page":1,"limit":10}
 
-  constructor(private adService:AdvertisementService) { }
+  constructor(private advertisementService:AdvertisementService, private adService:AdvertisementService) { }
 
   ngOnInit() {
     this.setPage({offset:0});
     setTimeout(() => { this.loadingIndicator = false; }, 1500);
   }
 
+  search() {
+    let sarch = { "searchText": this.filterQuery, "page": 1, "limit": 10 };
+    this.getEvents(sarch);
+  }
+
+  getEvents(params) {
+    this.advertisementService.getAdvertisements(params).subscribe(data => {
+      if (data.status == "success") {
+        this.rowsBasic = data.rows;
+        this.page.totalRecords= data.totalRecords
+      }
+    })
+  }
+
   getAds(params) {
-    this.adService.getAdvertisements(params).subscribe(data => {
+    this.advertisementService.getAdvertisements(params).subscribe(data => {
       if (data.status == "success") {
         this.rowsBasic = data.rows;
         this.page.totalRecords= data.totalRecords

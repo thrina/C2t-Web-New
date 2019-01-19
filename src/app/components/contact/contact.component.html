@@ -1,0 +1,304 @@
+<!--<div class="body-content">
+  <div class="body-content-inner center-block contact-us">
+  
+    
+  
+    <div class="row">
+  
+      <div class="alert alert-success alert-dismissible js-send-success-msg" role="alert" style="display: none;" >
+      <button type="button" class="close" aria-label="Close" data-hide="alert">
+      <span aria-hidden="true">&times;</span>
+      </button>
+      <strong>Success!</strong> Your message has been sent!
+      </div>
+      
+  
+      <h1 class="h1 col-xs-12 page-title contact-us">Contact Customer Support</h1>
+      <div class="col-xs-7">
+        
+        
+        <h3 class="h5 page-title">Your question may already be answered in our <a target="_blank" href="&#x2F;&#x2F;www.shutterstock.com&#x2F;support&#x2F;">Support Center</a>. If not, send us a message:</h3>
+  
+        <form class="contact-us-form" id="contact-us-form" action="/api/contact-us" method="post" data-parsley-validate>
+          
+          <div class="hidden-fields">
+            
+            <input type=hidden name="retURL" value="www.shutterstock.com/contactus?success=true">
+            
+            <input class="col-xs-12 no-left-padding" id="subject" name="subject" type="hidden" value="Shutterstock Support Email" />
+            
+          </div>
+  
+          <div class="form-group">
+            <label for="name">Full Name</label>
+            <input class="form-control" id="name" name="name" type="text" maxlength="80" value="" required data-test-ref="contact-us-full-name-field" />
+          </div>
+  
+          <div class="form-group">
+            <label for="email">Email Address</label>
+            <input class="form-control" id="email" name="email" type="email" maxlength="80" value="" required data-test-ref="contact-us-email-field" />
+          </div>
+  
+          <div class="form-group">
+            <label for="reason">How can we help you?</label>
+            <select data-test-ref="contact-us-reason-select" class="form-control" id="reason" name="reason" required>
+              <option value="">-None-</option>
+              <option value="Plans and Pricing">I have questions about plans and pricing</option>
+              <option value="Payments and Invoices">I have questions about payments and invoices</option>
+              <option value="Technical Difficulties">I’m having technical difficulties</option>
+              <option value="Cancel Plan">I would like to cancel my current plan</option>
+            </select>
+          </div>
+  
+          <div class="form-group">
+            <label for="description">Message</label>
+            <textarea class="form-control" data-test-ref="contact-us-message-field" id="description" name="description" required ></textarea>
+          </div>
+  
+          <div class="g-recaptcha"
+            data-sitekey="6LdSACkUAAAAAHs_lj7L3mRmd2tCbBn8_ba1Ok-Y"
+            data-callback="recaptchaCallback"
+            data-size="invisible">
+          </div>
+  
+          <input id="submit-contact-us" data-test-ref="contact-us-submit-button" class="btn btn-primary js_contact-submit" type="submit" name="btnSubmit" value="Send">
+        </form>
+        
+  
+        
+        
+        <div class="col-xs-12 border-bottom"></div>
+        <div class="row">
+          <dt class="col-xs-12">Social Support</dt>
+          <dd class="col-xs-6"><a href="https://twitter.com/home/?status=%40shutterstock%20" class="social-desc" target="_blank"><i class="social-icon social-icon-twitter" style="color: #55acee;margin-right: 3px;"></i> @shutterstock</a></dd>
+          <dd class="col-xs-6"><a target="_blank" title="Facebook" data-track="click.footerNav.social-facebook" href="//www.facebook.com/Shutterstock"><i class="social-icon social-icon-facebook" style="color: #55acee;margin-right: 3px;"></i> Facebook</a></dd>
+        </div>
+        
+  
+        <div class="contact-emails">
+          <div class="col-xs-12 border-bottom"></div>
+          <div class="row">
+            <dl class="col-xs-6">
+              <dt>Contributor Support</dt>
+              <dd><a href="//www.shutterstock.com/contributorsupport/">See Common Support Questions</a></dd>
+            </dl>
+            <dl class="col-xs-6">
+              <dt>Jobs</dt>
+              <dd><a href="//www.shutterstock.com/jobs">See Available Positions</a></dd>
+            </dl>
+          </div>
+        </div>
+      </div>
+  
+      <div class="col-xs-1"></div>
+  
+      <div class="col-xs-4 contact-us-col-phone">
+        <h2 class="h3 ">Phone Support</h2>
+        <dl class="local-numbers">
+          <dt>Your local phone number</dt>
+          <dd>910008000401382</dd>
+  
+          <dt>Fax</dt>
+          <dd>1-347-402-0710</dd>
+  
+          <dt></dt>
+          <dd>
+            
+            <a href="//www.shutterstock.com/support/telephone">See International Support Numbers ></a>
+          </dd>
+        </dl>
+  
+        <dl class="local-numbers">
+          <dt>US Office (Headquarters)</dt>
+          <dd>
+            Shutterstock, Inc.<br />
+            Empire State Building<br />
+            350 Fifth Avenue, 21st Floor<br />
+            New York, NY 10118
+            USA
+          </dd>
+  
+          <dt>Netherlands Office</dt>
+          <dd>
+            Shutterstock Netherlands B.V.<br />
+            Herengracht 495<br />
+            1017 BT Amsterdam<br />
+            Netherlands<br />
+          </dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+  </div>--> 
+  <div class="logo_wrapper bg_white">
+    <div class="container">
+      <a [routerLink]="['/home']"><img src="../../../assets/images/logo.png" class="mainlogo"></a>
+    </div>
+  </div>
+
+  <div class="row top_nav">
+    <div class="col-12 wid100">
+  
+      <div class="top_info_pa1">
+        <a class="text-black-50 link_button f16 rockwell curser_pointer" (click)="openSignUpModal()">Sign Up</a>
+        <a class="link_button text-black-50 f16 rockwell curser_pointer" (click)="openSignInModal()">Sign In</a>
+      </div>
+      <div class="top_info_pa2 mr_30">
+        <i class="far fa-envelope f14"></i>
+        <a class="contact_links rockwell f14 text-muted">connect2tollywood.com</a>
+        <i class="fas fa-phone f14"></i>
+        <a class="contact_links f14 rockwell text-muted">+(91) 9876543210</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row navbar_section">
+    <div class="container padl_80">
+      <nav class="navbar navbar-expand-lg navbar-light hero_nav backcolor_f4">
+        <a class="navbar-brand"></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+          aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-item nav-link menu_list_item f14 fl latob p-l-20 link_hover curser_pointer" [routerLink]="['/home']">Home</a>
+            <a class="nav-item nav-link menu_list_item f14 fl latob p-l-20 link_hover curser_pointer" [routerLink]="['/search']">Search</a>
+            <a class="nav-item nav-link menu_list_item f14 fl latob p-l-20 link_hover curser_pointer">Opportunities</a>
+            <a class="nav-item nav-link menu_list_item f14 fl latob p-l-20 link_hover curser_pointer">Projects</a>
+            <a class="nav-item nav-link menu_list_item f14 fl latob p-l-20 link_hover curser_pointer">About Us</a>
+            <a class="nav-item nav-link menu_list_item f14 fl latob p-l-20 link_hover curser_pointer" [routerLink]="['/joinus']">Join Us</a>
+            <a class="nav-item nav-link menu_list_item f14 fl latob p-l-20 link_hover curser_pointer" [routerLink]="['/contact']">Contact Us</a>
+          </div>
+        </div>
+      </nav>
+    </div>
+  </div>
+<div class="bg_white p-t-20 p-b-20">
+  <div class="container">
+      <div class="row">
+          <div class="col-xs-12 colc-sm-12 col-md-12 col-lg-12">
+              <h4>Contact Customer Support</h4>
+          </div>
+      </div><br />
+    <div class="row">
+      <div class="col-xs-12 colc-sm-12 col-md-7 col-lg-7">
+        <form action="">          
+          <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" class="form-control" id="name">
+          </div>
+          <div class="form-group">
+            <label for="email">E-mail id:</label>
+            <input type="text" class="form-control" id="email">
+          </div>
+          <div class="form-group">
+            <label for="subject">Subject:</label>
+            <input type="text" class="form-control" id="subject">
+          </div>
+          <div class="form-group">
+            <label for="comment">Comment:</label>
+            <textarea class="form-control" rows="5" id="comment"></textarea>
+          </div>
+          <button type="submit" class="btn btn-default">Send</button>
+        </form>
+      </div>     
+      <div class="col-xs-12 col-sm-12 col-md-4 col-lg-4" style="box-shadow: 0px 0px 4px grey; padding: 20px; margin-top: 30px;">
+        <h2 class="h3 ">Support</h2>
+        <br />
+        <dl class="local-numbers">
+          <dt>Contact number</dt>
+          <dd>+91 9505835760</dd>          
+            
+        </dl>
+        <dl class="local-numbers">
+            <dt>Email id</dt>
+            <dd>support@connect2tollywood.com</dd>          
+              
+          </dl>  
+          <hr>
+        <dl class="local-numbers">
+          <dt>Address</dt>
+          <dd>
+            Manjeera Majestic Commercial,<br />
+            3rd floor, 319<br />
+            Wowdea tech solutions,<br />
+            Hyderabad, Telangana,<br />
+            India
+          </dd>
+        </dl>
+      </div>        
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+        <h4>Social support</h4><br />
+          <button class="btn btn-primary" style="background-color: #c63d2d; border-color: #c63d2d;"><i class="fa fa-google" ></i>Google</button>
+          <button class="btn btn-primary" style="background-color: #385998; border-color: #385998;"><i class="fa fa-facebook"></i>Facebook</button>          
+          <button class="btn btn-primary" style="background-color: #4875b4; border-color: #4875b4;"><i class="fa fa-linkedin"></i>Linkedin</button>
+      </div>
+    </div>
+  </div>
+</div>
+  
+  <div class="row info_section">
+    <div class="container">
+        <div class="row">
+            <div class="col-xl-4 col-lg-4 col-md-12 mb30">
+                <img src="../../../assets/images/logo.png" class="logo2"/>
+                <div>
+                    <p class="lator w">Connect to Tollywood is the right platform to find one from largest Community
+                    of Artist&nbsp; Talented People over many Cities like Telangana Hyderabad, Vizag,
+                    Andhrapradesh. Register for free and Start your move in finding the right one and make your
+                    events successful.</p>
+                </div>
+            </div>
+            <div class="col-xl-8 col-lg-8 col-md-12 line_flex">
+                <div class="row full_width">
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+                        <ul class="info_list">
+                            <li>Home</li>
+                            <li>About Us</li>
+                            <li>Investor Relations</li>
+                            <li>In the News</li>
+                            <li>Investor Relations</li>
+                            <li>Contact Us</li>
+                        </ul>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-6">
+                        <ul class="info_list">
+                            <li>
+                                <strong>Legal</strong>
+                            </li>
+                            <li>Website Terms of Use </li>
+                            <li>License Agreement</li>
+                            <li>Privacy Policy</li>
+                            <li>Patents</li>
+                        </ul>
+                        <div>
+                            <h3 class="follow lator">Follow</h3>
+                            <i class="fab fa-facebook social_icon"></i>
+                            <i class="fab fa-instagram social_icon"></i>
+                            <i class="fab fa-twitter social_icon"></i>
+                            <i class="fab fa-youtube social_icon"></i>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-4 col-sm-12">
+                        <ul class="info_list">
+                            <li>
+                                <strong>Help</strong>
+                            </li>
+                            <li>Support Center</li>
+                            <li>Contact Us</li>
+                            <li>
+                                <strong>Sales</strong>
+                            </li>
+                            <li>+91 9876543210</li>
+                            <li>connect2tollywood.com</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>

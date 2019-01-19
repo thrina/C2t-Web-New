@@ -27,6 +27,7 @@ import { AdminDashboardService } from './admin-user/admin-dashboard/admin-dashbo
 import { SettingsComponent } from './admin-user/settings/settings.component';
 
 
+
 export const c2tRoutes:Routes = [ {
     path:'', 
     component:C2TComponent, 

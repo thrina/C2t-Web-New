@@ -23,7 +23,7 @@ import { AuthenticationFormComponent } from './components/authentication/authent
 import { ModalModule } from 'ngx-bootstrap';
 import {FileUploadModule} from "ng2-file-upload";
 import { HashLocationStrategy, LocationStrategy} from "@angular/common";
-
+import { ContactComponent } from "./components/contact/contact.component";
 
 @NgModule( {
   declarations:[
@@ -34,6 +34,7 @@ import { HashLocationStrategy, LocationStrategy} from "@angular/common";
     AuthComponent, 
     HomeComponent,
     JoinUsComponent,
+    ContactComponent,
     AuthenticationFormComponent
   ], 
   imports:[
@@ -50,7 +51,7 @@ import { HashLocationStrategy, LocationStrategy} from "@angular/common";
     FileUploadModule
   ], 
   providers:[{provide:LocationStrategy, useClass:HashLocationStrategy}, HomeService, CustomNotifyService], 
-  bootstrap: [AppComponent, HomeComponent],
+  bootstrap: [AppComponent, HomeComponent, ContactComponent],
   entryComponents: [AuthenticationFormComponent]
 })
 export class AppModule {}

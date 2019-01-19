@@ -46,7 +46,9 @@ export class ProfileComponent implements OnInit {
   portifolioTitle :any;
   selectedFiles: FileList;
   selectedTeamImg: FileList;
-  hasBaseDropZoneOver = false;
+  selectedbuzManazFiles: FileList;
+  businessImg: FileList;
+  hasBaseDropZoneOver = FileList;
   uploader: FileUploader = new FileUploader({
     isHTML5: true
   });
@@ -170,14 +172,11 @@ export class ProfileComponent implements OnInit {
     }
     if (this.currentUser['role'] == 'BUSSINESS MANAGER') {
       query['userID'] = this.selectedTeam['_id'];
-      // query['bussinessID'] = this.currentUser['bussinessID'];
     }
-
     this.profileService.getPortfolios(query).subscribe(data => {
       if (data.status == "success") {
         this.portfolioList = data.rows;
       }
-
     })
   }
 
@@ -213,8 +212,8 @@ export class ProfileComponent implements OnInit {
   }
 
 
-  fileOverBase(e: any): void {
-    this.hasBaseDropZoneOver = e;
+  fileOverBase(event: any): void {
+    this.hasBaseDropZoneOver = event.target.files;
   }
 
   toggleEditProfile() {
@@ -287,20 +286,21 @@ export class ProfileComponent implements OnInit {
   }
 
   createTeam() {
-    let test = this.managerUser;
+    let test = this.managerUser;    
     let formData: FormData = new FormData();
     if (this.currentUser['role'] == "MANAGER")
       this.managerUser['userID'] = this.currentUser['_id'];
     if (this.currentUser['role'] == "BUSSINESS MANAGER")
       this.managerUser['userID'] = this.selectedBussiness['_id'];
-    if (this.selectedTeamImg !== null) {
+    if (this.selectedbuzManazFiles !== null) {
       Object.keys(test).forEach(function (key) {
         formData.append(key, test[key]);
       });
-      formData.append("photo", this.selectedTeamImg.item(0));
+      formData.append("photo", this.selectedbuzManazFiles.item(0));
     }
     if (formData != null) {
       this.profileService.createTeamMember(formData).subscribe(data => {
+        console.log("createTeamMember");
         if (data.status == 'success') {
           this.pnotify.success({ title: "Team member added successfully", delay: 1000 });
           if (!this.editProfile) {
@@ -384,24 +384,50 @@ export class ProfileComponent implements OnInit {
   //   })
 
   // }
-
   addBussinessProfile() {
+    let test = this.bussinessProfile;
+    let formData: FormData = new FormData();
+
     this.bussinessProfile['userID'] = this.currentUser['_id'];
-    this.profileService.createBussiness(this.bussinessProfile).subscribe(data => {
-      if (data.status == "success") {
-        this.pnotify.success({ title: "Bisinesss added successfully", delay: 1000 });
-        this.getBussinessProfiles();
-        if (!this.editAbout)
-          this.toggleEditAbout();
-        if (!this.editBussinessManager)
-          this.toggleBussinessManagerProfile();
-        if (!this.editManager)
-          this.toggleManagerProfile()
-      } else {
-        this.pnotify.console.error({ title: data.status, delay: 1000 });
-      }
-    })
-    // this.updateUserForm();
+
+    if (this.businessImg !== null) {
+      Object.keys(test).forEach(function (key) {
+        formData.append(key, test[key]);
+      });
+      formData.append("bussImage", this.businessImg.item(0));
+    }
+    if (formData != null) {
+      this.profileService.createBussiness(formData).subscribe(data => {
+        if (data.status == 'success') {
+          this.pnotify.success({ title: "Bisinesss added successfully", delay: 1000 });
+          this.getBussinessProfiles();
+          if (!this.editAbout)
+            this.toggleEditAbout();
+          if (!this.editBussinessManager)
+            this.toggleBussinessManagerProfile();
+          if (!this.editManager)
+            this.toggleManagerProfile()
+          } else {
+            this.pnotify.console.error({ title: data.status, delay: 1000 });
+          }
+      })
+    }else
+    {
+       this.profileService.createBussiness(this.bussinessProfile).subscribe(data => {
+        if (data.status == 'success') {
+          this.pnotify.success({ title: "Bisinesss added successfully", delay: 1000 });
+          this.getBussinessProfiles();
+          if (!this.editAbout)
+            this.toggleEditAbout();
+          if (!this.editBussinessManager)
+            this.toggleBussinessManagerProfile();
+          if (!this.editManager)
+            this.toggleManagerProfile()
+          } else {
+            this.pnotify.console.error({ title: data.status, delay: 1000 });
+          }
+      })
+    }
   }
 
   changeProfileImg() {
@@ -540,8 +566,14 @@ export class ProfileComponent implements OnInit {
   uploadFile(event: any) {
     this.selectedFiles = event.target.files;
   }
+  buzManazFile(event: any) {
+    this.selectedbuzManazFiles = event.target.files;
+  }
   teamImgUpload(event: any){
     this.selectedTeamImg = event.target.files;
+  }
+  uploadbussImage(event:any){
+    this.businessImg = event.target.files;
   }
   
   deletePortfilo(query: any){ 
@@ -552,9 +584,20 @@ export class ProfileComponent implements OnInit {
       if (this.currentUser['role'] == "ARTIST"){
         this.getPortfolios();          
       }
-      this.pnotify.success({ title:query.title+ " delete successfully", delay: 2000 });
-
+      this.pnotify.success({ title:query.title+ ": delete successfully", delay: 2000 });
     }
     })
   } 
+
+  deleteBuss(query: any){ 
+    this.profileService.deleteBuss(query).subscribe(data => {
+    if (data.status == "success") {
+      this.portifolioTitle=JSON.parse(JSON.stringify(query));
+      if (this.currentUser['role'] == "BUSSINESS MANAGER"){
+        this.getBussinessProfiles();        
+      }
+      this.pnotify.success({ title:query.name + ": Business delete successfully", delay: 2000 });
+     }
+    })
+  }
 } 
