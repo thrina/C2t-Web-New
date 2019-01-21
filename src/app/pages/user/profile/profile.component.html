@@ -7,10 +7,13 @@
           <div class="card-body user-info" style="margin-top: -130px;">
             <div class="col-md-12">
               <div class="media-left">
-                <a class="profile-image">
-                  <input type="file" id="imgFileUpload" ng2FileSelect (change)="changeImg($event)" style="display:none">
-                  <img class="user-img img-radius curser_pointer" src="assets/images/avatar-4.jpg" alt="user-img" (click)="changeProfileImg()">
+                <div class="profile_img_lg">
+                <a>
+                    <input type="file" name="userImage" id="imgFileUpload" class="form-control" value="Upload File" (change)="changeUserImg($event)">
+                  <!-- <input type="file" id="imgFileUpload" ng2FileSelect (change)="changeImg($event)" style="display:none"> -->
+                  <img class="user-img img-radius curser_pointer" src="http://localhost:3000/{{currentUser.imgUrl.replace('public','')}}" alt="user-img" (click)="changeProfileImg()">
                 </a>
+                </div>
               </div>
               <div class="media-body row">
                 <div class="col-lg-12">
@@ -275,7 +278,7 @@
                                           <td>
                                             <div class="fl portfolio_img_wrapp">
                                               <a href="javascript:">
-                                                <img class="img-radius portfolio_img" src="http://localhost:3000/{{artistPortfolio.imgUrl.replace('public','')}}" alt="chat-user"></a>
+                                                <img class="img-radius portfolio_img" src="currentUserImg" alt="chat-user"></a>
                                             </div>
                                             <div class="fl p-l-20">
                                               <p class="label-font m-b-5">{{artistPortfolio.title}}</p>
@@ -1167,7 +1170,9 @@
                                               <p class="value-font m-b-5">{{teamMbr.email}}</p>
                                             </div>
                                           </td>
-  
+                                          <div class="col-md-3 ">
+                                            <span><button (click)="deleteBussteam(teamMbr)" style="margin-top:33px;">delete</button></span>
+                                          </div>  
                                         </tr>
                                       </tbody>
                                     </table>
@@ -1260,7 +1265,7 @@
                         <div class="col-lg-12">
                           <div class="general-info">
                             <div class="card" *ngIf="editProfile">
-                              <div class="col-md-12" *ngFor="let teamMbr of portfolioList">
+                              <div class="col-md-12" *ngFor="let portMbr of portfolioList">
                                 <app-card>
                                   <div class="table-responsive">
                                     <table class="table table-hover">
@@ -1268,16 +1273,19 @@
                                         <tr>
                                           <td>
                                             <div class="fl" style="min-height: 100px;">
-                                              <a href="javascript:"><img class="img-radius portfolio_img" src="http://localhost:3000/{{teamMbr.imgUrl.replace('public','')}}"
+                                              <a href="javascript:"><img class="img-radius portfolio_img" src="http://localhost:3000/{{portMbr.imgUrl.replace('public','')}}"
                                                   alt="chat-user"></a>
                                             </div>
                                             <div class="fl p-l-20">
-                                              <p class="label-font m-b-5">{{teamMbr.title}}</p>
-                                              <p class="value-font m-b-5">{{teamMbr.talent}}</p>
-                                              <p class="value-font m-b-5">{{teamMbr.description}}</p>
+                                              <p class="label-font m-b-5">{{portMbr.title}}</p>
+                                              <p class="value-font m-b-5">{{portMbr.talent}}</p>
+                                              <p class="value-font m-b-5">{{portMbr.description}}</p>
                                             </div>
                                           </td>
-                                        </tr>
+                                          <div class="col-md-3 ">
+                                            <span><button (click)="deleteBussPort(portMbr)" style="margin-top:33px;">delete</button></span>
+                                          </div>
+                                        </tr>                                        
                                       </tbody>
                                     </table>
                                   </div>

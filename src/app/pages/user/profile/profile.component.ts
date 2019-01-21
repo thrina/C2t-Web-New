@@ -48,6 +48,7 @@ export class ProfileComponent implements OnInit {
   selectedTeamImg: FileList;
   selectedbuzManazFiles: FileList;
   businessImg: FileList;
+  userImg: FileList;
   hasBaseDropZoneOver = FileList;
   uploader: FileUploader = new FileUploader({
     isHTML5: true
@@ -106,6 +107,7 @@ export class ProfileComponent implements OnInit {
     if (this.currentUser['role'] == "ARTIST") {
       this.getPortfolios();
     }
+  
     // this.http.get(`assets/data/data.json`)
     //   .subscribe((data) => {
     //     this.data = data.json();
@@ -207,7 +209,6 @@ export class ProfileComponent implements OnInit {
       if (data.status == "success") {
         this.bussinessProfiles = data.rows;
       }
-
     })
   }
 
@@ -396,6 +397,8 @@ export class ProfileComponent implements OnInit {
       });
       formData.append("bussImage", this.businessImg.item(0));
     }
+    console.log("businessData",formData);
+    
     if (formData != null) {
       this.profileService.createBussiness(formData).subscribe(data => {
         if (data.status == 'success') {
@@ -439,6 +442,41 @@ export class ProfileComponent implements OnInit {
     let file = event.target.files[0];
     const formData = new FormData();
     formData.append("myImg", file, file.name);
+  }
+
+  changeUserImg(event) {
+    // let userImg = event.target.files[0];
+    this.userImg = event.target.files;
+    let test = this.currentUser;
+    console.log(this.currentUser);
+    this.currentUser['userImage']=this.userImg.item(0);
+    console.log(this.currentUser,"current user");
+    // let formData: FormData = new FormData();
+    // if (this.userImg !== null) {
+    //   Object.keys(test).forEach(function (key) {
+    //     formData.append(key, test[key]);
+    //   });
+    //   formData.append("userImage", this.userImg.item(0));
+    // }
+    if (this.currentUser != null) {
+      this.profileService.updateUser(this.currentUser).subscribe(data => {
+        if (data.status == 'success') {
+          this.pnotify.success({ title: "Profile Image updated successfully", delay: 1000 });
+        } else {
+          this.pnotify.error({ title: data.status, delay: 1000 });
+        }
+      })
+    } else {
+      this.profileService.updateUser(this.currentUser).subscribe(data => {
+        if (data.status == 'success') {
+          this.pnotify.success({ title: "Profile Image updated successfully", delay: 1000 });
+        } else {
+          this.pnotify.error({ title: data.status, delay: 1000 });
+        }
+      })
+    }
+    // const formData = new FormData();
+    // formData.append("myImg", userImg, userImg.name);
   }
 
   onTabChange(event) {
@@ -505,6 +543,8 @@ export class ProfileComponent implements OnInit {
   }
 
   onBussinessSelect(selectedBussiness) {
+    console.log("selectedBusiness",selectedBussiness);
+    
     this.isBussinessActive = false;
     this.isTeamActive = true;
     this.isPortfolioActive = false;
@@ -594,9 +634,35 @@ export class ProfileComponent implements OnInit {
     if (data.status == "success") {
       this.portifolioTitle=JSON.parse(JSON.stringify(query));
       if (this.currentUser['role'] == "BUSSINESS MANAGER"){
-        this.getBussinessProfiles();        
+        console.log("deleted in deleteBusiness");
+        this.backToBusiness();
+        // this.getBussinessProfiles();        
       }
       this.pnotify.success({ title:query.name + ": Business delete successfully", delay: 2000 });
+     }
+    })
+  }
+  deleteBussteam(query: any){ 
+    this.profileService.deleteBussteam(query).subscribe(data => {
+    if (data.status == "success") {
+      this.portifolioTitle=JSON.parse(JSON.stringify(query));
+      if (this.currentUser['role'] == "BUSSINESS MANAGER"){
+        console.log("deleted in team");
+        this.onBussinessSelect(this.selectedBussiness);
+      }
+      this.pnotify.success({ title:query.name + ": Teammember delete successfully", delay: 2000 });
+     }
+    })
+  }
+  deleteBussPort(query: any){ 
+    this.profileService.deleteBusPort(query).subscribe(data => {
+    if (data.status == "success") {
+      this.portifolioTitle=JSON.parse(JSON.stringify(query));
+      if (this.currentUser['role'] == "BUSSINESS MANAGER"){
+        console.log("deleted in portfolio");
+        this.onSelectedTeam(this.selectedTeam);
+      }
+      this.pnotify.success({ title:query.name + ": portfolio delete successfully", delay: 2000 });
      }
     })
   }

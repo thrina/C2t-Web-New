@@ -26,6 +26,14 @@ deleteBuss(id :any):Observable<any>{
   let url = process.url + "/business/"+id._id;
   return this.http.delete(url);
 }
+deleteBussteam(id :any):Observable<any>{
+  let url = process.url + "/team/"+id._id;
+  return this.http.delete(url);
+}
+deleteBusPort(id :any):Observable<any>{
+  let url = process.url + "/portfolio/"+id._id;
+  return this.http.delete(url);
+}
 
   getUpdatedInfo(user:any): Observable <any> {
     return this.http.get(process.url+"/myaccount/",user)
