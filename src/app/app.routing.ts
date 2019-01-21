@@ -4,7 +4,8 @@ import {SignupComponent} from './components/signup/signup.component';
 import {AppComponent} from './app.component';
 import {HomeComponent} from './components/home/home.component';
 import {JoinUsComponent }from './components/join-us/join-us.component';
-import { ContactComponent } from './components/contact/contact.component';
+import {ContactComponent } from './components/contact/contact.component';
+import {ReadnewsComponent  } from './components/readnews/readnews.component';
 
 export const AppRoutes: Routes = [
   { 
@@ -26,6 +27,9 @@ export const AppRoutes: Routes = [
     },{
       path: 'contact',
       component: ContactComponent
+    },{
+      path: 'readnews',
+      component: ReadnewsComponent
     }]
   },
   {

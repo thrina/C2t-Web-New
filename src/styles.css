@@ -25276,7 +25276,11 @@ img {
   width: 100%;
   min-height: 200px;
 }
-
+.card4_img{
+  height:200px;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
 .image_6cards {
   width: 100%;
 }

@@ -16,6 +16,10 @@ export class AdminDashboardComponent implements OnInit {
   advertismentsCount: any;
   eventsCount: any;
   newsCount: any;
+  date: any;
+  togalSwitchVal: boolean;
+
+
   columns = [
     { name: 'firstName' },
     { name: 'createdAt' },
@@ -33,6 +37,21 @@ export class AdminDashboardComponent implements OnInit {
   ngOnInit() {
     this.setPage({ offset: 0 });
     setTimeout(() => { this.loadingIndicator = false; }, 1500);
+    this.togalSwitchVal=false;
+  }
+
+  search() {
+    let sarch = { "searchText": this.filterQuery, "page": 1, "limit": 10 };
+    this.getEvents(sarch);
+  }
+
+  getEvents(params) {
+    this.dashboardService.getUsers(params).subscribe(data => {
+      if (data.status == "success") {
+        this.rowsBasic = data.rows;
+        this.page.totalRecords= data.totalRecords
+      }
+    })
   }
 
   setPage(pageInfo) {
@@ -59,21 +78,25 @@ export class AdminDashboardComponent implements OnInit {
     this.dashboardService.getUsers(params).subscribe(data => {
       console.log(data, "users")
       if (data.status == "success") {
-        for (let x of data.rows) {
-          x['status'] = "active";
-        }
+        // for (let x of data.rows) {
+        //   x['status'] = "inactive";
+        // }
         this.rowsBasic = data.rows;
       }
     })
   }
 
+  togalSwitch() {
+    this.togalSwitchVal=!this.togalSwitchVal;
+  }
+  
   onSelect(event) {
     console.log(event,"event");
-    
   }
 
-  onChange(event) {
-    console.log(event, "switch");
+  onChange(event, rowba) {  
+    console.log(rowba);
+    // this.togalSwitch();
   }
 
 }

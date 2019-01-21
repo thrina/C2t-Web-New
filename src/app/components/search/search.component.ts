@@ -13,6 +13,8 @@ export class SearchComponent implements OnInit {
   page= {"totalRecords":0,"page":1,"limit":10}
 
   constructor(private searchService :SearchService) { }
+
+  
   // start of init
   ngOnInit() {
     this.setPage({ offset: 0 });

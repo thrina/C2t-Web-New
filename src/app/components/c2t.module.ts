@@ -26,8 +26,6 @@ import { AdvertisementService } from './admin-user/advertisements/advertisement.
 import { AdminDashboardService } from './admin-user/admin-dashboard/admin-dashboard.service';
 import { SettingsComponent } from './admin-user/settings/settings.component';
 
-
-
 export const c2tRoutes:Routes = [ {
     path:'', 
     component:C2TComponent, 
@@ -54,8 +52,7 @@ export const c2tRoutes:Routes = [ {
     {
       path:'settings', 
       component:SettingsComponent
-    }
-    ]
+    }]
   }
 ]; 
 

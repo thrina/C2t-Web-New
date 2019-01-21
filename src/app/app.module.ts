@@ -24,6 +24,8 @@ import { ModalModule } from 'ngx-bootstrap';
 import {FileUploadModule} from "ng2-file-upload";
 import { HashLocationStrategy, LocationStrategy} from "@angular/common";
 import { ContactComponent } from "./components/contact/contact.component";
+import { ReadnewsComponent } from './components/readnews/readnews.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule( {
   declarations:[
@@ -35,6 +37,7 @@ import { ContactComponent } from "./components/contact/contact.component";
     HomeComponent,
     JoinUsComponent,
     ContactComponent,
+    ReadnewsComponent,
     AuthenticationFormComponent
   ], 
   imports:[
@@ -50,8 +53,8 @@ import { ContactComponent } from "./components/contact/contact.component";
     ModalModule.forRoot(),
     FileUploadModule
   ], 
-  providers:[{provide:LocationStrategy, useClass:HashLocationStrategy}, HomeService, CustomNotifyService], 
-  bootstrap: [AppComponent, HomeComponent, ContactComponent],
+  providers:[{provide:LocationStrategy, useClass:HashLocationStrategy}, HomeService, CustomNotifyService, HomeComponent, SearchComponent], 
+  bootstrap: [AppComponent, HomeComponent],
   entryComponents: [AuthenticationFormComponent]
 })
 export class AppModule {}

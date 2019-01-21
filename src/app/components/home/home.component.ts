@@ -6,6 +6,7 @@ import { BsModalService } from 'ngx-bootstrap/modal';
 import { CustomNotifyService } from '../shared/custom-notify.service';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { AuthenticationFormComponent } from '../authentication/authentication-form/authentication-form.component';
+import { stringify } from 'querystring';
 
 @Component({
     selector: 'app-home',
@@ -26,7 +27,7 @@ export class HomeComponent implements OnInit {
     currentUser: any = {};
     isSignIn: boolean;
     homePage: boolean;
-    
+
     page= {"totalRecords":0,"page":1,"limit":10}
 
     constructor(private modalService: BsModalService, private router: Router, private homeService :HomeService, private notify: CustomNotifyService) {  
@@ -42,6 +43,7 @@ export class HomeComponent implements OnInit {
         this.getLatestEvents();
         this.pnotify = this.notify.getPNotify();
         this.homePage=true;
+        
     }
     getLatestNews() {
         this.homeService.getNews().subscribe(data => {
@@ -108,5 +110,8 @@ export class HomeComponent implements OnInit {
     switchPage(){
         this.homePage=true;
     }
-
+    readNews(){
+        this.router.navigate(['/readnews']);
+    }
+    
 }

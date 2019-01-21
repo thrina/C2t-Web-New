@@ -18,7 +18,7 @@ export class AdvertisementsComponent implements OnInit {
     { name: 'Title' },
     { name: 'Date' },
     { name: 'Content' },
-    { name: 'Category' },
+    // { name: 'Category' },
     { name: 'Applications' }
   ];
   page= {"totalRecords":0,"page":1,"limit":10}
