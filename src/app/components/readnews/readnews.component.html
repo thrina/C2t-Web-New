@@ -38,10 +38,21 @@
         </nav>
     </div>
   </div>
-  <div class="container">
-    <h1>{{val2}}</h1>
+
+  <div class="fluid-container bg-white">
+    <div class="container bg-white">
+        <div>
+            <img class="img-radius" src="{{newsFeedImg}}" alt="chat-user">
+        </div> 
+        <div>
+            <h4>{{newsItem.title}}</h4>
+            <h6>{{newsItem.date | date:'mediumDate'}}</h6>
+            <h5>{{newsItem.description}}</h5>
+        </div>    
+    </div>
   </div>
   <div class="row info_section">
+
     <div class="container">
         <div class="row">
             <div class="col-xl-4 col-lg-4 col-md-12 mb30">

@@ -28,20 +28,15 @@
             </div>
           </div>  
         </div>
-  
         <ngx-datatable class="material" [rows]="rowsBasic" [loadingIndicator]="loadingIndicator" [columnMode]="'force'"
           [headerHeight]="50" [footerHeight]="50" [rowHeight]="50" [reorderable]="reorderable" [externalPaging]="true"
-          [count]="page.totalRecords" [offset]="page.page" [limit]="page.limit" (page)='setPage($event)' [selectionType]="'single'"
-          (select)='onSelect($event)'>
+          [count]="page.totalRecords" [offset]="page.page" [limit]="page.limit" (page)='setPage($event)' [selectionType]="'single'">
           <ngx-datatable-column *ngFor="let col of columns" [name]="col.name">
-  
-            <ng-template *ngIf="col.name != 'imgUrl'" #editTmpl let-row="row" let-value="value">
+            <!-- <ng-template *ngIf="col.name != 'imgUrl'" #editTmpl let-row="row" let-value="value">
               <span (click)="onClick(row)">{{value}}</span>
-            </ng-template>
-            
+            </ng-template> -->
             <ng-template *ngIf="col.name == 'imgUrl'" #editTmpl let-row="row" let-value="value"
               ngx-datatable-cell-template>
-              <!-- <img src="assets/images/avatar-1.jpg" height="45px" width="70px"> -->
               <img class="img-radius portfolio_img" src="http://localhost:3000{{value.replace('public','')}}" alt="chat-user" height="45px" width="70px">
             </ng-template>
             <ng-template *ngIf="col.name == 'Date'" #editTmpl let-row="row" let-value="value"
@@ -53,21 +48,18 @@
             <ng-template let-column="column" ngx-datatable-header-template>
               Actions
             </ng-template>
-            <ng-template let-value="value" ngx-datatable-cell-template>
-              <ui-switch class="js-danger" color="#e74c3c" switchColor="#fff" size="medium" checked></ui-switch>
+            <ng-template let-value="value" ngx-datatable-cell-template #editTmpl let-row="row" let-value="value">
+              <ui-switch class="js-danger" color="#e74c3c" switchColor="#fff" size="small" checked></ui-switch>
+              <span class="m-l-10" (click)="deleteEvent(row)"><i class="ti-trash f-20"></i></span>
+              <span class="m-l-10" (click)="deleteEvent(col)"><i class="ti-pencil f-20"></i></span>
             </ng-template>
           </ngx-datatable-column>
-  
-          <ngx-datatable-column name="Actions">
-            <ng-template let-value="value" ngx-datatable-cell-template>
-              <span (click)="deleteEvent(col)"><i class="ti-trash"></i></span>
-              <span (click)="deleteEvent(col)"><i class="ti-pencil"></i></span>
-            </ng-template>
-          </ngx-datatable-column>
-  
         </ngx-datatable>
+      
       </app-card>
     </div>
   </div>
+
+  
   <app-add-events [isAddEvent]="isAddEvent" (isDisplayChange)="closeAddEvent()" *ngIf="isAddEvent"></app-add-events>
   

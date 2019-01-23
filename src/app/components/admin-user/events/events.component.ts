@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventsService } from './events.service';
+import { CustomNotifyService } from '../../../components/shared/custom-notify.service';
 import { stringify } from '@angular/core/src/util';
 @Component({
   selector: 'app-events',
@@ -13,6 +14,8 @@ export class EventsComponent implements OnInit {
   rowsBasic: any = [];
   isAddEvent: boolean = false;
   date: any;
+  eventTitle: string;
+  pnotify: any;
 
   columns = [
     { name: 'imgUrl' },
@@ -22,11 +25,11 @@ export class EventsComponent implements OnInit {
   ];
 
   page= {"totalRecords":0,"page":1,"limit":10}
-  constructor(private eventsService:EventsService) { }
-
+  constructor(private eventsService:EventsService, private notify: CustomNotifyService) { }
   ngOnInit() {
     this.setPage({ offset: 0 });
     setTimeout(() => { this.loadingIndicator = false; }, 1500);
+    this.pnotify = this.notify.getPNotify();
   }
 
   setPage(pageInfo) {
@@ -52,22 +55,21 @@ export class EventsComponent implements OnInit {
       }
     })
   }
-  
+
   openAddEvent() {
     this.isAddEvent = true;
   }
     
-  deleteEvent(rec: Number):void {
-    console.log();
-    // if (confirm('Are you sure to delete this record ?') == true) {
-    //   this.employeeService.deleteEmployee(id)
-    //   .subscribe(x => {
-    //     this.employeeService.getEmployeeList();
-    //     this.toastr.warning("Deleted Successfully","Employee Register");
-    //   })
-    // }
+  deleteEvent(rec: any):void {
+    this.eventsService.deleteEvent(rec).subscribe(data => {
+      if (data.status == "success") {
+        console.log("deleted");
+        this.setPage({ offset: 0 });
+        this.eventTitle=JSON.parse(JSON.stringify(rec));
+        this.pnotify.success({ title:rec.title+ ": delete successfully", delay: 2000 });
+      }
+    })
   }
-
   closeAddEvent() {
     this.isAddEvent = false;
     this.setPage({offset:0});

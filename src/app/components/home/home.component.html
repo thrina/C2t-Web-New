@@ -580,7 +580,7 @@
                         <h6 class="prime_h6">{{news.date | date:'fullDate'}}</h6>
                         <h2 class="prime_h2">{{news.title}}</h2>
                         <h5 class="prime_h5 body_control" [innerHTML]="news.description"></h5>
-                        <a class="badge badge-danger readmore_button red_secondary fr curser_pointer" (click)="readNews()">Read More</a>
+                        <a class="badge badge-danger readmore_button red_secondary fr curser_pointer" (click)="readNews(news)">Read More</a>
                       </div>
                     </div>
                   </div>

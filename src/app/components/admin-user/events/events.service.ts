@@ -5,13 +5,9 @@ import { environment as process } from '../../../../environments/environment';
 
 @Injectable()
 export class EventsService {
-
   constructor(private http: HttpClient) { }
-
   getEvents(params): Observable<any> {
-    
     let url = process.url + "/event/list" +"?"+ this.queryString(params);
-  
     return this.http.get(url);
   }
   
@@ -24,5 +20,9 @@ export class EventsService {
   queryString  (query)  {
     let queryString = Object.entries(query).map(([key, val]) => `${key}=${val}`).join('&');
      return queryString;
+ }
+ deleteEvent(id :any):Observable<any>{
+  let url = process.url + "/event/"+id._id;
+  return this.http.delete(url);
  }
 }

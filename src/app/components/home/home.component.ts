@@ -7,7 +7,7 @@ import { CustomNotifyService } from '../shared/custom-notify.service';
 import { BsModalRef } from 'ngx-bootstrap/modal/modal-options.class';
 import { AuthenticationFormComponent } from '../authentication/authentication-form/authentication-form.component';
 import { stringify } from 'querystring';
-
+import { homedataService } from '../home/homedata.service';
 @Component({
     selector: 'app-home',
     templateUrl: './home.component.html',
@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
 
     page= {"totalRecords":0,"page":1,"limit":10}
 
-    constructor(private modalService: BsModalService, private router: Router, private homeService :HomeService, private notify: CustomNotifyService) {  
+    constructor(private modalService: BsModalService, private router: Router, private homeService :HomeService, private notify: CustomNotifyService, private _homedataService: homedataService) {  
         const password = new FormControl('', Validators.required);
         const email = new FormControl('', [Validators.required, Validators.email]);
         this.loginForm = new FormGroup({
@@ -38,12 +38,25 @@ export class HomeComponent implements OnInit {
             currtpassword: password,
         });
     }
+
+    get color1(): string{
+        return this._homedataService.colorPreference;
+    }
+    set color1(value: string){
+        this._homedataService.colorPreference = value;
+    }
+    get newsPost(): string{
+        return this._homedataService.newsPost;
+    }
+    set newsPost(value: string){
+        this._homedataService.newsPost = value;
+    }
+
     ngOnInit() {
         this.getLatestNews();
         this.getLatestEvents();
         this.pnotify = this.notify.getPNotify();
         this.homePage=true;
-        
     }
     getLatestNews() {
         this.homeService.getNews().subscribe(data => {
@@ -110,7 +123,8 @@ export class HomeComponent implements OnInit {
     switchPage(){
         this.homePage=true;
     }
-    readNews(){
+    readNews(newsItem){
+        this.newsPost=newsItem;
         this.router.navigate(['/readnews']);
     }
     

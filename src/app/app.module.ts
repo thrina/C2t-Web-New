@@ -26,6 +26,7 @@ import { HashLocationStrategy, LocationStrategy} from "@angular/common";
 import { ContactComponent } from "./components/contact/contact.component";
 import { ReadnewsComponent } from './components/readnews/readnews.component';
 import { SearchComponent } from './components/search/search.component';
+import { homedataService } from './components/home/homedata.service';
 
 @NgModule( {
   declarations:[
@@ -53,7 +54,7 @@ import { SearchComponent } from './components/search/search.component';
     ModalModule.forRoot(),
     FileUploadModule
   ], 
-  providers:[{provide:LocationStrategy, useClass:HashLocationStrategy}, HomeService, CustomNotifyService, HomeComponent, SearchComponent], 
+  providers:[{provide:LocationStrategy, useClass:HashLocationStrategy}, HomeService, CustomNotifyService, HomeComponent, SearchComponent, homedataService], 
   bootstrap: [AppComponent, HomeComponent],
   entryComponents: [AuthenticationFormComponent]
 })
