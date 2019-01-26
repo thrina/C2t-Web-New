@@ -29,5 +29,4 @@ export class ReadnewsComponent implements OnInit {
     this.newsItem=this._homedataService.newsPost;
     this.newsFeedImg="http://localhost:3000/"+this.newsItem['imgUrl'].replace('public','');
   }
-
 }

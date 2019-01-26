@@ -11,11 +11,11 @@ export class ProfileService {
   constructor(private http:HttpClient) {}
 
   updateUser(userDetails:any):Observable < any >  {
-    console.log("The user details are ");
-    console.log(userDetails);
-    console.log(process.url);
-    let url = process.url + "/myaccount/"+userDetails["_id"];
-    return this.http.put(url,userDetails);
+    let headers = new HttpHeaders();
+    headers.append('Content-Type', 'application/json');
+    headers.append('Accept', 'multipart/form-data');
+    let url = process.url + "/myaccount/"+userDetails.get("_id");
+    return this.http.put(url,userDetails, { headers: headers});
   }
   
  deletePortfolio(id :any):Observable<any>{

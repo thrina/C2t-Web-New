@@ -1,65 +1,64 @@
 <div class="row" *ngIf="!isAddEvent">
-    <div class="col-sm-12">
-      <app-card [title]="'Events'">
-  
-        <!-- <div class="col-xs-12 col-sm-12 col-md-12 m-b-5">
-          <div style="text-align: right;">
-            <input type="search" [(ngModel)]="filterQuery" class="form-control input-sm full-data-search" placeholder="Name/Email/Mobile/User type ">
-            <button type="button" class="btn btn-primary p-t-10 p-b-10">Search</button>
-            <button type="button" style="background-color:#d71727; border-color:#d71727; color:#fff; border-radius: 200px;" class="btn btn-danger p-t-10 p-b-10">Add
-              Event</button>
-          </div>
-        </div> -->
-  
-        <div class="row pb_30">
-          <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 m-b-5">
-            <div class="row search-filters">
-              <div class="col-xs-4 col-lg-4 col-md-4 col-sm-4 m-b-4">
-                <input type="date" class="form-control" [(ngModel)]="date" name="date" placeholder="Date" (ngModelChange)="dateSearch()" />
-              </div>
-              <div class="col-xs-4 col-lg-4 col-md-4 col-sm-4 m-b-4 filter-search">
-                <input type="search" [(ngModel)]="filterQuery" class="form-control " placeholder="Title">
-                <button type="button" class="btn btn-primary " style="width:100px;" (click)="search()"> search</button>
-              </div>
-              <div class="col-xs-4 col-lg-4 col-md-4 col-sm-4 m-b-4">
-                  <button type="button" style=" margin-right:10px;background-color:#d71727; border-color:#d71727; color:#fff; border-radius: 200px;"
-                  class="btn btn-danger p-t-10 p-b-10" (click)="openAddEvent()">Add Event</button>
-              </div>
-            </div>
-          </div>  
-        </div>
-        <ngx-datatable class="material" [rows]="rowsBasic" [loadingIndicator]="loadingIndicator" [columnMode]="'force'"
-          [headerHeight]="50" [footerHeight]="50" [rowHeight]="50" [reorderable]="reorderable" [externalPaging]="true"
-          [count]="page.totalRecords" [offset]="page.page" [limit]="page.limit" (page)='setPage($event)' [selectionType]="'single'">
-          <ngx-datatable-column *ngFor="let col of columns" [name]="col.name">
-            <!-- <ng-template *ngIf="col.name != 'imgUrl'" #editTmpl let-row="row" let-value="value">
-              <span (click)="onClick(row)">{{value}}</span>
-            </ng-template> -->
-            <ng-template *ngIf="col.name == 'imgUrl'" #editTmpl let-row="row" let-value="value"
-              ngx-datatable-cell-template>
-              <img class="img-radius portfolio_img" src="http://localhost:3000{{value.replace('public','')}}" alt="chat-user" height="45px" width="70px">
-            </ng-template>
-            <ng-template *ngIf="col.name == 'Date'" #editTmpl let-row="row" let-value="value"
-              ngx-datatable-cell-template>
-              <span>{{value | date:'mediumDate'}}</span>
-            </ng-template>
-          </ngx-datatable-column>
-          <ngx-datatable-column name="Actions">
-            <ng-template let-column="column" ngx-datatable-header-template>
-              Actions
-            </ng-template>
-            <ng-template let-value="value" ngx-datatable-cell-template #editTmpl let-row="row" let-value="value">
-              <ui-switch class="js-danger" color="#e74c3c" switchColor="#fff" size="small" checked></ui-switch>
-              <span class="m-l-10" (click)="deleteEvent(row)"><i class="ti-trash f-20"></i></span>
-              <span class="m-l-10" (click)="deleteEvent(col)"><i class="ti-pencil f-20"></i></span>
-            </ng-template>
-          </ngx-datatable-column>
-        </ngx-datatable>
-      
-      </app-card>
-    </div>
-  </div>
+  <div class="col-sm-12">
+    <app-card [title]="'Events'">
 
-  
-  <app-add-events [isAddEvent]="isAddEvent" (isDisplayChange)="closeAddEvent()" *ngIf="isAddEvent"></app-add-events>
-  
+      <!-- <div class="col-xs-12 col-sm-12 col-md-12 m-b-5">
+        <div style="text-align: right;">
+          <input type="search" [(ngModel)]="filterQuery" class="form-control input-sm full-data-search" placeholder="Name/Email/Mobile/User type ">
+          <button type="button" class="btn btn-primary p-t-10 p-b-10">Search</button>
+          <button type="button" style="background-color:#d71727; border-color:#d71727; color:#fff; border-radius: 200px;" class="btn btn-danger p-t-10 p-b-10">Add
+            Event</button>
+        </div>
+      </div> -->
+
+      <div class="row pb_30">
+        <div class="col-xs-12 col-lg-12 col-md-12 col-sm-12 m-b-5">
+          <div class="row search-filters">
+            <div class="col-xs-4 col-lg-4 col-md-4 col-sm-4 m-b-4">
+              <input type="date" class="form-control" [(ngModel)]="date" name="date" placeholder="Date" (ngModelChange)="dateSearch()" />
+            </div>
+            <div class="col-xs-4 col-lg-4 col-md-4 col-sm-4 m-b-4 filter-search">
+              <input type="search" [(ngModel)]="filterQuery" class="form-control " placeholder="Title">
+              <button type="button" class="btn btn-primary " style="width:100px;" (click)="search()"> search</button>
+            </div>
+            <div class="col-xs-4 col-lg-4 col-md-4 col-sm-4 m-b-4">
+                <button type="button" style=" margin-right:10px;background-color:#d71727; border-color:#d71727; color:#fff; border-radius: 200px;"
+                class="btn btn-danger p-t-10 p-b-10" (click)="openAddEvent()">Add Event</button>
+            </div>
+          </div>
+        </div>  
+      </div>
+      <ngx-datatable class="material" [rows]="rowsBasic" [loadingIndicator]="loadingIndicator" [columnMode]="'force'"
+        [headerHeight]="50" [footerHeight]="50" [rowHeight]="50" [reorderable]="reorderable" [externalPaging]="true"
+        [count]="page.totalRecords" [offset]="page.page" [limit]="page.limit" (page)='setPage($event)' [selectionType]="'single'">
+        <ngx-datatable-column *ngFor="let col of columns" [name]="col.name">
+          <!-- <ng-template *ngIf="col.name != 'imgUrl'" #editTmpl let-row="row" let-value="value">
+            <span (click)="onClick(row)">{{value}}</span>
+          </ng-template> -->
+          <ng-template *ngIf="col.name == 'imgUrl'" #editTmpl let-row="row" let-value="value"
+            ngx-datatable-cell-template>
+            <img class="img-radius portfolio_img" src="http://localhost:3000{{value.replace('public','')}}" alt="chat-user" height="45px" width="70px">
+          </ng-template>
+          <ng-template *ngIf="col.name == 'Date'" #editTmpl let-row="row" let-value="value"
+            ngx-datatable-cell-template>
+            <span>{{value | date:'mediumDate'}}</span>
+          </ng-template>
+        </ngx-datatable-column>
+        
+        <ngx-datatable-column name="Actions">
+          <ng-template let-column="column" ngx-datatable-header-template>
+            Actions
+          </ng-template>
+          <ng-template let-value="value" ngx-datatable-cell-template #editTmpl let-row="row" let-value="value">
+            <ui-switch class="js-danger" color="#e74c3c" switchColor="#fff" size="small" checked></ui-switch>
+            <span (click)="deleteEvent(row)"><i class="ti-trash f-20"></i></span>
+            <span class="m-l-10" (click)="deleteEvent(col)"><i class="ti-pencil f-20"></i></span>
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>      
+    </app-card>
+  </div>
+</div>
+
+
+<app-add-events [isAddEvent]="isAddEvent" (isDisplayChange)="closeAddEvent()" *ngIf="isAddEvent"></app-add-events>

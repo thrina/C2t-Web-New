@@ -30,7 +30,10 @@ export class NewsService {
     let queryString = Object.entries(query).map(([key, val]) => `${key}=${val}`).join('&');
      return queryString;
  }
- 
+ deleteNews(id :any):Observable<any>{
+  let url = process.url + "/news/"+id._id;
+  return this.http.delete(url);
+ }
 
   
 

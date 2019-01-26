@@ -1,697 +1,1249 @@
 <!--profile cover start-->
 <div class="row" *ngIf="currentUser?.role != 'ADMIN'">
-    <div class="col-lg-12" style="margin-top: -150px;">
-      <div class="cover-profile">
-        <div class="profile-bg-img">
-          <img class="profile-bg-img img-fluid" src="assets/images/user-profile/bg-img1.jpg" alt="bg-img">
-          <div class="card-body user-info" style="margin-top: -130px;">
-            <div class="col-md-12">
-              <div class="media-left">
-                <div class="profile_img_lg">
-                <a>
-                    <input type="file" name="userImage" id="imgFileUpload" class="form-control" value="Upload File" (change)="changeUserImg($event)">
-                  <!-- <input type="file" id="imgFileUpload" ng2FileSelect (change)="changeImg($event)" style="display:none"> -->
-                  <img class="user-img img-radius curser_pointer" src="http://localhost:3000/{{currentUser.imgUrl.replace('public','')}}" alt="user-img" (click)="changeProfileImg()">
-                </a>
+  <div class="col-lg-12" style="margin-top: -150px;">
+    <div class="cover-profile">
+      <div class="profile-bg-img">
+        <img class="profile-bg-img img-fluid" src="assets/images/user-profile/bg-img1.jpg" alt="bg-img">
+        <div class="card-body user-info" style="margin-top: -130px;">
+          <div class="col-md-12">
+            <div class="media-left">
+              <div class="profile_img_lg">
+              <a>
+                  <!-- <input type="file" name="userImage" id="imgFileUpload" class="form-control" value="Upload File" (change)="changeUserImg($event)"> -->
+                <input type="file" id="imgFileUpload" ng2FileSelect (change)="changeUserImg($event)" style="display:none">
+                <img class="user-img img-radius curser_pointer" src="{{profileImgUrl}}" alt="user-img" (click)="changeProfileImg()">
+              </a>
+              </div>
+            </div>
+            <div class="media-body row">
+              <div class="col-lg-12">
+                <div class="user-title">
+                  <h2>{{currentUser?.firstName}} {{currentUser?.lastName}}</h2>
+                  <span class="text-white" *ngIf="currentUser.role != 'HIRE PEOPLE'">{{currentUser?.role}}</span>
                 </div>
               </div>
-              <div class="media-body row">
-                <div class="col-lg-12">
-                  <div class="user-title">
-                    <h2>{{currentUser?.firstName}} {{currentUser?.lastName}}</h2>
-                    <span class="text-white" *ngIf="currentUser.role != 'HIRE PEOPLE'">{{currentUser?.role}}</span>
-                  </div>
+              <!-- <div>
+                <div class="pull-right cover-btn">
+                  <button type="button" style="background-color:#d71727; border-color:#d71727; color:#fff" class="btn btn-danger m-b-10 m-r-10"><i
+                      class="icofont icofont-plus"></i> Follow</button>
+                  <button type="button" style="background-color:#d71727; border-color:#d71727; color:#fff" class="btn btn-danger m-b-10"><i
+                      class="icofont icofont-ui-messaging"></i> Message</button>
                 </div>
-                <!-- <div>
-                  <div class="pull-right cover-btn">
-                    <button type="button" style="background-color:#d71727; border-color:#d71727; color:#fff" class="btn btn-danger m-b-10 m-r-10"><i
-                        class="icofont icofont-plus"></i> Follow</button>
-                    <button type="button" style="background-color:#d71727; border-color:#d71727; color:#fff" class="btn btn-danger m-b-10"><i
-                        class="icofont icofont-ui-messaging"></i> Message</button>
-                  </div>
-                </div> -->
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <!--profile cover end-->
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="md-tabs">
-        <ngb-tabset (tabChange)="onTabChange($event)">
-          <ngb-tab title="My Profile">
-            <ng-template ngbTabContent>
-              <div [@fadeInOutTranslate] class="m-t-15">
-                <!-- personal card start -->
-                <div class="card">
-                  <div class="card-header  border-bottom-line">
-                    <h5 class="card-header-text">
-                      <label *ngIf="editProfile">My Profile</label>
-                      <label *ngIf="!editProfile">Edit Profile</label>
-                    </h5>
-                    <button id="edit-btn" type="button" style="background-color:#d71727; border-color:#d71727; color:#fff"
-                      class="btn btn-sm btn-primary waves-effect waves-light f-right" (click)="toggleEditProfile()">
-                      <i class="icofont {{ editProfileIcon }}"></i>
-                    </button>
+</div>
+<!--profile cover end-->
+<div class="row">
+  <div class="col-lg-12">
+    <div class="md-tabs">
+      <ngb-tabset (tabChange)="onTabChange($event)">
+        <ngb-tab title="My Profile">
+          <ng-template ngbTabContent>
+            <div [@fadeInOutTranslate] class="m-t-15">
+              <!-- personal card start -->
+              <div class="card">
+                <div class="card-header  border-bottom-line">
+                  <h5 class="card-header-text">
+                    <label *ngIf="editProfile">My Profile</label>
+                    <label *ngIf="!editProfile">Edit Profile</label>
+                  </h5>
+                  <button id="edit-btn" type="button" style="background-color:#d71727; border-color:#d71727; color:#fff"
+                    class="btn btn-sm btn-primary waves-effect waves-light f-right" (click)="toggleEditProfile()">
+                    <i class="icofont {{ editProfileIcon }}"></i>
+                  </button>
+                </div>
+                <div class="card-body" style="min-height:400px;">
+                  <div class="view-info" *ngIf="editProfile">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="general-info">
+                          <div class="row  border-bottom-line" style="padding-bottom: 10px">
+                            <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
+                              <label>Info</label>
+                            </div>
+                            <div class="col-lg-12 col-xl-12">
+                              <div class="row" style="padding-left: 30px">
+                                <div class="col-lg-12 col-xl-6">
+                                  <div class="row">
+                                    <div class="col-lg-12 col-xl-5">
+                                      <label class="label-font">Name</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-7">
+                                      <label class="value-font">{{currentUser?.firstName}} {{currentUser?.lastName}}</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-5">
+                                      <label class="label-font">Mobile</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-7">
+                                      <label class="value-font">{{currentUser?.mobile}}</label>
+                                    </div>
+                                  </div>
+
+                                </div>
+                                <div class="col-lg-12 col-xl-6">
+                                  <div class="row">
+                                    <div class="col-lg-12 col-xl-5">
+                                      <label class="label-font">Date of birth</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-7">
+                                      <label class="value-font">{{currentUser?.dob | date:'mediumDate' || 'NA'}}</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-5">
+                                      <label class="label-font">Email</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-7">
+                                      <label class="value-font">{{currentUser?.email}}</label>
+                                    </div>
+                                  </div>
+
+                                </div>
+                              </div>
+                            </div>
+                            <!-- end of table col-lg-6 -->
+                          </div>
+                          <div class="row  border-bottom-line" style="padding-top: 10px; padding-bottom: 10px">
+                            <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
+                              <label>Address</label>
+                            </div>
+                            <div class="col-lg-12 col-xl-12">
+                              <div class="row" style="padding-left: 30px">
+
+                                <div class="col-lg-12 col-xl-6">
+                                  <div class="row">
+                                    <div class="col-lg-12 col-xl-5">
+                                      <label class="label-font">City</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-7">
+                                      <label class="value-font">{{currentUser?.city || 'NA'}}</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-5">
+                                      <label class="label-font">Location</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-7">
+                                      <label class="value-font">{{currentUser?.location || 'NA'}}</label>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-lg-12 col-xl-6">
+                                  <div class="row">
+                                    <div class="col-lg-12 col-xl-5">
+                                      <label class="label-font">Pin</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-7">
+                                      <label class="value-font">{{currentUser?.pin || 'NA'}}</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-5">
+                                      <label class="label-font">Area</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-7">
+                                      <label class="value-font">{{currentUser?.area || 'NA'}}</label>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div class="card-body" style="min-height:400px;">
-                    <div class="view-info" *ngIf="editProfile">
-                      <div class="row">
-                        <div class="col-lg-12">
+                  <!-- end of view-info -->
+                  <div class="edit-info" *ngIf="!editProfile">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <form #updateForm="ngForm" (ngSubmit)="updateUserForm()">
                           <div class="general-info">
-                            <div class="row  border-bottom-line" style="padding-bottom: 10px">
+                            <div class="row">
                               <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
                                 <label>Info</label>
                               </div>
-                              <div class="col-lg-12 col-xl-12">
-                                <div class="row" style="padding-left: 30px">
-                                  <div class="col-lg-12 col-xl-6">
-                                    <div class="row">
-                                      <div class="col-lg-12 col-xl-5">
-                                        <label class="label-font">Name</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-7">
-                                        <label class="value-font">{{currentUser?.firstName}} {{currentUser?.lastName}}</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-5">
-                                        <label class="label-font">Mobile</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-7">
-                                        <label class="value-font">{{currentUser?.mobile}}</label>
-                                      </div>
-                                    </div>
-  
-                                  </div>
-                                  <div class="col-lg-12 col-xl-6">
-                                    <div class="row">
-                                      <div class="col-lg-12 col-xl-5">
-                                        <label class="label-font">Date of birth</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-7">
-                                        <label class="value-font">{{currentUser?.dob | date:'mediumDate' || 'NA'}}</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-5">
-                                        <label class="label-font">Email</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-7">
-                                        <label class="value-font">{{currentUser?.email}}</label>
-                                      </div>
-                                    </div>
-  
-                                  </div>
+                              <div class="col-lg-6">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
+                                  <input type="text" class="form-control" placeholder="First Name" name="firstName"
+                                    [(ngModel)]="currentUser.firstName">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-calendar"></i></span>
+                                  <input type="date" class="form-control" [(ngModel)]="currentUser.dob" name="dob"
+                                    placeholder="Select Your Birth Date" />
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-email"></i></span>
+                                  <input type="email" disabled class="form-control" [(ngModel)]="currentUser.email"
+                                    name="email" placeholder="Email Id">
                                 </div>
                               </div>
-                              <!-- end of table col-lg-6 -->
+                              <div class="col-lg-6">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
+                                  <input type="text" class="form-control" placeholder="Last Name" [(ngModel)]="currentUser.lastName"
+                                    name="lastName">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-mobile-phone"></i></span>
+                                  <input type="text" class="form-control" pattern="[0-9]{10}" [(ngModel)]="currentUser.mobile"
+                                    name="mobile" placeholder="Mobile Number" #mobile="ngModel" required>
+                                </div>
+                                <div class="validation_input">
+                                  <div class="messages text-danger valid_popup1" *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)">Enter
+                                    valid 10 digit mobile number</div>
+                                </div>
+                              </div>
                             </div>
-                            <div class="row  border-bottom-line" style="padding-top: 10px; padding-bottom: 10px">
+                            <div class="row">
                               <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
                                 <label>Address</label>
                               </div>
-                              <div class="col-lg-12 col-xl-12">
-                                <div class="row" style="padding-left: 30px">
-  
-                                  <div class="col-lg-12 col-xl-6">
-                                    <div class="row">
-                                      <div class="col-lg-12 col-xl-5">
-                                        <label class="label-font">City</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-7">
-                                        <label class="value-font">{{currentUser?.city || 'NA'}}</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-5">
-                                        <label class="label-font">Location</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-7">
-                                        <label class="value-font">{{currentUser?.location || 'NA'}}</label>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="col-lg-12 col-xl-6">
-                                    <div class="row">
-                                      <div class="col-lg-12 col-xl-5">
-                                        <label class="label-font">Pin</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-7">
-                                        <label class="value-font">{{currentUser?.pin || 'NA'}}</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-5">
-                                        <label class="label-font">Area</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-7">
-                                        <label class="value-font">{{currentUser?.area || 'NA'}}</label>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <!-- end of view-info -->
-                    <div class="edit-info" *ngIf="!editProfile">
-                      <div class="row">
-                        <div class="col-lg-12">
-                          <form #updateForm="ngForm" (ngSubmit)="updateUserForm()">
-                            <div class="general-info">
-                              <div class="row">
-                                <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
-                                  <label>Info</label>
-                                </div>
-                                <div class="col-lg-6">
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
-                                    <input type="text" class="form-control" placeholder="First Name" name="firstName"
-                                      [(ngModel)]="currentUser.firstName">
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-calendar"></i></span>
-                                    <input type="date" class="form-control" [(ngModel)]="currentUser.dob" name="dob"
-                                      placeholder="Select Your Birth Date" />
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-email"></i></span>
-                                    <input type="email" disabled class="form-control" [(ngModel)]="currentUser.email"
-                                      name="email" placeholder="Email Id">
-                                  </div>
-                                </div>
-                                <div class="col-lg-6">
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
-                                    <input type="text" class="form-control" placeholder="Last Name" [(ngModel)]="currentUser.lastName"
-                                      name="lastName">
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-mobile-phone"></i></span>
-                                    <input type="text" class="form-control" pattern="[0-9]{10}" [(ngModel)]="currentUser.mobile"
-                                      name="mobile" placeholder="Mobile Number" #mobile="ngModel" required>
-                                  </div>
-                                  <div class="validation_input">
-                                    <div class="messages text-danger valid_popup1" *ngIf="mobile.invalid && (mobile.dirty || mobile.touched)">Enter
-                                      valid 10 digit mobile number</div>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
-                                  <label>Address</label>
-                                </div>
-                                <div class="col-lg-6">
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
-                                    <input type="text" class="form-control" [(ngModel)]="currentUser.city" name="city"
-                                      placeholder="City">
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
-                                    <input type="text" class="form-control" [(ngModel)]="currentUser.location" name="location"
-                                      placeholder="Location">
-                                  </div>
-                                </div>
-                                <div class="col-lg-6">
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
-                                    <input type="text" class="form-control" pattern="[0-9]{6}" [(ngModel)]="currentUser.pin"
-                                      name="pin" placeholder="Pin Code" #pin="ngModel" required>
-                                  </div>
-                                  <div class="validation_input">
-                                    <div class="messages text-danger valid_popup1" *ngIf="(pin.invalid || pin.invalid) && pin.invalid">Enter
-                                      valid pin code</div>
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
-                                    <input type="text" class="form-control" [(ngModel)]="currentUser.area" name="area"
-                                      placeholder="Area">
-                                  </div>
-                                </div>
-                              </div>
-                              <!-- end of row -->
-                              <div class="text-right">
-                                <button id="edit-cancel" style="background-color:#d71727; border-color:#d71727; color:#fff"
-                                  class="btn btn-danger waves-effect" (click)="toggleEditProfile()">Cancel</button>
-                                <button type="submit" [disabled]="updateForm.invalid" class="btn btn-success waves-effect waves-light m-r-20">Save</button>
-                              </div>
-                            </div>
-                          </form>
-                          <!-- end of edit info -->
-                        </div>
-                        <!-- end of col-lg-12 -->
-                      </div>
-                      <!-- end of row -->
-                    </div>
-                    <!-- end of edit-info -->
-                  </div>
-                  <!-- end of card-body -->
-                </div>
-              </div>
-            </ng-template>
-          </ngb-tab>
-  
-          <ngb-tab title="My Portfolio" *ngIf="currentUser?.role == 'ARTIST'">
-            <ng-template ngbTabContent>
-              <div [@fadeInOutTranslate] class="m-t-15">
-                <!-- personal card start -->
-                <div class="card p-b-20">
-                  <div class="card-header  border-bottom-line">
-                    <h5 class="card-header-text">My Portfolio</h5>
-                    <button id="edit-btn" type="button" *ngIf="editProfile" style="background-color:#d71727; border-color:#d71727; color:#fff"
-                      class="btn btn-sm btn-primary waves-effect waves-light f-right" (click)="toggleEditProfile()">
-                      Add Portfolio
-                    </button>
-                  </div>
-                  <div class="card-body">
-                    <div class="view-info" *ngIf="editProfile">
-                      <div class="row">
-                        <div class="col-lg-12">
-                          <div class="general-info">
-                            <div class="card" *ngIf="editProfile">
-                              <div class="col-md-12 portfolio_card" *ngFor="let artistPortfolio of portfolioList">
-                                <app-card>
-                                  <div class="table-responsive">
-                                    <table class="table table-hover">
-                                      <tbody>
-                                        <tr>
-                                          <td>
-                                            <div class="fl portfolio_img_wrapp">
-                                              <a href="javascript:">
-                                                <img class="img-radius portfolio_img" src="currentUserImg" alt="chat-user"></a>
-                                            </div>
-                                            <div class="fl p-l-20">
-                                              <p class="label-font m-b-5">{{artistPortfolio.title}}</p>
-                                              <p class="value-font m-b-5">{{artistPortfolio.talent}}</p>
-                                              <p class="value-font m-b-5">{{artistPortfolio.description}}</p>
-                                            </div>
-                                          </td> 
-                                          <td>
-                                          <div class="col-md-3 ">
-                                            <span><button (click)="deletePortfilo(artistPortfolio)" style="margin-top:33px;">delete</button></span>
-                                          </div>
-                                        </td>
-                                        </tr>
-                                      </tbody>
-                                    </table>
-                                  </div>
-                                </app-card>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="row" *ngIf="!editProfile">
-                  <div class="col-lg-12">
-                    <div class="card">
-                      <div class="card-body user-desc">
-                        <form #portfolio1="ngForm">
-                          <div class="edit-desc">
-                            <div class="col-md-12">
-                              <div class="row">
-                                <div class="col-md-12 news_pannel">
-                                  <div class="input-group">
-                                    <input type="file" name="portfolioImage" class="form-control" value="Upload File" (change)="uploadFile($event)">
-                                  </div>
-                                </div>
-                                <div class="col-md-6">
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-pen-alt-1"></i></span>
-                                    <input type="text" class="form-control" name="title" placeholder="Title" [(ngModel)]="portfolio.title">
-                                  </div>
-                                </div>
-                                <div class="col-md-6">
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
-                                    <select id="hello-single" class="form-control" name="talent" [(ngModel)]="portfolio.talent">
-                                      <option value="">Choose </option>
-                                      <option value="dancer">Dancer</option>
-                                      <option value="singer" selected>Singer</option>
-                                      <option value="actor">Actor</option>
-                                    </select>
-                                  </div>
-                                </div>
-                              </div>
-                            </div>
-                            <div class="col-md-12">
-                              <textarea class="form-control" id="exampleTextarea" name="description" [(ngModel)]="portfolio.description"
-                                rows="5" placeholder="Project Description"></textarea>
-                            </div>
-                            <div class="col-md-12 m-t-15">
-                              <div class="row">
+                              <div class="col-lg-6">
                                 <div class="input-group">
-                                  <div class="col-md-6">
-                                    <input type="text" class="form-control" style="width: 100% !important" name="keyword"
-                                      [(ngModel)]="keyword" placeholder="Keyword">
-                                  </div>
-                                  <div class="col-md-2">
-                                    <button type="button" style="background-color:#d71727; border-color:#d71727; color:#fff"
-                                      (click)="addKeyWord()">Add</button>
-                                  </div>
+                                  <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
+                                  <input type="text" class="form-control" [(ngModel)]="currentUser.city" name="city"
+                                    placeholder="City">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
+                                  <input type="text" class="form-control" [(ngModel)]="currentUser.location" name="location"
+                                    placeholder="Location">
+                                </div>
+                              </div>
+                              <div class="col-lg-6">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
+                                  <input type="text" class="form-control" pattern="[0-9]{6}" [(ngModel)]="currentUser.pin"
+                                    name="pin" placeholder="Pin Code" #pin="ngModel" required>
+                                </div>
+                                <div class="validation_input">
+                                  <div class="messages text-danger valid_popup1" *ngIf="(pin.invalid || pin.invalid) && pin.invalid">Enter
+                                    valid pin code</div>
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
+                                  <input type="text" class="form-control" [(ngModel)]="currentUser.area" name="area"
+                                    placeholder="Area">
                                 </div>
                               </div>
                             </div>
-                            <div class="col-md-12">
-                              <textarea class="form-control" id="exampleTextarea" name="keywordGroup" rows="5"
-                                placeholder="Keywords group" [(ngModel)]="portfolio.keywordGroup"></textarea>
-                            </div>
+                            <!-- end of row -->
                             <div class="text-right">
-                              <a id="edit-cancel-btn" style="background-color:#d71727; border-color:#d71727; color:#fff"
-                                class="btn btn-default waves-effect m-t-20" (click)="togglePortfolio()">Cancel</a>
-                              <a class="btn btn-success waves-effect waves-light m-r-20 m-t-20" (click)="addPortfolio()">Save</a>
-                          </div>
+                              <button id="edit-cancel" style="background-color:#d71727; border-color:#d71727; color:#fff"
+                                class="btn btn-danger waves-effect" (click)="toggleEditProfile()">Cancel</button>
+                              <button type="submit" [disabled]="updateForm.invalid" class="btn btn-success waves-effect waves-light m-r-20">Save</button>
+                            </div>
                           </div>
                         </form>
-  
+                        <!-- end of edit info -->
+                      </div>
+                      <!-- end of col-lg-12 -->
+                    </div>
+                    <!-- end of row -->
+                  </div>
+                  <!-- end of edit-info -->
+                </div>
+                <!-- end of card-body -->
+              </div>
+            </div>
+          </ng-template>
+        </ngb-tab>
+
+        <ngb-tab title="My Portfolio" *ngIf="currentUser?.role == 'ARTIST'">
+          <ng-template ngbTabContent>
+            <div [@fadeInOutTranslate] class="m-t-15">
+              <!-- personal card start -->
+              <div class="card p-b-20">
+                <div class="card-header  border-bottom-line">
+                  <h5 class="card-header-text">My Portfolio</h5>
+                  <button id="edit-btn" type="button" *ngIf="editProfile" style="background-color:#d71727; border-color:#d71727; color:#fff"
+                    class="btn btn-sm btn-primary waves-effect waves-light f-right" (click)="toggleEditProfile()">
+                    Add Portfolio
+                  </button>
+                </div>
+                <div class="card-body">
+                  <div class="view-info" *ngIf="editProfile">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="general-info">
+                          <div class="card" *ngIf="editProfile">
+                            <div class="col-md-12 portfolio_card" *ngFor="let artistPortfolio of portfolioList">
+                              <app-card>
+                                <div class="table-responsive">
+                                  <table class="table table-hover">
+                                    <tbody>
+                                      <tr>
+                                        <td>
+                                          <div class="fl portfolio_img_wrapp">
+                                            <a href="javascript:">
+                                              <img class="img-radius portfolio_img" src="http://localhost:3000/{{artistPortfolio.imgUrl.replace('public','')}}" alt="chat-user"></a>
+                                          </div>
+                                          <div class="fl p-l-20">
+                                            <p class="label-font m-b-5">{{artistPortfolio.title}}</p>
+                                            <p class="value-font m-b-5">{{artistPortfolio.talent}}</p>
+                                            <p class="value-font m-b-5">{{artistPortfolio.description}}</p>
+                                          </div>
+                                        </td> 
+                                        <td class="actions_div curser_pointer">
+                                        <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1">
+                                          <span><button (click)="deletePortfilo(artistPortfolio)" style="margin-top:33px;">delete</button></span>
+                                        </div>
+                                      </td>
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </app-card>
+                            </div>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </ng-template>
-          </ngb-tab>
-          <ngb-tab title="My Bussiness Profile" *ngIf="currentUser.role == 'MANAGER' ">
-            <ng-template ngbTabContent>
-              <div [@fadeInOutTranslate] class="m-t-15">
-                <div class="card">
-                  <div class="card-header  border-bottom-line">
-                    <h5 class="card-header-text">Bussiness Profile</h5>
-                    <button id="edit-btn" type="button" style="background-color:#d71727; border-color:#d71727; color:#fff"
-                      class="btn btn-sm btn-primary waves-effect waves-light f-right" (click)="toggleManagerProfile()">
-                      <i class="icofont {{ editMngrProfileIcon }}"></i>
-                    </button>
+              <div class="row" *ngIf="!editProfile">
+                <div class="col-lg-12">
+                  <div class="card">
+                    <div class="card-body user-desc">
+                      <form #portfolio1="ngForm">
+                        <div class="edit-desc">
+                          <div class="col-md-12">
+                            <div class="row">
+                              <div class="col-md-12 news_pannel">
+                                <div class="input-group">
+                                  <input type="file" name="portfolioImage" class="form-control" value="Upload File" (change)="uploadFile($event)">
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-pen-alt-1"></i></span>
+                                  <input type="text" class="form-control" name="title" placeholder="Title" [(ngModel)]="portfolio.title">
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
+                                  <select id="hello-single" class="form-control" name="talent" [(ngModel)]="portfolio.talent">
+                                    <option value="">Choose </option>
+                                    <option value="dancer">Dancer</option>
+                                    <option value="singer" selected>Singer</option>
+                                    <option value="actor">Actor</option>
+                                  </select>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+                            <textarea class="form-control" id="exampleTextarea" name="description" [(ngModel)]="portfolio.description"
+                              rows="5" placeholder="Project Description"></textarea>
+                          </div>
+                          <div class="col-md-12 m-t-15">
+                            <div class="row">
+                              <div class="input-group">
+                                <div class="col-md-6">
+                                  <input type="text" class="form-control" style="width: 100% !important" name="keyword"
+                                    [(ngModel)]="keyword" placeholder="Keyword">
+                                </div>
+                                <div class="col-md-2">
+                                  <button type="button" style="background-color:#d71727; border-color:#d71727; color:#fff"
+                                    (click)="addKeyWord()">Add</button>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-12">
+                            <textarea class="form-control" id="exampleTextarea" name="keywordGroup" rows="5"
+                              placeholder="Keywords group" [(ngModel)]="portfolio.keywordGroup"></textarea>
+                          </div>
+                          <div class="text-right">
+                            <a id="edit-cancel-btn" style="background-color:#d71727; border-color:#d71727; color:#fff"
+                              class="btn btn-default waves-effect m-t-20" (click)="togglePortfolio()">Cancel</a>
+                            <a class="btn btn-success waves-effect waves-light m-r-20 m-t-20" (click)="addPortfolio()">Save</a>
+                        </div>
+                        </div>
+                      </form>
+
+                    </div>
                   </div>
-                  <div class="card-body">
-                    <div class="view-info" *ngIf="editManager">
-                      <div class="row">
-                        <div class="col-lg-12">
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab title="My Bussiness Profile" *ngIf="currentUser.role == 'MANAGER' ">
+          <ng-template ngbTabContent>
+            <div [@fadeInOutTranslate] class="m-t-15">
+              <div class="card">
+                <div class="card-header  border-bottom-line">
+                  <h5 class="card-header-text">Bussiness Profile</h5>
+                  <button id="edit-btn" type="button" style="background-color:#d71727; border-color:#d71727; color:#fff"
+                    class="btn btn-sm btn-primary waves-effect waves-light f-right" (click)="toggleManagerProfile()">
+                    <i class="icofont {{ editMngrProfileIcon }}"></i>
+                  </button>
+                </div>
+                <div class="card-body">
+                  <div class="view-info" *ngIf="editManager">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="general-info">
+                          <div class="row  border-bottom-line" style="padding-bottom: 10px">
+                            <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
+                              <label>Bussiness Info</label>
+                            </div>
+                            <div class="col-lg-12 col-xl-12">
+                              <div class="row" style="padding-left: 30px">
+                                <div class="col-lg-12 col-xl-6">
+                                  <div class="row">
+                                    <div class="col-lg-12 col-xl-5">
+                                      <label class="label-font">Bussiness Name</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-7">
+                                      <label class="value-font">{{currentUser?.bussinessName || 'NA'}}</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-5">
+                                      <label class="label-font">Bussiness Mobile</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-7">
+                                      <label class="value-font">{{currentUser?.bussinessMobile || 'NA'}}</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-5">
+                                      <label class="label-font">Bussiness Email</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-7">
+                                      <label class="value-font">{{currentUser?.bussinessEmail || 'NA'}}</label>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-lg-12 col-xl-6">
+                                  <div class="row">
+                                    <div class="col-lg-12 col-xl-5">
+                                      <label class="label-font">Date Started</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-7">
+                                      <label class="value-font">{{currentUser?.bussinessStartDate | date:"mediumDate" || 'NA'}}</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-5">
+                                      <label class="label-font">PAN Card</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-7">
+                                      <label class="value-font">{{currentUser?.pan || 'NA'}}</label>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row  border-bottom-line" style="padding-top: 10px; padding-bottom: 10px">
+                            <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
+                              <label>Social Media Links</label>
+                            </div>
+                            <div class="col-lg-12 col-xl-12">
+                              <div class="row" style="padding-left: 30px">
+                                <div class="col-lg-12 col-xl-6">
+                                  <div class="row">
+                                    <div class="col-lg-12 col-xl-5">
+                                      <label class="label-font">Facebook</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-7">
+                                      <!-- <a >www.facebook.com</a> -->
+                                      <label class="value-font">{{currentUser?.facebookLink || 'NA'}}</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-5">
+                                      <label class="label-font">Linkedin</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-7">
+                                      <label class="value-font">{{currentUser?.linkedInLink || 'NA'}}</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-5">
+                                      <label class="label-font">Instagram</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-7">
+                                      <label class="value-font">{{currentUser?.instagramLink || 'NA'}}</label>
+                                    </div>
+                                  </div>
+
+                                </div>
+                                <div class="col-lg-12 col-xl-6">
+                                  <div class="row">
+                                    <div class="col-lg-12 col-xl-5">
+                                      <label class="label-font">Twitter</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-7">
+                                      <label class="value-font">{{currentUser?.twitterLink || 'NA'}}</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-5">
+                                      <label class="label-font">Google+</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-7">
+                                      <label class="value-font">{{currentUser?.googleplusLink || 'NA'}}</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-5">
+                                      <label class="label-font">Youtube</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-7">
+                                      <label class="value-font">{{currentUser?.youtubeLink || 'NA'}}</label>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="row  border-bottom-line" style="padding-top: 10px; padding-bottom: 10px">
+                            <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
+                              <label>Address</label>
+                            </div>
+                            <div class="col-lg-12 col-xl-12">
+                              <div class="row" style="padding-left: 30px">
+                                <div class="col-lg-12 col-xl-6">
+                                  <div class="row">
+                                    <div class="col-lg-12 col-xl-5">
+                                      <label class="label-font">City</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-7">
+                                      <label class="value-font">{{currentUser?.bussinessCity || 'NA'}}</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-5">
+                                      <label class="label-font">Location</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-7">
+                                      <label class="value-font">{{currentUser?.bussinessLocation || 'NA'}}</label>
+                                    </div>
+                                  </div>
+                                </div>
+                                <div class="col-lg-12 col-xl-6">
+                                  <div class="row">
+                                    <div class="col-lg-12 col-xl-5">
+                                      <label class="label-font">Pin</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-7">
+                                      <label class="value-font">{{currentUser?.bussinessPin || 'NA'}}</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-5">
+                                      <label class="label-font">Area</label>
+                                    </div>
+                                    <div class="col-lg-12 col-xl-7">
+                                      <label class="value-font">{{currentUser?.bussinessArea || 'NA'}}</label>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="edit-info" *ngIf="!editManager">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <form #managerForm="ngForm" (ngSubmit)="updateUserForm()">
                           <div class="general-info">
-                            <div class="row  border-bottom-line" style="padding-bottom: 10px">
+                            <div class="row">
                               <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
                                 <label>Bussiness Info</label>
                               </div>
-                              <div class="col-lg-12 col-xl-12">
-                                <div class="row" style="padding-left: 30px">
-                                  <div class="col-lg-12 col-xl-6">
-                                    <div class="row">
-                                      <div class="col-lg-12 col-xl-5">
-                                        <label class="label-font">Bussiness Name</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-7">
-                                        <label class="value-font">{{currentUser?.bussinessName || 'NA'}}</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-5">
-                                        <label class="label-font">Bussiness Mobile</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-7">
-                                        <label class="value-font">{{currentUser?.bussinessMobile || 'NA'}}</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-5">
-                                        <label class="label-font">Bussiness Email</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-7">
-                                        <label class="value-font">{{currentUser?.bussinessEmail || 'NA'}}</label>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="col-lg-12 col-xl-6">
-                                    <div class="row">
-                                      <div class="col-lg-12 col-xl-5">
-                                        <label class="label-font">Date Started</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-7">
-                                        <label class="value-font">{{currentUser?.bussinessStartDate | date:"mediumDate" || 'NA'}}</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-5">
-                                        <label class="label-font">PAN Card</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-7">
-                                        <label class="value-font">{{currentUser?.pan || 'NA'}}</label>
-                                      </div>
-                                    </div>
-                                  </div>
+                              <div class="col-lg-6">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
+                                  <input type="text" class="form-control" placeholder="Bussiness Name" name="bussinessName"
+                                    [(ngModel)]="currentUser.bussinessName">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-calendar"></i></span>
+                                  <!-- <input id="dropper-default" class="form-control" type="text" name="bussinessStartDate"
+                                    [(ngModel)]="currentUser.bussinessStartDate" placeholder="Start Date" /> -->
+                                    <input type="date" class="form-control" [(ngModel)]="currentUser.bussinessStartDate" name="bussinessStartDate" placeholder="Date" (ngModelChange)="dateSearch()" />
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-upload-alt"></i></span>
+                                  <input type="text" class="form-control" placeholder="Upload PAN" name="pan"
+                                    [(ngModel)]="currentUser.pan">
+                                </div>
+                              </div>
+                              <!-- end of table col-lg-6 -->
+                              <div class="col-lg-6">
+                                <!-- <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
+                                  <input type="text" class="form-control" placeholder="Last Name" name="lastName"
+                                    [(ngModel)]="currentUser.lastName">
+                                </div> -->
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-mobile-phone"></i></span>
+                                  <input type="text" class="form-control" name="mobile" [(ngModel)]="currentUser.bussinessMobile"
+                                    placeholder="Mobile Number">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-email"></i></span>
+                                  <input type="email" class="form-control" name="email" [(ngModel)]="currentUser.bussinessEmail"
+                                    placeholder="Email Id">
                                 </div>
                               </div>
                             </div>
-                            <div class="row  border-bottom-line" style="padding-top: 10px; padding-bottom: 10px">
+                            <div class="row">
                               <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
                                 <label>Social Media Links</label>
                               </div>
-                              <div class="col-lg-12 col-xl-12">
-                                <div class="row" style="padding-left: 30px">
-                                  <div class="col-lg-12 col-xl-6">
-                                    <div class="row">
-                                      <div class="col-lg-12 col-xl-5">
-                                        <label class="label-font">Facebook</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-7">
-                                        <!-- <a >www.facebook.com</a> -->
-                                        <label class="value-font">{{currentUser?.facebookLink || 'NA'}}</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-5">
-                                        <label class="label-font">Linkedin</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-7">
-                                        <label class="value-font">{{currentUser?.linkedInLink || 'NA'}}</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-5">
-                                        <label class="label-font">Instagram</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-7">
-                                        <label class="value-font">{{currentUser?.instagramLink || 'NA'}}</label>
-                                      </div>
-                                    </div>
-  
-                                  </div>
-                                  <div class="col-lg-12 col-xl-6">
-                                    <div class="row">
-                                      <div class="col-lg-12 col-xl-5">
-                                        <label class="label-font">Twitter</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-7">
-                                        <label class="value-font">{{currentUser?.twitterLink || 'NA'}}</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-5">
-                                        <label class="label-font">Google+</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-7">
-                                        <label class="value-font">{{currentUser?.googleplusLink || 'NA'}}</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-5">
-                                        <label class="label-font">Youtube</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-7">
-                                        <label class="value-font">{{currentUser?.youtubeLink || 'NA'}}</label>
-                                      </div>
-                                    </div>
-                                  </div>
+                              <div class="col-lg-6">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="ti-facebook"></i></span>
+                                  <input type="text" class="form-control" name="facebookLink" [(ngModel)]="currentUser.facebookLink"
+                                    placeholder="Facebook">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="ti-linkedin"></i></span>
+                                  <input type="text" class="form-control" name="linkedInLink" [(ngModel)]="currentUser.linkedInLink"
+                                    placeholder="Linkedin">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="ti-instagram"></i></span>
+                                  <input type="text" class="form-control" name="instagramLink" [(ngModel)]="currentUser.instagramLink"
+                                    placeholder="Instagram">
+                                </div>
+                              </div>
+                              <div class="col-lg-6">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="ti-twitter-alt"></i></span>
+                                  <input type="text" class="form-control" name="twitterLink" [(ngModel)]="currentUser.twitterLink"
+                                    placeholder="Twitter">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="ti-google"></i></span>
+                                  <input type="text" class="form-control" name="googleplusLink" [(ngModel)]="currentUser.googleplusLink"
+                                    placeholder="Google +">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="ti-youtube"></i></span>
+                                  <input type="text" class="form-control" name="youtubeLink" [(ngModel)]="currentUser.youtubeLink"
+                                    placeholder="Youtube">
                                 </div>
                               </div>
                             </div>
-                            <div class="row  border-bottom-line" style="padding-top: 10px; padding-bottom: 10px">
+                            <div class="row">
                               <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
                                 <label>Address</label>
                               </div>
-                              <div class="col-lg-12 col-xl-12">
-                                <div class="row" style="padding-left: 30px">
-                                  <div class="col-lg-12 col-xl-6">
-                                    <div class="row">
-                                      <div class="col-lg-12 col-xl-5">
-                                        <label class="label-font">City</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-7">
-                                        <label class="value-font">{{currentUser?.bussinessCity || 'NA'}}</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-5">
-                                        <label class="label-font">Location</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-7">
-                                        <label class="value-font">{{currentUser?.bussinessLocation || 'NA'}}</label>
-                                      </div>
-                                    </div>
-                                  </div>
-                                  <div class="col-lg-12 col-xl-6">
-                                    <div class="row">
-                                      <div class="col-lg-12 col-xl-5">
-                                        <label class="label-font">Pin</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-7">
-                                        <label class="value-font">{{currentUser?.bussinessPin || 'NA'}}</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-5">
-                                        <label class="label-font">Area</label>
-                                      </div>
-                                      <div class="col-lg-12 col-xl-7">
-                                        <label class="value-font">{{currentUser?.bussinessArea || 'NA'}}</label>
-                                      </div>
-                                    </div>
-                                  </div>
+                              <div class="col-lg-6">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
+                                  <input type="text" class="form-control" name="bussinessCity" [(ngModel)]="currentUser.bussinessCity"
+                                    placeholder="City">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
+                                  <input type="text" class="form-control" name="location" [(ngModel)]="currentUser.bussinessLocation"
+                                    placeholder="Bussiness Location">
                                 </div>
                               </div>
+                              <div class="col-lg-6">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
+                                  <input type="text" class="form-control" name="bussinessPin" [(ngModel)]="currentUser.bussinessPin"
+                                    placeholder="Pin">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
+                                  <input type="text" class="form-control" name="area" [(ngModel)]="currentUser.bussinessArea"
+                                    placeholder="Area">
+                                </div>
+                              </div>
+                            </div>
+                            <!-- end of row -->
+                            <div class="text-right">
+                              <button type="button" id="edit-cancel" style="background-color:#d71727; border-color:#d71727; color:#fff"
+                                class="btn btn-danger waves-effect" (click)="toggleManagerProfile()">Cancel</button>
+                              <button type="submit" class="btn btn-success waves-effect waves-light m-r-20">Save</button>
                             </div>
                           </div>
-                        </div>
+                        </form>
+                        <!-- end of edit info -->
                       </div>
+                      <!-- end of col-lg-12 -->
                     </div>
-                    <div class="edit-info" *ngIf="!editManager">
-                      <div class="row">
-                        <div class="col-lg-12">
-                          <form #managerForm="ngForm" (ngSubmit)="updateUserForm()">
-                            <div class="general-info">
-                              <div class="row">
-                                <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
-                                  <label>Bussiness Info</label>
-                                </div>
-                                <div class="col-lg-6">
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
-                                    <input type="text" class="form-control" placeholder="Bussiness Name" name="bussinessName"
-                                      [(ngModel)]="currentUser.bussinessName">
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-calendar"></i></span>
-                                    <!-- <input id="dropper-default" class="form-control" type="text" name="bussinessStartDate"
-                                      [(ngModel)]="currentUser.bussinessStartDate" placeholder="Start Date" /> -->
-                                      <input type="date" class="form-control" [(ngModel)]="currentUser.bussinessStartDate" name="bussinessStartDate" placeholder="Date" (ngModelChange)="dateSearch()" />
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-upload-alt"></i></span>
-                                    <input type="text" class="form-control" placeholder="Upload PAN" name="pan"
-                                      [(ngModel)]="currentUser.pan">
-                                  </div>
-                                </div>
-                                <!-- end of table col-lg-6 -->
-                                <div class="col-lg-6">
-                                  <!-- <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
-                                    <input type="text" class="form-control" placeholder="Last Name" name="lastName"
-                                      [(ngModel)]="currentUser.lastName">
-                                  </div> -->
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-mobile-phone"></i></span>
-                                    <input type="text" class="form-control" name="mobile" [(ngModel)]="currentUser.bussinessMobile"
-                                      placeholder="Mobile Number">
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-email"></i></span>
-                                    <input type="email" class="form-control" name="email" [(ngModel)]="currentUser.bussinessEmail"
-                                      placeholder="Email Id">
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
-                                  <label>Social Media Links</label>
-                                </div>
-                                <div class="col-lg-6">
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="ti-facebook"></i></span>
-                                    <input type="text" class="form-control" name="facebookLink" [(ngModel)]="currentUser.facebookLink"
-                                      placeholder="Facebook">
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="ti-linkedin"></i></span>
-                                    <input type="text" class="form-control" name="linkedInLink" [(ngModel)]="currentUser.linkedInLink"
-                                      placeholder="Linkedin">
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="ti-instagram"></i></span>
-                                    <input type="text" class="form-control" name="instagramLink" [(ngModel)]="currentUser.instagramLink"
-                                      placeholder="Instagram">
-                                  </div>
-                                </div>
-                                <div class="col-lg-6">
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="ti-twitter-alt"></i></span>
-                                    <input type="text" class="form-control" name="twitterLink" [(ngModel)]="currentUser.twitterLink"
-                                      placeholder="Twitter">
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="ti-google"></i></span>
-                                    <input type="text" class="form-control" name="googleplusLink" [(ngModel)]="currentUser.googleplusLink"
-                                      placeholder="Google +">
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="ti-youtube"></i></span>
-                                    <input type="text" class="form-control" name="youtubeLink" [(ngModel)]="currentUser.youtubeLink"
-                                      placeholder="Youtube">
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
-                                  <label>Address</label>
-                                </div>
-                                <div class="col-lg-6">
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
-                                    <input type="text" class="form-control" name="bussinessCity" [(ngModel)]="currentUser.bussinessCity"
-                                      placeholder="City">
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
-                                    <input type="text" class="form-control" name="location" [(ngModel)]="currentUser.bussinessLocation"
-                                      placeholder="Bussiness Location">
-                                  </div>
-                                </div>
-                                <div class="col-lg-6">
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
-                                    <input type="text" class="form-control" name="bussinessPin" [(ngModel)]="currentUser.bussinessPin"
-                                      placeholder="Pin">
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
-                                    <input type="text" class="form-control" name="area" [(ngModel)]="currentUser.bussinessArea"
-                                      placeholder="Area">
-                                  </div>
-                                </div>
-                              </div>
-                              <!-- end of row -->
-                              <div class="text-right">
-                                <button type="button" id="edit-cancel" style="background-color:#d71727; border-color:#d71727; color:#fff"
-                                  class="btn btn-danger waves-effect" (click)="toggleManagerProfile()">Cancel</button>
-                                <button type="submit" class="btn btn-success waves-effect waves-light m-r-20">Save</button>
-                              </div>
-                            </div>
-                          </form>
-                          <!-- end of edit info -->
+                    <!-- end of row -->
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-lg-12">
+                  <div class="card">
+                    <div class="card-header">
+                      <h5 class="card-header-text">About Bussiness</h5>
+                      <button id="edit-info-btn" type="button" style="background-color:#d71727; border-color:#d71727; color:#fff"
+                        class="btn btn-sm btn-primary waves-effect waves-light f-right" (click)="toggleEditAbout()">
+                        <i class="icofont {{ editAboutIcon }}"></i>
+                      </button>
+                    </div>
+                    <div class="card-body user-desc">
+                      <form #managerFormDesc (ngSubmit)="updateUserForm()">
+                        <div class="view-desc" *ngIf="editAbout">
+                          <div [innerHTML]="currentUser.aboutBussiness"></div>
                         </div>
-                        <!-- end of col-lg-12 -->
-                      </div>
-                      <!-- end of row -->
+                        <div class="edit-desc" *ngIf="!editAbout">
+                          <div class="col-md-12">
+                            <quill-editor [(ngModel)]="currentUser.aboutBussiness" name="aboutBussiness" [options]="editorConfig"
+                              (blur)="onEditorBlured($event)" (focus)="onEditorFocused($event)" (ready)="onEditorCreated($event)"
+                              (change)="onContentChanged($event)">
+                            </quill-editor>
+                          </div>
+                          <div class="text-right">
+                            <button type="button" id="edit-cancel-btn" style="background-color:#d71727; border-color:#d71727; color:#fff"
+                              class="btn btn-default waves-effect m-t-20" (click)="toggleEditAbout()">Cancel</button>
+                            <button type="submit" class="btn btn-success waves-effect waves-light m-r-20 m-t-20">Save</button>
+                          </div>
+                        </div>
+                      </form>
                     </div>
                   </div>
                 </div>
-                <div class="row">
-                  <div class="col-lg-12">
-                    <div class="card">
-                      <div class="card-header">
-                        <h5 class="card-header-text">About Bussiness</h5>
-                        <button id="edit-info-btn" type="button" style="background-color:#d71727; border-color:#d71727; color:#fff"
-                          class="btn btn-sm btn-primary waves-effect waves-light f-right" (click)="toggleEditAbout()">
-                          <i class="icofont {{ editAboutIcon }}"></i>
-                        </button>
-                      </div>
-                      <div class="card-body user-desc">
-                        <form #managerFormDesc (ngSubmit)="updateUserForm()">
-                          <div class="view-desc" *ngIf="editAbout">
-                            <div [innerHTML]="currentUser.aboutBussiness"></div>
-                          </div>
-                          <div class="edit-desc" *ngIf="!editAbout">
-                            <div class="col-md-12">
-                              <quill-editor [(ngModel)]="currentUser.aboutBussiness" name="aboutBussiness" [options]="editorConfig"
-                                (blur)="onEditorBlured($event)" (focus)="onEditorFocused($event)" (ready)="onEditorCreated($event)"
-                                (change)="onContentChanged($event)">
-                              </quill-editor>
+              </div>
+            </div>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab title="Team Profiles" *ngIf="currentUser.role == 'MANAGER'">
+          <ng-template ngbTabContent>
+            <div [@fadeInOutTranslate] class="m-t-15">
+              <div class="card" *ngIf="isTeamActive">
+                <div class="card-header  border-bottom-line">
+                  <h5 class="card-header-text">Team Profiles</h5>
+                  <button id="edit-btn" type="button" *ngIf="editProfile" style="background-color:#d71727; border-color:#d71727; color:#fff"
+                    class="btn btn-sm btn-primary waves-effect waves-light f-right" (click)="toggleEditProfile()">
+                    Add Team
+                  </button>
+                </div>
+                <div class="card-body">
+                  <div class="view-info" *ngIf="editProfile">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="general-info">
+                          <div class="card" *ngIf="editProfile">
+                            <div class="col-md-12" *ngFor="let teamMbr of teamList">
+                              <app-card (click)="onSelectedTeam(teamMbr)">
+                                <div class="table-responsive">
+                                  <table class="table table-hover">
+                                    <tbody>
+                                      <tr>
+                                        <td>
+                                          <div class="fl" style="min-height: 100px;">
+                                            <div class="portfolio_img">
+                                              <a href="javascript:">
+                                                  <img class="img-radius" src="http://localhost:3000/{{teamMbr.imgUrl.replace('public','')}}" alt="chat-user">
+                                                  <!-- <img class="img-radius" src="http://localhost:3000/assets/img-case-sudies-6.png" alt="chat-user"> -->
+                                              </a>
+                                            </div>
+                                          </div>
+                                          <div class="fl p-l-20">
+                                            <p class="label-font m-b-5">{{teamMbr.name}}</p>
+                                            <p class="value-font m-b-5">{{teamMbr.mobile}}</p>
+                                            <p class="value-font m-b-5">{{teamMbr.email}}</p>
+                                            <!-- <p> But I must explain to you how all this mistaken idea of denouncing...
+                                            </p> -->
+                                          </div>
+                                        </td>
+
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </app-card>
                             </div>
-                            <div class="text-right">
-                              <button type="button" id="edit-cancel-btn" style="background-color:#d71727; border-color:#d71727; color:#fff"
-                                class="btn btn-default waves-effect m-t-20" (click)="toggleEditAbout()">Cancel</button>
-                              <button type="submit" class="btn btn-success waves-effect waves-light m-r-20 m-t-20">Save</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="edit-info" *ngIf="!editProfile">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <form #managerTeamForm (ngSubmit)="createTeam()">
+                          <div class="general-info">
+                            <div class="row">
+                              <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
+                                <label>Basic Info</label>
+                              </div>
+                              <div class="col-lg-6">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
+                                  <input type="text" class="form-control" [(ngModel)]="managerUser.name" name="name"
+                                    placeholder="Name">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-email"></i></span>
+                                  <input type="email" class="form-control" [(ngModel)]="managerUser.email" name="email"
+                                    placeholder="Email Id">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-guiter"></i></span>
+                                  <input type="text" class="form-control" [(ngModel)]="managerUser.talent" name="talent"
+                                    placeholder="Talent">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-upload-alt"></i></span>
+                                  <!-- <input type="text" class="form-control" [(ngModel)]="managerUser.pan" name="pan"
+                                    placeholder="PAN"> -->
+                                  <input type="file" name="pan" placeholder="PAN" class="form-control" value="Upload Pan" (change)="panUpload($event)">
+
+                                </div>
+                              </div>
+                              <!-- end of table col-lg-6 -->
+                              <div class="col-lg-6">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-mobile-phone"></i></span>
+                                  <input type="text" class="form-control" [(ngModel)]="managerUser.mobile" name="mobile"
+                                    placeholder="Mobile Number">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-upload-alt"></i></span>
+                                  <!-- <input type="email" class="form-control" [(ngModel)]="managerUser.photo" name="photo"
+                                    placeholder="photo"> -->
+                                  <input type="file" name="photo" placeholder="photo" class="form-control" value="Upload Photo" (change)="teamImgUpload($event)">
+
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-address-book"></i></span>
+                                  <input type="email" class="form-control" [(ngModel)]="managerUser.address" name="address"
+                                    placeholder="Address">
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="text-right" *ngIf="currentUser.role != 'ARTIST'">
+                              <button type="button" id="edit-cancel" style="background-color:#d71727; border-color:#d71727; color:#fff"
+                                class="btn btn-danger waves-effect" (click)="toggleEditProfile()">Cancel</button>
+                              <button type="submit" class="btn btn-success waves-effect waves-light m-r-20">Save</button>
+                            </div>
+                          </div>
+                        </form>
+                        <!-- end of edit info -->
+                      </div>
+                      <!-- end of col-lg-12 -->
+                    </div>
+                    <!-- end of row -->
+                  </div>
+                </div>
+              </div>
+
+              <div class="card" *ngIf="isPortfolioActive">
+                <div class="card-header  border-bottom-line">
+                  <h5 class="card-header-text">
+                    <a (click)="backToTeams()" class="curser_pointer">{{selectedTeam.name}} </a>/ My Portfolio</h5>
+                  <button id="edit-btn" type="button" *ngIf="editProfile" style="background-color:#d71727; border-color:#d71727; color:#fff"
+                    class="btn btn-sm btn-primary waves-effect waves-light f-right" (click)="toggleEditProfile()">
+                    Add Portfolio
+                  </button>
+                </div>
+                <div class="card-body">
+                  <div class="view-info" *ngIf="editProfile">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="general-info">
+                          <div class="card" *ngIf="editProfile">
+                            <div class="col-md-12" *ngFor="let teamMbr of portfolioList">
+                              <app-card>
+                                <div class="table-responsive">
+                                  <table class="table table-hover">
+                                    <tbody>
+                                      <tr>
+                                        <td>
+                                          <div class="fl" style="min-height: 100px;">
+                                            <a href="javascript:"><img class="img-radius" src="assets/images/avatar-1.jpg"
+                                                alt="chat-user"></a>
+                                          </div>
+                                          <div class="fl p-l-20">
+                                            <p class="label-font m-b-5">{{teamMbr.title}}</p>
+                                            <p class="value-font m-b-5">{{teamMbr.talent}}</p>
+                                            <p class="m-b-5">{{teamMbr.description}}</p>
+                                          </div>
+                                        </td>
+
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </app-card>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="row" *ngIf="!editProfile">
+                    <div class="col-lg-12">
+                      <div class="card">
+                        <div class="card-header">
+                          <h5 class="card-header-text">Portfolio</h5>
+
+                        </div>
+                        <div class="card-body user-desc">
+                          <form #portfolio1="ngForm">
+                            <div class="edit-desc">
+                              <div class="col-md-12">
+                                <div class="row">
+                                  <div class="col-md-12 news_pannel">
+                                    <input type="file" ng2FileSelect class="custom-file-input">
+                                    <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)"
+                                      class="well ngb-drop-zone text-center">
+                                      Upload Image or video
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="input-group">
+                                      <span class="input-group-addon"><i class="icofont icofont-pen-alt-1"></i></span>
+                                      <input type="text" class="form-control" name="title" placeholder="Title"
+                                        [(ngModel)]="portfolio.title">
+                                    </div>
+                                  </div>
+                                  <div class="col-md-6">
+                                    <div class="input-group">
+                                      <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
+                                      <select id="hello-single" class="form-control" name="talent" [(ngModel)]="portfolio.talent">
+                                        <option value="">Choose </option>
+                                        <option value="dancer">Dancer</option>
+                                        <option value="singer" selected>Singer</option>
+                                        <option value="actor">Actor</option>
+                                      </select>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-12">
+                                <textarea class="form-control" id="exampleTextarea" name="description" [(ngModel)]="portfolio.description"
+                                  rows="5" placeholder="Project Description"></textarea>
+                              </div>
+                              <div class="col-md-12 m-t-15">
+                                <div class="row">
+                                  <div class="input-group">
+                                    <div class="col-md-6">
+                                      <input type="text" class="form-control" style="width: 100% !important" name="keyword"
+                                        [(ngModel)]="keyword" placeholder="Keyword">
+                                    </div>
+                                    <div class="col-md-2">
+                                      <button type="button" style="background-color:#d71727; border-color:#d71727; color:#fff"
+                                        (click)="addKeyWord()">Add</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-12">
+                                <textarea class="form-control" id="exampleTextarea" name="keywordGroup" rows="5"
+                                  placeholder="Keywords group" [(ngModel)]="portfolio.keywordGroup"></textarea>
+                              </div>
+                              <div class="text-right">
+                                <a id="edit-cancel-btn" style="background-color:#d71727; border-color:#d71727; color:#fff"
+                                  class="btn btn-default waves-effect m-t-20" (click)="togglePortfolio();portfolio1.reset()">Cancel</a>
+                                <a class="btn btn-success waves-effect waves-light m-r-20 m-t-20" (click)="addPortfolio();portfolio1.reset()">Save</a>
+                              </div>
+                            </div>
+                          </form>
+
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+        </ngb-tab>
+        <ngb-tab title="My Bussiness Profile" *ngIf="currentUser.role == 'BUSSINESS MANAGER'">
+          <ng-template ngbTabContent>
+            <div [@fadeInOutTranslate] class="m-t-15">
+              <div class="card" *ngIf="isBussinessActive">
+                <div class="card-header  border-bottom-line">
+                  <h5 class="card-header-text">Business</h5>
+                  <button id="edit-btn" *ngIf="editBussinessManager" type="button" style="background-color:#d71727; border-color:#d71727; color:#fff"
+                    class="btn btn-sm btn-primary waves-effect waves-light f-right" (click)="toggleBussinessManagerProfile()">
+                    Add Business
+                  </button>
+                </div>
+                <div class="card-body">
+                  <div class="view-info" *ngIf="editBussinessManager">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="general-info">
+                          <div class="card" *ngIf="editBussinessManager">
+                            <div class="col-md-12" *ngFor="let bussMngr of bussinessProfiles">
+                              <app-card (click)="onBussinessSelect(bussMngr)">
+                                <div class="table-responsive">
+                                  <table class="table table-hover">
+                                    <tbody>
+                                      <tr>
+                                        <td>
+                                          <div class="fl" style="min-height: 100px;">
+                                            <a href="javascript:"><img class="img-radius portfolio_img" src="http://localhost:3000/{{bussMngr.imgUrl.replace('public','')}}" alt="chat-user"></a>
+                                          </div>
+                                          <div class="fl p-l-20">
+                                            <p class="label-font m-b-5">{{bussMngr?.name}}</p>
+                                            <p class="value-font m-b-5">{{bussMngr?.mobile}}</p>
+                                            <p class="value-font m-b-5">{{bussMngr?.email}}</p>
+                                            <p class="value-font m-b-5" [innerHTML]="bussMngr.aboutBussiness"></p>
+                                          </div>
+                                        </td>
+                                        <td>
+                                            <div class="col-md-3 ">
+                                              <!--<span><button (click)="deleteBuss(bussMngr)" style="margin-top:33px;">delete</button></span>-->
+                                              <span class="m-l-10" (click)="deleteBuss(bussMngr)"><i class="ti-trash f-20"></i></span>
+                                            </div>
+                                        </td>  
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </app-card>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="edit-info" *ngIf="!editBussinessManager">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <form #bussinessmanagerForm="ngForm">
+                          <div class="general-info">
+                            <div class="row">
+                              <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
+                                <label>Bussiness Info</label>
+                              </div>
+                              <div class="col-lg-6">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
+                                  <input type="text" class="form-control" placeholder="Bussiness Name" name="name"
+                                    [(ngModel)]="bussinessProfile.name">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-calendar"></i></span>
+                                  <input id="dropper-default" class="form-control" type="text" name="startDate"
+                                    [(ngModel)]="bussinessProfile.startDate" placeholder="Select Start Date" />
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-upload-alt"></i></span>
+                                  <input type="text" class="form-control" placeholder="Upload PAN" name="pan"
+                                    [(ngModel)]="bussinessProfile.pan">
+                                </div>
+
+                              </div>
+                              <!-- end of table col-lg-6 -->
+                              <div class="col-lg-6">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-mobile-phone"></i></span>
+                                  <input type="text" class="form-control" name="mobile" [(ngModel)]="bussinessProfile.mobile"
+                                    placeholder="Bussiness Phone">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-email"></i></span>
+                                  <input type="email" class="form-control" name="email" [(ngModel)]="bussinessProfile.email"
+                                    placeholder="Bussiness Email">
+                                </div>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="icofont icofont-upload-alt"></i></span>
+                                    <input type="file" name="bussImage" class="form-control" value="Upload File" (change)="uploadbussImage($event)"> 
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
+                                <label>Social Media Links</label>
+                              </div>
+                              <div class="col-lg-6">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="ti-facebook"></i></span>
+                                  <input type="text" class="form-control" name="facebookLink" [(ngModel)]="bussinessProfile.facebookLink"
+                                    placeholder="Facebook">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="ti-linkedin"></i></span>
+                                  <input type="text" class="form-control" name="linkedInLink" [(ngModel)]="bussinessProfile.linkedInLink"
+                                    placeholder="Linkedin">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="ti-instagram"></i></span>
+                                  <input type="text" class="form-control" name="instagramLink" [(ngModel)]="bussinessProfile.instagramLink"
+                                    placeholder="Instagram">
+                                </div>
+                              </div>
+                              <div class="col-lg-6">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="ti-twitter-alt"></i></span>
+                                  <input type="text" class="form-control" name="twitterLink" [(ngModel)]="bussinessProfile.twitterLink"
+                                    placeholder="Twitter">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="ti-google"></i></span>
+                                  <input type="text" class="form-control" name="googleplusLink" [(ngModel)]="bussinessProfile.googleplusLink"
+                                    placeholder="Google +">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="ti-youtube"></i></span>
+                                  <input type="text" class="form-control" name="youtubeLink" [(ngModel)]="bussinessProfile.youtubeLink"
+                                    placeholder="Youtube">
+                                </div>
+                              </div>
+                            </div>
+                            <div class="row">
+                              <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
+                                <label>Address</label>
+                              </div>
+                              <div class="col-lg-6">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
+                                  <input type="text" class="form-control" name="city" [(ngModel)]="bussinessProfile.city"
+                                    placeholder="City">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
+                                  <input type="text" class="form-control" name="location" [(ngModel)]="bussinessProfile.location"
+                                    placeholder="Location">
+                                </div>
+                              </div>
+                              <div class="col-lg-6">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
+                                  <input type="text" class="form-control" name="pin" [(ngModel)]="bussinessProfile.pin"
+                                    placeholder="Pin">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
+                                  <input type="text" class="form-control" name="area" [(ngModel)]="bussinessProfile.area"
+                                    placeholder="Area">
+                                </div>
+                              </div>
+                              <div class="col-md-12">
+                                <label>About Bussiness</label>
+
+                                <!-- <quill-editor [(ngModel)]="bussinessProfile.aboutBussiness" name="aboutBussiness"
+                                  [options]="editorConfig" (blur)="onEditorBlured($event)" (focus)="onEditorFocused($event)"
+                                  (ready)="onEditorCreated($event)" (change)="onContentChanged($event)">
+                                </quill-editor> -->
+                                <textarea  rows="6" [(ngModel)]="bussinessProfile.aboutBussiness" name="content" placeholder="Enter News Here" class="full_width"></textarea>
+
+                              </div>
+                            </div>
+                            <!-- end of row -->
+                            <div class="text-right" style="margin-top: 70px">
+                              <button type="button" id="edit-cancel" style="background-color:#d71727; border-color:#d71727; color:#fff"
+                                class="btn btn-danger waves-effect" (click)="toggleBussinessManagerProfile();bussinessmanagerForm.reset()">Cancel</button>
+                              <button type="submit" (click)="addBussinessProfile(); bussinessmanagerForm.reset()" class="btn btn-success waves-effect waves-light m-r-20">Save</button>
+                            </div>
+                          </div>
+                        </form>
+                        <!-- end of edit info -->
+                      </div>
+                      <!-- end of col-lg-12 -->
+                    </div>
+                    <!-- end of row -->
+                  </div>
+                </div>
+              </div>
+              <!-- business team profiles -->
+              <div class="card" *ngIf="isTeamActive">
+                <div class="card-header  border-bottom-line">
+                  <h5 class="card-header-text"><a (click)="backToBusiness()" class="curser_pointer">{{selectedBussiness.name}}</a>/
+                    Team Profiles</h5>
+                  <button id="edit-btn" type="button" *ngIf="editProfile" style="background-color:#d71727; border-color:#d71727; color:#fff"
+                    class="btn btn-sm btn-primary waves-effect waves-light f-right" (click)="toggleEditProfile()">
+                    Add Team
+                  </button>
+                </div>
+
+                <div class="card-body">
+                  <div class="view-info" *ngIf="editProfile">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <div class="general-info">
+                          <div class="card" *ngIf="editProfile">
+                            <div class="col-md-12" *ngFor="let teamMbr of teamList">
+                              <app-card (click)="onSelectedTeam(teamMbr)">
+                                <div class="table-responsive">
+                                  <table class="table table-hover">
+                                    <tbody>
+                                      <tr>
+                                        <td>
+                                          <div class="fl" style="min-height: 100px;">
+                                            <a href="javascript:"><img class="img-radius portfolio_img" height="" src="http://localhost:3000/{{teamMbr.imgUrl.replace('public','')}}"
+                                                alt="chat-user"></a>
+                                          </div>
+                                          <div class="fl p-l-20">
+                                            <p class="label-font m-b-5">{{teamMbr.name}}</p>
+                                            <p class="value-font m-b-5">{{teamMbr.mobile}}</p>
+                                            <p class="value-font m-b-5">{{teamMbr.email}}</p>
+                                          </div>
+                                        </td>
+                                        <div class="col-md-3 ">
+                                          <!-- <span><button (click)="deleteBussteam(teamMbr)" style="margin-top:33px;">delete</button></span> -->
+                                          <span class="m-l-10" (click)="deleteBussteam(teamMbr)"><i class="ti-trash f-20"></i></span>
+                                        </div>  
+                                      </tr>
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </app-card>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="edit-info" *ngIf="!editProfile">
+                    <div class="row">
+                      <div class="col-lg-12">
+                        <form #managerTeamForm (ngSubmit)="createTeam(); managerTeamForm.reset()">
+                          <div class="general-info">
+                            <div class="row">
+                              <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
+                                <label>Basic Info</label>
+                              </div>
+                              <div class="col-lg-6">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
+                                  <input type="text" class="form-control" [(ngModel)]="managerUser.name" name="name"
+                                    placeholder="Name">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-email"></i></span>
+                                  <input type="email" class="form-control" [(ngModel)]="managerUser.email" name="email"
+                                    placeholder="Email Id">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-guiter"></i></span>
+                                  <input type="text" class="form-control" [(ngModel)]="managerUser.talent" name="talent"
+                                    placeholder="Talent">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-upload-alt"></i></span>
+                                  <input type="text" class="form-control" [(ngModel)]="managerUser.pan" name="pan"
+                                    placeholder="PAN">
+                                </div>
+                              </div>
+                              <!-- end of table col-lg-6 -->
+                              <div class="col-lg-6">
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-mobile-phone"></i></span>
+                                  <input type="text" class="form-control" [(ngModel)]="managerUser.mobile" name="mobile"
+                                    placeholder="Mobile Number">
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-upload-alt"></i></span>
+                                  <div class="input-group">
+                                      <input type="file" name="teamImg" class="form-control" value="Upload File" (change)="buzManazFile($event)">
+                                  </div>
+                                  <!-- <input type="email" class="form-control" [(ngModel)]="managerUser.photo" name="photo"
+                                    placeholder="Photo"> -->
+                                </div>
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-address-book"></i></span>
+                                  <input type="email" class="form-control" [(ngModel)]="managerUser.address" name="address"
+                                    placeholder="Address">
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="text-right" *ngIf="currentUser.role != 'ARTIST'">
+                              <button type="button" id="edit-cancel" style="background-color:#d71727; border-color:#d71727; color:#fff"
+                                class="btn btn-danger waves-effect" (click)="toggleEditProfile();managerTeamForm.reset()">Cancel</button>
+                              <button type="submit" class="btn btn-success waves-effect waves-light m-r-20">Save</button>
                             </div>
                           </div>
                         </form>
@@ -700,679 +1252,129 @@
                   </div>
                 </div>
               </div>
-            </ng-template>
-          </ngb-tab>
-          <ngb-tab title="Team Profiles" *ngIf="currentUser.role == 'MANAGER'">
-            <ng-template ngbTabContent>
-              <div [@fadeInOutTranslate] class="m-t-15">
-                <div class="card" *ngIf="isTeamActive">
-                  <div class="card-header  border-bottom-line">
-                    <h5 class="card-header-text">Team Profiles</h5>
-                    <button id="edit-btn" type="button" *ngIf="editProfile" style="background-color:#d71727; border-color:#d71727; color:#fff"
-                      class="btn btn-sm btn-primary waves-effect waves-light f-right" (click)="toggleEditProfile()">
-                      Add Team
-                    </button>
-                  </div>
-                  <div class="card-body">
-                    <div class="view-info" *ngIf="editProfile">
-                      <div class="row">
-                        <div class="col-lg-12">
-                          <div class="general-info">
-                            <div class="card" *ngIf="editProfile">
-                              <div class="col-md-12" *ngFor="let teamMbr of teamList">
-                                <app-card (click)="onSelectedTeam(teamMbr)">
-                                  <div class="table-responsive">
-                                    <table class="table table-hover">
-                                      <tbody>
-                                        <tr>
-                                          <td>
-                                            <div class="fl" style="min-height: 100px;">
-                                              <div class="portfolio_img">
-                                                <a href="javascript:">
-                                                    <img class="img-radius" src="http://localhost:3000/{{teamMbr.imgUrl.replace('public','')}}" alt="chat-user">
-                                                    <!-- <img class="img-radius" src="http://localhost:3000/assets/img-case-sudies-6.png" alt="chat-user"> -->
-                                                </a>
-                                              </div>
-                                            </div>
-                                            <div class="fl p-l-20">
-                                              <p class="label-font m-b-5">{{teamMbr.name}}</p>
-                                              <p class="value-font m-b-5">{{teamMbr.mobile}}</p>
-                                              <p class="value-font m-b-5">{{teamMbr.email}}</p>
-                                              <!-- <p> But I must explain to you how all this mistaken idea of denouncing...
-                                              </p> -->
-                                            </div>
-                                          </td>
-  
-                                        </tr>
-                                      </tbody>
-                                    </table>
-                                  </div>
-                                </app-card>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="edit-info" *ngIf="!editProfile">
-                      <div class="row">
-                        <div class="col-lg-12">
-                          <form #managerTeamForm (ngSubmit)="createTeam()">
-                            <div class="general-info">
-                              <div class="row">
-                                <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
-                                  <label>Basic Info</label>
-                                </div>
-                                <div class="col-lg-6">
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
-                                    <input type="text" class="form-control" [(ngModel)]="managerUser.name" name="name"
-                                      placeholder="Name">
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-email"></i></span>
-                                    <input type="email" class="form-control" [(ngModel)]="managerUser.email" name="email"
-                                      placeholder="Email Id">
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-guiter"></i></span>
-                                    <input type="text" class="form-control" [(ngModel)]="managerUser.talent" name="talent"
-                                      placeholder="Talent">
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-upload-alt"></i></span>
-                                    <!-- <input type="text" class="form-control" [(ngModel)]="managerUser.pan" name="pan"
-                                      placeholder="PAN"> -->
-                                    <input type="file" name="pan" placeholder="PAN" class="form-control" value="Upload Pan" (change)="panUpload($event)">
-
-                                  </div>
-                                </div>
-                                <!-- end of table col-lg-6 -->
-                                <div class="col-lg-6">
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-mobile-phone"></i></span>
-                                    <input type="text" class="form-control" [(ngModel)]="managerUser.mobile" name="mobile"
-                                      placeholder="Mobile Number">
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-upload-alt"></i></span>
-                                    <!-- <input type="email" class="form-control" [(ngModel)]="managerUser.photo" name="photo"
-                                      placeholder="photo"> -->
-                                    <input type="file" name="photo" placeholder="photo" class="form-control" value="Upload Photo" (change)="teamImgUpload($event)">
-
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-address-book"></i></span>
-                                    <input type="email" class="form-control" [(ngModel)]="managerUser.address" name="address"
-                                      placeholder="Address">
-                                  </div>
-                                </div>
-                              </div>
-  
-                              <div class="text-right" *ngIf="currentUser.role != 'ARTIST'">
-                                <button type="button" id="edit-cancel" style="background-color:#d71727; border-color:#d71727; color:#fff"
-                                  class="btn btn-danger waves-effect" (click)="toggleEditProfile()">Cancel</button>
-                                <button type="submit" class="btn btn-success waves-effect waves-light m-r-20">Save</button>
-                              </div>
-                            </div>
-                          </form>
-                          <!-- end of edit info -->
-                        </div>
-                        <!-- end of col-lg-12 -->
-                      </div>
-                      <!-- end of row -->
-                    </div>
-                  </div>
+              <div class="card" *ngIf="isPortfolioActive">
+                <div class="card-header  border-bottom-line">
+                  <h5 class="card-header-text"><a (click)="backToBusiness()" class="curser_pointer">{{selectedBussiness.name}}</a>/
+                    <a (click)="backToTeams()" class="curser_pointer">{{selectedTeam.name}} </a>/ My Portfolio</h5>
+                  <button id="edit-btn" type="button" *ngIf="editProfile" style="background-color:#d71727; border-color:#d71727; color:#fff"
+                    class="btn btn-sm btn-primary waves-effect waves-light f-right" (click)="toggleEditProfile()">
+                    Add Portfolio
+                  </button>
                 </div>
-  
-                <div class="card" *ngIf="isPortfolioActive">
-                  <div class="card-header  border-bottom-line">
-                    <h5 class="card-header-text">
-                      <a (click)="backToTeams()" class="curser_pointer">{{selectedTeam.name}} </a>/ My Portfolio</h5>
-                    <button id="edit-btn" type="button" *ngIf="editProfile" style="background-color:#d71727; border-color:#d71727; color:#fff"
-                      class="btn btn-sm btn-primary waves-effect waves-light f-right" (click)="toggleEditProfile()">
-                      Add Portfolio
-                    </button>
-                  </div>
-                  <div class="card-body">
-                    <div class="view-info" *ngIf="editProfile">
-                      <div class="row">
-                        <div class="col-lg-12">
-                          <div class="general-info">
-                            <div class="card" *ngIf="editProfile">
-                              <div class="col-md-12" *ngFor="let teamMbr of portfolioList">
-                                <app-card>
-                                  <div class="table-responsive">
-                                    <table class="table table-hover">
-                                      <tbody>
-                                        <tr>
-                                          <td>
-                                            <div class="fl" style="min-height: 100px;">
-                                              <a href="javascript:"><img class="img-radius" src="assets/images/avatar-1.jpg"
-                                                  alt="chat-user"></a>
-                                            </div>
-                                            <div class="fl p-l-20">
-                                              <p class="label-font m-b-5">{{teamMbr.title}}</p>
-                                              <p class="value-font m-b-5">{{teamMbr.talent}}</p>
-                                              <p class="m-b-5">{{teamMbr.description}}</p>
-                                            </div>
-                                          </td>
-  
-                                        </tr>
-                                      </tbody>
-                                    </table>
-                                  </div>
-                                </app-card>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="row" *ngIf="!editProfile">
+                <div class="card-body">
+                  <div class="view-info" *ngIf="editProfile">
+                    <div class="row">
                       <div class="col-lg-12">
-                        <div class="card">
-                          <div class="card-header">
-                            <h5 class="card-header-text">Portfolio</h5>
-  
-                          </div>
-                          <div class="card-body user-desc">
-                            <form #portfolio1="ngForm">
-                              <div class="edit-desc">
-                                <div class="col-md-12">
-                                  <div class="row">
-                                    <div class="col-md-12 news_pannel">
-                                      <input type="file" ng2FileSelect class="custom-file-input">
-                                      <div ng2FileDrop [ngClass]="{'nv-file-over': hasBaseDropZoneOver}" (fileOver)="fileOverBase($event)"
-                                        class="well ngb-drop-zone text-center">
-                                        Upload Image or video
-                                      </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                      <div class="input-group">
-                                        <span class="input-group-addon"><i class="icofont icofont-pen-alt-1"></i></span>
-                                        <input type="text" class="form-control" name="title" placeholder="Title"
-                                          [(ngModel)]="portfolio.title">
-                                      </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                      <div class="input-group">
-                                        <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
-                                        <select id="hello-single" class="form-control" name="talent" [(ngModel)]="portfolio.talent">
-                                          <option value="">Choose </option>
-                                          <option value="dancer">Dancer</option>
-                                          <option value="singer" selected>Singer</option>
-                                          <option value="actor">Actor</option>
-                                        </select>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="col-md-12">
-                                  <textarea class="form-control" id="exampleTextarea" name="description" [(ngModel)]="portfolio.description"
-                                    rows="5" placeholder="Project Description"></textarea>
-                                </div>
-                                <div class="col-md-12 m-t-15">
-                                  <div class="row">
-                                    <div class="input-group">
-                                      <div class="col-md-6">
-                                        <input type="text" class="form-control" style="width: 100% !important" name="keyword"
-                                          [(ngModel)]="keyword" placeholder="Keyword">
-                                      </div>
-                                      <div class="col-md-2">
-                                        <button type="button" style="background-color:#d71727; border-color:#d71727; color:#fff"
-                                          (click)="addKeyWord()">Add</button>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-                                <div class="col-md-12">
-                                  <textarea class="form-control" id="exampleTextarea" name="keywordGroup" rows="5"
-                                    placeholder="Keywords group" [(ngModel)]="portfolio.keywordGroup"></textarea>
-                                </div>
-                                <div class="text-right">
-                                  <a id="edit-cancel-btn" style="background-color:#d71727; border-color:#d71727; color:#fff"
-                                    class="btn btn-default waves-effect m-t-20" (click)="togglePortfolio();portfolio1.reset()">Cancel</a>
-                                  <a class="btn btn-success waves-effect waves-light m-r-20 m-t-20" (click)="addPortfolio();portfolio1.reset()">Save</a>
-                                </div>
-                              </div>
-                            </form>
-  
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </ng-template>
-          </ngb-tab>
-          <ngb-tab title="My Bussiness Profile" *ngIf="currentUser.role == 'BUSSINESS MANAGER'">
-            <ng-template ngbTabContent>
-              <div [@fadeInOutTranslate] class="m-t-15">
-                <div class="card" *ngIf="isBussinessActive">
-                  <div class="card-header  border-bottom-line">
-                    <h5 class="card-header-text">Business</h5>
-                    <button id="edit-btn" *ngIf="editBussinessManager" type="button" style="background-color:#d71727; border-color:#d71727; color:#fff"
-                      class="btn btn-sm btn-primary waves-effect waves-light f-right" (click)="toggleBussinessManagerProfile()">
-                      Add Business
-                    </button>
-                  </div>
-                  <div class="card-body">
-                    <div class="view-info" *ngIf="editBussinessManager">
-                      <div class="row">
-                        <div class="col-lg-12">
-                          <div class="general-info">
-                            <div class="card" *ngIf="editBussinessManager">
-                              <div class="col-md-12" *ngFor="let bussMngr of bussinessProfiles">
-                                <app-card (click)="onBussinessSelect(bussMngr)">
-                                  <div class="table-responsive">
-                                    <table class="table table-hover">
-                                      <tbody>
-                                        <tr>
-                                          <td>
-                                            <div class="fl" style="min-height: 100px;">
-                                              <a href="javascript:"><img class="img-radius portfolio_img" src="http://localhost:3000/{{bussMngr.imgUrl.replace('public','')}}" alt="chat-user"></a>
-                                            </div>
-                                            <div class="fl p-l-20">
-                                              <p class="label-font m-b-5">{{bussMngr?.name}}</p>
-                                              <p class="value-font m-b-5">{{bussMngr?.mobile}}</p>
-                                              <p class="value-font m-b-5">{{bussMngr?.email}}</p>
-                                              <p class="value-font m-b-5" [innerHTML]="bussMngr.aboutBussiness"></p>
-                                            </div>
-                                          </td>
-                                          <td>
-                                              <div class="col-md-3 ">
-                                                <span><button (click)="deleteBuss(bussMngr)" style="margin-top:33px;">delete</button></span>
-                                              </div>
-                                          </td>  
-                                        </tr>
-                                      </tbody>
-                                    </table>
-                                  </div>
-                                </app-card>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="edit-info" *ngIf="!editBussinessManager">
-                      <div class="row">
-                        <div class="col-lg-12">
-                          <form #bussinessmanagerForm="ngForm">
-                            <div class="general-info">
-                              <div class="row">
-                                <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
-                                  <label>Bussiness Info</label>
-                                </div>
-                                <div class="col-lg-6">
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
-                                    <input type="text" class="form-control" placeholder="Bussiness Name" name="name"
-                                      [(ngModel)]="bussinessProfile.name">
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-calendar"></i></span>
-                                    <input id="dropper-default" class="form-control" type="text" name="startDate"
-                                      [(ngModel)]="bussinessProfile.startDate" placeholder="Select Start Date" />
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-upload-alt"></i></span>
-                                    <input type="text" class="form-control" placeholder="Upload PAN" name="pan"
-                                      [(ngModel)]="bussinessProfile.pan">
-                                  </div>
-
-                                </div>
-                                <!-- end of table col-lg-6 -->
-                                <div class="col-lg-6">
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-mobile-phone"></i></span>
-                                    <input type="text" class="form-control" name="mobile" [(ngModel)]="bussinessProfile.mobile"
-                                      placeholder="Bussiness Phone">
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-email"></i></span>
-                                    <input type="email" class="form-control" name="email" [(ngModel)]="bussinessProfile.email"
-                                      placeholder="Bussiness Email">
-                                  </div>
-                                  <div class="input-group">
-                                      <span class="input-group-addon"><i class="icofont icofont-upload-alt"></i></span>
-                                      <input type="file" name="bussImage" class="form-control" value="Upload File" (change)="uploadbussImage($event)"> 
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
-                                  <label>Social Media Links</label>
-                                </div>
-                                <div class="col-lg-6">
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="ti-facebook"></i></span>
-                                    <input type="text" class="form-control" name="facebookLink" [(ngModel)]="bussinessProfile.facebookLink"
-                                      placeholder="Facebook">
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="ti-linkedin"></i></span>
-                                    <input type="text" class="form-control" name="linkedInLink" [(ngModel)]="bussinessProfile.linkedInLink"
-                                      placeholder="Linkedin">
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="ti-instagram"></i></span>
-                                    <input type="text" class="form-control" name="instagramLink" [(ngModel)]="bussinessProfile.instagramLink"
-                                      placeholder="Instagram">
-                                  </div>
-                                </div>
-                                <div class="col-lg-6">
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="ti-twitter-alt"></i></span>
-                                    <input type="text" class="form-control" name="twitterLink" [(ngModel)]="bussinessProfile.twitterLink"
-                                      placeholder="Twitter">
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="ti-google"></i></span>
-                                    <input type="text" class="form-control" name="googleplusLink" [(ngModel)]="bussinessProfile.googleplusLink"
-                                      placeholder="Google +">
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="ti-youtube"></i></span>
-                                    <input type="text" class="form-control" name="youtubeLink" [(ngModel)]="bussinessProfile.youtubeLink"
-                                      placeholder="Youtube">
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="row">
-                                <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
-                                  <label>Address</label>
-                                </div>
-                                <div class="col-lg-6">
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
-                                    <input type="text" class="form-control" name="city" [(ngModel)]="bussinessProfile.city"
-                                      placeholder="City">
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
-                                    <input type="text" class="form-control" name="location" [(ngModel)]="bussinessProfile.location"
-                                      placeholder="Location">
-                                  </div>
-                                </div>
-                                <div class="col-lg-6">
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
-                                    <input type="text" class="form-control" name="pin" [(ngModel)]="bussinessProfile.pin"
-                                      placeholder="Pin">
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-home"></i></span>
-                                    <input type="text" class="form-control" name="area" [(ngModel)]="bussinessProfile.area"
-                                      placeholder="Area">
-                                  </div>
-                                </div>
-                                <div class="col-md-12">
-                                  <label>About Bussiness</label>
-  
-                                  <quill-editor [(ngModel)]="bussinessProfile.aboutBussiness" name="aboutBussiness"
-                                    [options]="editorConfig" (blur)="onEditorBlured($event)" (focus)="onEditorFocused($event)"
-                                    (ready)="onEditorCreated($event)" (change)="onContentChanged($event)">
-                                  </quill-editor>
-                                </div>
-                              </div>
-                              <!-- end of row -->
-                              <div class="text-right" style="margin-top: 70px">
-                                <button type="button" id="edit-cancel" style="background-color:#d71727; border-color:#d71727; color:#fff"
-                                  class="btn btn-danger waves-effect" (click)="toggleBussinessManagerProfile();bussinessmanagerForm.reset()">Cancel</button>
-                                <button type="submit" (click)="addBussinessProfile(); bussinessmanagerForm.reset()" class="btn btn-success waves-effect waves-light m-r-20">Save</button>
-                              </div>
-                            </div>
-                          </form>
-                          <!-- end of edit info -->
-                        </div>
-                        <!-- end of col-lg-12 -->
-                      </div>
-                      <!-- end of row -->
-                    </div>
-                  </div>
-                </div>
-  
-  
-                <!-- business team profiles -->
-                <div class="card" *ngIf="isTeamActive">
-                  <div class="card-header  border-bottom-line">
-                    <h5 class="card-header-text"><a (click)="backToBusiness()" class="curser_pointer">{{selectedBussiness.name}}</a>/
-                      Team Profiles</h5>
-                    <button id="edit-btn" type="button" *ngIf="editProfile" style="background-color:#d71727; border-color:#d71727; color:#fff"
-                      class="btn btn-sm btn-primary waves-effect waves-light f-right" (click)="toggleEditProfile()">
-                      Add Team
-                    </button>
-                  </div>
-  
-                  <div class="card-body">
-                    <div class="view-info" *ngIf="editProfile">
-                      <div class="row">
-                        <div class="col-lg-12">
-                          <div class="general-info">
-                            <div class="card" *ngIf="editProfile">
-                              <div class="col-md-12" *ngFor="let teamMbr of teamList">
-                                <app-card (click)="onSelectedTeam(teamMbr)">
-                                  <div class="table-responsive">
-                                    <table class="table table-hover">
-                                      <tbody>
-                                        <tr>
-                                          <td>
-                                            <div class="fl" style="min-height: 100px;">
-                                              <a href="javascript:"><img class="img-radius portfolio_img" height="" src="http://localhost:3000/{{teamMbr.imgUrl.replace('public','')}}"
-                                                  alt="chat-user"></a>
-                                            </div>
-                                            <div class="fl p-l-20">
-                                              <p class="label-font m-b-5">{{teamMbr.name}}</p>
-                                              <p class="value-font m-b-5">{{teamMbr.mobile}}</p>
-                                              <p class="value-font m-b-5">{{teamMbr.email}}</p>
-                                            </div>
-                                          </td>
-                                          <div class="col-md-3 ">
-                                            <span><button (click)="deleteBussteam(teamMbr)" style="margin-top:33px;">delete</button></span>
-                                          </div>  
-                                        </tr>
-                                      </tbody>
-                                    </table>
-                                  </div>
-                                </app-card>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div class="edit-info" *ngIf="!editProfile">
-                      <div class="row">
-                        <div class="col-lg-12">
-                          <form #managerTeamForm (ngSubmit)="createTeam(); managerTeamForm.reset()">
-                            <div class="general-info">
-                              <div class="row">
-                                <div class="col-lg-12 col-xl-12" style="padding-top: 10px; padding-bottom: 10px">
-                                  <label>Basic Info</label>
-                                </div>
-                                <div class="col-lg-6">
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
-                                    <input type="text" class="form-control" [(ngModel)]="managerUser.name" name="name"
-                                      placeholder="Name">
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-email"></i></span>
-                                    <input type="email" class="form-control" [(ngModel)]="managerUser.email" name="email"
-                                      placeholder="Email Id">
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-guiter"></i></span>
-                                    <input type="text" class="form-control" [(ngModel)]="managerUser.talent" name="talent"
-                                      placeholder="Talent">
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-upload-alt"></i></span>
-                                    <input type="text" class="form-control" [(ngModel)]="managerUser.pan" name="pan"
-                                      placeholder="PAN">
-                                  </div>
-                                </div>
-                                <!-- end of table col-lg-6 -->
-                                <div class="col-lg-6">
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-mobile-phone"></i></span>
-                                    <input type="text" class="form-control" [(ngModel)]="managerUser.mobile" name="mobile"
-                                      placeholder="Mobile Number">
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-upload-alt"></i></span>
-                                    <div class="input-group">
-                                        <input type="file" name="teamImg" class="form-control" value="Upload File" (change)="buzManazFile($event)">
-                                    </div>
-                                    <!-- <input type="email" class="form-control" [(ngModel)]="managerUser.photo" name="photo"
-                                      placeholder="Photo"> -->
-                                  </div>
-                                  <div class="input-group">
-                                    <span class="input-group-addon"><i class="icofont icofont-address-book"></i></span>
-                                    <input type="email" class="form-control" [(ngModel)]="managerUser.address" name="address"
-                                      placeholder="Address">
-                                  </div>
-                                </div>
-                              </div>
-  
-                              <div class="text-right" *ngIf="currentUser.role != 'ARTIST'">
-                                <button type="button" id="edit-cancel" style="background-color:#d71727; border-color:#d71727; color:#fff"
-                                  class="btn btn-danger waves-effect" (click)="toggleEditProfile();managerTeamForm.reset()">Cancel</button>
-                                <button type="submit" class="btn btn-success waves-effect waves-light m-r-20">Save</button>
-                              </div>
-                            </div>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div class="card" *ngIf="isPortfolioActive">
-                  <div class="card-header  border-bottom-line">
-                    <h5 class="card-header-text"><a (click)="backToBusiness()" class="curser_pointer">{{selectedBussiness.name}}</a>/
-                      <a (click)="backToTeams()" class="curser_pointer">{{selectedTeam.name}} </a>/ My Portfolio</h5>
-                    <button id="edit-btn" type="button" *ngIf="editProfile" style="background-color:#d71727; border-color:#d71727; color:#fff"
-                      class="btn btn-sm btn-primary waves-effect waves-light f-right" (click)="toggleEditProfile()">
-                      Add Portfolio
-                    </button>
-                  </div>
-                  <div class="card-body">
-                    <div class="view-info" *ngIf="editProfile">
-                      <div class="row">
-                        <div class="col-lg-12">
-                          <div class="general-info">
-                            <div class="card" *ngIf="editProfile">
-                              <div class="col-md-12" *ngFor="let portMbr of portfolioList">
-                                <app-card>
-                                  <div class="table-responsive">
-                                    <table class="table table-hover">
-                                      <tbody>
-                                        <tr>
-                                          <td>
-                                            <div class="fl" style="min-height: 100px;">
-                                              <a href="javascript:"><img class="img-radius portfolio_img" src="http://localhost:3000/{{portMbr.imgUrl.replace('public','')}}"
-                                                  alt="chat-user"></a>
-                                            </div>
-                                            <div class="fl p-l-20">
-                                              <p class="label-font m-b-5">{{portMbr.title}}</p>
-                                              <p class="value-font m-b-5">{{portMbr.talent}}</p>
-                                              <p class="value-font m-b-5">{{portMbr.description}}</p>
-                                            </div>
-                                          </td>
-                                          <div class="col-md-3 ">
-                                            <span><button (click)="deleteBussPort(portMbr)" style="margin-top:33px;">delete</button></span>
+                        <div class="general-info">
+                          <div class="card" *ngIf="editProfile">
+                            <div class="col-md-12" *ngFor="let portMbr of portfolioList">
+                              <app-card>
+                                <div class="table-responsive">
+                                  <table class="table table-hover">
+                                    <tbody>
+                                      <tr>
+                                        <td>
+                                          <div class="fl" style="min-height: 100px;">
+                                            <a href="javascript:"><img class="img-radius portfolio_img" src="http://localhost:3000/{{portMbr.imgUrl.replace('public','')}}"
+                                                alt="chat-user"></a>
                                           </div>
-                                        </tr>                                        
-                                      </tbody>
-                                    </table>
-                                  </div>
-                                </app-card>
-                              </div>
+                                          <div class="fl p-l-20">
+                                            <p class="label-font m-b-5">{{portMbr.title}}</p>
+                                            <p class="value-font m-b-5">{{portMbr.talent}}</p>
+                                            <p class="value-font m-b-5">{{portMbr.description}}</p>
+                                          </div>
+                                        </td>
+                                        <div class="col-md-3 ">
+                                          <!-- <span><button (click)="deleteBussPort(portMbr)" style="margin-top:33px;">delete</button></span> -->
+                                          <span class="m-l-10" (click)="deleteBussPort(portMbr)"><i class="ti-trash f-20"></i></span>
+                                        </div>
+                                      </tr>                                        
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </app-card>
                             </div>
                           </div>
                         </div>
                       </div>
                     </div>
-                    <div class="row" *ngIf="!editProfile">
-                      <div class="col-lg-12">
-                        <div class="card">
-                          <div class="card-header">
-                            <h5 class="card-header-text">Portfolio</h5>
-  
-                          </div>
-                          <div class="card-body user-desc">
-                            <form #portfolio1="ngForm">
-                              <div class="edit-desc">
-                                <div class="col-md-12">
-                                  <div class="row">
-                                    <div class="col-md-12 news_pannel">
-                                       <input type="file" name="portfolioImage" class="form-control" value="Upload File" (change)="uploadFile($event)">                                       
-                                    </div>
-                                    <div class="col-md-6">
-                                      <div class="input-group">
-                                        <span class="input-group-addon"><i class="icofont icofont-pen-alt-1"></i></span>
-                                        <input type="text" class="form-control" name="title" placeholder="Title"
-                                          [(ngModel)]="portfolio.title">
-                                      </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                      <div class="input-group">
-                                        <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
-                                        <select id="hello-single" class="form-control" name="talent" [(ngModel)]="portfolio.talent">
-                                          <option value="">Choose </option>
-                                          <option value="dancer">Dancer</option>
-                                          <option value="singer" selected>Singer</option>
-                                          <option value="actor">Actor</option>
-                                        </select>
-                                      </div>
-                                    </div>
+                  </div>
+                  <div class="row" *ngIf="!editProfile">
+                    <div class="col-lg-12">
+                      <div class="card">
+                        <div class="card-header">
+                          <h5 class="card-header-text">Portfolio</h5>
+
+                        </div>
+                        <div class="card-body user-desc">
+                          <form #portfolio1="ngForm">
+                            <div class="edit-desc">
+                              <div class="col-md-12">
+                                <div class="row">
+                                  <div class="col-md-12 news_pannel">
+                                     <input type="file" name="portfolioImage" class="form-control" value="Upload File" (change)="uploadFile($event)">                                       
                                   </div>
-                                </div>
-                                <div class="col-md-12">
-                                  <textarea class="form-control" id="exampleTextarea" name="description" [(ngModel)]="portfolio.description"
-                                    rows="5" placeholder="Project Description"></textarea>
-                                </div>
-                                <div class="col-md-12 m-t-15">
-                                  <div class="row">
+                                  <div class="col-md-6">
                                     <div class="input-group">
-                                      <div class="col-md-6">
-                                        <input type="text" class="form-control" style="width: 100% !important" name="keyword"
-                                          [(ngModel)]="keyword" placeholder="Keyword">
-                                      </div>
-                                      <div class="col-md-2">
-                                        <button type="button" style="background-color:#d71727; border-color:#d71727; color:#fff"
-                                          (click)="addKeyWord()">Add</button>
-                                      </div>
+                                      <span class="input-group-addon"><i class="icofont icofont-pen-alt-1"></i></span>
+                                      <input type="text" class="form-control" name="title" placeholder="Title"
+                                        [(ngModel)]="portfolio.title">
                                     </div>
                                   </div>
-                                </div>
-                                <div class="col-md-12">
-                                  <textarea class="form-control" id="exampleTextarea" name="keywordGroup" rows="5"
-                                    placeholder="Keywords group" [(ngModel)]="portfolio.keywordGroup"></textarea>
-                                </div>
-                                <div class="text-right">
-                                  <a id="edit-cancel-btn" style="background-color:#d71727; border-color:#d71727; color:#fff"
-                                    class="btn btn-default waves-effect m-t-20" (click)="togglePortfolio();portfolio1.reset()">Cancel</a>
-                                  <a class="btn btn-success waves-effect waves-light m-r-20 m-t-20" style="color:#fff"
-                                    (click)="addPortfolio(); portfolio1.reset()">Save</a>
+                                  <div class="col-md-6">
+                                    <div class="input-group">
+                                      <span class="input-group-addon"><i class="icofont icofont-user"></i></span>
+                                      <select id="hello-single" class="form-control" name="talent" [(ngModel)]="portfolio.talent">
+                                        <option value="">Choose </option>
+                                        <option value="dancer">Dancer</option>
+                                        <option value="singer" selected>Singer</option>
+                                        <option value="actor">Actor</option>
+                                      </select>
+                                    </div>
+                                  </div>
                                 </div>
                               </div>
-                            </form>
-  
-                          </div>
+                              <div class="col-md-12">
+                                <textarea class="form-control" id="exampleTextarea" name="description" [(ngModel)]="portfolio.description"
+                                  rows="5" placeholder="Project Description"></textarea>
+                              </div>
+                              <div class="col-md-12 m-t-15">
+                                <div class="row">
+                                  <div class="input-group">
+                                    <div class="col-md-6">
+                                      <input type="text" class="form-control" style="width: 100% !important" name="keyword"
+                                        [(ngModel)]="keyword" placeholder="Keyword">
+                                    </div>
+                                    <div class="col-md-2">
+                                      <button type="button" style="background-color:#d71727; border-color:#d71727; color:#fff"
+                                        (click)="addKeyWord()">Add</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                              <div class="col-md-12">
+                                <textarea class="form-control" id="exampleTextarea" name="keywordGroup" rows="5"
+                                  placeholder="Keywords group" [(ngModel)]="portfolio.keywordGroup"></textarea>
+                              </div>
+                              <div class="text-right">
+                                <a id="edit-cancel-btn" style="background-color:#d71727; border-color:#d71727; color:#fff"
+                                  class="btn btn-default waves-effect m-t-20" (click)="togglePortfolio();portfolio1.reset()">Cancel</a>
+                                <a class="btn btn-success waves-effect waves-light m-r-20 m-t-20" style="color:#fff"
+                                  (click)="addPortfolio(); portfolio1.reset()">Save</a>
+                              </div>
+                            </div>
+                          </form>
+
                         </div>
                       </div>
                     </div>
                   </div>
                 </div>
               </div>
-            </ng-template>
-          </ngb-tab>
-        </ngb-tabset>
-      </div>
+            </div>
+          </ng-template>
+        </ngb-tab>
+      </ngb-tabset>
     </div>
   </div>
-  
+</div>

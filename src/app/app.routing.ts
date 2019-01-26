@@ -5,7 +5,9 @@ import {AppComponent} from './app.component';
 import {HomeComponent} from './components/home/home.component';
 import {JoinUsComponent }from './components/join-us/join-us.component';
 import {ContactComponent } from './components/contact/contact.component';
-import {ReadnewsComponent  } from './components/readnews/readnews.component';
+import {ReadnewsComponent } from './components/readnews/readnews.component';
+import {ReadeventComponent } from './components/readevent/readevent.component';
+
 
 export const AppRoutes: Routes = [
   { 
@@ -30,6 +32,9 @@ export const AppRoutes: Routes = [
     },{
       path: 'readnews',
       component: ReadnewsComponent
+    },{
+      path: 'readevent',
+      component: ReadeventComponent
     }]
   },
   {

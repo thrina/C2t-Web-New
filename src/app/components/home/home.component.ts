@@ -29,6 +29,7 @@ export class HomeComponent implements OnInit {
     homePage: boolean;
 
     page= {"totalRecords":0,"page":1,"limit":10}
+    
 
     constructor(private modalService: BsModalService, private router: Router, private homeService :HomeService, private notify: CustomNotifyService, private _homedataService: homedataService) {  
         const password = new FormControl('', Validators.required);
@@ -50,6 +51,13 @@ export class HomeComponent implements OnInit {
     }
     set newsPost(value: string){
         this._homedataService.newsPost = value;
+    }
+
+    get eventPost(): string{
+        return this._homedataService.eventPost;
+    }
+    set eventPost(value: string){
+        this._homedataService.eventPost = value;
     }
 
     ngOnInit() {
@@ -120,6 +128,12 @@ export class HomeComponent implements OnInit {
         let sarch = { "searchText": this.filterQuery, "page": 1, "limit": 10 };
         this.getSearch(sarch);
     }
+    keyDownFunction(event) {
+        if(event.keyCode == 13) {
+            this.search();
+        }
+    }
+
     switchPage(){
         this.homePage=true;
     }
@@ -128,4 +142,8 @@ export class HomeComponent implements OnInit {
         this.router.navigate(['/readnews']);
     }
     
+    readEvent(eventItem){
+        this.eventPost=eventItem;
+        this.router.navigate(['/readevent']);
+    }
 }

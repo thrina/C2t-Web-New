@@ -49,6 +49,8 @@ export class ProfileComponent implements OnInit {
   selectedbuzManazFiles: FileList;
   businessImg: FileList;
   userImg: FileList;
+  profileImg: any;
+  profileImgUrl: string;
   hasBaseDropZoneOver = FileList;
   uploader: FileUploader = new FileUploader({
     isHTML5: true
@@ -71,7 +73,7 @@ export class ProfileComponent implements OnInit {
   editMngrProfileIcon = 'icofont-edit';
   editAbout = true;
   editAboutIcon = 'icofont-edit';
-  currentUser: Object = {};
+  currentUser: any = {};
   firstName: string;
   pnotify: any;
   id:any;
@@ -80,8 +82,6 @@ export class ProfileComponent implements OnInit {
   public editorConfig = {
     placeholder: 'About Your Bussiness'
   };
-
-
   public data: any;
   public rowsOnPage = 10;
   public filterQuery = '';
@@ -91,8 +91,8 @@ export class ProfileComponent implements OnInit {
   managerUser: any = {};
   bussinessProfile: any = {};
   constructor(public http: Http, private profileService: ProfileService, private notify: CustomNotifyService) {
-    let currtUser = JSON.parse(localStorage.getItem('currentUser'));
-    this.currentUser = currtUser;
+  let currtUser = JSON.parse(localStorage.getItem('currentUser'));
+  this.currentUser = currtUser;
   }
 
   ngOnInit() {
@@ -107,61 +107,10 @@ export class ProfileComponent implements OnInit {
     if (this.currentUser['role'] == "ARTIST") {
       this.getPortfolios();
     }
-  
-    // this.http.get(`assets/data/data.json`)
-    //   .subscribe((data) => {
-    //     this.data = data.json();
-    // });
-    // setTimeout(() => {
-    //   this.profitChartOption = {
-    //     tooltip: {
-    //       trigger: 'item',
-    //       formatter: function (params) {
-    //         const date = new Date(params.value[0]);
-    //         let data = date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate() + ' ';
-    //         data += date.getHours() + ':' + date.getMinutes();
-    //         return data + '<br/>' + params.value[1] + ', ' + params.value[2];
-    //       },
-    //       responsive: true
-    //     },
-    //     dataZoom: {
-    //       show: true,
-    //       start: 70
-    //     },
-    //     legend: {
-    //       data: ['Profit']
-    //     },
-    //     grid: {
-    //       y2: 80
-    //     },
-    //     xAxis: [{
-    //       type: 'time',
-    //       splitNumber: 10
-    //     }],
-    //     yAxis: [{
-    //       type: 'value'
-    //     }],
-    //     series: [{
-    //       name: 'Profit',
-    //       type: 'line',
-    //       showAllSymbol: true,
-    //       symbolSize: function (value) {
-    //         return Math.round(value[2] / 10) + 2;
-    //       },
-    //       data: (function () {
-    //         const d: any = [];
-    //         let len = 0;
-    //         const now = new Date();
-    //         while (len++ < 200) {
-    //           const random1: any = (Math.random() * 30).toFixed(2);
-    //           const random2: any = (Math.random() * 100).toFixed(2);
-    //           d.push([new Date(2014, 9, 1, 0, len * 10000), random1 - 0, random2 - 0]);
-    //         }
-    //         return d;
-    //       })()
-    //     }]
-    //   };
-    // }, 1);
+    this.profileImg=this.currentUser['imgUrl'];
+    this.profileImgUrl="http://localhost:3000/"+this.profileImg.replace('public','');
+    console.log("ererererererererererererererererererrere",this.editBussinessManager);
+    
   }
 
   getPortfolios() {
@@ -220,6 +169,7 @@ export class ProfileComponent implements OnInit {
   toggleEditProfile() {
     this.editProfileIcon = (this.editProfileIcon === 'icofont-close') ? 'icofont-edit' : 'icofont-close';
     this.editProfile = !this.editProfile;
+    
   }
 
   toggleManagerProfile() {
@@ -230,6 +180,7 @@ export class ProfileComponent implements OnInit {
   toggleBussinessManagerProfile() {
     // this.editProfileIcon = (this.editProfileIcon === 'icofont-close') ? 'icofont-edit' : 'icofont-close';
     this.editBussinessManager = !this.editBussinessManager;
+    console.log("fyfyfyfyfyfyfyfyfyfyfyfyfyfyfyfyfyfyfy",this.editBussinessManager);
   }
 
   toggleEditAbout() {
@@ -272,9 +223,7 @@ export class ProfileComponent implements OnInit {
   getLatestInfo() {
     this.profileService.getUpdatedInfo(this.currentUser).subscribe(data => {
     })
-
   }
-
   createManagerTeam() {
     if (this.currentUser && this.currentUser['teamMenbers']) {
       this.currentUser['teamMenbers'].push(this.managerUser);
@@ -445,23 +394,22 @@ export class ProfileComponent implements OnInit {
   }
 
   changeUserImg(event) {
-    // let userImg = event.target.files[0];
     this.userImg = event.target.files;
+    let latestImg: string;
     let test = this.currentUser;
-    console.log(this.currentUser);
-    this.currentUser['userImage']=this.userImg.item(0);
-    console.log(this.currentUser,"current user");
-    // let formData: FormData = new FormData();
-    // if (this.userImg !== null) {
-    //   Object.keys(test).forEach(function (key) {
-    //     formData.append(key, test[key]);
-    //   });
-    //   formData.append("userImage", this.userImg.item(0));
-    // }
-    if (this.currentUser != null) {
-      this.profileService.updateUser(this.currentUser).subscribe(data => {
+    let formData: FormData = new FormData();
+    if (this.userImg !== null) {
+      Object.keys(test).forEach(function (key) {
+        formData.append(key, test[key]);
+      });
+      formData.append("userImage", this.userImg.item(0));
+    }
+    if (formData != null) {
+      this.profileService.updateUser(formData).subscribe(data => {
         if (data.status == 'success') {
           this.pnotify.success({ title: "Profile Image updated successfully", delay: 1000 });
+          latestImg=this.userImg.item(0).name;
+          this.profileImgUrl="http://localhost:3000/assets/"+latestImg;
         } else {
           this.pnotify.error({ title: data.status, delay: 1000 });
         }
@@ -475,10 +423,7 @@ export class ProfileComponent implements OnInit {
         }
       })
     }
-    // const formData = new FormData();
-    // formData.append("myImg", userImg, userImg.name);
   }
-
   onTabChange(event) {
     this.editProfile = true;
     this.editManager = true;

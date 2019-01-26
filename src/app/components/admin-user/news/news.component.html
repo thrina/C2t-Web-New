@@ -39,9 +39,9 @@
         [count]="page.totalRecords" [offset]="page.page" [limit]="page.limit" (page)='setPage($event)' (select)='onSelect($event)'>
         <ngx-datatable-column *ngFor="let col of columns" [name]="col.name">
          <ng-template *ngIf="col.name == 'Id'" #editTmpl let-row="row" let-value="value">
-                <span>{{value}}</span>
+            <span>{{value}}</span>
           </ng-template>  
-          <ng-template *ngIf="col.name != 'imgUrl'" #editTmpl let-row="row" let-value="value">
+          <ng-template *ngIf="col.name != 'imgUrl'" #editTmpl let-row="row" let-value="value" style="width:100px;">
             <span (click)="onClick(row)">{{value}}</span>
           </ng-template>
           <ng-template *ngIf="col.name == 'imgUrl'" #editTmpl let-row="row" let-value="value"
@@ -55,13 +55,17 @@
             <span>{{value | date:'mediumDate'}}</span>
           </ng-template>
 
+          
+          
         </ngx-datatable-column>
-        <ngx-datatable-column name="Actions">
-          <ng-template let-column="column" ngx-datatable-header-template>
+       <ngx-datatable-column name="Actions">
+           <ng-template let-column="column" ngx-datatable-header-template>
             Actions
-          </ng-template>
-          <ng-template let-value="value" ngx-datatable-cell-template>
-            <ui-switch class="js-danger" color="#e74c3c" switchColor="#fff" size="medium" checked></ui-switch>
+           </ng-template>
+         <ng-template let-value="value" ngx-datatable-cell-template #editTmpl let-row="row" let-value="value">
+            <!--<ui-switch class="js-danger" color="#e74c3c" switchColor="#fff" size="small" checked></ui-switch>-->
+            <span (click)="deleteNews(row)"><i class="ti-trash f-20"></i></span>
+            <span class="m-l-10" (click)="deleteEvent(col)"><i class="ti-pencil f-20"></i></span>
           </ng-template>
         </ngx-datatable-column>
       </ngx-datatable>

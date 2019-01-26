@@ -15,6 +15,8 @@ export class NewsComponent implements OnInit {
   isAddNews: boolean = false;
   category: any;
   date: any;
+  newsTitle: string;
+  pnotify: any;
 
   columns = [
     { name: 'imgUrl' },
@@ -84,6 +86,17 @@ export class NewsComponent implements OnInit {
     this.getNews(sarch);
   }
 
+  deleteNews(rec: any):void {
+    this.newsService.deleteNews(rec).subscribe(data => {
+      if (data.status == "success") {
+        console.log("deleted");
+        this.setPage({ offset: 0 });
+        this.newsTitle=JSON.parse(JSON.stringify(rec));
+        this.pnotify.success({ title:rec.title+ ": delete successfully", delay: 2000 });
+      }
+    })
+  }
+
   getCategories() {
     this.newsService.getCategories().subscribe(data => {
       
@@ -93,3 +106,4 @@ export class NewsComponent implements OnInit {
 
 
 }
+

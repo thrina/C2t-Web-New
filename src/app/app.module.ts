@@ -25,8 +25,10 @@ import {FileUploadModule} from "ng2-file-upload";
 import { HashLocationStrategy, LocationStrategy} from "@angular/common";
 import { ContactComponent } from "./components/contact/contact.component";
 import { ReadnewsComponent } from './components/readnews/readnews.component';
+import { ReadeventComponent } from './components/readevent/readevent.component';
 import { SearchComponent } from './components/search/search.component';
 import { homedataService } from './components/home/homedata.service';
+
 
 @NgModule( {
   declarations:[
@@ -39,6 +41,7 @@ import { homedataService } from './components/home/homedata.service';
     JoinUsComponent,
     ContactComponent,
     ReadnewsComponent,
+    ReadeventComponent,
     AuthenticationFormComponent
   ], 
   imports:[
