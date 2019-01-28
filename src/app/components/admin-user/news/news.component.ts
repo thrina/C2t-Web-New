@@ -17,6 +17,7 @@ export class NewsComponent implements OnInit {
   date: any;
   newsTitle: string;
   pnotify: any;
+  errorImg: string;
 
   columns = [
     { name: 'imgUrl' },
@@ -34,7 +35,7 @@ export class NewsComponent implements OnInit {
     this.setPage({ offset: 0 });
     this.getCategories();
     this.category="all";
-    
+    this.errorImg="http://localhost:3000/assets/news_default.jpg";
     setTimeout(() => { this.loadingIndicator = false; }, 1500);
   }
 
@@ -102,13 +103,9 @@ export class NewsComponent implements OnInit {
       }
     })
   }
-
   getCategories() {
     this.newsService.getCategories().subscribe(data => {
       
     })
   }
-
-
-
 }

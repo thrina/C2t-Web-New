@@ -25867,3 +25867,10 @@ img {
 .m-b-15{
   margin-bottom: 15px;
 }
+.p-r{
+ padding: 0px !important;
+}
+.datatable-body-cell, .datatable-header-cell{
+  padding:10px;
+  padding-left:20px;
+}
