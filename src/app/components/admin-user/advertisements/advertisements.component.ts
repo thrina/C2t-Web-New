@@ -35,6 +35,12 @@ export class AdvertisementsComponent implements OnInit {
     this.getEvents(sarch);
   }
 
+  keyDownFunction(event) {
+    if(event.keyCode == 13) {
+        this.search();
+    }
+}
+
   getEvents(params) {
     this.advertisementService.getAdvertisements(params).subscribe(data => {
       if (data.status == "success") {

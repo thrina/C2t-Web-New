@@ -76,6 +76,12 @@ export class NewsComponent implements OnInit {
     this.getNews(sarch);
   }
 
+  keyDownFunction(event) {
+    if(event.keyCode == 13) {
+        this.search();
+    }
+}
+
   searchCategory() {
     let sarch = { "category": this.category, "page": 1, "limit": 10 };
     this.getNews(sarch);
@@ -106,4 +112,3 @@ export class NewsComponent implements OnInit {
 
 
 }
-

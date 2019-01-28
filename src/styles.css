@@ -25044,7 +25044,7 @@ img {
 }
 
 /*.talents_png {
-     : url("assets/images/button") ;
+     : url("assets/images/button") ;
 }*/
 
 .full_box {
@@ -25860,4 +25860,10 @@ img {
 .carousel-control-next{
   width: auto;
   padding-right: 20px;
+}
+.delet-icon{
+  float: right;
+}
+.m-b-15{
+  margin-bottom: 15px;
 }

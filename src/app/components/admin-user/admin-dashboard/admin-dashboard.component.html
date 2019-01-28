@@ -1,177 +1,178 @@
 <div class="row">
-    <div class="col-md-6 col-xl-4">
-      <div class="card widget-card-1">
-        <div class="card-block-small">
-          <i class="icofont icofont-pie-chart bg-c-blue card1-icon"></i>
-          <span class="f-w-600">Registered Users</span>
-          <div class="row m-t-10">
-            <div class="col-md-12 col-xl-12">
-              <span class="f-left m-t-10 text-muted">
-                <i class="f-16 icofont icofont-user m-r-10"></i>Talented Users
-              </span>
-              <span class="f-right m-t-10 text-muted">
-                <label>{{usersCount?.ARTIST || 0}}</label>
-              </span>
-            </div>
-            <div class="col-md-12 col-xl-12">
-              <span class="f-left m-t-10 text-muted">
-                <i class="f-16 icofont icofont-user m-r-10"></i>Manager of Users
-              </span>
-              <span class="f-right m-t-10 text-muted">
-                <label>{{usersCount?.MANAGER || 0}}</label>
-              </span>
-            </div>
-            <div class="col-md-12 col-xl-12">
-              <span class="f-left m-t-10 text-muted">
-                <i class="f-16 icofont icofont-user m-r-10"></i>Manager of Bussiness
-              </span>
-              <span class="f-right m-t-10 text-muted">
-                <label>{{usersCount['BUSSINESS MANAGER'] || 0}}</label>
-              </span>
-            </div>
-            <div class="col-md-12 col-xl-12">
-              <span class="f-left m-t-10 text-muted">
-                <i class="f-16 icofont icofont-user m-r-10"></i>Users who Hire People
-              </span>
-              <span class="f-right m-t-10 text-muted">
-                <label>{{usersCount['HIRE PEOPLE'] || 0}}</label>
-              </span>
-            </div>
+  <div class="col-md-6 col-xl-4">
+    <div class="card widget-card-1">
+      <div class="card-block-small">
+        <i class="icofont icofont-pie-chart bg-c-blue card1-icon"></i>
+        <span class="f-w-600">Registered Users</span>
+        <div class="row m-t-10">
+          <div class="col-md-12 col-xl-12">
+            <span class="f-left m-t-10 text-muted">
+              <i class="f-16 icofont icofont-user m-r-10"></i>Talented Users
+            </span>
+            <span class="f-right m-t-10 text-muted">
+              <label>{{usersCount?.ARTIST || 0}}</label>
+            </span>
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6 col-xl-4">
-      <div class="card widget-card-1">
-        <div class="card-block-small">
-          <i class="icofont icofont-ui-home bg-c-pink card1-icon"></i>
-          <span class="text-c-pink f-w-600">Profile Status</span>
-          <div class="row m-t-10">
-            <div class="col-md-12 col-xl-12">
-              <span class="f-left m-t-20 text-muted">
-                <i class="f-16 icofont icofont-user m-r-10"></i>Under Review
-              </span>
-              <span class="f-right m-t-20 text-muted">
-                <label>{{statusCount?.inactive || 0}}</label>
-              </span>
-            </div>
-            <div class="col-md-12 col-xl-12">
-              <span class="f-left m-t-20 text-muted">
-                <i class="f-16 icofont icofont-user m-r-10"></i>Active Users
-              </span>
-              <span class="f-right m-t-20 text-muted">
-                <label>{{statusCount?.active || 0}}</label>
-              </span>
-            </div>
-            <div class="col-md-12 col-xl-12">
-              <span class="f-left m-t-20 text-muted">
-                <i class="f-16 icofont icofont-user m-r-10"></i>Rejected
-              </span>
-              <span class="f-right m-t-20 text-muted">
-                <label>{{statusCount?.rejected || 0}}</label>
-              </span>
-            </div>
-  
+          <div class="col-md-12 col-xl-12">
+            <span class="f-left m-t-10 text-muted">
+              <i class="f-16 icofont icofont-user m-r-10"></i>Manager of Users
+            </span>
+            <span class="f-right m-t-10 text-muted">
+              <label>{{usersCount?.MANAGER || 0}}</label>
+            </span>
           </div>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-6 col-xl-4">
-      <div class="card widget-card-1">
-        <div class="card-block-small">
-          <i class="icofont icofont-social-twitter bg-c-yellow card1-icon"></i>
-          <span class="text-c-yellow f-w-600">Actions</span>
-          <div class="row m-t-10">
-            <div class="col-md-12 col-xl-12">
-              <span class="f-left m-t-20 text-muted">
-                <i class="f-16 icofont icofont-user m-r-10"></i>Events
-              </span>
-              <span class="f-right m-t-20 text-muted">
-                <label>{{eventsCount || 0}}</label>
-              </span>
-            </div>
-            <div class="col-md-12 col-xl-12">
-              <span class="f-left m-t-20 text-muted">
-                <i class="f-16 icofont icofont-user m-r-10"></i>Advertisements
-              </span>
-              <span class="f-right m-t-20 text-muted">
-                <label>{{advertismentsCount || 0}}</label>
-              </span>
-            </div>
-            <div class="col-md-12 col-xl-12">
-              <span class="f-left m-t-20 text-muted">
-                <i class="f-16 icofont icofont-user m-r-10"></i>News
-              </span>
-              <span class="f-right m-t-20 text-muted">
-                <label>{{newsCount || 0}}</label>
-              </span>
-            </div>
-  
+          <div class="col-md-12 col-xl-12">
+            <span class="f-left m-t-10 text-muted">
+              <i class="f-16 icofont icofont-user m-r-10"></i>Manager of Bussiness
+            </span>
+            <span class="f-right m-t-10 text-muted">
+              <label>{{usersCount['BUSSINESS MANAGER'] || 0}}</label>
+            </span>
+          </div>
+          <div class="col-md-12 col-xl-12">
+            <span class="f-left m-t-10 text-muted">
+              <i class="f-16 icofont icofont-user m-r-10"></i>Users who Hire People
+            </span>
+            <span class="f-right m-t-10 text-muted">
+              <label>{{usersCount['HIRE PEOPLE'] || 0}}</label>
+            </span>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <div class="row m-t-20">
-    <div class="col-sm-12">
-      <app-card [title]="'Users'">
-        <div class="row pb_30">
-          <div class="col-xs-12 col-sm-12 col-md-9 m-b-5"></div>
-          <div class="col-xs-12 col-sm-12 col-md-3 m-b-5">
-            <div style="display:flex;text-align: right;">
-              <input type="search" [(ngModel)]="filterQuery" class="form-control " placeholder="Name/Email/Mobile/Usertype">
-              <button type="button" class="btn btn-primary " style="width:100px;" (click)="search()"> search</button>
-            </div>
+  <div class="col-md-6 col-xl-4">
+    <div class="card widget-card-1">
+      <div class="card-block-small">
+        <i class="icofont icofont-ui-home bg-c-pink card1-icon"></i>
+        <span class="text-c-pink f-w-600">Profile Status</span>
+        <div class="row m-t-10">
+          <div class="col-md-12 col-xl-12">
+            <span class="f-left m-t-20 text-muted">
+              <i class="f-16 icofont icofont-user m-r-10"></i>Under Review
+            </span>
+            <span class="f-right m-t-20 text-muted">
+              <label>{{statusCount?.inactive || 0}}</label>
+            </span>
+          </div>
+          <div class="col-md-12 col-xl-12">
+            <span class="f-left m-t-20 text-muted">
+              <i class="f-16 icofont icofont-user m-r-10"></i>Active Users
+            </span>
+            <span class="f-right m-t-20 text-muted">
+              <label>{{statusCount?.active || 0}}</label>
+            </span>
+          </div>
+          <div class="col-md-12 col-xl-12">
+            <span class="f-left m-t-20 text-muted">
+              <i class="f-16 icofont icofont-user m-r-10"></i>Rejected
+            </span>
+            <span class="f-right m-t-20 text-muted">
+              <label>{{statusCount?.rejected || 0}}</label>
+            </span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-xl-4">
+    <div class="card widget-card-1">
+      <div class="card-block-small">
+        <i class="icofont icofont-social-twitter bg-c-yellow card1-icon"></i>
+        <span class="text-c-yellow f-w-600">Actions</span>
+        <div class="row m-t-10">
+          <div class="col-md-12 col-xl-12">
+            <span class="f-left m-t-20 text-muted">
+              <i class="f-16 icofont icofont-user m-r-10"></i>Events
+            </span>
+            <span class="f-right m-t-20 text-muted">
+              <label>{{eventsCount || 0}}</label>
+            </span>
+          </div>
+          <div class="col-md-12 col-xl-12">
+            <span class="f-left m-t-20 text-muted">
+              <i class="f-16 icofont icofont-user m-r-10"></i>Advertisements
+            </span>
+            <span class="f-right m-t-20 text-muted">
+              <label>{{advertismentsCount || 0}}</label>
+            </span>
+          </div>
+          <div class="col-md-12 col-xl-12">
+            <span class="f-left m-t-20 text-muted">
+              <i class="f-16 icofont icofont-user m-r-10"></i>News
+            </span>
+            <span class="f-right m-t-20 text-muted">
+              <label>{{newsCount || 0}}</label>
+            </span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row m-t-20">
+  <div class="col-sm-12">
+    <app-card [title]="'Users'">
+      <div class="row pb_30">
+        <div class="col-xs-12 col-sm-12 col-md-9 m-b-5"></div>
+        <div class="col-xs-12 col-sm-12 col-md-3 m-b-5">
+          <div style="display:flex;text-align: right;">
+            <input type="search" [(ngModel)]="filterQuery" class="form-control " (keydown)="keyDownFunction($event)" placeholder="Name/Email/Mobile/Usertype">
+            <button type="button" class="btn btn-primary " style="width:100px;" (click)="search()"> search</button>
           </div>
         </div>
-        <!-- <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-8 m-b-5">
-          <div style="text-align: right;">
-            <input type="search" [(ngModel)]="filterQuery" class="form-control input-sm full-data-search" placeholder="Name/Email/Mobile/Usertype">
-            <button type="button" class="btn btn-primary p-t-10 p-b-10">Search</button>
-           </div></div> <div class="col-xs-12 col-sm-12 col-md-4 m-b-5" > -->
-  
-        <!-- <div style="display:flex;text-align: right;">
-            <input type="search" [(ngModel)]="filterQuery" class="form-control " placeholder="Name/Email/Mobile/Usertype">
-            <button type="button" class="btn btn-primary " style="width:100px;"> search</button>
-        </div>
-        </div>
-        </div> -->
-        <ngx-datatable class="material" [rows]="rowsBasic" [loadingIndicator]="loadingIndicator" [columnMode]="'force'"
-          [headerHeight]="50" [footerHeight]="50" [rowHeight]="50" [reorderable]="reorderable">
-          <ngx-datatable-column *ngFor="let col of columns" [name]="col.name">
-            <ng-template #editTmpl let-row="row" let-value="value">
-              {{value}}
-            </ng-template>
+      </div>
+      <!-- <div class="row">
+      <div class="col-xs-12 col-sm-12 col-md-8 m-b-5">
+        <div style="text-align: right;">
+          <input type="search" [(ngModel)]="filterQuery" class="form-control input-sm full-data-search" placeholder="Name/Email/Mobile/Usertype">
+          <button type="button" class="btn btn-primary p-t-10 p-b-10">Search</button>
+         </div></div> <div class="col-xs-12 col-sm-12 col-md-4 m-b-5" > -->
+
+      <!-- <div style="display:flex;text-align: right;">
+          <input type="search" [(ngModel)]="filterQuery" class="form-control " placeholder="Name/Email/Mobile/Usertype">
+          <button type="button" class="btn btn-primary " style="width:100px;"> search</button>
+      </div>
+      </div>
+      </div> -->
+      <ngx-datatable class="material" [rows]="rowsBasic" [loadingIndicator]="loadingIndicator" [columnMode]="'force'"
+        [headerHeight]="50" [footerHeight]="50" [rowHeight]="50" [reorderable]="reorderable" class="full-width">
+        <ngx-datatable-column *ngFor="let col of columns" [name]="col.name">
+         <ng-template #editTmpl let-row="row" let-value="value">
+            <div class="col-md-4">
+            {{value}}</div>
+          </ng-template>
             <ng-template *ngIf="col.name == 'createdAt'" #editTmpl let-row="row" let-value="value"
-              ngx-datatable-cell-template>
-              <span>{{value | date:'mediumDate'}}</span>
-            </ng-template>
-            <ng-template *ngIf="col.name == 'Status'" #editTmpl let-row="row" let-value="value"
-              ngx-datatable-cell-template>
-              <span>{{value}}</span>
-            </ng-template>
+            ngx-datatable-cell-template>
+            <span>{{value | date:'mediumDate'}}</span>
+          </ng-template>
+          <ng-template *ngIf="col.name == 'Status'" #editTmpl let-row="row" let-value="value"
+            ngx-datatable-cell-template>
+            <span>{{value}}</span>
+          </ng-template>
+          <ui-switch class="js-danger" color="#e74c3c" switchColor="#fff" size="small" checked (change)="onChange($event)"></ui-switch>
+        </ngx-datatable-column>
+
+        
+        <!-- <ngx-datatable-column name="Status">
+          <ng-template let-column="column" ngx-datatable-header-template>
+            Status
+          </ng-template>
+          <ng-template let-value="value" ngx-datatable-cell-template *ngIf="isChecked">
+            {{togalSwitchVal}}
+          </ng-template>
+        </ngx-datatable-column> -->
+        <ngx-datatable-column name="Actions">
+          <ng-template let-column="column" ngx-datatable-header-template>
+            Actions
+          </ng-template>
+          <ng-template let-value="value" ngx-datatable-cell-template>
             <ui-switch class="js-danger" color="#e74c3c" switchColor="#fff" size="small" checked (change)="onChange($event)"></ui-switch>
-          </ngx-datatable-column>
-          
-          <!-- <ngx-datatable-column name="Status">
-            <ng-template let-column="column" ngx-datatable-header-template>
-              Status
-            </ng-template>
-            <ng-template let-value="value" ngx-datatable-cell-template *ngIf="isChecked">
-              {{togalSwitchVal}}
-            </ng-template>
-          </ngx-datatable-column> -->
-          <ngx-datatable-column name="Actions">
-            <ng-template let-column="column" ngx-datatable-header-template>
-              Actions
-            </ng-template>
-            <ng-template let-value="value" ngx-datatable-cell-template>
-              <ui-switch class="js-danger" color="#e74c3c" switchColor="#fff" size="small" checked (change)="onChange($event)"></ui-switch>
-            </ng-template>
-          </ngx-datatable-column>
-        </ngx-datatable>
-      </app-card>
-    </div>
+          </ng-template>
+        </ngx-datatable-column>
+      </ngx-datatable>
+    </app-card>
   </div>
-  
+</div>

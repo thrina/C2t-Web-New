@@ -48,6 +48,9 @@ export class ProfileComponent implements OnInit {
   selectedTeamImg: FileList;
   selectedbuzManazFiles: FileList;
   businessImg: FileList;
+  bussmngpan: FileList;
+  bussmngPan2: FileList;
+  mngbusspanimage: FileList;
   userImg: FileList;
   profileImg: any;
   profileImgUrl: string;
@@ -108,7 +111,7 @@ export class ProfileComponent implements OnInit {
       this.getPortfolios();
     }
     this.profileImg=this.currentUser['imgUrl'];
-    this.profileImgUrl="http://localhost:3000/"+this.profileImg.replace('public','');
+    // this.profileImgUrl="http://localhost:3000/"+this.profileImg.replace('public','');
     console.log("ererererererererererererererererererrere",this.editBussinessManager);
     
   }
@@ -347,6 +350,30 @@ export class ProfileComponent implements OnInit {
       formData.append("bussImage", this.businessImg.item(0));
     }
     console.log("businessData",formData);
+
+    if (this.bussmngpan !== null) {
+      Object.keys(test).forEach(function (key) {
+        formData.append(key, test[key]);
+      });
+      formData.append("bussmngpanImage", this.bussmngpan.item(0));
+    }
+
+    if (this.bussmngPan2 !== null) {
+      Object.keys(test).forEach(function (key) {
+        formData.append(key, test[key]);
+      });
+      formData.append("bussmngpanimage2", this.bussmngPan2.item(0));
+    }
+
+    console.log("businessData",formData);
+
+    if (this.mngbusspanimage !== null) {
+      Object.keys(test).forEach(function (key) {
+        formData.append(key, test[key]);
+      });
+      formData.append("mngbusspanimage", this.mngbusspanimage.item(0));
+    }
+    console.log("businessData",formData);
     
     if (formData != null) {
       this.profileService.createBussiness(formData).subscribe(data => {
@@ -441,6 +468,12 @@ export class ProfileComponent implements OnInit {
     this.portfolio.keywordGroup = this.portfolio.keywordGroup + ", " + this.keyword;
     this.keyword = '';
   }
+
+  keyDownFunction(event) {
+    if(event.keyCode == 13) {
+        this.addKeyWord();
+    }
+}
 
   addPortfolio() {
     let test = this.portfolio;
@@ -560,7 +593,20 @@ export class ProfileComponent implements OnInit {
   uploadbussImage(event:any){
     this.businessImg = event.target.files;
   }
+
+  bussmngpanImg(event:any){
+    this.bussmngpan = event.target.files;
+  }
+
+  bussmngpanImg2(event:any){
+    this.bussmngPan2 = event.target.files;
+  }
   
+  MngBussPan(event:any){
+    this.mngbusspanimage = event.target.files;
+  }
+
+    
   deletePortfilo(query: any){ 
     this.profileService.deletePortfolio(query).subscribe(data => {
     if (data.status == "success") {

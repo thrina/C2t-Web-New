@@ -233,7 +233,7 @@
                             <div class="text-right">
                               <button id="edit-cancel" style="background-color:#d71727; border-color:#d71727; color:#fff"
                                 class="btn btn-danger waves-effect" (click)="toggleEditProfile()">Cancel</button>
-                              <button type="submit" [disabled]="updateForm.invalid" class="btn btn-success waves-effect waves-light m-r-20">Save</button>
+                              <button type="submit" [disabled]="updateForm.invalid" class="btn btn-success waves-effect waves-light">Save</button>
                             </div>
                           </div>
                         </form>
@@ -288,7 +288,7 @@
                                         </td> 
                                         <td class="actions_div curser_pointer">
                                         <div class="col-xl-1 col-lg-1 col-md-1 col-sm-1">
-                                          <span><button (click)="deletePortfilo(artistPortfolio)" style="margin-top:33px;">delete</button></span>
+                                        <span class="m-b-15" (click)="deletePortfilo(artistPortfolio)"><i class="ti-trash f-20"></i></span>
                                         </div>
                                       </td>
                                       </tr>
@@ -347,10 +347,10 @@
                                   <input type="text" class="form-control" style="width: 100% !important" name="keyword"
                                     [(ngModel)]="keyword" placeholder="Keyword">
                                 </div>
-                                <div class="col-md-2">
-                                  <button type="button" style="background-color:#d71727; border-color:#d71727; color:#fff"
-                                    (click)="addKeyWord()">Add</button>
-                                </div>
+                                  <div class="col-md-2">
+                                    <button type="button" style="width:82px;height:100%;background-color:#d71727; border-color:#d71727; color:#fff" (keydown)="keyDownFunction($event)"
+                                      (click)="addKeyWord()">Add</button>
+                                  </div>
                               </div>
                             </div>
                           </div>
@@ -558,9 +558,9 @@
                                     <input type="date" class="form-control" [(ngModel)]="currentUser.bussinessStartDate" name="bussinessStartDate" placeholder="Date" (ngModelChange)="dateSearch()" />
                                 </div>
                                 <div class="input-group">
-                                  <span class="input-group-addon"><i class="icofont icofont-upload-alt"></i></span>
-                                  <input type="text" class="form-control" placeholder="Upload PAN" name="pan"
-                                    [(ngModel)]="currentUser.pan">
+                                  <span class="input-group-addon"><i class="icofont icofont-upload-alt"></i></span>                                  
+                                    <input type="file" id="file" name="mngbusprfPan" placeholder="PAN" class="form-control" value="Upload Pan" (change)="MngBussPan($event)">
+
                                 </div>
                               </div>
                               <!-- end of table col-lg-6 -->
@@ -654,7 +654,7 @@
                             <div class="text-right">
                               <button type="button" id="edit-cancel" style="background-color:#d71727; border-color:#d71727; color:#fff"
                                 class="btn btn-danger waves-effect" (click)="toggleManagerProfile()">Cancel</button>
-                              <button type="submit" class="btn btn-success waves-effect waves-light m-r-20">Save</button>
+                              <button type="submit" class="btn btn-success waves-effect waves-light">Save</button>
                             </div>
                           </div>
                         </form>
@@ -683,10 +683,10 @@
                         </div>
                         <div class="edit-desc" *ngIf="!editAbout">
                           <div class="col-md-12">
-                            <quill-editor [(ngModel)]="currentUser.aboutBussiness" name="aboutBussiness" [options]="editorConfig"
+                            <textarea rows="6" placeholder="Enter About Business Here " [(ngModel)]="currentUser.aboutBussiness" name="aboutBussiness" class="full_width"
                               (blur)="onEditorBlured($event)" (focus)="onEditorFocused($event)" (ready)="onEditorCreated($event)"
                               (change)="onContentChanged($event)">
-                            </quill-editor>
+                            </textarea>
                           </div>
                           <div class="text-right">
                             <button type="button" id="edit-cancel-btn" style="background-color:#d71727; border-color:#d71727; color:#fff"
@@ -781,8 +781,6 @@
                                 </div>
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-upload-alt"></i></span>
-                                  <!-- <input type="text" class="form-control" [(ngModel)]="managerUser.pan" name="pan"
-                                    placeholder="PAN"> -->
                                   <input type="file" name="pan" placeholder="PAN" class="form-control" value="Upload Pan" (change)="panUpload($event)">
 
                                 </div>
@@ -812,7 +810,7 @@
                             <div class="text-right" *ngIf="currentUser.role != 'ARTIST'">
                               <button type="button" id="edit-cancel" style="background-color:#d71727; border-color:#d71727; color:#fff"
                                 class="btn btn-danger waves-effect" (click)="toggleEditProfile()">Cancel</button>
-                              <button type="submit" class="btn btn-success waves-effect waves-light m-r-20">Save</button>
+                              <button type="submit" class="btn btn-success waves-effect waves-light">Save</button>
                             </div>
                           </div>
                         </form>
@@ -982,9 +980,9 @@
                                           </div>
                                         </td>
                                         <td>
-                                            <div class="col-md-3 ">
+                                            <div class="col-md-12 ">
                                               <!--<span><button (click)="deleteBuss(bussMngr)" style="margin-top:33px;">delete</button></span>-->
-                                              <span class="m-l-10" (click)="deleteBuss(bussMngr)"><i class="ti-trash f-20"></i></span>
+                                              <span class="delet-icon" (click)="deleteBuss(bussMngr)"><i class="ti-trash f-20"></i></span>
                                             </div>
                                         </td>  
                                       </tr>
@@ -1013,15 +1011,26 @@
                                   <input type="text" class="form-control" placeholder="Bussiness Name" name="name"
                                     [(ngModel)]="bussinessProfile.name">
                                 </div>
-                                <div class="input-group">
+                                <!-- <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-calendar"></i></span>
                                   <input id="dropper-default" class="form-control" type="text" name="startDate"
                                     [(ngModel)]="bussinessProfile.startDate" placeholder="Select Start Date" />
+                                </div> -->
+
+                                <div class="input-group">
+                                  <span class="input-group-addon"><i class="icofont icofont-calendar"></i></span>
+                                  <input type="date" class="form-control" [(ngModel)]="currentUser.dob" name="dob"
+                                    placeholder="Select Your Birth Date" />
                                 </div>
+                                
                                 <div class="input-group">
                                   <span class="input-group-addon"><i class="icofont icofont-upload-alt"></i></span>
-                                  <input type="text" class="form-control" placeholder="Upload PAN" name="pan"
-                                    [(ngModel)]="bussinessProfile.pan">
+                                  <!-- <input type="file" id="file" value="Upload File" class="form-control" placeholder="Upload PAN" name="bussmngpan"
+                                    [(ngModel)]="bussinessProfile.pan" (change)="bussmngpanImg($event)"> -->
+                                    <input type="file" id="file" name="bussmngPan2" placeholder="PAN" class="form-control" value="Upload Pan" (change)="bussmngpanImg2($event)">
+
+                                    
+                                     
                                 </div>
 
                               </div>
@@ -1039,7 +1048,8 @@
                                 </div>
                                 <div class="input-group">
                                     <span class="input-group-addon"><i class="icofont icofont-upload-alt"></i></span>
-                                    <input type="file" name="bussImage" class="form-control" value="Upload File" (change)="uploadbussImage($event)"> 
+                                    <!-- <button id="files" onclick="doccument.getElementById('file').click();return false">hi</button> -->
+                                    <input type="file" id="file" name="bussmngpanImage" class="form-control" value="Upload File" (change)="uploadbussImage($event)"> 
                                 </div>
                               </div>
                             </div>
@@ -1125,7 +1135,7 @@
                             <div class="text-right" style="margin-top: 70px">
                               <button type="button" id="edit-cancel" style="background-color:#d71727; border-color:#d71727; color:#fff"
                                 class="btn btn-danger waves-effect" (click)="toggleBussinessManagerProfile();bussinessmanagerForm.reset()">Cancel</button>
-                              <button type="submit" (click)="addBussinessProfile(); bussinessmanagerForm.reset()" class="btn btn-success waves-effect waves-light m-r-20">Save</button>
+                              <button type="submit" (click)="addBussinessProfile(); bussinessmanagerForm.reset()" class="btn btn-success waves-effect waves-light">Save</button>
                             </div>
                           </div>
                         </form>
@@ -1171,9 +1181,9 @@
                                             <p class="value-font m-b-5">{{teamMbr.email}}</p>
                                           </div>
                                         </td>
-                                        <div class="col-md-3 ">
+                                        <div class="col-md-12 ">
                                           <!-- <span><button (click)="deleteBussteam(teamMbr)" style="margin-top:33px;">delete</button></span> -->
-                                          <span class="m-l-10" (click)="deleteBussteam(teamMbr)"><i class="ti-trash f-20"></i></span>
+                                          <span  class="delet-icon" (click)="deleteBussteam(teamMbr)"><i class="ti-trash f-20"></i></span>
                                         </div>  
                                       </tr>
                                     </tbody>
@@ -1243,7 +1253,7 @@
                             <div class="text-right" *ngIf="currentUser.role != 'ARTIST'">
                               <button type="button" id="edit-cancel" style="background-color:#d71727; border-color:#d71727; color:#fff"
                                 class="btn btn-danger waves-effect" (click)="toggleEditProfile();managerTeamForm.reset()">Cancel</button>
-                              <button type="submit" class="btn btn-success waves-effect waves-light m-r-20">Save</button>
+                              <button type="submit" class="btn btn-success waves-effect waves-light">Save</button>
                             </div>
                           </div>
                         </form>
@@ -1284,9 +1294,9 @@
                                             <p class="value-font m-b-5">{{portMbr.description}}</p>
                                           </div>
                                         </td>
-                                        <div class="col-md-3 ">
+                                        <div class="col-md-12 ">
                                           <!-- <span><button (click)="deleteBussPort(portMbr)" style="margin-top:33px;">delete</button></span> -->
-                                          <span class="m-l-10" (click)="deleteBussPort(portMbr)"><i class="ti-trash f-20"></i></span>
+                                          <span class="delet-icon" (click)="deleteBussPort(portMbr)"><i class="ti-trash f-20"></i></span>
                                         </div>
                                       </tr>                                        
                                     </tbody>
@@ -1311,7 +1321,7 @@
                             <div class="edit-desc">
                               <div class="col-md-12">
                                 <div class="row">
-                                  <div class="col-md-12 news_pannel">
+                                  <div class="col-md-12 news_pannel m-b-15">
                                      <input type="file" name="portfolioImage" class="form-control" value="Upload File" (change)="uploadFile($event)">                                       
                                   </div>
                                   <div class="col-md-6">
@@ -1346,7 +1356,7 @@
                                         [(ngModel)]="keyword" placeholder="Keyword">
                                     </div>
                                     <div class="col-md-2">
-                                      <button type="button" style="background-color:#d71727; border-color:#d71727; color:#fff"
+                                      <button type="button" style="width:82px; height:100%;background-color:#d71727; border-color:#d71727; color:#fff"
                                         (click)="addKeyWord()">Add</button>
                                     </div>
                                   </div>
@@ -1359,7 +1369,7 @@
                               <div class="text-right">
                                 <a id="edit-cancel-btn" style="background-color:#d71727; border-color:#d71727; color:#fff"
                                   class="btn btn-default waves-effect m-t-20" (click)="togglePortfolio();portfolio1.reset()">Cancel</a>
-                                <a class="btn btn-success waves-effect waves-light m-r-20 m-t-20" style="color:#fff"
+                                <a class="btn btn-success waves-effect waves-light m-t-20" style="color:#fff"
                                   (click)="addPortfolio(); portfolio1.reset()">Save</a>
                               </div>
                             </div>

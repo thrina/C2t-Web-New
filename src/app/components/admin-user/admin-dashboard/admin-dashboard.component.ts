@@ -45,6 +45,12 @@ export class AdminDashboardComponent implements OnInit {
     this.getEvents(sarch);
   }
 
+  keyDownFunction(event) {
+    if(event.keyCode == 13) {
+        this.search();
+    }
+}
+
   getEvents(params) {
     this.dashboardService.getUsers(params).subscribe(data => {
       if (data.status == "success") {
