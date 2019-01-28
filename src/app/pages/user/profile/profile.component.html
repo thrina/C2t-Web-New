@@ -344,11 +344,10 @@
                             <div class="row">
                               <div class="input-group">
                                 <div class="col-md-6">
-                                  <input type="text" class="form-control" style="width: 100% !important" name="keyword"
-                                    [(ngModel)]="keyword" placeholder="Keyword">
+                                  <input type="text" class="form-control" style="width: 100% !important" name="keyword" [(ngModel)]="keyword" placeholder="Keyword" (keydown)="keyDownFunction($event)">
                                 </div>
                                   <div class="col-md-2">
-                                    <button type="button" style="width:82px;height:100%;background-color:#d71727; border-color:#d71727; color:#fff" (keydown)="keyDownFunction($event)"
+                                    <button type="button" style="width:82px;height:100%;background-color:#d71727; border-color:#d71727; color:#fff"
                                       (click)="addKeyWord()">Add</button>
                                   </div>
                               </div>
@@ -915,7 +914,7 @@
                                   <div class="input-group">
                                     <div class="col-md-6">
                                       <input type="text" class="form-control" style="width: 100% !important" name="keyword"
-                                        [(ngModel)]="keyword" placeholder="Keyword">
+                                        [(ngModel)]="keyword" placeholder="Keyword" (keydown)="keyDownFunction($event)">
                                     </div>
                                     <div class="col-md-2">
                                       <button type="button" style="background-color:#d71727; border-color:#d71727; color:#fff"
@@ -1353,7 +1352,7 @@
                                   <div class="input-group">
                                     <div class="col-md-6">
                                       <input type="text" class="form-control" style="width: 100% !important" name="keyword"
-                                        [(ngModel)]="keyword" placeholder="Keyword">
+                                        [(ngModel)]="keyword" placeholder="Keyword" (keydown)="keyDownFunction($event)">
                                     </div>
                                     <div class="col-md-2">
                                       <button type="button" style="width:82px; height:100%;background-color:#d71727; border-color:#d71727; color:#fff"

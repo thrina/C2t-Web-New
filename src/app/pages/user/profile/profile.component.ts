@@ -111,9 +111,6 @@ export class ProfileComponent implements OnInit {
       this.getPortfolios();
     }
     this.profileImg=this.currentUser['imgUrl'];
-    // this.profileImgUrl="http://localhost:3000/"+this.profileImg.replace('public','');
-    console.log("ererererererererererererererererererrere",this.editBussinessManager);
-    
   }
 
   getPortfolios() {
@@ -351,29 +348,29 @@ export class ProfileComponent implements OnInit {
     }
     console.log("businessData",formData);
 
-    if (this.bussmngpan !== null) {
-      Object.keys(test).forEach(function (key) {
-        formData.append(key, test[key]);
-      });
-      formData.append("bussmngpanImage", this.bussmngpan.item(0));
-    }
+    // if (this.bussmngpan !== null) {
+    //   Object.keys(test).forEach(function (key) {
+    //     formData.append(key, test[key]);
+    //   });
+    //   formData.append("bussmngpanImage", this.bussmngpan.item(0));
+    // }
 
-    if (this.bussmngPan2 !== null) {
-      Object.keys(test).forEach(function (key) {
-        formData.append(key, test[key]);
-      });
-      formData.append("bussmngpanimage2", this.bussmngPan2.item(0));
-    }
+    // if (this.bussmngPan2 !== null) {
+    //   Object.keys(test).forEach(function (key) {
+    //     formData.append(key, test[key]);
+    //   });
+    //   formData.append("bussmngpanimage2", this.bussmngPan2.item(0));
+    // }
 
-    console.log("businessData",formData);
+    // console.log("businessData",formData);
 
-    if (this.mngbusspanimage !== null) {
-      Object.keys(test).forEach(function (key) {
-        formData.append(key, test[key]);
-      });
-      formData.append("mngbusspanimage", this.mngbusspanimage.item(0));
-    }
-    console.log("businessData",formData);
+    // if (this.mngbusspanimage !== null) {
+    //   Object.keys(test).forEach(function (key) {
+    //     formData.append(key, test[key]);
+    //   });
+    //   formData.append("mngbusspanimage", this.mngbusspanimage.item(0));
+    // }
+    // console.log("businessData",formData);
     
     if (formData != null) {
       this.profileService.createBussiness(formData).subscribe(data => {
@@ -594,17 +591,17 @@ export class ProfileComponent implements OnInit {
     this.businessImg = event.target.files;
   }
 
-  bussmngpanImg(event:any){
-    this.bussmngpan = event.target.files;
-  }
+  // bussmngpanImg(event:any){
+  //   this.bussmngpan = event.target.files;
+  // }
 
-  bussmngpanImg2(event:any){
-    this.bussmngPan2 = event.target.files;
-  }
+  // bussmngpanImg2(event:any){
+  //   this.bussmngPan2 = event.target.files;
+  // }
   
-  MngBussPan(event:any){
-    this.mngbusspanimage = event.target.files;
-  }
+  // MngBussPan(event:any){
+  //   this.mngbusspanimage = event.target.files;
+  // }
 
     
   deletePortfilo(query: any){ 
