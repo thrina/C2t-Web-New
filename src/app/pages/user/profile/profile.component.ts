@@ -6,6 +6,7 @@ import { FileUploader } from 'ng2-file-upload';
 import { ProfileService } from './profile.service';
 import { CustomNotifyService } from '../../../components/shared/custom-notify.service';
 import { UrlHandlingStrategy } from '@angular/router';
+import { log } from 'util';
 
 const URL = 'https://evening-anchorage-3159.herokuapp.com/api/';
 
@@ -169,7 +170,6 @@ export class ProfileComponent implements OnInit {
   toggleEditProfile() {
     this.editProfileIcon = (this.editProfileIcon === 'icofont-close') ? 'icofont-edit' : 'icofont-close';
     this.editProfile = !this.editProfile;
-    
   }
 
   toggleManagerProfile() {
@@ -219,7 +219,24 @@ export class ProfileComponent implements OnInit {
       }
     })
   }
-
+  updateUserFormData(){
+    this.profileService.updateUserData(this.currentUser).subscribe(data => {
+      if (data.status == "success") {
+        this.currentUser = { ...this.currentUser };
+        this.getLatestInfo();
+        if (!this.editProfile) {
+          this.pnotify.success({ title: "Profile updated successfully", delay: 2000 });
+          this.toggleEditProfile();
+        }
+        if (!this.editAbout)
+          this.toggleEditAbout();
+        if (!this.editBussinessManager)
+          this.toggleBussinessManagerProfile();
+        if (!this.editManager)
+          this.toggleManagerProfile()
+      }
+    })
+  }
   getLatestInfo() {
     this.profileService.getUpdatedInfo(this.currentUser).subscribe(data => {
     })
@@ -239,15 +256,26 @@ export class ProfileComponent implements OnInit {
     let test = this.managerUser;    
     let formData: FormData = new FormData();
     if (this.currentUser['role'] == "MANAGER")
+    {
       this.managerUser['userID'] = this.currentUser['_id'];
-    if (this.currentUser['role'] == "BUSSINESS MANAGER")
-      this.managerUser['userID'] = this.selectedBussiness['_id'];
-    if (this.selectedbuzManazFiles !== null) {
-      Object.keys(test).forEach(function (key) {
-        formData.append(key, test[key]);
-      });
-      formData.append("photo", this.selectedbuzManazFiles.item(0));
+      if (this.selectedTeamImg !== null) {
+        Object.keys(test).forEach(function (key) {
+          formData.append(key, test[key]);
+        });
+        formData.append("photo", this.selectedTeamImg.item(0));
+      }
     }
+    if (this.currentUser['role'] == "BUSSINESS MANAGER")
+    {
+      this.managerUser['userID'] = this.selectedBussiness['_id'];
+      if (this.selectedbuzManazFiles !== null) {
+        Object.keys(test).forEach(function (key) {
+          formData.append(key, test[key]);
+        });
+        formData.append("photo", this.selectedbuzManazFiles.item(0));
+      }
+    }
+   
     if (formData != null) {
       this.profileService.createTeamMember(formData).subscribe(data => {
         console.log("createTeamMember");
@@ -542,12 +570,16 @@ export class ProfileComponent implements OnInit {
     this.selectedTeam = { ...selectedTeam };
     this.getTeamUserPortfolio();
   }
+  xxxx(){
+    console.log("clicked the box");
+  }
 
   backToTeams() {
     this.isBussinessActive = false;
     this.isTeamActive = true;
     this.isPortfolioActive = false;
     this.selectedTeam = {};
+    console.log("team is back");
   }
 
   getTeamUserPortfolio() {

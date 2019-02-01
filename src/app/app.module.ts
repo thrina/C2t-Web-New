@@ -29,7 +29,6 @@ import { ReadeventComponent } from './components/readevent/readevent.component';
 import { SearchComponent } from './components/search/search.component';
 import { homedataService } from './components/home/homedata.service';
 
-
 @NgModule( {
   declarations:[
     AppComponent, 

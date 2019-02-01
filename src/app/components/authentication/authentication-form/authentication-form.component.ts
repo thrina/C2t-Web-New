@@ -49,7 +49,7 @@ export class AuthenticationFormComponent implements OnInit {
         this.pnotify = this.notify.getPNotify();
     }
 
-    public showConfirmationModal(title: string): void {
+    public showConfirmationModal(title: string) {
         this.title = title;
         if (title == "Sign Up") {
             this.isSignUp = true;

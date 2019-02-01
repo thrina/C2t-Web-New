@@ -17,7 +17,23 @@ export class ProfileService {
     let url = process.url + "/myaccount/"+userDetails.get("_id");
     return this.http.put(url,userDetails, { headers: headers});
   }
+
+  // updateUserData(userDetails:any):Observable < any >  {
+  //   let headers = new HttpHeaders();
+  //   headers.append('Content-Type', 'application/json');
+  //   headers.append('Accept', 'multipart/form-data');
+  //   let url = process.url + "/myaccount/"+userDetails._id;
+  //   return this.http.put(url,userDetails, { headers: headers});
+  // }
+
+  updateUserData(userDetails:any):Observable < any >  {
+    console.log("The user details are ");
+    console.log(userDetails);
+    let url = process.url + "/myaccount/"+userDetails._id;
+    return  this.http.put(url, userDetails);
+  }
   
+
  deletePortfolio(id :any):Observable<any>{
   let url = process.url + "/portfolio/"+id._id;
   return this.http.delete(url);

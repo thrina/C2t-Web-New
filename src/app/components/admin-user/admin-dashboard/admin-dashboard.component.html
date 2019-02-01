@@ -116,9 +116,12 @@
       <div class="row pb_30">
         <div class="col-xs-12 col-sm-12 col-md-9 m-b-5"></div>
         <div class="col-xs-12 col-sm-12 col-md-3 m-b-5 p-r">
-          <div style="display:flex; text-align: right;">
-            <input type="search" [(ngModel)]="filterQuery" class="form-control " (keydown)="keyDownFunction($event)" placeholder="Name/Email/Mobile/Usertype">
-            <button type="button" class="btn btn-primary " style="width:100px;" (click)="search()"> search</button>
+          <div style="display:flex; text-align: right;" >
+            <input type="search" [(ngModel)]="filterQuery" class="form-control " (input)="search()" placeholder="Name/Email/Mobile/Usertype">
+            <!-- <button type="button" class="btn btn-primary " style="width:100px;" (click)="search()"> search</button> -->
+            <button type="button" class="btn btn-danger sbtn" (click)="search()">
+                <i class="icofont icofont-search"></i>
+              </button>
           </div>
         </div>
       </div>

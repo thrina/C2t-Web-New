@@ -12,6 +12,8 @@ export class AdvertisementsComponent implements OnInit {
   reorderable = true;
   filterQuery = '';
   isAddAdvertisement: boolean = false;
+  advertisementTitle:string;
+  pnotify: any;
 
   columns = [
     { name: 'imgUrl' },
@@ -67,10 +69,19 @@ export class AdvertisementsComponent implements OnInit {
     this.page.page = parseInt(pageInfo.offset) + 1;
     this.getAds(this.page);
   }
-
   closeAddAds() {
     this.isAddAdvertisement = false;
     this.setPage({offset:0});
+  }
+  deleteAdvertisement(rec: any):void {
+    this.advertisementService.deleteAdvertisement(rec).subscribe(data => {
+      if (data.status == "success") {
+        console.log("deleted");
+        this.setPage({ offset:0});
+        this.advertisementTitle=JSON.parse(JSON.stringify(rec));
+        this.pnotify.success({ title:rec.title+ ": delete successfully", delay: 2000 });
+      }
+    })
   }
 
 }

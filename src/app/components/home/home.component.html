@@ -93,7 +93,7 @@
               here.</h2>
             <div class="space32 sapce20"></div>
             <div class="input-group" id="adv-search">
-              <input type="text" class="form-control searchbar lator" (keydown)="keyDownFunction($event)" [(ngModel)]="filterQuery" placeholder="Search for Artists, Writers, Technicians" />
+              <input type="text" class="form-control searchbar lator" (input)="search()" [(ngModel)]="filterQuery" placeholder="Search for Artists, Writers, Technicians" />
               <div class="input-group-btn">
                 <div class="btn-group" role="group">
                   <div class="dropdown dropdown-lg">

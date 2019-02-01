@@ -45,11 +45,11 @@ export class AdminDashboardComponent implements OnInit {
     this.getEvents(sarch);
   }
 
-  keyDownFunction(event) {
-    if(event.keyCode == 13) {
-        this.search();
-    }
-}
+//   keyDownFunction(event) {
+//     if(event.keyCode == 13) {
+//         this.search();
+//     }
+// }
 
   getEvents(params) {
     this.dashboardService.getUsers(params).subscribe(data => {
@@ -70,11 +70,13 @@ export class AdminDashboardComponent implements OnInit {
     this.dashboardService.getDashboardCount().subscribe(data => {
       console.log(data, "counts");
       if (data.status == "success") {
-        this.usersCount = data.usersCount;
+        this.usersCount = data.usersCount;   
         this.statusCount = data.statusCount;
         this.advertismentsCount = data.advertismentsCount;
         this.eventsCount = data.eventsCount;
         this.newsCount = data.newsCount;
+        console.log("this news count is ",this.newsCount);
+
       }
      
    })

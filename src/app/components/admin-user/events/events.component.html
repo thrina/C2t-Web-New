@@ -18,8 +18,11 @@
               <input type="date" class="form-control" [(ngModel)]="date" name="date" placeholder="Date" (ngModelChange)="dateSearch()" />
             </div>
             <div class="col-xs-4 col-lg-4 col-md-4 col-sm-4 m-b-4 filter-search">
-              <input type="search" [(ngModel)]="filterQuery" class="form-control " placeholder="Title">
-              <button type="button" class="btn btn-primary " style="width:100px;" (click)="search()"> search</button>
+              <input type="search" [(ngModel)]="filterQuery" class="form-control" (input)="search()" placeholder="Title">
+              <!-- <button type="button" class="btn btn-primary " style="width:100px;" (click)="search()"> search</button> -->
+              <button type="button" class="btn btn-danger sbtn" (click)="search()">
+                  <i class="icofont icofont-search"></i>
+                </button>
             </div>
             <div class="col-xs-4 col-lg-4 col-md-4 col-sm-4 m-b-4">
                 <button type="button" style=" margin-right:10px;background-color:#d71727; border-color:#d71727; color:#fff; border-radius: 200px;"
@@ -51,7 +54,7 @@
           </ng-template>
           <ng-template let-value="value" ngx-datatable-cell-template #editTmpl let-row="row" let-value="value">
             <ui-switch class="js-danger" color="#e74c3c" switchColor="#fff" size="small" checked></ui-switch>
-            <span (click)="deleteEvent(row)"><i class="ti-trash f-20"></i></span>
+            <span (click)="deleteEvent(row)"><i class="ti-trash f-20" style="cursor: pointer"></i></span>
             <span class="m-l-10" (click)="deleteEvent(col)"><i class="ti-pencil f-20"></i></span>
           </ng-template>
         </ngx-datatable-column>

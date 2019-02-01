@@ -32,3 +32,16 @@
 .actions_div{
     width: 120px;
 }
+.tab-title{
+    position: absolute;
+    width: 318px !important;
+    height: 65px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0px;
+    line-height: 20px;
+}
+.nav-item{
+    position: relative !important;
+}

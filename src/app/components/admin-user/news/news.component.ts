@@ -92,7 +92,16 @@ export class NewsComponent implements OnInit {
     let sarch = { "date": this.date, "page": 1, "limit": 10 };
     this.getNews(sarch);
   }
-
+  // deleteEvent(rec: any):void {
+  //   this.eventsService.deleteEvent(rec).subscribe(data => {
+  //     if (data.status == "success") {
+  //       console.log("deleted");
+  //       this.setPage({ offset: 0 });
+  //       this.eventTitle=JSON.parse(JSON.stringify(rec));
+  //       this.pnotify.success({ title:rec.title+ ": delete successfully", delay: 2000 });
+  //     }
+  //   })
+  // }
   deleteNews(rec: any):void {
     this.newsService.deleteNews(rec).subscribe(data => {
       if (data.status == "success") {
@@ -100,6 +109,7 @@ export class NewsComponent implements OnInit {
         this.setPage({ offset: 0 });
         this.newsTitle=JSON.parse(JSON.stringify(rec));
         this.pnotify.success({ title:rec.title+ ": delete successfully", delay: 2000 });
+
       }
     })
   }

@@ -49,8 +49,14 @@ export class EventsComponent implements OnInit {
 
   getEvents(params) {
     this.eventsService.getEvents(params).subscribe(data => {
+         
       if (data.status == "success") {
         this.rowsBasic = data.rows;
+        console.log("this11", this.rowsBasic);
+        console.log("this11", this.rowsBasic);
+        console.log("this11", this.rowsBasic);
+        console.log("this11", this.rowsBasic);
+
         this.page.totalRecords= data.totalRecords
       }
     })
@@ -64,7 +70,7 @@ export class EventsComponent implements OnInit {
     this.eventsService.deleteEvent(rec).subscribe(data => {
       if (data.status == "success") {
         console.log("deleted");
-        this.setPage({ offset: 0 });
+        this.setPage({ offset:0});
         this.eventTitle=JSON.parse(JSON.stringify(rec));
         this.pnotify.success({ title:rec.title+ ": delete successfully", delay: 2000 });
       }

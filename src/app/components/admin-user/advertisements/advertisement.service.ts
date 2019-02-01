@@ -25,5 +25,9 @@ export class AdvertisementService {
     let queryString = Object.entries(query).map(([key, val]) => `${key}=${val}`).join('&');
      return queryString;
  }
+ deleteAdvertisement(id :any):Observable<any>{
+  let url = process.url + "/advertisement/"+id._id;
+  return this.http.delete(url);
+ }
 
 }

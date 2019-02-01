@@ -43,7 +43,7 @@
         <div class="row rows ">
             <div class="col-lg-7 col-xl-7 col-md-12 rows padding_lr">
                 <div class="input-group" id="adv-search">
-                    <input type="text" class="form-control searchbar lator" [(ngModel)]="filterQuery" (keydown)="keyDownFunction($event)" placeholder="Search for Artists, Writers, Technicians…"/>
+                    <input type="text" class="form-control searchbar lator" [(ngModel)]="filterQuery" (input)="search()" placeholder="Search for Artists, Writers, Technicians…"/>
                     <div class="input-group-btn">
                         <div class="btn-group" role="group">
                             <div class="dropdown dropdown-lg">
